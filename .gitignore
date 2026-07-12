@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# logs & temp
+*.log
+*.tmp
+*.bak
+
+# secrets (never commit)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# build outputs / debug artefacts we don't need in git
+Doc generation/roadmap_v3_combined.html
+Doc generation/notes_debug.html

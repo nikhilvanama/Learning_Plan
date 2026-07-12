@@ -1,0 +1,2613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikhil Vanama - Career Roadmap 2026 - Part I: 50-Day Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f0f4f8; color: #1e293b; font-size: 13.5px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+code, .mono { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; }
+@page { size: A4; margin: 10mm 9mm 12mm 9mm; }
+@media print {
+  body { background: #fff; }
+  .page, .cover-page { box-shadow: none; border: none; }
+  .page { page-break-after: always; }
+  .cover-page { page-break-after: always; }
+  .goal-box, .prep-box, .break-box, .buffer-box, .pq, .cert, .note-box { page-break-inside: avoid; }
+  .day-block .dh { page-break-after: avoid; }
+  .day-block { orphans: 3; widows: 3; }
+  .proj-ideas, .mini-code { page-break-inside: avoid; }
+  table { page-break-inside: auto; }
+  tr { page-break-inside: avoid; page-break-after: auto; }
+  h2.sh, h3.ssh, .sec-lbl { page-break-after: avoid; }
+}
+.page { background: #fff; max-width: 794px; margin: 0 auto 16px; padding: 18px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 6px; }
+/* COVER */
+.cover-page { background: linear-gradient(160deg,#0f172a 0%,#1e3a5f 55%,#0c1e3a 100%); color:#fff; padding:48px 52px; min-height:100vh; max-width:794px; margin:0 auto 24px; box-shadow:0 2px 12px rgba(0,0,0,0.3); display:flex; flex-direction:column; justify-content:space-between; }
+.cover-eye { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#38bdf8; font-weight:700; margin-bottom:60px; }
+.cover-main h1 { font-size:40px; font-weight:800; line-height:1.1; color:#fff; margin-bottom:6px; }
+.cover-main h1 em { color:#38bdf8; font-style:normal; }
+.cover-main .tagline { font-size:15px; color:#94a3b8; margin-bottom:36px; }
+.parts-list { display:flex; flex-direction:column; gap:10px; margin-bottom:36px; }
+.p-item { display:flex; align-items:center; gap:12px; }
+.p-badge { font-size:10px; font-weight:700; padding:3px 10px; border-radius:12px; white-space:nowrap; }
+.p-badge.on { background:#38bdf8; color:#0f172a; }
+.p-badge.off { background:rgba(255,255,255,0.08); color:#64748b; }
+.p-text { font-size:13px; }
+.p-text.on { color:#f1f5f9; font-weight:500; }
+.p-text.off { color:#475569; }
+.cover-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding:20px 0; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:28px; }
+.stat-val { font-size:26px; font-weight:800; color:#38bdf8; }
+.stat-lbl { font-size:10px; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+.cover-footer { font-size:11px; color:#475569; }
+.cover-footer strong { color:#64748b; }
+/* TYPOGRAPHY */
+.page-title { margin-bottom:20px; padding-bottom:14px; border-bottom:2px solid #e2e8f0; }
+.page-title h1 { font-size:20px; font-weight:800; color:#0f172a; }
+.page-title .sub { font-size:12px; color:#64748b; margin-top:3px; }
+.eyebrow { font-size:9.5px; color:#94a3b8; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px; font-weight:600; }
+h2.sh { font-size:15px; font-weight:700; color:#0f172a; margin-bottom:10px; margin-top:22px; }
+h3.ssh { font-size:12px; font-weight:700; color:#334155; margin-bottom:6px; }
+/* TABLES */
+table { width:100%; border-collapse:collapse; margin-bottom:18px; font-size:12px; }
+thead th { background:#1e293b; color:#e2e8f0; padding:7px 9px; text-align:left; font-size:10.5px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+tbody td { padding:7px 9px; border-bottom:1px solid #f1f5f9; vertical-align:top; }
+tbody tr:nth-child(even) td { background:#f8fafc; }
+/* Timing tables inside dark cards keep transparent bg so text stays readable */
+.timing-card table tbody tr td,
+.timing-card table tbody tr:nth-child(even) td { background:transparent !important; border-bottom-color:rgba(255,255,255,0.08); }
+td.dc { font-weight:700; color:#334155; white-space:nowrap; font-size:11.5px; }
+td.datec { color:#64748b; white-space:nowrap; font-size:11px; }
+td.topc { font-weight:600; color:#0f172a; }
+tr.brow td { background:#fef9c3 !important; color:#854d0e; font-weight:600; font-size:11.5px; }
+/* SUBHEAD-LIST (alternative to giant tables) */
+.day-block { border:1px solid #cbd5e1; border-radius:6px; padding:12px 14px 10px; margin-bottom:10px; background:#fff; }
+.day-block .dh { display:flex; align-items:baseline; gap:10px; margin-bottom:8px; padding-bottom:6px; border-bottom:2px solid #f1f5f9; }
+.day-block .dh .day-tag { font-size:10.5px; font-weight:700; color:#fff; padding:2px 8px; border-radius:10px; }
+.day-block .dh .date-tag { font-size:11px; color:#64748b; font-weight:600; }
+.day-block .dh .topic { font-size:13.5px; font-weight:700; color:#0f172a; }
+.day-block .db-sec { margin-top:8px; padding-top:6px; border-top:1px dashed #f1f5f9; }
+.day-block .db-sec:first-of-type { border-top:none; padding-top:0; margin-top:6px; }
+.day-block .db-sec h5 { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px; color:#475569; margin-bottom:4px; display:inline-block; padding:1px 6px; background:#f1f5f9; border-radius:3px; }
+.day-block .db-sec ul { padding-left:16px; list-style:disc; margin:2px 0 0 0; }
+.day-block .db-sec ul li { font-size:11.5px; color:#334155; margin-bottom:2px; line-height:1.55; }
+.day-block .db-sec p { font-size:11.5px; color:#334155; line-height:1.55; margin-top:1px; }
+/* Header colors per section — visual differentiation */
+.day-block .db-sec.sec-concepts h5 { background:#e0e7ff; color:#3730a3; }
+.day-block .db-sec.sec-read h5     { background:#fef3c7; color:#92400e; }
+.day-block .db-sec.sec-practice h5 { background:#dcfce7; color:#166534; }
+.day-block .db-sec.sec-code h5     { background:#1e293b; color:#f1f5f9; }
+/* MINI CODE */
+.mini-code { background:#0f172a; color:#e2e8f0; font-family:'JetBrains Mono',monospace; font-size:10.5px; padding:10px 12px; border-radius:4px; overflow-x:auto; line-height:1.6; margin-top:4px; white-space:pre; }
+.mini-code .kw { color:#c4b5fd; }
+.mini-code .str { color:#86efac; }
+.mini-code .cm { color:#94a3b8; font-style:italic; }
+.mini-code .fn { color:#7dd3fc; }
+/* MINI PROJECT IDEAS BOX */
+.proj-ideas { border:1px solid #dbeafe; background:linear-gradient(135deg,#eff6ff,#e0f2fe); border-radius:6px; padding:12px 14px; margin-top:12px; }
+.proj-ideas h4 { font-size:10.5px; color:#1e40af; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; margin-bottom:6px; }
+.proj-ideas ol { padding-left:18px; margin:0; }
+.proj-ideas ol li { font-size:11.5px; color:#1e3a8a; margin-bottom:3px; line-height:1.5; }
+.proj-ideas ol li strong { color:#0f172a; }
+/* PHASE */
+.ph-wrap { margin-bottom:16px; }
+.ph-hdr { border-radius:6px 6px 0 0; padding:12px 16px; }
+.ph-hdr .ph-num { font-size:10.5px; letter-spacing:2px; text-transform:uppercase; opacity:0.75; margin-bottom:2px; }
+.ph-hdr h2 { font-size:19px; font-weight:800; color:#fff; margin:0; }
+.ph-hdr .ph-meta { font-size:11.5px; color:rgba(255,255,255,0.75); margin-top:3px; }
+.ph-body { border:1px solid #e2e8f0; border-top:none; border-radius:0 0 6px 6px; padding:14px 16px; }
+/* GOAL */
+.goal-box { border-left:3px solid; padding:10px 14px; background:#f8fafc; border-radius:0 4px 4px 0; margin-bottom:16px; font-size:12px; color:#334155; line-height:1.65; }
+/* SEC LABEL */
+.sec-lbl { font-size:10px; font-weight:700; color:#64748b; letter-spacing:2px; text-transform:uppercase; border-bottom:1px solid #e2e8f0; padding-bottom:4px; margin-bottom:8px; margin-top:12px; }
+/* LISTS */
+ul.plain { list-style:none; }
+ul.plain li { padding:2px 0 2px 14px; position:relative; font-size:12.5px; color:#334155; }
+ul.plain li::before { content:"-"; position:absolute; left:0; color:#94a3b8; }
+ul.check li { list-style:none; padding:3px 0 3px 18px; position:relative; font-size:12px; color:#334155; }
+ul.check li::before { content:"[ ]"; position:absolute; left:0; font-family:'JetBrains Mono',monospace; font-size:10px; color:#94a3b8; top:5px; }
+/* PRACTICE Q */
+.pq { border:1px solid #e2e8f0; border-left:3px solid; border-radius:4px; padding:6px 10px; margin-bottom:5px; font-size:11.5px; color:#334155; line-height:1.5; }
+.pq .pn { font-size:10.5px; font-weight:700; color:#64748b; display:block; margin-bottom:1px; }
+/* YOUTUBE */
+.yt { display:flex; gap:8px; margin-bottom:4px; align-items:flex-start; font-size:11.5px; line-height:1.5; }
+.yt-b { background:#fecaca; color:#991b1b; font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px; white-space:nowrap; flex-shrink:0; margin-top:1px; }
+/* BREAK */
+.break-box { background:#fffbeb; border:2px solid #f59e0b; border-radius:8px; padding:16px 20px; margin:16px 0 28px; }
+.break-box h3 { color:#92400e; font-size:14px; font-weight:700; margin-bottom:8px; }
+.break-box p { font-size:12px; color:#78350f; margin-bottom:4px; }
+.break-box ul { padding-left:16px; margin-top:6px; }
+.break-box li { font-size:12px; color:#78350f; }
+/* PREP */
+.prep-box { background:linear-gradient(135deg,#f0fdf4,#dcfce7); border:1px solid #86efac; border-radius:8px; padding:22px 26px; margin-bottom:28px; }
+.prep-box h2 { font-size:17px; font-weight:800; color:#14532d; margin-bottom:4px; }
+.prep-box .pd { font-size:12px; color:#16a34a; font-weight:600; margin-bottom:14px; }
+/* 2 COL */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+.ibox { background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px; padding:10px 12px; }
+.ibox h4 { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#64748b; margin-bottom:6px; }
+.ibox p, .ibox li { font-size:11.5px; color:#334155; line-height:1.5; }
+.ibox ul { padding-left:14px; margin:0; }
+/* CERT */
+.cert { background:linear-gradient(135deg,#fdf4ff,#fae8ff); border:1px solid #e9d5ff; border-radius:6px; padding:10px 14px; font-size:11.5px; color:#6b21a8; margin-top:12px; font-weight:500; }
+/* COLORS */
+.bg-p1{background:#7c3aed} .bg-p2{background:#0891b2} .bg-p3{background:#059669} .bg-p4{background:#d97706}
+.bg-p5{background:#ea580c} .bg-p6{background:#2563eb} .bg-p7{background:#16a34a} .bg-p8{background:#dc2626}
+.bg-p9{background:#9333ea} .bg-p10{background:#0284c7} .bg-p11{background:#b45309} .bg-p12{background:#be123c}
+.bl-p1{border-left-color:#7c3aed} .bl-p2{border-left-color:#0891b2} .bl-p3{border-left-color:#059669} .bl-p4{border-left-color:#d97706}
+.bl-p5{border-left-color:#ea580c} .bl-p6{border-left-color:#2563eb} .bl-p7{border-left-color:#16a34a} .bl-p8{border-left-color:#dc2626}
+.bl-p9{border-left-color:#9333ea} .bl-p10{border-left-color:#0284c7} .bl-p11{border-left-color:#b45309} .bl-p12{border-left-color:#be123c}
+.pill { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:600; color:#fff; }
+</style>
+</head>
+<body>
+
+<!-- ========== COVER PAGE ========== -->
+<div id="cover" class="cover-page">
+  <div class="cover-eye">Nikhil Vanama &mdash; Career Roadmap 2026</div>
+  <div class="cover-main">
+    <h1>Web Dev to<br><em>SAP + AI Engineer</em></h1>
+    <p class="tagline">A structured self-study roadmap: Foundation to job-ready by Jan/Feb 2027</p>
+    <div class="parts-list">
+      <div class="p-item"><span class="p-badge on">PART I  [YOU ARE HERE]</span><span class="p-text on">50-Day Foundation &mdash; Jul 6 to Aug 31, 2026</span></div>
+      <div class="p-item"><span class="p-badge off">BUFFER</span><span class="p-text off">1-Week Buffer (Sep 1-7) &mdash; wrap Phase 12 + prep for SAP</span></div>
+      <div class="p-item"><span class="p-badge off">PART II</span><span class="p-text off">SAP Overview (Sep 8-17) + ABAP Institute (Sep 18 &rarr; end Nov / mid Dec)</span></div>
+      <div class="p-item"><span class="p-badge off">PART III</span><span class="p-text off">SAP BTP + AI &mdash; self-paced, begins Dec 1, 2026</span></div>
+      <div class="p-item"><span class="p-badge off">PART IV</span><span class="p-text off">Job Hunt &mdash; Jan/Feb 2027 onwards</span></div>
+    </div>
+    <div class="cover-stats">
+      <div><div class="stat-val">49</div><div class="stat-lbl">Study Days</div></div>
+      <div><div class="stat-val">12</div><div class="stat-lbl">Phases</div></div>
+      <div><div class="stat-val">8</div><div class="stat-lbl">Break Days</div></div>
+      <div><div class="stat-val">Aug 31</div><div class="stat-lbl">Completion</div></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <strong>Nikhil Vanama</strong> &mdash; Web Developer, Mediacle Technologies, Bangalore<br>
+    Generated Jul 2026 &bull; Target: SAP + AI Engineer role by Jan/Feb 2027
+  </div>
+</div>
+
+<!-- ========== OVERVIEW PAGE ========== -->
+<div id="overview" class="page">
+  <div class="page-title">
+    <div class="eyebrow">Part I Overview</div>
+    <h1 class="page-title" style="font-size:20px;font-weight:800;color:#0f172a;">Master Timeline &mdash; 49-Day Foundation</h1>
+    <p class="sub">Jul 6, 2026 &rarr; Aug 31, 2026 &bull; 49 study days + 8 break days = 57 calendar days &bull; Most breaks fall on weekends</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Phase</th><th>Days</th><th>Dates</th><th>Focus</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>-</td><td><strong>Prep Week</strong></td><td>5</td><td>Jul 1-5</td><td>Resource collection; Tirumala Jul 4-5</td></tr>
+      <tr><td>1</td><td><strong>Prompt Engineering</strong></td><td>3</td><td>Jul 6-8 (Mon-Wed)</td><td>5-element anatomy, zero/few-shot, CoT, refinement</td></tr>
+      <tr><td>2</td><td><strong>Claude Code CLI</strong></td><td>2</td><td>Jul 9-10 (Thu-Fri)</td><td>CLAUDE.md, slash commands, MCP, plan mode, agent workflows</td></tr>
+      <tr><td>3</td><td><strong>CS Fundamentals</strong></td><td><strong>2</strong></td><td><strong>Jul 11-12 (Sat-Sun)</strong></td><td>CPU/RAM, binary, OSI, HTTP, DNS, TCP, data structures, Big O &mdash; full weekend</td></tr>
+      <tr><td>4</td><td><strong>JS Basics Warm-up</strong></td><td>2</td><td>Jul 13-14 (Mon-Tue)</td><td>Variables, types, functions, arrays, objects, DOM</td></tr>
+      <tr><td>5</td><td><strong>Advanced JavaScript + OOP</strong></td><td>4</td><td>Jul 15-18 (Wed-Sat)</td><td>Closures, prototypes, classes, inheritance, polymorphism, async/await, event loop</td></tr>
+      <tr class="brow"><td colspan="5">BREAK DAY &mdash; Jul 19 (Sun) &mdash; Revise Phase 5 Advanced JS + OOP</td></tr>
+      <tr><td>6</td><td><strong>React + Tailwind CSS</strong></td><td>6</td><td>Jul 20-25 (Mon-Sat)</td><td>JSX, hooks, Router v6, context, useReducer, Tailwind</td></tr>
+      <tr class="brow"><td colspan="5">BREAK DAY &mdash; Jul 26 (Sun) &mdash; Revise Phase 6 React</td></tr>
+      <tr><td>7</td><td><strong>Node.js + Express (Deep)</strong></td><td>9</td><td>Jul 27 - Aug 4 (Mon-Tue)</td><td>Runtime, middleware, auth, JWT, validation, MVC, file uploads</td></tr>
+      <tr><td>8</td><td><strong>REST API Design</strong></td><td>3</td><td>Aug 5-7 (Wed-Fri)</td><td>URL design, status codes, pagination, versioning, OpenAPI</td></tr>
+      <tr class="brow"><td colspan="5">BREAK DAYS &mdash; Aug 8-9 (Sat-Sun) &mdash; Revise Phases 7-8 &mdash; Full Weekend Off</td></tr>
+      <tr><td>9</td><td><strong>MySQL + Node Integration</strong></td><td>7</td><td>Aug 10-16 (Mon-Sun)</td><td>DDL, DML, JOINs, indexes, normalization, mysql2 driver</td></tr>
+      <tr class="brow"><td colspan="5">BREAK DAYS &mdash; Aug 17-18 (Mon-Tue) &mdash; Revise Phase 9 MySQL</td></tr>
+      <tr><td>10</td><td><strong>Git (Advanced) + Docker + AWS</strong></td><td>3</td><td>Aug 19-21 (Wed-Fri)</td><td>Rebase, stash, Docker, docker-compose, EC2, S3, Lambda</td></tr>
+      <tr class="brow"><td colspan="5">BREAK DAY &mdash; Aug 22 (Sat) &mdash; Rest after Git/Docker/AWS &mdash; push all Phase 10 code, review deploy checklist</td></tr>
+      <tr><td>11</td><td><strong>System Design Fundamentals</strong></td><td>3</td><td>Aug 23-25 (Sun-Tue)</td><td>Scaling, caching, CDN, queues, CAP theorem, sharding</td></tr>
+      <tr class="brow"><td colspan="5">BREAK DAY &mdash; Aug 26 (Wed) &mdash; Revise Phases 10-11</td></tr>
+      <tr><td>12</td><td><strong>Agentic AI + n8n + Capstone</strong></td><td>5</td><td>Aug 27-31 (Thu-Mon)</td><td>Claude API, tool use, RAG, n8n workflows, FocusTrack Pro</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:#64748b;margin-top:-10px;margin-bottom:14px;">Total: 49 study days + 8 break days = 57 calendar days. CS Fundamentals lands on Sat-Sun so all subsequent break days naturally land on weekends.</p>
+
+  <div class="two-col" style="margin-top:12px;">
+    <div class="ibox">
+      <h4>Weekly Time Budget</h4>
+      <ul class="plain">
+        <li>Weekdays (Mon-Fri): 2.5 hrs x 5 = <strong>12.5 hrs</strong></li>
+        <li>Weekends (Sat+Sun): 8 hrs x 2 = <strong>16 hrs</strong> (5 morning + 3 project)</li>
+        <li><strong>Total per week: ~28 hrs</strong></li>
+        <li>Over 8 weeks: <strong>220+ focused hours</strong></li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Break Day Activity (all breaks)</h4>
+      <ul class="plain">
+        <li>Re-read notes from completed phase</li>
+        <li>Redo 2-3 practice questions from memory</li>
+        <li>Update GitHub with completed code</li>
+        <li>Log the break in your daily organiser app</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;background:#fef9c3;border:1px solid #eab308;border-radius:6px;padding:12px 16px;font-size:12px;color:#713f12;">
+    <strong>Tracker tip:</strong> You already built a daily organiser app for tasks / goals / routines. Add one checklist per phase to it and tick off each day &mdash; visible streak = psychological locking. Don't break the chain.
+  </div>
+</div>
+
+<!-- ========== DAILY TIMINGS PAGE ========== -->
+<div id="daily-timings" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Daily Rhythm</div>
+    <h1 style="font-size:20px;font-weight:800;color:#0f172a;">Your Actual Daily Timings</h1>
+    <p class="sub">Weekday office 12&ndash;9 PM &bull; Weekends longer study block &bull; Fixed windows so you never negotiate with yourself</p>
+  </div>
+
+  <div class="no-break timing-card" style="background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:8px;padding:20px 22px;color:#f1f5f9;">
+    <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;font-weight:700;margin-bottom:12px;">Weekdays (Mon &ndash; Fri) &bull; Office 12&ndash;9 PM</div>
+    <table style="width:100%;font-size:12px;color:#e2e8f0;">
+      <tbody>
+        <tr><td style="padding:5px 8px;color:#94a3b8;width:40%;">7:15 AM</td><td style="padding:5px 8px;">Wake up</td></tr>
+        <tr><td style="padding:5px 8px;color:#94a3b8;">7:20 &ndash; 8:15 AM</td><td style="padding:5px 8px;">Workout (55 min)</td></tr>
+        <tr><td style="padding:5px 8px;color:#94a3b8;">8:20 &ndash; 8:45 AM</td><td style="padding:5px 8px;">Freshup, breakfast</td></tr>
+        <tr><td style="padding:5px 8px;color:#38bdf8;font-weight:700;">8:45/9:00 &ndash; 11:20 AM</td><td style="padding:5px 8px;color:#38bdf8;font-weight:700;">DEEP STUDY BLOCK &mdash; ~2.5 hrs (highest quality window)</td></tr>
+        <tr><td style="padding:5px 8px;color:#94a3b8;">11:20 AM</td><td style="padding:5px 8px;">Start getting ready for office</td></tr>
+        <tr><td style="padding:5px 8px;color:#94a3b8;">12:00 PM &ndash; 9:00 PM</td><td style="padding:5px 8px;">Office (Mediacle)</td></tr>
+        <tr><td style="padding:5px 8px;color:#94a3b8;">9:00 &ndash; 10:00 PM</td><td style="padding:5px 8px;">Commute + dinner</td></tr>
+        <tr><td style="padding:5px 8px;color:#94a3b8;">10:00 &ndash; 11:15/11:30 PM</td><td style="padding:5px 8px;">Personal work &mdash; freelance, revision of morning notes, SATA maintenance</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11.5px;color:#94a3b8;margin-top:10px;line-height:1.6;">The 8:45&ndash;11:20 AM slot is where the roadmap topics happen. The 10&ndash;11:30 PM slot is <em>only</em> for revision / freelance / your daily organiser app &mdash; not for new topics.</p>
+  </div>
+
+  <div class="no-break timing-card" style="margin-top:16px;background:linear-gradient(135deg,#065f46,#047857);border-radius:8px;padding:20px 22px;color:#f0fdf4;">
+    <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#86efac;font-weight:700;margin-bottom:12px;">Weekends (Saturday + Sunday)</div>
+    <table style="width:100%;font-size:12px;color:#dcfce7;">
+      <tbody>
+        <tr><td style="padding:5px 8px;color:#86efac;width:40%;font-weight:700;">9:00/9:30 AM &ndash; 2:00 PM</td><td style="padding:5px 8px;font-weight:700;">MAIN STUDY BLOCK &mdash; 4.5-5 hrs (longest single session)</td></tr>
+        <tr><td style="padding:5px 8px;color:#86efac;">2:00 &ndash; 3:00 PM</td><td style="padding:5px 8px;">Lunch break</td></tr>
+        <tr><td style="padding:5px 8px;color:#86efac;">3:00 &ndash; 6:00 PM</td><td style="padding:5px 8px;">If outing planned: no study today. If not: movie / BGMI break (guilt-free)</td></tr>
+        <tr><td style="padding:5px 8px;color:#86efac;font-weight:700;">6:00 &ndash; 9:00 PM</td><td style="padding:5px 8px;font-weight:700;">PROJECT BLOCK &mdash; 3 hrs (use mainly for capstone / mini-project completion)</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11.5px;color:#86efac;margin-top:10px;line-height:1.6;">Weekends are your project-completion runway. Weekday morning slots deliver theory + small exercises; weekends stitch it into a working project.</p>
+  </div>
+
+  <div class="two-col" style="margin-top:16px;">
+    <div class="ibox">
+      <h4>Non-Negotiables</h4>
+      <ul class="plain">
+        <li>Morning 8:45 study &mdash; even if only 45 min</li>
+        <li>Phone on DND, one browser tab only</li>
+        <li>No new topic after 10 PM &mdash; only revision</li>
+        <li>Sunday evening: plan the week ahead</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>If Office Runs Late</h4>
+      <ul class="plain">
+        <li>Skip 10&ndash;11 PM personal work, sleep by 11</li>
+        <li>Never skip morning to compensate</li>
+        <li>Log the disruption in your organiser app</li>
+        <li>Weekend absorbs the debt, not the next weekday</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MOTIVATION PAGE ========== -->
+<div id="motivation" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Mindset &amp; Method</div>
+    <h1 style="font-size:20px;font-weight:800;color:#7c3aed;">How to Stay Consistent &amp; Learn Effectively</h1>
+    <p class="sub">Read this when you feel like skipping. Refer back whenever motivation dips.</p>
+  </div>
+
+  <div class="no-break" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);border-radius:8px;padding:14px 18px;margin-bottom:12px;color:#fff;">
+    <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;opacity:0.75;margin-bottom:2px;">Rule #1 &mdash; The 1% Rule</div>
+    <p style="font-size:12.5px;color:rgba(255,255,255,0.9);line-height:1.6;">You don't need 8 hours a day. <strong style="color:#e9d5ff;">2.5 focused hours beats 8 distracted hours.</strong> Every day you study, you are 1% better than yesterday. In 8 weeks, that compounds. Don't chase marathon sessions &mdash; chase daily consistency.</p>
+  </div>
+
+  <div class="two-col no-break" style="margin-top:0;margin-bottom:12px;">
+    <div style="background:#faf5ff;border:2px solid #e9d5ff;border-radius:8px;padding:12px 14px;">
+      <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#7c3aed;font-weight:700;margin-bottom:4px;">Feynman Technique</div>
+      <p style="font-size:12px;color:#334155;line-height:1.55;">After each topic, <strong>explain it in simple words as if teaching a 10-year-old.</strong> If you can't explain it simply, you don't know it yet &mdash; re-read.</p>
+      <div style="background:#7c3aed;color:#fff;border-radius:5px;padding:7px 10px;font-size:11px;font-style:italic;margin-top:8px;">"If you can't explain it simply, you don't understand it well enough." &mdash; Feynman</div>
+    </div>
+    <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:8px;padding:12px 14px;">
+      <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#ea580c;font-weight:700;margin-bottom:4px;">Morning = Gold Time</div>
+      <p style="font-size:12px;color:#334155;line-height:1.55;">Your <strong>8:45 &ndash; 11:20 AM slot</strong> is your highest quality window. Phone on DND, one browser tab only, no rabbit holes. Even if sleepy &mdash; sit down at 8:45; it passes in 10 min.</p>
+    </div>
+  </div>
+
+  <div class="two-col no-break" style="margin-top:0;margin-bottom:12px;">
+    <div style="background:#f0fdf4;border:2px solid #86efac;border-radius:8px;padding:12px 14px;">
+      <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#16a34a;font-weight:700;margin-bottom:6px;">When You Feel Like Skipping</div>
+      <ul style="padding-left:15px;margin:0;">
+        <li style="font-size:11.5px;color:#14532d;margin-bottom:3px;">Every expert was once a beginner &mdash; you're building the foundation</li>
+        <li style="font-size:11.5px;color:#14532d;margin-bottom:3px;">Slot is already blocked &mdash; just open the laptop</li>
+        <li style="font-size:11.5px;color:#14532d;margin-bottom:3px;">Don't break the chain &mdash; tick your daily organiser app</li>
+        <li style="font-size:11.5px;color:#14532d;"><strong>On bad days: revision beats new content</strong></li>
+      </ul>
+    </div>
+    <div style="border:2px solid #7c3aed;border-radius:8px;padding:12px 14px;">
+      <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#7c3aed;font-weight:700;margin-bottom:6px;">Consistency Formula</div>
+      <p style="font-size:11.5px;color:#334155;margin-bottom:4px;">Weekdays: 2.5 hrs x 5 = <strong style="color:#7c3aed;">12.5 hrs</strong></p>
+      <p style="font-size:11.5px;color:#334155;margin-bottom:4px;">Weekends: (5 + 3) x 2 = <strong style="color:#7c3aed;">16 hrs</strong></p>
+      <div style="background:linear-gradient(135deg,#7c3aed,#6d28d9);border-radius:5px;padding:8px 10px;margin-top:8px;text-align:center;">
+        <span style="color:#fff;font-size:11.5px;font-weight:700;">~28 hrs/week &bull; 8 weeks = <span style="color:#e9d5ff;">220+ focused hours</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-break" style="border:2px solid #e2e8f0;border-radius:8px;padding:12px 14px;">
+    <div style="font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#64748b;font-weight:700;margin-bottom:8px;">6-Step Method to Understand Any Concept</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+      <div style="background:#faf5ff;border-left:3px solid #7c3aed;padding:7px 10px;border-radius:0 4px 4px 0;">
+        <div style="font-size:9.5px;font-weight:700;color:#7c3aed;margin-bottom:2px;">STEP 1 &mdash; PREVIEW</div>
+        <p style="font-size:11px;color:#334155;line-height:1.4;">Watch a 5-10 min overview video FIRST for the big picture</p>
+      </div>
+      <div style="background:#faf5ff;border-left:3px solid #7c3aed;padding:7px 10px;border-radius:0 4px 4px 0;">
+        <div style="font-size:9.5px;font-weight:700;color:#7c3aed;margin-bottom:2px;">STEP 2 &mdash; STUDY</div>
+        <p style="font-size:11px;color:#334155;line-height:1.4;">Read the concept in depth from the recommended resource</p>
+      </div>
+      <div style="background:#faf5ff;border-left:3px solid #7c3aed;padding:7px 10px;border-radius:0 4px 4px 0;">
+        <div style="font-size:9.5px;font-weight:700;color:#7c3aed;margin-bottom:2px;">STEP 3 &mdash; CODE</div>
+        <p style="font-size:11px;color:#334155;line-height:1.4;">Type a small example from scratch &mdash; no copy-paste</p>
+      </div>
+      <div style="background:#faf5ff;border-left:3px solid #7c3aed;padding:7px 10px;border-radius:0 4px 4px 0;">
+        <div style="font-size:9.5px;font-weight:700;color:#7c3aed;margin-bottom:2px;">STEP 4 &mdash; BREAK</div>
+        <p style="font-size:11px;color:#334155;line-height:1.4;">Change a value, remove a line, observe what breaks and why</p>
+      </div>
+      <div style="background:#faf5ff;border-left:3px solid #7c3aed;padding:7px 10px;border-radius:0 4px 4px 0;">
+        <div style="font-size:9.5px;font-weight:700;color:#7c3aed;margin-bottom:2px;">STEP 5 &mdash; TEACH</div>
+        <p style="font-size:11px;color:#334155;line-height:1.4;">Explain aloud (Feynman check). Write in your notes plainly</p>
+      </div>
+      <div style="background:#faf5ff;border-left:3px solid #7c3aed;padding:7px 10px;border-radius:0 4px 4px 0;">
+        <div style="font-size:9.5px;font-weight:700;color:#7c3aed;margin-bottom:2px;">STEP 6 &mdash; CONNECT</div>
+        <p style="font-size:11px;color:#334155;line-height:1.4;">Link to what you already know (e.g., WP hooks &rarr; React useEffect)</p>
+      </div>
+    </div>
+    <div style="background:#7c3aed;border-radius:6px;padding:9px 12px;margin-top:10px;text-align:center;">
+      <span style="color:#fff;font-size:12px;font-weight:600;">Your web dev background is your superpower &mdash; you already know more than you think</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PREP WEEK ========== -->
+<div id="prep-week" class="page" style="page-break-before:always;">
+  <div class="prep-box">
+    <h2>Prep Week &mdash; Resource Collection Mode</h2>
+    <p class="pd">July 1-5, 2026 &bull; Note: July 4-5 = Tirumala Darshan</p>
+    <p style="font-size:12.5px;color:#166534;margin-bottom:12px;">This is NOT active coding or studying. Spend these 5 days collecting and organizing resources for every phase so you can hit the ground running on July 6.</p>
+    <div class="two-col">
+      <div>
+        <h3 class="ssh" style="color:#14532d;">What to do (Jul 1-3)</h3>
+        <ul class="plain">
+          <li>Open each phase below and note the YouTube playlists listed</li>
+          <li>Download or bookmark all videos/docs for offline use</li>
+          <li>Create one folder per phase in your notes app</li>
+          <li>Set up GitHub repo: <code>nikhil-roadmap-2026</code></li>
+          <li><em>Already installed:</em> VS Code + Claude Code extension (Max plan), Node.js, Git, Docker &mdash; skip these</li>
+          <li>Only new tool needed: MySQL Workbench (for Phase 9, install now to save time)</li>
+          <li>n8n comes later &mdash; install with <code>npx n8n</code> at Phase 12</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="ssh" style="color:#14532d;">Jul 4-5 (Tirumala)</h3>
+        <ul class="plain">
+          <li>Travel and darshan &mdash; complete rest from study</li>
+          <li>Optional: read the Phase 1 Prompt Engineering overview on phone (5 min)</li>
+          <li>Come back refreshed and ready for Jul 6 Monday start</li>
+        </ul>
+        <div style="background:#bbf7d0;border-radius:6px;padding:10px 14px;margin-top:10px;">
+          <p style="font-size:12px;color:#14532d;font-weight:600;">Phase 1 starts Monday Jul 6. You are ready.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <h3 class="ssh" style="color:#14532d;">Resource Checklist</h3>
+      <div class="two-col">
+        <ul class="check">
+          <li>Bookmarked Anthropic Prompt Engineering docs</li>
+          <li>Bookmarked Claude Code official docs</li>
+          <li>Saved "Namaste JavaScript" playlist (Akshay Saini)</li>
+          <li>Saved "React 18 Full Course" (The Net Ninja)</li>
+          <li>Saved "Node.js Crash Course" (Traversy Media)</li>
+          <li>Saved "MySQL Tutorial" (Programming with Mosh)</li>
+        </ul>
+        <ul class="check">
+          <li>Saved "Docker Tutorial" (TechWorld with Nana)</li>
+          <li>Saved "System Design" (ByteByteGo channel)</li>
+          <li>GitHub repo created and cloned locally</li>
+          <li>VS Code + extensions installed (ESLint, Prettier, REST Client)</li>
+          <li>Node.js LTS + MySQL Workbench installed</li>
+          <li>Claude API key obtained from console.anthropic.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PHASE 1: PROMPT ENGINEERING ========== -->
+<div id="phase-1" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p1">
+    <div class="ph-num">Phase 1 of 12</div>
+    <h2>Prompt Engineering</h2>
+    <div class="ph-meta">3 days &bull; Jul 6 (Mon) - Jul 8 (Wed) &bull; No prior AI knowledge needed</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p1">
+      <strong>What is this?</strong> The craft of writing precise instructions that get exactly the output you want from Claude / GPT / any LLM. Prompts are the "code" of the AI era.<br><br>
+      <strong>Why should you learn this first?</strong> Every phase after this uses AI heavily (Claude Code, RAG, capstone). A great prompt turns a 4-hour task into 20 minutes. A bad prompt wastes tokens and time. This is the meta-skill that multiplies everything else.<br><br>
+      <strong>Topics covered:</strong> 5-element prompt anatomy (Role, Context, Task, Format, Constraints); zero-shot; few-shot with examples; chain-of-thought reasoning; role prompting; structured JSON output; iterative refinement
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p1">DAY 1</span><span class="date-tag">Mon Jul 6</span><span class="topic">5-Element Anatomy + Zero-Shot</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>The 5 elements of a strong prompt: <strong>Role</strong>, <strong>Context</strong>, <strong>Task</strong>, <strong>Format</strong>, <strong>Constraints</strong></li>
+          <li>Zero-shot = ask directly, no examples &mdash; works when the task is common (translate, summarise, classify)</li>
+          <li>When zero-shot fails: ambiguous instructions, novel tasks, formatting-sensitive output</li>
+          <li>How to score a prompt: clarity + specificity + verifiability of output</li>
+          <li>Anti-patterns: vague roles ("be helpful"), missing constraints, no output format specified</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Anthropic Prompt Engineering docs (Intro + Basics sections); "ChatGPT Prompt Engineering" DeepLearning.AI Ch.1-2.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write 5 zero-shot prompts for different tasks. Evaluate and score them 1&ndash;5 for clarity.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Example prompt (5 elements)</span>
+<span class="kw">Role</span>:    You are a senior technical writer.
+<span class="kw">Context</span>: Users read release notes on mobile in &lt;30s.
+<span class="kw">Task</span>:    Rewrite the changelog below in 3 bullets.
+<span class="kw">Format</span>:  Markdown bullets, no headings.
+<span class="kw">Constr</span>:  Under 40 words total. No jargon.
+&lt;changelog&gt;{{input}}&lt;/changelog&gt;
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p1">DAY 2</span><span class="date-tag">Tue Jul 7</span><span class="topic">Few-Shot + Chain-of-Thought</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Few-shot = 2&ndash;5 input/output examples shown before the real question</li>
+          <li>Examples must be diverse (edge cases) + short (token cost) + consistent format</li>
+          <li>Chain-of-Thought (CoT) = ask the model to reason step by step before answering</li>
+          <li>CoT shines on math, logic, multi-step debugging &mdash; not on lookups</li>
+          <li>Zero-shot CoT trick: just append "Let's think step by step" to a plain prompt</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Anthropic docs (Examples section); DeepLearning.AI Ch.3&ndash;4; read OpenAI "Chain of Thought" paper (abstract + examples only).</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Take 3 complex tasks (code debug, reasoning, summarization) and write both few-shot and CoT prompts. Compare outputs.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Few-shot classifier prompt</span>
+Classify sentiment. Examples:
+"Loved the update" &rarr; POSITIVE
+"Battery drained fast" &rarr; NEGATIVE
+"Works ok I guess" &rarr; NEUTRAL
+
+Now classify: <span class="str">"{{text}}"</span>
+<span class="cm"># CoT variant: add "Let's think step by step" before answering</span></div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p1">DAY 3</span><span class="date-tag">Wed Jul 8</span><span class="topic">Structured Outputs + Iterative Refinement + Role Prompting</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>JSON output: describe the schema in the prompt + include "Return ONLY valid JSON"</li>
+          <li>For strict schemas use tool use / function calling instead of raw JSON</li>
+          <li>Role prompting: <code>You are a senior SQL DBA. Reply ONLY with valid MySQL 8 queries</code></li>
+          <li>Iterative refinement loop: run &rarr; grade output &rarr; add missing constraint &rarr; rerun</li>
+          <li>Version your prompts (v1, v2, v3) &mdash; keep the diffs in a "prompt library" file</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Anthropic docs (Output Formatting, Role Prompting sections); review your Day 1&ndash;2 prompts.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build a "prompt library" document with 10 reusable prompt templates. Practice refining 1 prompt through 5 iterations.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Force JSON output</span>
+Return ONLY valid JSON matching this schema:
+{ <span class="str">"title"</span>: string,
+  <span class="str">"priority"</span>: <span class="str">"low"</span>|<span class="str">"med"</span>|<span class="str">"high"</span>,
+  <span class="str">"tags"</span>: string[] }
+
+Input: <span class="str">"{{task}}"</span></div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs (open these directly)</div>
+    <div class="yt"><span class="yt-b">YT</span><span>ChatGPT Prompt Engineering for Developers &mdash; DeepLearning.AI (free): <code>https://learn.deeplearning.ai/chatgpt-prompt-eng</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Prompt Engineering Tutorial (freeCodeCamp, 41 min): <code>https://youtu.be/_ZvnD73m40o</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Anthropic Prompt Engineering Course (playlist): <code>https://www.youtube.com/@AnthropicAI</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>Anthropic docs (end to end): <code>https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview</code></span></div>
+
+    <div class="cert"><strong>Recommended certification:</strong> "ChatGPT Prompt Engineering for Developers" &mdash; DeepLearning.AI (free, ~1 hr, includes certificate). Also: Vanderbilt "Prompt Engineering for ChatGPT" on Coursera (free audit).</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p1"><span class="pn">Q1 &mdash;</span>Write a zero-shot prompt that converts raw meeting notes into a structured action-items list with owner, deadline, and priority.</div>
+    <div class="pq pq-p1"><span class="pn">Q2 &mdash;</span>Create a few-shot prompt (3 examples) that transforms casual Slack messages into formal professional emails.</div>
+    <div class="pq pq-p1"><span class="pn">Q3 &mdash;</span>Design a chain-of-thought prompt that asks Claude to debug a JavaScript function step by step, explaining each line of reasoning.</div>
+    <div class="pq pq-p1"><span class="pn">Q4 &mdash;</span>Write a role-based system prompt for a "SQL query assistant" that only outputs valid MySQL queries with no explanation.</div>
+    <div class="pq pq-p1"><span class="pn">Q5 &mdash;</span>Build a prompt with all 5 elements: Role, Context, Task, Format (JSON), Constraints (under 100 words output).</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Mini Project</h4>
+        <p>Build a personal "Prompt Playbook" &mdash; a Markdown file with 10 high-quality reusable prompts covering: code review, bug debug, explain-like-I'm-5, API docs generator, commit message writer, test case generator, error analysis, SQL query assistant, data transformer, and study quiz generator.</p>
+      </div>
+      <div class="ibox">
+        <h4>Deliverables Checklist</h4>
+        <ul class="check">
+          <li>Completed 5 zero-shot prompts (Day 1)</li>
+          <li>Compared few-shot vs CoT on 3 tasks (Day 2)</li>
+          <li>Built 10-prompt Prompt Playbook (Day 3)</li>
+          <li>Saved Playbook to GitHub repo</li>
+          <li>Answered all 5 practice questions</li>
+        </ul>
+      </div>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 1</h4><ol>
+        <li><strong>Prompt Playbook</strong> &mdash; A shareable Markdown file with 10 reusable prompts (code review, bug debug, ELI5 explainer, commit message writer, SQL query gen, test-case gen, changelog, error explainer, meeting-notes-&rarr;-actions, study quiz).</li>
+        <li><strong>Prompt Comparator</strong> &mdash; Node.js CLI that takes one task, runs zero-shot vs few-shot vs CoT prompts on the same input, and prints outputs side-by-side. Save results as evidence.</li>
+        <li><strong>Domain Assistant</strong> &mdash; Design a single "expert" system prompt for a domain you know (SATA/community/finance) that only answers within scope and refuses politely otherwise.</li>
+      </ol></div>
+  </div>
+</div>
+    </div>
+
+<!-- ========== PHASE 2: CLAUDE CODE ========== -->
+<div id="phase-2" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p2">
+    <div class="ph-num">Phase 2 of 12</div>
+    <h2>Claude Code CLI</h2>
+    <div class="ph-meta">2 days &bull; Jul 9 (Thu) - Jul 10 (Fri)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p2">
+      <strong>Setup status:</strong> You already run Claude Code via the VS Code extension on a Max plan. No install / auth work needed &mdash; these 2 days go straight to the <em>features</em> that will 5&times; the rest of the roadmap.<br><br>
+      <strong>Why this matters:</strong> From Phase 3 onwards you'll use Claude Code every single day. Configuring memory + slash commands + MCP well now saves ~30% of coding time over the next 6 months. It also becomes a talking point in interviews ("I use AI-native tooling").<br><br>
+      <strong>Topics covered:</strong> CLAUDE.md project memory, custom /slash commands, plan mode, MCP servers, hooks, TodoWrite, multi-step agent workflows
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p2">DAY 1</span><span class="date-tag">Thu Jul 9</span><span class="topic">CLI Setup, CLAUDE.md, Slash Commands, Plan Mode</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>You already have Claude Code in VS Code (extension + Max plan) &mdash; skip install</li>
+          <li>CLAUDE.md = per-project memory Claude reads on every session (style, stack, guardrails)</li>
+          <li>Custom slash commands live in <code>.claude/commands/*.md</code> (project) or <code>~/.claude/commands/</code> (global)</li>
+          <li>Plan mode = Claude drafts a plan first, waits for approval, then executes step-by-step</li>
+          <li>Best used for large refactors, migrations, feature scaffolding where blast radius is high</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>docs.anthropic.com/claude-code &mdash; Getting Started, CLAUDE.md reference, /slash commands docs; run <code>claude --help</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Install Claude Code. Create a CLAUDE.md for your roadmap repo. Create 3 custom slash commands: <code>/explain</code>, <code>/refactor</code>, <code>/test</code>. Use plan mode on a sample task.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># CLAUDE.md — project memory</span>
+- Use async/await; never <span class="kw">var</span>
+- Validate every route with <span class="kw">zod</span>
+- MySQL driver: <span class="kw">mysql2</span> (never <span class="kw">sequelize</span>)
+- Commit style: conventional (feat/fix/chore)
+- Tests live in <span class="str">/tests</span> mirroring src</code>
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p2">DAY 2</span><span class="date-tag">Fri Jul 10</span><span class="topic">MCP Servers, Agent Workflows, Hooks, TodoWrite</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>MCP = Model Context Protocol &mdash; standard way to give Claude tools (filesystem, GitHub, DBs)</li>
+          <li>Configure MCP servers in <code>.mcp.json</code> or via the VS Code extension settings</li>
+          <li>Hooks = shell commands triggered by events (pre-tool-use, post-tool-use, session-start)</li>
+          <li>TodoWrite tool = built-in task tracker inside a Claude Code session</li>
+          <li>Agent workflow = multi-step task where Claude picks tools in a loop until goal met</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Claude Code MCP docs; Agent SDK overview; Hooks documentation.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Set up 1 MCP server (filesystem). Write a multi-step agent workflow that reads a file, analyzes it, and outputs a report. Explore the TodoWrite tool.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># .claude/commands/commit.md — custom /commit</span>
+Look at staged diff. Write a conventional commit
+message in imperative mood. Under 72 chars for
+subject line; blank line; wrapped body at 80.
+Do not include emoji or the phrase "This commit".</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Anthropic official YouTube (Claude Code walkthroughs): <code>https://www.youtube.com/@AnthropicAI</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>Claude Code full docs: <code>https://docs.anthropic.com/en/docs/claude-code/overview</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>MCP servers directory: <code>https://github.com/modelcontextprotocol/servers</code></span></div>
+
+    <div class="cert"><strong>No formal certification, but do this:</strong> commit your CLAUDE.md + custom slash commands to a public repo <code>nikhil-claude-config</code>. This is your portfolio artifact for AI-tooling literacy.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p2"><span class="pn">Q1 &mdash;</span>Write a CLAUDE.md file for a Node.js Express project that instructs Claude to: use async/await, never use var, always add zod validation, use mysql2 for DB.</div>
+    <div class="pq pq-p2"><span class="pn">Q2 &mdash;</span>Create a custom /commit slash command that generates a conventional commit message from staged changes.</div>
+    <div class="pq pq-p2"><span class="pn">Q3 &mdash;</span>Design a 3-step agent workflow: (1) read package.json, (2) find unused dependencies, (3) output removal commands.</div>
+
+    <div class="ibox" style="margin-top:14px;">
+      <h4>Deliverables Checklist</h4>
+      <ul class="check">
+        <li>Claude Code installed and authenticated</li>
+        <li>CLAUDE.md created for nikhil-roadmap-2026 repo</li>
+        <li>3 custom slash commands written and tested</li>
+        <li>MCP filesystem server configured</li>
+        <li>Agent workflow built and working</li>
+      </ul>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 2</h4><ol>
+        <li><strong>CLAUDE.md Starter Pack</strong> &mdash; Public repo <code>nikhil-claude-config</code> with reusable CLAUDE.md templates for Node, React, Python, ABAP-style code style guides.</li>
+        <li><strong>/commit + /review Commands</strong> &mdash; Two custom slash commands: <code>/commit</code> generates conventional-commit messages from staged diff; <code>/review</code> reads the current file and lists 3 improvements.</li>
+        <li><strong>MCP Filesystem Report Agent</strong> &mdash; Agent workflow: read a folder &rarr; count files by extension &rarr; find TODOs &rarr; write a Markdown report at <code>./report.md</code>.</li>
+      </ol></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PHASE 3 ========== -->
+<div id="phase-3" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p3">
+    <div class="ph-num">Phase 3 of 12</div>
+    <h2>CS Fundamentals</h2>
+    <div class="ph-meta">2 days &bull; Jul 11 (Sat) - Jul 12 (Sun) &bull; Weekend = deep, uninterrupted focus</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p3">
+      <strong>What is this?</strong> Before writing code, understand what hardware, operating systems, and networks do. This is the bedrock beneath everything — JavaScript, Node.js, APIs, databases. Without this, you're building on sand.<br><br>
+      <strong>Why should you learn this?</strong> SAP HANA runs on servers. ABAP programs run in memory. HTTP is how Fiori apps talk to SAP. Every technical interview asks about DNS, HTTP, TCP. This 2-day investment explains the WHY behind everything you code.<br><br>
+      <strong>Topics covered:</strong> CPU/RAM/Storage, Binary, Operating Systems, Processes & Threads, Networking (IP, DNS, HTTP, HTTPS, TCP/UDP, TLS), OSI model, Browser rendering, DOM, Data Structures, Big O notation
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh">
+        <span class="day-tag bg-p3">DAY 1</span>
+        <span class="date-tag">Sat Jul 11</span>
+        <span class="topic">How Computers Work + The Internet</span>
+      </div>
+      <div class="db-sec">
+        <h5>Concepts</h5>
+        <ul>
+          <li>What is a CPU? (the brain &mdash; does all calculations)</li>
+          <li>What is RAM? (short-term memory &mdash; programs run here)</li>
+          <li>What is Storage? (long-term memory &mdash; files, databases)</li>
+          <li>What is an OS? (Windows/Linux/macOS &mdash; manages hardware)</li>
+          <li>Process vs Thread; Binary (why 0s and 1s)</li>
+          <li>What is the Internet? Physical cables, data centers</li>
+          <li>IP Addresses: every device has one (like a house address)</li>
+          <li>DNS: the internet's phone book (google.com &rarr; 142.250.x.x)</li>
+          <li>HTTP/HTTPS: language of the web (request &rarr; response)</li>
+          <li>SSL/TLS: why the "S" matters</li>
+        </ul>
+      </div>
+      <div class="db-sec">
+        <h5>Read / Watch</h5>
+        <p>CS50x Week 0 (YouTube) &mdash; number systems; Fireship "How Computers Work" (8 min); "How the Internet Works in 5 Minutes" (YouTube); ByteByteGo "DNS in 100 Seconds"; MDN "HTTP overview".</p>
+      </div>
+      <div class="db-sec">
+        <h5>How to Practice</h5>
+        <p>Open DevTools &rarr; Network tab &rarr; visit any website &rarr; observe the requests. Convert 5 decimal numbers to binary. Write step-by-step what happens when you type <code>google.com</code> and hit Enter (DNS &rarr; TCP &rarr; HTTPS &rarr; HTML &rarr; render).</p>
+      </div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Decimal → Binary (Feynman practice)</span>
+<span class="kw">function</span> <span class="fn">toBinary</span>(n) {
+  <span class="kw">const</span> bits = [];
+  <span class="kw">while</span> (n &gt; 0) { bits.unshift(n % 2); n = n &gt;&gt; 1; }
+  <span class="kw">return</span> bits.join(<span class="str">''</span>) || <span class="str">'0'</span>;
+}
+<span class="fn">toBinary</span>(42); <span class="cm">// "101010"</span>
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh">
+        <span class="day-tag bg-p3">DAY 2</span>
+        <span class="date-tag">Sun Jul 12</span>
+        <span class="topic">Browser Rendering + Data Structures + Big O</span>
+      </div>
+      <div class="db-sec">
+        <h5>Concepts</h5>
+        <ul>
+          <li>Full pipeline: URL &rarr; DNS &rarr; TCP &rarr; TLS &rarr; HTTP &rarr; HTML &rarr; DOM &rarr; CSS &rarr; JS &rarr; Page rendered</li>
+          <li>What is the DOM? (tree of HTML elements JS can control)</li>
+          <li>OSI Model: 7 layers &mdash; awareness only</li>
+          <li>TCP vs UDP: reliable vs fast (download = TCP, video call = UDP)</li>
+          <li>Ports: 80=HTTP, 443=HTTPS, 3000=your local app</li>
+          <li>Data structures: Arrays, Objects/Maps, Stack (LIFO), Queue (FIFO)</li>
+          <li>Big O: O(1), O(n), O(n&sup2;) &mdash; "how slow does code get as data grows?"</li>
+        </ul>
+      </div>
+      <div class="db-sec">
+        <h5>Read / Watch</h5>
+        <p>Fireship "Big O in 100 Seconds"; MDN "Introduction to the DOM"; "Browser Rendering Pipeline" &mdash; Google Web Fundamentals; CS Dojo "Data Structures" (YouTube).</p>
+      </div>
+      <div class="db-sec">
+        <h5>How to Practice</h5>
+        <p>Implement Stack and Queue classes in plain JS. Write Big O for each method. Draw the browser rendering pipeline from memory. Explain the OSI model to yourself (Feynman test).</p>
+      </div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Stack + Queue in plain JS</span>
+<span class="kw">class</span> Stack { push(v){ (<span class="kw">this</span>.a??=[]).push(v); }
+  pop(){ <span class="kw">return this</span>.a.pop(); } }        <span class="cm">// O(1)</span>
+<span class="kw">class</span> Queue { enq(v){ (<span class="kw">this</span>.a??=[]).push(v); }
+  deq(){ <span class="kw">return this</span>.a.shift(); } }       <span class="cm">// deq O(n)</span></div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Harvard CS50x Week 0 (binary, hex, memory): <code>https://youtu.be/y62zj9ozPOM</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Fireship "How the Internet Works": <code>https://youtu.be/x3c1ih2NJEg</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Big O Notation &mdash; freeCodeCamp: <code>https://youtu.be/Mo4vesaut8g</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Data Structures Easy to Advanced &mdash; freeCodeCamp: <code>https://youtu.be/RBSGKlAvoiM</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>MDN "How the Web Works": <code>https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works</code></span></div>
+
+    <div class="cert"><strong>Recommended certification:</strong> Harvard CS50x on edX (free, verified certificate ~$149 optional). Also good: freeCodeCamp "Scientific Computing with Python" for algorithmic thinking practice.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p3"><span class="pn">Q1 &mdash;</span>Implement a Stack class in JS with push, pop, peek, isEmpty. Use it to check balanced parentheses.</div>
+    <div class="pq pq-p3"><span class="pn">Q2 &mdash;</span>Write a function to find duplicates in an array using a hash table (object). O(n) time.</div>
+    <div class="pq pq-p3"><span class="pn">Q3 &mdash;</span>List all OSI layers and give one real-world protocol example per layer.</div>
+    <div class="pq pq-p3"><span class="pn">Q4 &mdash;</span>What is the difference between TCP and UDP? When would you choose UDP over TCP?</div>
+
+    <div class="ibox" style="margin-top:14px;">
+      <h4>Deliverables</h4>
+      <ul class="check">
+        <li>Binary/hex conversion table in notes</li>
+        <li>"Browser to server" flow diagram drawn</li>
+        <li>Stack, Queue, Hash Map implemented in JS (pushed to GitHub)</li>
+        <li>Notes doc: one paragraph per major concept</li>
+      </ul>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 3</h4><ol>
+        <li><strong>DS Toybox</strong> &mdash; Vanilla JS classes for Stack, Queue, HashMap, LinkedList, plus Big-O comment for every method. Push to GitHub with README.</li>
+        <li><strong>Browser Trace</strong> &mdash; One-page Markdown "What happens when I type google.com" &mdash; DNS &rarr; TCP &rarr; TLS &rarr; HTTP &rarr; render pipeline. Add a hand-drawn diagram.</li>
+        <li><strong>Number System Playground</strong> &mdash; HTML+JS tool that converts between decimal, binary, hex, octal. Explain the algorithm on hover.</li>
+      </ol></div>
+  </div>
+</div>
+    </div>
+
+<!-- ========== PHASE 4 ========== -->
+<div id="phase-4" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p4">
+    <div class="ph-num">Phase 4 of 12</div>
+    <h2>JavaScript Basics Warm-up</h2>
+    <div class="ph-meta">2 days &bull; Jul 13 (Mon) - Jul 14 (Tue) &bull; Pre-workout before Advanced JS</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p4">
+      <strong>What is this?</strong> JavaScript is the language of the web and the foundation of SAP Fiori. These 2 days cover the core syntax — the building blocks used in every JS program you'll write.<br><br>
+      <strong>Why learn this first?</strong> You know some JS from WordPress/Fiori work, but this solidifies the foundation before Advanced JS (Phase 5). Think of it as a quick review + gap-filling.<br><br>
+      <strong>Topics:</strong> let/const/var, data types, type coercion, operators, control flow, functions, arrays, objects, destructuring, spread/rest, DOM basics
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh">
+        <span class="day-tag bg-p4">DAY 1</span>
+        <span class="date-tag">Mon Jul 13</span>
+        <span class="topic">Variables, Types, Functions</span>
+      </div>
+      <div class="db-sec">
+        <h5>Concepts</h5>
+        <ul>
+          <li>var vs let vs const &mdash; why var is dangerous (hoisting, no block scope)</li>
+          <li>Data types: string, number, boolean, null, undefined, symbol, bigint</li>
+          <li>Type coercion: why <code>1 + "2" = "12"</code> but <code>1 - "2" = -1</code></li>
+          <li><code>==</code> vs <code>===</code> (always use <code>===</code>)</li>
+          <li>Arrow functions vs regular functions (no own <code>this</code>)</li>
+          <li>Template literals: <code>`Hello ${name}`</code>; default + rest params</li>
+          <li>Control flow: if/else, switch, ternary, optional chaining (?.), nullish (??)</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>"JavaScript Crash Course" &mdash; Traversy Media (first 45 min); MDN "JavaScript data types and data structures"; javascript.info "Data types" chapter.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write 15 small code snippets: variable scoping, type coercion gotchas, arrow vs regular functions, template literals, optional chaining examples. Push to GitHub.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Type coercion gotchas</span>
+1 + <span class="str">"2"</span>       <span class="cm">// "12"    (string concat)</span>
+1 - <span class="str">"2"</span>       <span class="cm">// -1      (numeric)</span>
+[] == ![]      <span class="cm">// true    (avoid ==)</span>
+
+<span class="kw">const</span> greet = (name = <span class="str">'friend'</span>) =&gt; `Hi ${name}`;
+<span class="fn">greet</span>();          <span class="cm">// "Hi friend"</span>
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh">
+        <span class="day-tag bg-p4">DAY 2</span>
+        <span class="date-tag">Tue Jul 14</span>
+        <span class="topic">Arrays, Objects, Destructuring, DOM</span>
+      </div>
+      <div class="db-sec">
+        <h5>Concepts</h5>
+        <ul>
+          <li>Arrays: create, access, modify. Methods: <code>.push .pop .splice .slice</code></li>
+          <li>Higher-order methods: <code>.map .filter .find .some .every .forEach</code></li>
+          <li>Objects: <code>{key: value}</code>, accessing properties, methods in objects</li>
+          <li>Destructuring: <code>const {name, age} = user</code> / <code>const [a, b] = arr</code></li>
+          <li>Spread/Rest: <code>const copy = {...original, newProp: 'val'}</code></li>
+          <li>DOM: Document Object Model &mdash; tree of HTML elements</li>
+          <li>Selecting: <code>getElementById</code>, <code>querySelector</code>; events: <code>addEventListener</code>, <code>event.target</code>, <code>event.preventDefault</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>"JavaScript DOM Crash Course" &mdash; Traversy Media (YouTube); MDN "Destructuring assignment"; javascript.info "Arrays" and "Objects" chapters.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build a simple DOM to-do list: add, remove, toggle-complete using vanilla JS. No frameworks. Practice all 5 higher-order array methods on real data (filter students by score, etc.).</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Higher-order + destructuring</span>
+<span class="kw">const</span> users = [{n:<span class="str">'A'</span>,s:80},{n:<span class="str">'B'</span>,s:60}];
+<span class="kw">const</span> top = users
+  .<span class="fn">filter</span>(u =&gt; u.s &gt;= 70)
+  .<span class="fn">map</span>(({n}) =&gt; n);   <span class="cm">// ['A']</span>
+
+<span class="cm">// Swap without temp</span>
+<span class="kw">let</span> [a, b] = [1, 2]; [a, b] = [b, a];</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Traversy "JavaScript Crash Course For Beginners": <code>https://youtu.be/hdI2bqOjy3c</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Traversy "JavaScript DOM Crash Course" (full playlist): <code>https://youtu.be/0ik6X4DJKCc</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>javascript.info (best free JS book): <code>https://javascript.info/</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>MDN JS Guide: <code>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide</code></span></div>
+
+    <div class="cert"><strong>Recommended certification:</strong> freeCodeCamp "JavaScript Algorithms and Data Structures" (free certificate, ~300 hrs of self-paced practice &mdash; do the first 60 hrs now, continue in evenings).</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p4"><span class="pn">Q1 &mdash;</span>What does <code>[] + {}</code> evaluate to in JS? Explain why (type coercion).</div>
+    <div class="pq pq-p4"><span class="pn">Q2 &mdash;</span>Write a function that takes an array of objects and returns only items where <code>active === true</code>, sorted by name.</div>
+    <div class="pq pq-p4"><span class="pn">Q3 &mdash;</span>Use destructuring to swap two variables without a temp variable.</div>
+    <div class="pq pq-p4"><span class="pn">Q4 &mdash;</span>Build a <code>querySelector</code>-based counter: two buttons (+ and -), display updates live in the DOM.</div>
+
+    <div class="ibox" style="margin-top:14px;">
+      <h4>Deliverables</h4>
+      <ul class="check">
+        <li>15 code snippets file pushed to GitHub</li>
+        <li>DOM to-do list mini app complete</li>
+        <li>All 4 practice questions answered</li>
+      </ul>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 4</h4><ol>
+        <li><strong>Vanilla To-Do</strong> &mdash; Zero-framework to-do list with add / edit / delete / mark-complete + localStorage persistence. Practise all higher-order array methods.</li>
+        <li><strong>Type-Coercion Quiz</strong> &mdash; Quiz app with 15 "what does this JS output?" questions (trickies like <code>[] + {}</code>). Score + explanation reveal.</li>
+        <li><strong>DOM Counter Pro</strong> &mdash; Increment/decrement counter with step selector, keyboard shortcuts, undo/redo &mdash; all vanilla, no React.</li>
+      </ol></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PHASE 5: ADVANCED JS + OOP ========== -->
+<div id="phase-5" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p5">
+    <div class="ph-num">Phase 5 of 12</div>
+    <h2>Advanced JavaScript + OOP</h2>
+    <div class="ph-meta">4 days &bull; Jul 15 (Wed) - Jul 18 (Sat) &bull; The most important JS phase</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p5">
+      <strong>What is this?</strong> Deep-dive into how JavaScript actually works under the hood &mdash; the runtime, scope, closures, prototypes, classes, event loop, and async patterns.<br><br>
+      <strong>Why should you learn this?</strong> Every React hook, every Node.js callback, every Fiori controller, every Claude API tool call &mdash; they all sit on these fundamentals. Interview questions like "explain closures" or "how does the event loop work" are asked at every level. Miss this and Phase 6 (React) will feel like magic instead of code.<br><br>
+      <strong>Topics covered:</strong> Scope + hoisting + closures, <code>this</code> binding + call/apply/bind, prototypes &amp; prototype chain, ES6 classes, inheritance, encapsulation (# private fields), polymorphism, getters/setters, static methods, event loop + microtasks, Promises, async/await, .map/.filter/.reduce, ES modules</div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p5">DAY 1</span><span class="date-tag">Wed Jul 15</span><span class="topic">Scope, Hoisting, Closures</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Execution Context (Global + Function scope)</li>
+          <li>Hoisting: <code>var</code> to top; <code>let/const</code> in Temporal Dead Zone</li>
+          <li>Lexical Scope: functions see variables from where they were <em>written</em></li>
+          <li>Closure = function + its outer variables ("remembers its birthplace")</li>
+          <li>IIFE (Immediately Invoked Function Expression)</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Namaste JavaScript Ep 1&ndash;6 (Akshay Saini): <code>https://youtu.be/pN6jk0uUrD8</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build: (1) counter with closure &mdash; private count, no globals. (2) <code>memoize(fn)</code> using closure. (3) Module pattern with IIFE.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Counter via closure (no globals)</span>
+<span class="kw">function</span> <span class="fn">counter</span>() {
+  <span class="kw">let</span> count = 0;
+  <span class="kw">return</span> {
+    inc: () =&gt; ++count,
+    dec: () =&gt; --count,
+    val: () =&gt; count,
+  };
+}
+<span class="kw">const</span> c = <span class="fn">counter</span>();
+c.<span class="fn">inc</span>(); c.<span class="fn">inc</span>(); c.<span class="fn">val</span>();  <span class="cm">// 2</span>
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p5">DAY 2</span><span class="date-tag">Thu Jul 16</span><span class="topic">OOP Part 1 &mdash; Prototypes + Classes</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>OOP 4 pillars: Encapsulation, Inheritance, Polymorphism, Abstraction</li>
+          <li>Every JS value has a hidden <code>[[Prototype]]</code> link</li>
+          <li>Prototype chain: how <code>obj.toString()</code> is found on <code>Object.prototype</code></li>
+          <li>Constructor functions (old way): <code>function User(name){this.name=name}</code> + <code>new</code></li>
+          <li>ES6 <code>class</code>: constructor, methods, static, getters/setters</li>
+          <li><code>this</code> binding: default, implicit, explicit (call/apply/bind), new</li>
+          <li>Arrow functions have <strong>no own</strong> <code>this</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Namaste JS Ep 7&ndash;9; MDN "Inheritance and the prototype chain".</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write a <code>Vehicle</code> constructor, add methods on prototype, create Car + Bike instances. Rewrite via ES6 <code>class</code>. Write all 4 binding rules of <code>this</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">class</span> Vehicle {
+  <span class="kw">constructor</span>(kind) { <span class="kw">this</span>.kind = kind; }
+  describe() { <span class="kw">return</span> `I am a ${<span class="kw">this</span>.kind}`; }
+}
+<span class="kw">class</span> Car <span class="kw">extends</span> Vehicle {
+  <span class="kw">constructor</span>() { <span class="kw">super</span>(<span class="str">'car'</span>); }
+}
+<span class="kw">new</span> Car().<span class="fn">describe</span>();  <span class="cm">// "I am a car"</span></div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p5">DAY 3</span><span class="date-tag">Fri Jul 17</span><span class="topic">OOP Part 2 &mdash; Inheritance, Encapsulation, Polymorphism</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Inheritance: <code>class Car extends Vehicle</code>, using <code>super()</code></li>
+          <li># private fields (2022+): <code>#password</code> is truly private</li>
+          <li>Getters/setters: <code>get fullName()</code>, <code>set fullName(v)</code></li>
+          <li>Polymorphism: same method name, different behavior (override in subclass)</li>
+          <li>Abstraction: hide implementation behind a public method</li>
+          <li>Static methods vs instance methods</li>
+          <li><code>Object.create</code>, <code>Object.assign</code>, spread on classes</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Web Dev Simplified "OOP in JS"; javascript.info "Classes" chapter.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build: <code>Shape</code> base &rarr; <code>Circle</code>, <code>Rectangle</code> extend &rarr; each overrides <code>area()</code>. Add # private radius. Static factory <code>Shape.random()</code>. Show polymorphism via <code>shapes.forEach(s =&gt; s.area())</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">class</span> Shape { area(){ <span class="kw">throw</span> <span class="str">'override'</span>; } }
+<span class="kw">class</span> Circle <span class="kw">extends</span> Shape {
+  #r;                                <span class="cm">// # private field</span>
+  <span class="kw">constructor</span>(r){ <span class="kw">super</span>(); <span class="kw">this</span>.#r = r; }
+  area(){ <span class="kw">return</span> Math.PI * <span class="kw">this</span>.#r ** 2; }
+}
+[<span class="kw">new</span> Circle(3)].<span class="fn">forEach</span>(s =&gt; console.log(s.area()));</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p5">DAY 4</span><span class="date-tag">Sat Jul 18</span><span class="topic">Event Loop + Async/Await + Modules</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>JS is single-threaded but async: Call Stack + Web APIs + Task Queue + Microtask Queue</li>
+          <li>Microtasks (Promise.then) run <em>before</em> next macrotask (setTimeout)</li>
+          <li>Callbacks &rarr; Callback Hell &rarr; Promises &rarr; async/await evolution</li>
+          <li>Promise states: pending / fulfilled / rejected. .then/.catch/.finally</li>
+          <li><code>async</code> always returns a Promise; <code>await</code> pauses only that async function</li>
+          <li>Promise.all / .allSettled / .race</li>
+          <li>ES Modules: <code>export</code> / <code>import</code>, default vs named</li>
+          <li>Mastery of <code>.map / .filter / .reduce</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Philip Roberts "What the heck is the event loop?" JSConf EU: <code>https://youtu.be/8aGhZQkoFbQ</code>; Namaste JS Ep 10&ndash;14.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build async TaskQueue class (mini project). Build <code>Promise.allSettled</code> from scratch. Predict output of tricky event-loop code. Split code into ES modules.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Predict the output</span>
+console.log(1);
+setTimeout(() =&gt; console.log(2), 0);
+Promise.resolve().then(() =&gt; console.log(3));
+console.log(4);
+<span class="cm">// Order: 1, 4, 3, 2  (microtasks before macrotasks)</span></div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Namaste JavaScript &mdash; Akshay Saini (playlist, must-watch): <code>https://youtu.be/pN6jk0uUrD8</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Web Dev Simplified "OOP in JavaScript": <code>https://youtu.be/PFmuCDHHpwk</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>"What the heck is the event loop" &mdash; Philip Roberts: <code>https://youtu.be/8aGhZQkoFbQ</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Fireship "Async Await" (7 min): <code>https://youtu.be/vn3tm0quoqE</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>javascript.info Classes: <code>https://javascript.info/classes</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> (1) freeCodeCamp "JavaScript Algorithms and Data Structures" &mdash; free cert. (2) HackerRank "JavaScript" Basic + Intermediate badges (30 min each, adds to resume). (3) Meta "Programming with JavaScript" on Coursera (free audit, paid cert).</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p5"><span class="pn">Q1 &mdash;</span>Write a <code>counter()</code> closure that returns <code>{ increment, decrement, reset, value }</code>. Each call to increment/decrement should update the private count.</div>
+    <div class="pq pq-p5"><span class="pn">Q2 &mdash;</span>Implement <code>debounce(fn, delay)</code> using closures and setTimeout. Test it by attaching to a search input.</div>
+    <div class="pq pq-p5"><span class="pn">Q3 &mdash;</span>Write <code>Promise.allSettled</code> from scratch without using the built-in version.</div>
+    <div class="pq pq-p5"><span class="pn">Q4 &mdash;</span>Using only <code>.reduce()</code>, write a function that takes an array of words and returns an object of word frequencies.</div>
+    <div class="pq pq-p5"><span class="pn">Q5 &mdash;</span>Explain: what is the output of this code and why? <code>console.log(1); setTimeout(()=&gt;console.log(2),0); Promise.resolve().then(()=&gt;console.log(3)); console.log(4);</code></div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Mini Project</h4>
+        <p>Build an async task queue: <code>TaskQueue</code> class that runs async tasks one at a time (concurrency: 1), with <code>add(fn)</code> method, automatic processing, and handles errors gracefully. Uses closures, Promises, and class syntax.</p>
+      </div>
+      <div class="ibox">
+        <h4>Deliverables</h4>
+        <ul class="check">
+          <li>Closure examples: counter, memoize, module pattern</li>
+          <li>Prototype + class inheritance examples</li>
+          <li>Callback &rarr; Promise &rarr; async/await rewrite</li>
+          <li>Promise.all built from scratch</li>
+          <li>TaskQueue mini project on GitHub</li>
+          <li>All 5 practice questions answered</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 5</h4><ol>
+        <li><strong>TaskQueue Class</strong> &mdash; Promise-based queue that runs async tasks one-at-a-time (concurrency:1), with <code>add(fn)</code>, error isolation, and pause/resume.</li>
+        <li><strong>Rate-Limited Fetcher</strong> &mdash; Wrapper around <code>fetch</code> that debounces (300ms) and rate-limits (max 5 concurrent). Use closures + Promises.</li>
+        <li><strong>Mini Redux</strong> &mdash; Tiny state store in ~30 lines: <code>createStore(reducer)</code> returning <code>{ getState, dispatch, subscribe }</code>. Prove it works with a counter.</li>
+      </ol></div>
+  </div>
+
+<!-- BREAK DAY AFTER PHASE 5 -->
+<div class="break-box">
+  <h3>Break Day &mdash; Jul 19 (Sunday)</h3>
+  <p><strong>Purpose:</strong> Revise and consolidate Phase 5 Advanced JS + OOP before starting React.</p>
+  <ul>
+    <li>Re-read your Phase 5 notes from Day 1-4 &mdash; especially OOP</li>
+    <li>Redo the Shape class + Promise.allSettled from memory without looking</li>
+    <li>Watch the Philip Roberts event-loop talk again if anything felt unclear</li>
+    <li>Push all Phase 5 code to GitHub</li>
+    <li>Prepare React environment: <code>npm create vite@latest my-react-app -- --template react</code>, install Tailwind</li>
+    <li>Rest in the afternoon. Phase 6 starts fresh Monday Jul 20.</li>
+  </ul>
+</div>
+</div>
+
+<!-- ========== PHASE 6: REACT + TAILWIND ========== -->
+<div id="phase-6" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p6">
+    <div class="ph-num">Phase 6 of 12</div>
+    <h2>React + Tailwind CSS</h2>
+    <div class="ph-meta">6 days &bull; Jul 20 (Mon) - Jul 25 (Sat)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p6">
+      <strong>What is this?</strong> React is the world's most-used UI library and the same technology behind SAP Fiori (which uses SAPUI5, a similar MVC pattern). Tailwind is a utility-first CSS framework. Together they let you ship modern, professional UIs fast.<br><br>
+      <strong>Why should you learn this?</strong> (1) Your capstone FocusTrack Pro uses React. (2) SAP Fiori concepts (components, data binding, routing) map directly to React &mdash; learning React makes UI5 easier later. (3) Every job posting for SAP + Web asks for React or UI5.<br><br>
+      <strong>Topics covered:</strong> JSX, components, props, useState, useEffect, forms, React Router v6, useContext, useReducer, custom hooks (useFetch, useLocalStorage, useDebounce), Tailwind utility classes, responsive design
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p6">DAY 1</span><span class="date-tag">Mon Jul 20</span><span class="topic">JSX + Components + Props</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>React = library for building UIs from small reusable pieces (<em>components</em>)</li>
+          <li>JSX = "HTML in JavaScript": <code>&lt;div&gt;Hi {name}&lt;/div&gt;</code></li>
+          <li>Vite setup: <code>npm create vite@latest</code>, folder tour</li>
+          <li>Function components only: <code>function Button(props){...}</code></li>
+          <li>Props = arguments; read-only</li>
+          <li>Conditional rendering: <code>{isLoggedIn ? &lt;Dashboard/&gt; : &lt;Login/&gt;}</code></li>
+          <li>Lists with <code>.map</code> + unique <code>key</code> prop</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>React docs "Quick Start": <code>https://react.dev/learn</code>; Net Ninja React Tutorial: <code>https://youtu.be/j942wKiXFu8</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Create 5 components: Button, Card, Badge, Avatar, Alert. Pass props, render conditionally, render arrays with keys.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">export function</span> <span class="fn">Badge</span>({ text, tone = <span class="str">'info'</span> }) {
+  <span class="kw">const</span> tones = {
+    info: <span class="str">'bg-blue-100 text-blue-700'</span>,
+    warn: <span class="str">'bg-amber-100 text-amber-700'</span>,
+  };
+  <span class="kw">return</span> &lt;span className={`px-2 py-1 rounded ${tones[tone]}`}&gt;
+    {text}
+  &lt;/span&gt;;
+}
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p6">DAY 2</span><span class="date-tag">Tue Jul 21</span><span class="topic">useState + useEffect + Forms</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>State = data that changes over time: <code>const [count, setCount] = useState(0)</code></li>
+          <li><code>useEffect</code> = "run this side-effect after render" (data fetch, subscriptions)</li>
+          <li>Cleanup functions (return a function from useEffect)</li>
+          <li>Controlled inputs: <code>value</code> + <code>onChange</code></li>
+          <li>Handling loading / error / success states</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>React docs "Adding Interactivity"; Web Dev Simplified useState: <code>https://youtu.be/O6P86uwfdR0</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build a controlled form (name, email, select). Fetch users from <code>https://jsonplaceholder.typicode.com/users</code> with useEffect, show loading/error/success.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">function</span> <span class="fn">Users</span>() {
+  <span class="kw">const</span> [users, setUsers] = <span class="fn">useState</span>([]);
+  <span class="kw">const</span> [loading, setLoading] = <span class="fn">useState</span>(<span class="kw">true</span>);
+  <span class="fn">useEffect</span>(() =&gt; {
+    <span class="fn">fetch</span>(<span class="str">'/api/users'</span>).<span class="fn">then</span>(r =&gt; r.<span class="fn">json</span>())
+      .<span class="fn">then</span>(setUsers).<span class="fn">finally</span>(() =&gt; setLoading(<span class="kw">false</span>));
+  }, []);
+  <span class="kw">if</span> (loading) <span class="kw">return</span> &lt;p&gt;Loading...&lt;/p&gt;;
+  <span class="kw">return</span> users.<span class="fn">map</span>(u =&gt; &lt;li key={u.id}&gt;{u.name}&lt;/li&gt;);
+}</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p6">DAY 3</span><span class="date-tag">Wed Jul 22</span><span class="topic">React Router v6</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Client-side routing without a full page reload</li>
+          <li><code>&lt;BrowserRouter&gt;</code>, <code>&lt;Routes&gt;</code>, <code>&lt;Route path element&gt;</code></li>
+          <li>Dynamic params: <code>/posts/:id</code> + <code>useParams()</code></li>
+          <li><code>&lt;Link&gt;</code> and <code>useNavigate()</code> for programmatic navigation</li>
+          <li>Nested routes, layout routes, 404 wildcard <code>*</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>React Router v6 tutorial: <code>https://reactrouter.com/en/main/start/tutorial</code>; Traversy React Router.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build a 3-page app: Home, Posts list, Post detail (useParams). Add a 404 wildcard. Use useNavigate on a "Back" button.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code">&lt;BrowserRouter&gt;
+  &lt;Routes&gt;
+    &lt;Route path=<span class="str">"/"</span> element={&lt;Home /&gt;} /&gt;
+    &lt;Route path=<span class="str">"/posts/:id"</span> element={&lt;Post /&gt;} /&gt;
+    &lt;Route path=<span class="str">"*"</span> element={&lt;NotFound /&gt;} /&gt;
+  &lt;/Routes&gt;
+&lt;/BrowserRouter&gt;
+<span class="cm">// In Post: const { id } = useParams();</span></div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p6">DAY 4</span><span class="date-tag">Thu Jul 23</span><span class="topic">useContext + Custom Hooks</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Prop drilling &rarr; Context solves it</li>
+          <li><code>createContext</code> + Provider + <code>useContext</code></li>
+          <li>Custom hook = a function starting with <code>use</code> that uses other hooks</li>
+          <li>Extract repeated logic into: <code>useFetch</code>, <code>useLocalStorage</code>, <code>useDebounce</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>React docs "Passing Data Deeply with Context"; Web Dev Simplified Custom Hooks.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build: ThemeContext (light/dark); AuthContext (mock login); custom hooks <code>useFetch</code>, <code>useLocalStorage</code>, <code>useDebounce</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">export function</span> <span class="fn">useDebounce</span>(value, delay = 300) {
+  <span class="kw">const</span> [v, setV] = <span class="fn">useState</span>(value);
+  <span class="fn">useEffect</span>(() =&gt; {
+    <span class="kw">const</span> t = <span class="fn">setTimeout</span>(() =&gt; setV(value), delay);
+    <span class="kw">return</span> () =&gt; <span class="fn">clearTimeout</span>(t);
+  }, [value, delay]);
+  <span class="kw">return</span> v;
+}</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p6">DAY 5</span><span class="date-tag">Fri Jul 24</span><span class="topic">useReducer + Tailwind CSS</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li><code>useReducer</code> = useState for complex state (reducer + dispatch)</li>
+          <li>When to prefer useReducer over useState</li>
+          <li>Tailwind utility classes: <code>&lt;div class="p-4 rounded bg-blue-500"&gt;</code></li>
+          <li>Responsive: <code>md:grid-cols-3</code>. Dark: <code>dark:bg-slate-900</code>. Hover: <code>hover:bg-blue-600</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>React useReducer docs; Tailwind "Core Concepts"; Dave Gray Tailwind: <code>https://youtu.be/lCxcTsOHrjo</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Rewrite Day 2 form using useReducer. Style 5 components using only Tailwind classes (no custom CSS). Build a responsive card grid.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">const</span> reducer = (state, action) =&gt; {
+  <span class="kw">switch</span> (action.type) {
+    <span class="kw">case</span> <span class="str">'ADD'</span>:    <span class="kw">return</span> [...state, action.item];
+    <span class="kw">case</span> <span class="str">'REMOVE'</span>: <span class="kw">return</span> state.<span class="fn">filter</span>(i =&gt; i.id !== action.id);
+    <span class="kw">default</span>:       <span class="kw">return</span> state;
+  }
+};
+<span class="kw">const</span> [items, dispatch] = <span class="fn">useReducer</span>(reducer, []);</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p6">DAY 6</span><span class="date-tag">Sat Jul 25</span><span class="topic">Mini Project Day &mdash; Task Tracker App</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Combine every concept from Days 1&ndash;5</li>
+          <li>Use weekend time (9&ndash;2 study + 6&ndash;9 project block) to finish it</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>React perf docs: <code>useMemo</code>, <code>useCallback</code> (read-only today).</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build Task Tracker: add/edit/delete tasks, filter by status (All/Active/Done), persist to localStorage, light/dark theme via Context + Tailwind. Deploy on Vercel.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Tailwind responsive card grid</span>
+&lt;div className=<span class="str">"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"</span>&gt;
+  {tasks.<span class="fn">map</span>(t =&gt; (
+    &lt;article key={t.id}
+      className=<span class="str">"p-4 rounded-lg bg-white shadow hover:shadow-md dark:bg-slate-800"</span>&gt;
+      &lt;h3 className=<span class="str">"font-semibold"</span>&gt;{t.title}&lt;/h3&gt;
+    &lt;/article&gt;
+  ))}
+&lt;/div&gt;</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Net Ninja React 18 (full playlist): <code>https://youtu.be/j942wKiXFu8</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Dave Gray Tailwind CSS Full Course: <code>https://youtu.be/lCxcTsOHrjo</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Traversy React Router v6: <code>https://youtu.be/oTIJunBa6MA</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Web Dev Simplified Custom Hooks: <code>https://youtu.be/6ThXsUwLWvc</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>React docs: <code>https://react.dev</code>  |  Tailwind docs: <code>https://tailwindcss.com/docs</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> (1) Meta "React Basics" on Coursera (free audit, paid cert). (2) freeCodeCamp "Front End Development Libraries" &mdash; free cert. (3) HackerRank "React (Basic)" badge.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p6"><span class="pn">Q1 &mdash;</span>Build a controlled search input that debounces API calls by 500ms using a custom <code>useDebounce</code> hook.</div>
+    <div class="pq pq-p6"><span class="pn">Q2 &mdash;</span>Create a <code>useLocalStorage(key, initialValue)</code> custom hook that syncs state to localStorage automatically.</div>
+    <div class="pq pq-p6"><span class="pn">Q3 &mdash;</span>Implement a shopping cart with useReducer: actions ADD_ITEM, REMOVE_ITEM, UPDATE_QTY, CLEAR_CART.</div>
+    <div class="pq pq-p6"><span class="pn">Q4 &mdash;</span>Create a protected route component that redirects unauthenticated users to /login using React Router v6.</div>
+    <div class="pq pq-p6"><span class="pn">Q5 &mdash;</span>What is the difference between useEffect cleanup function and componentWillUnmount? When does cleanup run?</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Mini Project &mdash; Task Tracker</h4>
+        <ul class="plain">
+          <li>Add / edit / delete tasks</li>
+          <li>Filter by status (All / Active / Done)</li>
+          <li>Persist to localStorage (useLocalStorage hook)</li>
+          <li>Light / dark theme (Context + Tailwind)</li>
+          <li>React Router: /tasks, /tasks/:id</li>
+          <li>Deployed live URL in README</li>
+        </ul>
+      </div>
+      <div class="ibox">
+        <h4>Deliverables</h4>
+        <ul class="check">
+          <li>5 UI components built (Day 1)</li>
+          <li>API fetch with loading/error states (Day 2)</li>
+          <li>3-page Router app (Day 3)</li>
+          <li>ThemeContext + AuthContext (Day 4)</li>
+          <li>useReducer form + Tailwind grid (Day 5)</li>
+          <li>Task Tracker deployed (Day 6)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 6</h4><ol>
+        <li><strong>Task Tracker App (Vercel)</strong> &mdash; React + Tailwind + Router + Context + custom hooks + localStorage. Add / edit / delete / filter (All/Active/Done). Deploy to Vercel with live URL.</li>
+        <li><strong>Weather Dashboard</strong> &mdash; Fetches from a free weather API using a <code>useFetch</code> hook; supports multiple saved cities via Context; dark mode toggle in Tailwind.</li>
+        <li><strong>Component Library Sketch</strong> &mdash; 5 reusable UI components (Button, Card, Modal, Toast, Dropdown) styled with Tailwind + a small Storybook-style demo page.</li>
+      </ol></div>
+  </div>
+
+<!-- BREAK AFTER PHASE 6 -->
+<div class="break-box">
+  <h3>Break Day &mdash; Jul 26 (Sunday)</h3>
+  <p><strong>Purpose:</strong> Revise React + Tailwind before the long Node.js phase.</p>
+  <ul>
+    <li>Review your custom hooks: useFetch, useLocalStorage, useDebounce &mdash; can you write each from memory?</li>
+    <li>Polish Task Tracker app &mdash; fix rough edges, update README with screenshots</li>
+    <li>Set up Node.js project folder: <code>mkdir node-api &amp;&amp; cd node-api &amp;&amp; npm init -y</code></li>
+    <li>Phase 7 starts fresh Monday Jul 27.</li>
+  </ul>
+</div>
+</div>
+
+<!-- ========== PHASE 7: NODE + EXPRESS ========== -->
+<div id="phase-7" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p7">
+    <div class="ph-num">Phase 7 of 12</div>
+    <h2>Node.js + Express (Deep Dive)</h2>
+    <div class="ph-meta">9 days &bull; Jul 27 (Mon) - Aug 4 (Tue)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p7">
+      <strong>What is this?</strong> Node.js runs JavaScript on the server. Express is the most-used web framework on top of Node. Together they let you build REST APIs, auth systems, file uploads, and everything a backend needs.<br><br>
+      <strong>Why should you learn this?</strong> (1) Your capstone backend runs on Express. (2) Even as an SAP engineer, side scripts / integration jobs / BTP CAP handlers are often Node.js. (3) 9 days of deep practice = you can build any backend from memory by the end.<br><br>
+      <strong>Topics covered:</strong> Node runtime + npm + fs/path/http, Express setup + routing, req/res deep-dive, middleware pipeline (built-in, custom, cors/helmet/morgan), express.Router, async error handling, MVC structure, .env, bcrypt password hashing, JWT auth, zod validation, rate limiting, multer file uploads
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 1</span><span class="date-tag">Mon Jul 27</span><span class="topic">Node Runtime + npm + Built-in Modules</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Node = V8 engine + libuv (async I/O) outside the browser</li>
+          <li>npm basics: <code>npm init</code>, <code>package.json</code>, dependencies vs devDependencies</li>
+          <li>Built-ins: <code>fs</code>, <code>path</code>, <code>http</code></li>
+          <li>Sync vs Async: never use <code>fs.readFileSync</code> in prod &mdash; use <code>fs.promises</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Node docs Getting Started; Traversy Node Crash Course: <code>https://youtu.be/fBNz5xF-Kx4</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Read/write files with <code>fs.promises</code>. Build a raw HTTP server with <code>http.createServer</code>, respond with JSON.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// fs.promises + async</span>
+<span class="kw">import</span> { readFile, writeFile } <span class="kw">from</span> <span class="str">'node:fs/promises'</span>;
+<span class="kw">const</span> data = <span class="kw">await</span> <span class="fn">readFile</span>(<span class="str">'config.json'</span>, <span class="str">'utf8'</span>);
+<span class="kw">const</span> cfg  = <span class="fn">JSON.parse</span>(data);
+<span class="kw">await</span> <span class="fn">writeFile</span>(<span class="str">'out.json'</span>, <span class="fn">JSON.stringify</span>(cfg, <span class="kw">null</span>, 2));
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 2</span><span class="date-tag">Tue Jul 28</span><span class="topic">Express Setup + req/res</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Why Express: routing/middleware trivial vs raw <code>http</code></li>
+          <li><code>const app = express()</code>, <code>app.get(path, handler)</code></li>
+          <li><code>req.params</code> vs <code>req.query</code> vs <code>req.body</code></li>
+          <li><code>req.headers</code>, <code>req.cookies</code></li>
+          <li><code>res.json()</code>, <code>res.status()</code>, <code>res.redirect()</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Express docs Routing; Traversy Express Crash Course.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build an Express app with 5 routes demonstrating <code>req.params</code>, <code>req.query</code>, <code>req.body</code> (JSON POST), <code>req.headers</code>, and all <code>res</code> methods.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">import</span> express <span class="kw">from</span> <span class="str">'express'</span>;
+<span class="kw">const</span> app = <span class="fn">express</span>();
+app.<span class="fn">use</span>(express.<span class="fn">json</span>());
+
+app.<span class="fn">get</span>(<span class="str">'/users/:id'</span>, (req, res) =&gt; {
+  res.<span class="fn">status</span>(200).<span class="fn">json</span>({ id: req.params.id });
+});
+app.<span class="fn">listen</span>(3000);</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 3</span><span class="date-tag">Wed Jul 29</span><span class="topic">Middleware Pipeline</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Middleware = <code>function(req, res, next)</code> between request and handler</li>
+          <li>Order matters &mdash; runs top to bottom</li>
+          <li>Built-in: <code>express.json()</code>, <code>express.static()</code></li>
+          <li>Third-party: cors, helmet, morgan (logging)</li>
+          <li>Custom: logger, timer, API key check</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Express "Writing Middleware" docs; Web Dev Simplified Middleware.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write 3 custom middleware (request logger, timer, API key auth). Add cors + helmet + morgan.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Custom request timer middleware</span>
+<span class="kw">const</span> timer = (req, res, next) =&gt; {
+  <span class="kw">const</span> start = <span class="fn">Date.now</span>();
+  res.<span class="fn">on</span>(<span class="str">'finish'</span>, () =&gt; {
+    console.log(`${req.method} ${req.url} - ${<span class="fn">Date.now</span>() - start}ms`);
+  });
+  <span class="fn">next</span>();
+};
+app.<span class="fn">use</span>(timer);</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 4</span><span class="date-tag">Thu Jul 30</span><span class="topic">Router + Async Error Handling</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li><code>express.Router()</code> to split routes into modules</li>
+          <li>Static files: <code>app.use(express.static('public'))</code></li>
+          <li>Async errors don't propagate to error middleware &mdash; wrap with <code>asyncHandler</code> or try/catch</li>
+          <li>Custom error class: <code>class AppError extends Error</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Express Routing + Error Handling docs; <code>express-async-handler</code> npm.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Split routes into <code>authRouter</code> + <code>usersRouter</code>. Serve <code>/public</code>. Wrap all async handlers with <code>asyncHandler</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// asyncHandler + custom error class</span>
+<span class="kw">const</span> asyncHandler = fn =&gt; (req, res, next) =&gt;
+  <span class="fn">Promise.resolve</span>(<span class="fn">fn</span>(req, res, next)).<span class="fn">catch</span>(next);
+
+<span class="kw">class</span> AppError <span class="kw">extends</span> Error {
+  <span class="kw">constructor</span>(msg, status = 500) {
+    <span class="kw">super</span>(msg); <span class="kw">this</span>.status = status;
+  }
+}</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 5</span><span class="date-tag">Fri Jul 31</span><span class="topic">MVC + Global Error Middleware</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>MVC (for APIs): Controllers + Services + Repositories</li>
+          <li>Folder structure: <code>routes/</code>, <code>controllers/</code>, <code>services/</code>, <code>models/</code></li>
+          <li>Global error middleware: 4 args <code>(err, req, res, next)</code></li>
+          <li>Standard shape: <code>{ success:false, message, statusCode }</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Traversy Node REST API MVC section; Net Ninja MVC Express.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Refactor routes into MVC. Write global error handler that returns standard JSON.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Global error handler (4 args)</span>
+app.<span class="fn">use</span>((err, req, res, next) =&gt; {
+  <span class="kw">const</span> status = err.status || 500;
+  res.<span class="fn">status</span>(status).<span class="fn">json</span>({
+    success: <span class="kw">false</span>,
+    message: err.message,
+    statusCode: status,
+  });
+});</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 6</span><span class="date-tag">Sat Aug 1</span><span class="topic">.env + bcrypt + JWT Auth</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>dotenv: read <code>.env</code>, never commit secrets</li>
+          <li>bcrypt: hash passwords with salt (never store plaintext)</li>
+          <li>JWT = JSON Web Token &mdash; signed payload, server verifies without DB</li>
+          <li>Access (short-lived) + refresh (long-lived) tokens</li>
+          <li>Auth middleware: read Bearer, verify, attach <code>req.user</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Traversy JWT Auth: <code>https://youtu.be/mbsmsi7l3r4</code>; <code>bcrypt</code> + <code>jsonwebtoken</code> npm docs.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Implement register (bcrypt hash), login (compare hash, issue JWT), <code>protect</code> middleware. Test all with VS Code REST Client.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">import</span> bcrypt <span class="kw">from</span> <span class="str">'bcrypt'</span>;
+<span class="kw">import</span> jwt <span class="kw">from</span> <span class="str">'jsonwebtoken'</span>;
+
+<span class="kw">const</span> hash = <span class="kw">await</span> bcrypt.<span class="fn">hash</span>(password, 10);
+<span class="kw">const</span> ok   = <span class="kw">await</span> bcrypt.<span class="fn">compare</span>(input, hash);
+
+<span class="kw">const</span> token = jwt.<span class="fn">sign</span>({ userId }, process.env.JWT_SECRET,
+  { expiresIn: <span class="str">'15m'</span> });</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 7</span><span class="date-tag">Sun Aug 2</span><span class="topic">zod Validation + Rate Limiting</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Validate at boundary &mdash; trust nothing from client</li>
+          <li>zod: strings, numbers, enums, arrays, nested objects, refinements</li>
+          <li>Middleware: parse <code>req.body</code> with schema, return 422 with field errors</li>
+          <li>Rate limiting: <code>express-rate-limit</code> &mdash; 100 req/15min global, 5/15min on login</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>zod docs: <code>https://zod.dev</code>; Matt Pocock zod tutorial.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write zod schemas for register, login, product create. Add validation middleware. Add rate limiting.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">import</span> { z } <span class="kw">from</span> <span class="str">'zod'</span>;
+
+<span class="kw">const</span> RegisterSchema = z.<span class="fn">object</span>({
+  email: z.<span class="fn">string</span>().<span class="fn">email</span>(),
+  password: z.<span class="fn">string</span>().<span class="fn">min</span>(8),
+  role: z.<span class="fn">enum</span>([<span class="str">'user'</span>, <span class="str">'admin'</span>]).<span class="fn">default</span>(<span class="str">'user'</span>),
+});
+<span class="kw">const</span> body = RegisterSchema.<span class="fn">parse</span>(req.body);</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 8</span><span class="date-tag">Mon Aug 3</span><span class="topic">File Uploads + CORS</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li><code>multer</code> for multipart/form-data uploads</li>
+          <li>diskStorage vs memoryStorage; filename sanitization</li>
+          <li>Limits: <code>fileSize</code>, files count; <code>fileFilter</code> for MIME check</li>
+          <li>CORS whitelist: <code>cors({ origin: ['https://app.com'] })</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>multer npm docs (storage, limits, fileFilter).</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Implement single + multiple upload with type filter (jpg/png/pdf). Configure CORS whitelist.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">import</span> multer <span class="kw">from</span> <span class="str">'multer'</span>;
+<span class="kw">const</span> upload = <span class="fn">multer</span>({
+  storage: multer.<span class="fn">diskStorage</span>({ destination: <span class="str">'uploads/'</span> }),
+  limits: { fileSize: 2 * 1024 * 1024 },
+  fileFilter: (_, file, cb) =&gt;
+    cb(<span class="kw">null</span>, /^image\//.<span class="fn">test</span>(file.mimetype)),
+});
+app.<span class="fn">post</span>(<span class="str">'/avatar'</span>, upload.<span class="fn">single</span>(<span class="str">'file'</span>), handler);</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p7">DAY 9</span><span class="date-tag">Tue Aug 4</span><span class="topic">Full App Integration + Mini Project</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Put everything together into the Auth API</li>
+          <li>Test end-to-end with REST Client / Postman</li>
+          <li>Deliverable: working, tested, pushed to GitHub</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Review Days 1&ndash;8. "Node.js Best Practices" GitHub repo (top 10 only).</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build complete Auth API: register + login + get profile + update profile with avatar upload. Full MVC + JWT + zod + multer. Push to GitHub with README.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Suggested folder tree</span>
+src/
+├── routes/         auth.routes.js users.routes.js
+├── controllers/    auth.controller.js
+├── services/       auth.service.js
+├── repositories/   users.repo.js
+├── middleware/     auth.js validate.js error.js
+├── config/         env.js db.js
+└── app.js</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Traversy Node Crash Course: <code>https://youtu.be/fBNz5xF-Kx4</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Traversy Express Crash Course: <code>https://youtu.be/L72fhGm1tfE</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Traversy Node JWT Auth: <code>https://youtu.be/mbsmsi7l3r4</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Net Ninja Node REST + MVC (playlist): <code>https://youtu.be/tisSgWQeQ8s</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>Express: <code>https://expressjs.com/</code>  |  Zod: <code>https://zod.dev</code>  |  Node best practices: <code>https://github.com/goldbergyoni/nodebestpractices</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> (1) freeCodeCamp "Back End Development and APIs" &mdash; free cert. (2) OpenJS Node.js Application Developer (JSNAD) &mdash; official cert (paid, but very respected).</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p7"><span class="pn">Q1 &mdash;</span>Write an async middleware <code>requestTimer</code> that logs <code>METHOD /path - Xms</code> for every request using <code>Date.now()</code>.</div>
+    <div class="pq pq-p7"><span class="pn">Q2 &mdash;</span>Implement a JWT <code>protect</code> middleware that: reads token from Authorization header, verifies it, attaches <code>req.user</code>, returns 401 if missing/invalid.</div>
+    <div class="pq pq-p7"><span class="pn">Q3 &mdash;</span>Write a zod schema for product creation: name (string, min 3), price (positive number), category (enum: electronics/clothing/food), images (array of strings, max 5).</div>
+    <div class="pq pq-p7"><span class="pn">Q4 &mdash;</span>Write a global Express error handler that: handles zod validation errors (422), JWT errors (401), and unknown errors (500) with different response shapes.</div>
+    <div class="pq pq-p7"><span class="pn">Q5 &mdash;</span>Implement multer <code>fileFilter</code> that rejects files larger than 2MB or with non-image MIME types, throwing a custom error caught by global error handler.</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Mini Project &mdash; Auth REST API</h4>
+        <ul class="plain">
+          <li>POST /auth/register &mdash; zod validate, hash password, return JWT</li>
+          <li>POST /auth/login &mdash; compare hash, issue JWT + refresh token</li>
+          <li>GET /users/me &mdash; protected, return user profile</li>
+          <li>PUT /users/me &mdash; protected, validate with zod, upload avatar with multer</li>
+          <li>Full MVC: routes / controllers / services</li>
+          <li>Global error handler + asyncHandler on all routes</li>
+          <li>Rate limiting on /auth routes</li>
+        </ul>
+      </div>
+      <div class="ibox">
+        <h4>Deliverables Checklist</h4>
+        <ul class="check">
+          <li>Raw HTTP server built (Day 1)</li>
+          <li>Express app with all req/res types (Day 2)</li>
+          <li>3 custom middleware + cors/helmet (Day 3)</li>
+          <li>Router split + asyncHandler (Day 4)</li>
+          <li>MVC refactor + global error handler (Day 5)</li>
+          <li>JWT auth working end-to-end (Day 6)</li>
+          <li>zod validation + rate limiting (Day 7)</li>
+          <li>multer file upload (Day 8)</li>
+          <li>Full Auth API on GitHub (Day 9)</li>
+        </ul>
+      </div>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 7</h4><ol>
+        <li><strong>Auth REST API</strong> &mdash; POST /register + /login (bcrypt + JWT), GET/PUT /users/me (protected), avatar upload (multer). MVC structure, zod validation, global error handler, rate-limited /auth.</li>
+        <li><strong>URL Shortener</strong> &mdash; Express + in-memory Map first, then MySQL later. POST /shorten &rarr; returns code; GET /:code &rarr; 302 redirect; simple analytics counter.</li>
+        <li><strong>File Upload Service</strong> &mdash; Standalone Express service: multipart uploads, image type + size validation, saves to disk (later S3), returns signed URL. Great AWS practice.</li>
+      </ol></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PHASE 8: REST API ========== -->
+<div id="phase-8" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p8">
+    <div class="ph-num">Phase 8 of 12</div>
+    <h2>REST API Design</h2>
+    <div class="ph-meta">3 days &bull; Aug 5 (Wed) - Aug 7 (Fri)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p8">
+      <strong>What is this?</strong> The design discipline of naming URLs, choosing HTTP verbs, returning consistent errors, paginating results, versioning, and documenting APIs so other developers can use them without asking questions.<br><br>
+      <strong>Why should you learn this?</strong> Phase 7 taught you HOW to build an API. Phase 8 teaches you how to design one that doesn't need explaining. SAP OData services, Fiori apps, and CAP services all follow REST-like conventions &mdash; getting fluent here helps you read/design SAP APIs later.<br><br>
+      <strong>Topics covered:</strong> Resource URLs, HTTP verbs + idempotency, status codes, standard error format, offset vs cursor pagination, filtering + sorting + search, API versioning, OpenAPI 3.0 / Swagger docs
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p8">DAY 1</span><span class="date-tag">Wed Aug 5</span><span class="topic">Resource URLs + Verbs + Status Codes</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>URLs = nouns (resources), Verbs = actions</li>
+          <li>GET (safe, idempotent), POST (create), PUT (full replace, idempotent), PATCH (partial), DELETE (idempotent)</li>
+          <li>Status codes: 2xx success, 3xx redirect, 4xx client error, 5xx server error</li>
+          <li>Standard error JSON: <code>{ error: { code, message, details } }</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>freeCodeCamp REST Best Practices; Microsoft REST Guidelines: <code>https://github.com/microsoft/api-guidelines</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Design blog API URLs (posts, comments, tags, authors). Map every operation to verb + status code. Write standard error response JSON.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Resource design for a blog API</span>
+GET    /api/v1/posts               <span class="cm"># 200 list</span>
+POST   /api/v1/posts               <span class="cm"># 201 created</span>
+GET    /api/v1/posts/:id           <span class="cm"># 200 / 404</span>
+PATCH  /api/v1/posts/:id           <span class="cm"># 200 partial</span>
+DELETE /api/v1/posts/:id           <span class="cm"># 204</span>
+POST   /api/v1/posts/:id/comments  <span class="cm"># nested</span>
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p8">DAY 2</span><span class="date-tag">Thu Aug 6</span><span class="topic">Pagination + Filtering + Sorting</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Offset pagination: <code>?limit=20&amp;offset=40</code> (simple, slow at deep offsets)</li>
+          <li>Cursor pagination: <code>?limit=20&amp;cursor=abc</code> (stable under inserts)</li>
+          <li>Filtering: <code>?status=published&amp;author=nikhil</code></li>
+          <li>Sorting: <code>?sort=-createdAt,+title</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Stripe engineering "Pagination" blog; cursor-based pagination articles.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Implement both offset + cursor pagination for a <code>/posts</code> endpoint. Support <code>?filter[status]</code> + <code>?sort=-createdAt</code> + <code>?limit</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Cursor pagination</span>
+GET /posts?limit=20&amp;cursor=eyJpZCI6MTIzfQ==
+&rarr; { data: [...], nextCursor: <span class="str">'eyJpZCI6MTQzfQ=='</span> }
+
+<span class="cm">// Encode/decode cursor server-side</span>
+<span class="kw">const</span> encode = obj =&gt; <span class="fn">Buffer.from</span>(<span class="fn">JSON.stringify</span>(obj)).<span class="fn">toString</span>(<span class="str">'base64'</span>);
+<span class="kw">const</span> decode = c =&gt; <span class="fn">JSON.parse</span>(<span class="fn">Buffer.from</span>(c, <span class="str">'base64'</span>));</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p8">DAY 3</span><span class="date-tag">Fri Aug 7</span><span class="topic">Versioning + OpenAPI/Swagger</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Versioning options: URL prefix <code>/v1/</code>, header, media type. URL is most common</li>
+          <li>OpenAPI 3.0 = spec for describing APIs in YAML/JSON</li>
+          <li>Swagger UI serves docs from your spec &mdash; try-it-out UI</li>
+          <li>Contract-first vs code-first approaches</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Swagger docs: <code>https://swagger.io/docs/specification/about/</code>; OpenAPI 3.0 tutorial on YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Prefix Phase 7 Auth API with <code>/api/v1/</code>. Write <code>openapi.yaml</code> for all 4 routes. Serve Swagger UI at <code>/api-docs</code> with <code>swagger-ui-express</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># openapi.yaml (excerpt)</span>
+paths:
+  /api/v1/auth/register:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: <span class="str">'#/components/schemas/Register'</span>
+      responses:
+        <span class="str">'201'</span>: { description: Created }
+        <span class="str">'422'</span>: { description: Validation error }</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Fireship "REST API Design Best Practices" (8 min): <code>https://youtu.be/-MTSQjw5DrM</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Laith Academy "Swagger UI with Express" on YouTube</span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>OpenAPI 3.0 spec: <code>https://swagger.io/specification/</code>  |  Microsoft REST guidelines: <code>https://github.com/microsoft/api-guidelines</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> Postman "API Fundamentals Student Expert" (free, badge). Also: Google Cloud "Apigee API Design" course (free) for enterprise-scale API patterns.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p8"><span class="pn">Q1 &mdash;</span>Design the full URL structure for an e-commerce API with: products, categories, orders, order-items, users, reviews. Show all CRUD operations.</div>
+    <div class="pq pq-p8"><span class="pn">Q2 &mdash;</span>What HTTP status codes would you return for: successful creation, not found, validation error, unauthorized, forbidden, server crash?</div>
+    <div class="pq pq-p8"><span class="pn">Q3 &mdash;</span>Implement cursor-based pagination for a messages endpoint where each message has an auto-increment ID. Show the cursor encode/decode logic.</div>
+    <div class="pq pq-p8"><span class="pn">Q4 &mdash;</span>Write an OpenAPI 3.0 YAML spec for POST /api/v1/auth/register with requestBody schema (zod-style) and all possible response codes.</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Mini Project</h4>
+        <p>Extend the Phase 7 Auth API: add /api/v1/ prefix, implement offset + cursor pagination for a /posts endpoint, add filtering (?status, ?author) and sorting (?sort), serve Swagger UI at /api-docs with full openapi.yaml documentation.</p>
+      </div>
+      <div class="ibox">
+        <h4>Deliverables</h4>
+        <ul class="check">
+          <li>Blog API URL design document</li>
+          <li>Error format spec written</li>
+          <li>Offset + cursor pagination implemented</li>
+          <li>API versioned under /api/v1/</li>
+          <li>openapi.yaml written</li>
+          <li>Swagger UI serving at /api-docs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 8</h4><ol>
+        <li><strong>Blog API v1</strong> &mdash; Extend Phase 7 Auth API: add posts + comments + tags. Full pagination (offset + cursor), filtering, sorting. Serve Swagger UI at <code>/api-docs</code>.</li>
+        <li><strong>E-commerce Catalog API</strong> &mdash; Design + implement products, categories, orders. Include OpenAPI 3.0 <code>openapi.yaml</code>. Focus on consistent error format + status codes.</li>
+        <li><strong>Postman Test Suite</strong> &mdash; For any API above, write a Postman collection + environment covering 20 happy-path + edge cases. Export JSON and commit to repo.</li>
+      </ol></div>
+  </div>
+
+<!-- BREAK AFTER PHASE 8 -->
+<div class="break-box">
+  <h3>Break Days &mdash; Aug 8-9 (Saturday + Sunday)</h3>
+  <p><strong>Purpose:</strong> Full weekend off &mdash; revise Phases 7 + 8 before starting MySQL.</p>
+  <ul>
+    <li><strong>Aug 8 (Sat):</strong> Review all Phase 7 Node/Express code. Rebuild the JWT auth middleware from memory in a new file &mdash; no peeking.</li>
+    <li><strong>Aug 9 (Sun):</strong> Review Phase 8 REST design. Design a new API from scratch (pick any domain). Write a quick openapi.yaml for it.</li>
+    <li>Install MySQL Workbench + XAMPP if not already done. Create a test database. Run a few basic queries to feel comfortable.</li>
+    <li>Phase 9 MySQL starts fresh Monday Aug 10.</li>
+  </ul>
+</div>
+</div>
+
+<!-- ========== PHASE 9: MYSQL ========== -->
+<div id="phase-9" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p9">
+    <div class="ph-num">Phase 9 of 12</div>
+    <h2>MySQL + Node.js Integration</h2>
+    <div class="ph-meta">7 days &bull; Aug 10 (Mon) - Aug 16 (Sun)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p9">
+      <strong>What is this?</strong> Relational databases store data in tables with relationships. SQL (Structured Query Language) is how you talk to them. MySQL is the world's most popular open-source RDBMS.<br><br>
+      <strong>Why should you learn this?</strong> (1) SAP runs on databases &mdash; understanding relational modeling transfers directly to HANA and ABAP Dictionary. (2) SQL is the same across MySQL, PostgreSQL, and HANA (95%). (3) Your capstone stores data in MySQL. (4) Every backend interview asks JOIN + normalization questions.<br><br>
+      <strong>Topics covered:</strong> DDL (CREATE/ALTER/DROP), DML (INSERT/UPDATE/DELETE), DQL (SELECT with WHERE/ORDER/LIMIT/LIKE), JOINs, GROUP BY + aggregations, subqueries, indexes + EXPLAIN, normalization (1NF-3NF), views, transactions, stored procedures, mysql2/promise driver, connection pooling, Repository pattern
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 1</span><span class="date-tag">Mon Aug 10</span><span class="topic">MySQL Setup + DDL</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Tables = rows + columns, like a very strict Excel</li>
+          <li>Install MySQL Server + Workbench; <code>CREATE DATABASE</code>, <code>USE database</code></li>
+          <li>Data types: INT, VARCHAR(n), TEXT, DATE, DATETIME, BOOLEAN, DECIMAL</li>
+          <li><code>CREATE TABLE</code> with PRIMARY KEY, NOT NULL, UNIQUE, DEFAULT</li>
+          <li><code>ALTER TABLE</code> ADD/DROP/MODIFY; <code>DROP TABLE</code>; TRUNCATE vs DELETE</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Programming with Mosh MySQL (first hour): <code>https://youtu.be/7S_tz1z_5bA</code>; MySQL Data Types docs.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Create school DB: students, courses, enrollments. Add constraints. Drop and recreate from a script.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">-- School schema (3NF)</span>
+CREATE TABLE students (
+  id       INT PRIMARY KEY AUTO_INCREMENT,
+  name     VARCHAR(100) NOT NULL,
+  email    VARCHAR(120) UNIQUE NOT NULL,
+  created  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_students_name ON students(name);
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 2</span><span class="date-tag">Tue Aug 11</span><span class="topic">DML + Basic SELECT</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li><code>INSERT INTO ... VALUES</code> (single + multi-row)</li>
+          <li><code>UPDATE ... SET ... WHERE</code> (always WHERE!)</li>
+          <li><code>DELETE FROM ... WHERE</code></li>
+          <li><code>SELECT columns FROM table WHERE conditions</code></li>
+          <li>ORDER BY (ASC/DESC), LIMIT + OFFSET, LIKE, IN, BETWEEN</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Mosh MySQL Ep 2&ndash;3; MySQL SELECT docs.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Insert 20 rows using multi-row INSERT. Write 10 SELECT queries: multi-condition filter, LIKE search, ORDER BY 2 cols, LIMIT+OFFSET pagination.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">-- Multi-row INSERT + pagination</span>
+INSERT INTO students (name, email) VALUES
+  (<span class="str">'Asha'</span>, <span class="str">'asha@x.com'</span>),
+  (<span class="str">'Ravi'</span>, <span class="str">'ravi@x.com'</span>);
+
+SELECT id, name FROM students
+WHERE name LIKE <span class="str">'A%'</span>
+ORDER BY created DESC
+LIMIT 20 OFFSET 40;</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 3</span><span class="date-tag">Wed Aug 12</span><span class="topic">JOINs + Aggregations</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>INNER JOIN, LEFT JOIN, RIGHT JOIN, SELF JOIN</li>
+          <li>ON clause vs USING</li>
+          <li>GROUP BY column; COUNT, SUM, AVG, MAX, MIN</li>
+          <li>HAVING (filter after GROUP BY); DISTINCT</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Mosh MySQL Ep 4&ndash;5; Caleb Curry SQL JOINs.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write 8 JOIN queries on school DB. Average grade per course. Count students per course. Courses with &gt;10 students (HAVING).</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">-- Average grade per course (LEFT JOIN + GROUP BY)</span>
+SELECT c.title, AVG(e.grade) AS avg_grade, COUNT(*) AS n
+FROM courses c
+LEFT JOIN enrollments e ON e.course_id = c.id
+GROUP BY c.id
+HAVING COUNT(*) &gt; 10
+ORDER BY avg_grade DESC;</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 4</span><span class="date-tag">Thu Aug 13</span><span class="topic">Subqueries + Indexes + EXPLAIN</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Subquery: query inside a query &mdash; uncorrelated vs correlated</li>
+          <li>Indexes: speed up WHERE and JOIN; downside: slower INSERT/UPDATE, more disk</li>
+          <li>EXPLAIN shows if query uses index or does full scan</li>
+          <li>When to add: on FK, on WHERE-often columns, on ORDER-BY columns</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Mosh MySQL Ep 6&ndash;7; MySQL EXPLAIN docs.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write 5 subquery examples. Add index on a FK. Run EXPLAIN before/after &mdash; document the difference.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">-- Students who scored above the course average</span>
+SELECT s.name, e.grade
+FROM enrollments e
+JOIN students s ON s.id = e.student_id
+WHERE e.grade &gt; (
+  SELECT AVG(grade) FROM enrollments
+  WHERE course_id = e.course_id
+);
+EXPLAIN SELECT ...;   <span class="cm">-- inspect type: ref &gt; range &gt; ALL</span></div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 5</span><span class="date-tag">Fri Aug 14</span><span class="topic">Normalization + Views + Transactions + Stored Procs</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Normalization: 1NF (atomic), 2NF (no partial dep), 3NF (no transitive dep)</li>
+          <li>Denormalize for read speed &mdash; tradeoff</li>
+          <li>Foreign keys enforce referential integrity</li>
+          <li>Views = saved SELECT, use like a table</li>
+          <li>Transactions: BEGIN + COMMIT / ROLLBACK; ACID</li>
+          <li>Stored procs = server-side functions in SQL</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Mosh MySQL Ep 8&ndash;9; Decomplexify "Database Normalization" on YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Denormalize a table &rarr; normalize to 3NF. Create 2 views. Write bank transfer transaction (debit + credit, ROLLBACK on error). Write a paginated search stored proc.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">-- Money transfer transaction</span>
+START TRANSACTION;
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+<span class="cm">-- if any step fails: ROLLBACK; else:</span>
+COMMIT;</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 6</span><span class="date-tag">Sat Aug 15</span><span class="topic">mysql2/promise + Connection Pool</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Never use string concatenation for SQL (SQL injection!) &mdash; parameterized queries</li>
+          <li>Connection pool: reuse N connections instead of opening on every request</li>
+          <li><code>db.js</code> module exporting a shared pool</li>
+          <li>Error handling: connection errors, deadlocks, retries</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>mysql2 npm docs: <code>https://github.com/sidorares/node-mysql2</code>; Traversy Node MySQL on YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Set up mysql2 pool. Write <code>db.js</code> module. Run 5 parameterized queries. Handle connection errors gracefully.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// db.js — shared pool</span>
+<span class="kw">import</span> mysql <span class="kw">from</span> <span class="str">'mysql2/promise'</span>;
+<span class="kw">export const</span> pool = mysql.<span class="fn">createPool</span>({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  connectionLimit: 10,
+});
+<span class="kw">export const</span> query = (sql, params) =&gt;
+  pool.<span class="fn">execute</span>(sql, params).<span class="fn">then</span>(([rows]) =&gt; rows);</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p9">DAY 7</span><span class="date-tag">Sun Aug 16</span><span class="topic">Repository Pattern + Mini Project</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Repository = data access abstraction; business logic doesn't know if data lives in MySQL, Postgres, or HANA</li>
+          <li><code>findAll(filters, pagination)</code>, <code>findById</code>, <code>create</code>, <code>update</code>, <code>delete</code></li>
+          <li>Wire into Phase 7 MVC service layer</li>
+          <li>Use weekend 6&ndash;9 PM project block to finish</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Review Phase 7 MVC; blog articles on Repository Pattern in Node.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build <code>StudentRepository</code>. Wire into Express + service layer. Full CRUD API with pagination + filtering. Push to GitHub.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// StudentRepository (thin DAO)</span>
+<span class="kw">export const</span> StudentRepo = {
+  findAll: ({ limit = 20, offset = 0 } = {}) =&gt;
+    <span class="fn">query</span>(<span class="str">'SELECT * FROM students LIMIT ? OFFSET ?'</span>, [limit, offset]),
+  findById: id =&gt;
+    <span class="fn">query</span>(<span class="str">'SELECT * FROM students WHERE id = ?'</span>, [id]).<span class="fn">then</span>(r =&gt; r[0]),
+  create: (data) =&gt;
+    <span class="fn">query</span>(<span class="str">'INSERT INTO students SET ?'</span>, [data]),
+};</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Programming with Mosh MySQL Full Course (3h, best MySQL intro): <code>https://youtu.be/7S_tz1z_5bA</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Caleb Curry SQL JOINs Explained on YouTube</span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Decomplexify "Database Normalization" (visual, excellent): <code>https://youtu.be/GFQaEYEc8_8</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>MySQL 8.0 Reference Manual: <code>https://dev.mysql.com/doc/refman/8.0/en/</code>  |  mysql2 npm: <code>https://github.com/sidorares/node-mysql2</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> (1) HackerRank "SQL" Basic + Intermediate + Advanced badges (30-45 min each, add all 3 to resume). (2) freeCodeCamp "Relational Database" certification. (3) Oracle MySQL 8.0 Database Developer 1Z0-909 (paid, high-value for later).</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p9"><span class="pn">Q1 &mdash;</span>Write a query to find the top 5 students by average grade across all courses they are enrolled in.</div>
+    <div class="pq pq-p9"><span class="pn">Q2 &mdash;</span>Design a normalized schema (3NF) for an e-commerce app with: products, categories (many-to-many), suppliers, inventory per warehouse.</div>
+    <div class="pq pq-p9"><span class="pn">Q3 &mdash;</span>Write a stored procedure <code>search_students(p_name, p_limit, p_offset)</code> that returns paginated results filtered by partial name match.</div>
+    <div class="pq pq-p9"><span class="pn">Q4 &mdash;</span>Write the mysql2 connection pool setup with: connectionLimit:10, error event handler, a helper function <code>query(sql, params)</code> that always returns rows.</div>
+    <div class="pq pq-p9"><span class="pn">Q5 &mdash;</span>Explain the difference between EXPLAIN's "type" values: ALL, index, range, ref, const. Which is best and why?</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Mini Project &mdash; Student Records API</h4>
+        <ul class="plain">
+          <li>MySQL DB: students, courses, enrollments</li>
+          <li>Full CRUD via Express + mysql2 + Repository pattern</li>
+          <li>Pagination, filtering, search</li>
+          <li>Transaction for bulk enrollment</li>
+          <li>zod validation + JWT auth from Phase 7</li>
+          <li>Swagger docs at /api-docs</li>
+        </ul>
+      </div>
+      <div class="ibox">
+        <h4>Deliverables</h4>
+        <ul class="check">
+          <li>School DB schema created (Day 1)</li>
+          <li>20 rows inserted, 10 SELECT queries (Day 2)</li>
+          <li>8 JOIN + aggregation queries (Day 3)</li>
+          <li>EXPLAIN before/after index report (Day 4)</li>
+          <li>3NF schema + transaction written (Day 5)</li>
+          <li>mysql2 pool + db.js module (Day 6)</li>
+          <li>Student Records API on GitHub (Day 7)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 9</h4><ol>
+        <li><strong>Student Records API</strong> &mdash; MySQL + mysql2 pool + Repository pattern + Express + Swagger. Full CRUD, pagination, filtering, transaction for bulk enrol, JWT-protected.</li>
+        <li><strong>Library Management</strong> &mdash; Books, members, loans schema in 3NF. Reservation with lock + transaction. Reports: overdue loans, top books, active members (JOIN + GROUP BY practice).</li>
+        <li><strong>SQL Query Playground</strong> &mdash; A tiny web tool where you paste a SQL query, it runs against a sample school DB via Node, shows results + <code>EXPLAIN</code> tree side-by-side.</li>
+      </ol></div>
+  </div>
+
+<!-- BREAK AFTER PHASE 9 -->
+<div class="break-box">
+  <h3>Break Days &mdash; Aug 17-18 (Monday + Tuesday)</h3>
+  <p><strong>Purpose:</strong> 2-day revision of MySQL before Git + Docker + AWS.</p>
+  <ul>
+    <li><strong>Aug 17 (Mon):</strong> Open MySQL Workbench. Without notes, design a fresh schema (e.g., library management). Write CREATE TABLE statements, add indexes, write 5 JOIN queries.</li>
+    <li><strong>Aug 18 (Tue):</strong> Review Repository pattern code. Write UserRepository from scratch. Review EXPLAIN output interpretation. Polish Student Records API README.</li>
+    <li>Phase 10 (Git + Docker + AWS) starts fresh Wednesday Aug 19.</li>
+  </ul>
+</div>
+</div>
+
+<!-- ========== PHASE 10: SYSTEM DESIGN ========== -->
+<div id="phase-10" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p10">
+    <div class="ph-num">Phase 10 of 12</div>
+    <h2>Git (Advanced) + Docker + AWS</h2>
+    <div class="ph-meta">3 days &bull; Aug 19 (Wed) - Aug 21 (Fri)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p10">
+      <strong>What is this?</strong> The DevOps trio &mdash; version control workflows real teams use (Git), containerization (Docker), and cloud deployment (AWS). Together they turn "works on my machine" into "runs anywhere".<br><br>
+      <strong>Why should you learn this?</strong> (1) Deploying your capstone needs Docker + AWS. (2) SAP BTP uses Cloud Foundry which is very similar to AWS ECS &mdash; the mental model transfers. (3) Docker + AWS on your resume shifts you from "coder" to "engineer".<br><br>
+      <strong>Topics covered:</strong> Git rebase / stash / cherry-pick / bisect, PR workflow, Dockerfile, docker-compose, volumes + networks, multi-stage builds, AWS EC2 (SSH + deploy), S3 (buckets + upload), IAM (roles + policies), Lambda + CloudFront (awareness)
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p10">DAY 1</span><span class="date-tag">Wed Aug 19</span><span class="topic">Advanced Git + Linux Basics</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Recap: clone, add, commit, push, pull, branch, merge</li>
+          <li>rebase (rewrite history), stash (shelve WIP), cherry-pick, bisect</li>
+          <li>PR workflow: fork &rarr; branch &rarr; PR &rarr; review &rarr; merge</li>
+          <li>Linux basics: <code>ls</code>, <code>cd</code>, <code>mkdir</code>, <code>chmod</code>, <code>ssh</code>, <code>scp</code>, <code>ps</code>, <code>kill</code>, <code>tail -f</code>, <code>grep</code>, <code>sudo</code></li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>freeCodeCamp Advanced Git; Net Ninja Rebase vs Merge; Pro Git Book Ch.3: <code>https://git-scm.com/book/en/v2</code>.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Rebase a feature branch onto main. Stash mid-work changes. Cherry-pick a commit. Run <code>git bisect</code>. Write <code>.github/pull_request_template.md</code>.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Git rebase workflow</span>
+git checkout feature-x
+git fetch origin
+git rebase origin/main         <span class="cm"># replay your commits on latest main</span>
+<span class="cm"># resolve conflicts, then:</span>
+git rebase --continue
+git push --force-with-lease    <span class="cm"># safer than --force</span>
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p10">DAY 2</span><span class="date-tag">Thu Aug 20</span><span class="topic">Docker + docker-compose</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Container = lightweight isolated process (not a VM)</li>
+          <li>Image = frozen snapshot &rarr; Container = running instance</li>
+          <li>Dockerfile: <code>FROM</code>, <code>WORKDIR</code>, <code>COPY</code>, <code>RUN</code>, <code>EXPOSE</code>, <code>CMD</code></li>
+          <li>Multi-stage build: builder stage + slim runtime stage</li>
+          <li>docker-compose: multi-container apps in one YAML</li>
+          <li>Volumes (persist data), networks (link containers)</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>TechWorld with Nana Docker Full Course: <code>https://youtu.be/3c-iBn73dDE</code>; Docker docs Get Started.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write Dockerfile for Node Auth API (multi-stage). <code>docker-compose.yml</code>: app + MySQL + volume. <code>docker-compose up</code> and curl endpoints.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Multi-stage Dockerfile</span>
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/node_modules ./node_modules
+CMD [<span class="str">"node"</span>, <span class="str">"dist/server.js"</span>]</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p10">DAY 3</span><span class="date-tag">Fri Aug 21</span><span class="topic">AWS EC2 + S3 + IAM</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>AWS = 250+ services; learn EC2, S3, IAM first</li>
+          <li>EC2: free-tier t2.micro, SSH with .pem, install Node, run your API</li>
+          <li>S3: bucket = folder in the cloud; upload/download via SDK</li>
+          <li>IAM: users (humans), roles (services), policies (JSON perms); least privilege</li>
+          <li>Lambda + CloudFront: awareness only (deep dive later)</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>freeCodeCamp AWS for Beginners: <code>https://youtu.be/ulprqHHWlng</code>; AWS Getting Started tutorials.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Launch free-tier EC2, SSH in, deploy Node API. Create S3 bucket, upload multer files to S3 instead of disk. Attach IAM role.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># S3 upload from Node using AWS SDK v3</span>
+<span class="kw">import</span> { S3Client, PutObjectCommand } <span class="kw">from</span> <span class="str">'@aws-sdk/client-s3'</span>;
+<span class="kw">const</span> s3 = <span class="kw">new</span> <span class="fn">S3Client</span>({ region: <span class="str">'ap-south-1'</span> });
+<span class="kw">await</span> s3.<span class="fn">send</span>(<span class="kw">new</span> <span class="fn">PutObjectCommand</span>({
+  Bucket: <span class="str">'my-bucket'</span>,
+  Key: <span class="str">'avatars/'</span> + userId,
+  Body: buffer,
+  ContentType: <span class="str">'image/png'</span>,
+}));</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>TechWorld with Nana Docker Full Course (MUST WATCH): <code>https://youtu.be/3c-iBn73dDE</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>freeCodeCamp AWS Fundamentals (4h): <code>https://youtu.be/ulprqHHWlng</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Net Ninja Advanced Git: <code>https://youtu.be/Uszj_k0DGsg</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>Docker docs: <code>https://docs.docker.com</code>  |  AWS Free Tier: <code>https://aws.amazon.com/free/</code>  |  Pro Git book: <code>https://git-scm.com/book/en/v2</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> (1) <strong>AWS Cloud Practitioner (CLF-C02)</strong> &mdash; the ideal starter AWS cert (paid ~$100, resume gold). (2) Docker "Docker Certified Associate" (paid). (3) freeCodeCamp "DevOps" tutorials.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p10"><span class="pn">Q1 &mdash;</span>What is the difference between <code>git merge</code> and <code>git rebase</code>? When should you use each in a team workflow?</div>
+    <div class="pq pq-p10"><span class="pn">Q2 &mdash;</span>Write a Dockerfile for a Node.js app using multi-stage build: stage 1 installs deps, stage 2 copies only production files. Result image should be under 150MB.</div>
+    <div class="pq pq-p10"><span class="pn">Q3 &mdash;</span>Explain the difference between an IAM Role and an IAM User. When would you use each on AWS?</div>
+
+    <div class="ibox" style="margin-top:14px;">
+      <h4>Deliverables</h4>
+      <ul class="check">
+        <li>Git rebase, stash, cherry-pick practiced with evidence</li>
+        <li>Dockerfile + docker-compose.yml for Node API</li>
+        <li>API running on EC2 (screenshot or live URL)</li>
+        <li>S3 bucket file upload working from Node</li>
+        <li>All 3 practice questions answered in notes</li>
+      </ul>
+    </div>
+  </div>
+    <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 10</h4><ol>
+        <li><strong>Dockerize Everything</strong> &mdash; Multi-stage Dockerfile for the Auth API + <code>docker-compose.yml</code> with MySQL + volume + healthchecks. Under 150MB final image.</li>
+        <li><strong>Deploy to EC2</strong> &mdash; Launch t2.micro, install Node, clone repo, run via PM2 behind Nginx reverse proxy on ports 80/443 (Let&rsquo;s Encrypt cert). Live URL in README.</li>
+        <li><strong>S3 File Service</strong> &mdash; Modify Phase 7 avatar upload to store in S3 with proper IAM role attached to EC2 (no long-lived keys in code). Serve signed URLs.</li>
+      </ol></div>
+  </div>
+
+<!-- BREAK AFTER PHASE 10 (Git + Docker + AWS) -->
+<div class="break-box">
+  <h3>Break Day &mdash; Aug 22 (Saturday)</h3>
+  <p><strong>Purpose:</strong> Consolidate Git + Docker + AWS. Then use this day to <em>ship</em> Capstone A.</p>
+  <ul>
+    <li>Push all Phase 10 code to GitHub. Run <code>docker-compose up</code> one more time end-to-end.</li>
+    <li>Deploy the Auth API from Phase 7 to your EC2 instance behind Nginx + Let's Encrypt cert.</li>
+    <li>Read the <strong>Full-Stack Capstone A</strong> brief (next page) &mdash; you'll ship it this weekend + carry into next week.</li>
+    <li>Phase 11 (System Design) starts fresh Sunday Aug 23.</li>
+  </ul>
+</div>
+</div>
+
+<!-- ========== CAPSTONE A ========== -->
+<div id="capstone-a" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Full-Stack Capstone A</div>
+    <h1 style="color:#0891b2;">Auth-Guarded Records API &mdash; Ship It Live</h1>
+    <p class="sub">Uses everything from Phase 4 &rarr; Phase 10 &bull; Frontend + Backend + DB + API + Security + Deploy</p>
+  </div>
+
+  <div class="goal-box" style="border-left:3px solid #0891b2;background:#ecfeff;color:#164e63;">
+    <strong>Why this capstone before System Design?</strong> Before you learn how to <em>scale</em> a system, you should first <em>build one that works end-to-end</em>. This capstone forces you to wire every layer you've learned so far: React UI &rarr; Express API &rarr; MySQL &rarr; JWT auth &rarr; zod validation &rarr; multer uploads &rarr; Docker &rarr; EC2 &rarr; S3. Once it runs live with a URL you can share, System Design (Phase 11) will feel far less abstract.
+  </div>
+
+  <div class="sec-lbl">The Project &mdash; "Study Log"</div>
+  <div class="ibox" style="border-left:3px solid #0891b2;">
+    <h4 style="color:#164e63;">In one sentence</h4>
+    <p>A logged-in user tracks daily study sessions (topic, duration, notes, screenshot). Filter + search + export. Deployed with HTTPS on your own domain.</p>
+  </div>
+
+  <div class="sec-lbl">Required Layers (must-cover)</div>
+  <div class="two-col">
+    <div class="ibox">
+      <h4>Frontend (React + Tailwind)</h4>
+      <ul class="plain">
+        <li>Login + Register screens; protected routes with React Router</li>
+        <li>Sessions list (paginated) + New Session form (controlled inputs)</li>
+        <li>Search + filter (by topic, date range); dark mode toggle</li>
+        <li>Screenshot upload preview before submit</li>
+        <li>Deployed on Vercel</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Backend (Node + Express)</h4>
+      <ul class="plain">
+        <li>MVC: routes / controllers / services / repositories</li>
+        <li>JWT auth (access + refresh tokens); <code>protect</code> middleware</li>
+        <li>zod validation for every write endpoint (422 with field errors)</li>
+        <li>multer upload &rarr; S3 (signed URLs served back)</li>
+        <li>Global error handler; asyncHandler on every route</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Database (MySQL)</h4>
+      <ul class="plain">
+        <li>3NF schema: users, sessions, topics (many-to-many)</li>
+        <li>Foreign keys, indexes on <code>user_id</code> + <code>created_at</code></li>
+        <li>Repository pattern via mysql2 pool</li>
+        <li>Transaction: bulk import from CSV</li>
+        <li>One stored proc: <code>weekly_summary(user_id)</code></li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>API Design (Phase 8)</h4>
+      <ul class="plain">
+        <li>Versioned under <code>/api/v1/</code></li>
+        <li>Cursor pagination on <code>/sessions</code></li>
+        <li>Consistent error envelope; correct 2xx/4xx/5xx codes</li>
+        <li>OpenAPI 3.0 spec + Swagger UI at <code>/api-docs</code></li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Security</h4>
+      <ul class="plain">
+        <li>bcrypt password hashes (never plaintext)</li>
+        <li>Helmet + CORS whitelist + rate-limited <code>/auth</code></li>
+        <li>Secrets in <code>.env</code> (never committed); <code>.env.example</code> in repo</li>
+        <li>S3 access via IAM role attached to EC2 (no long-lived keys in code)</li>
+        <li>Input validation at every boundary (zod)</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Deploy + Ops</h4>
+      <ul class="plain">
+        <li>Multi-stage Dockerfile; <code>docker-compose.yml</code> for local (app + MySQL)</li>
+        <li>EC2 t2.micro; Nginx reverse proxy; Let's Encrypt cert (HTTPS)</li>
+        <li>PM2 process manager; log rotation</li>
+        <li>GitHub Actions: run tests + build image on push to main</li>
+        <li>README with architecture diagram, live URL, demo GIF</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Milestones (weekend + weekdays after Phase 11)</div>
+  <div class="ibox" style="background:#eff6ff;border-left:3px solid #0891b2;">
+    <ol style="padding-left:20px;">
+      <li><strong>Aug 22-23 (weekend after Phase 10):</strong> Schema + backend skeleton + JWT auth + first two endpoints deployed to EC2. HTTPS working.</li>
+      <li><strong>During Phase 11 evenings (Aug 23-25):</strong> Wire frontend to backend. Login &rarr; sessions list &rarr; new session works end-to-end.</li>
+      <li><strong>Aug 26 (Break Day):</strong> Screenshot upload &rarr; S3 signed URL. Filtering + pagination. Fix rough edges.</li>
+      <li><strong>Buffer week if needed:</strong> Polish README, record 2-min demo video, share the live URL.</li>
+    </ol>
+  </div>
+
+  <div class="proj-ideas">
+    <h4>Stretch Goals</h4>
+    <ol>
+      <li><strong>CSV import/export</strong> &mdash; bulk import 100 sessions via transaction; export filtered results as CSV.</li>
+      <li><strong>Email digest</strong> &mdash; nightly cron / n8n workflow that emails yesterday's summary via Nodemailer.</li>
+      <li><strong>Public share page</strong> &mdash; read-only <code>/u/:username</code> page (no auth) showing top 5 topics of the last month.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========== PHASE 11: SYSTEM DESIGN ========== -->
+<div id="phase-11" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p11">
+    <div class="ph-num">Phase 11 of 12</div>
+    <h2>System Design Fundamentals</h2>
+    <div class="ph-meta">3 days &bull; Aug 23 (Sun) - Aug 25 (Tue)</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p11">
+      <strong>What is this?</strong> System design is about how to structure large software systems so they scale to millions of users without falling over. Not about writing code &mdash; about drawing boxes, arrows, and choosing tradeoffs.<br><br>
+      <strong>Why should you learn this?</strong> (1) Every mid-level+ interview asks a system design question. (2) When you enter SAP BTP, understanding load balancers, caching, and queues helps you use SAP services correctly. (3) It teaches you to think in tradeoffs, not absolutes &mdash; a senior-engineer mindset.<br><br>
+      <strong>Topics covered:</strong> Vertical vs horizontal scaling, load balancers, monolith vs microservices, caching (Redis), CDN, message queues (Kafka/RabbitMQ concepts), CAP theorem, read replicas, sharding, API gateway
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p11">DAY 1</span><span class="date-tag">Sun Aug 23</span><span class="topic">Scaling + Load Balancing + Architectures</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Vertical scaling (bigger server, limited) vs horizontal scaling (more servers, cheaper)</li>
+          <li>Load balancer distributes traffic (Nginx, HAProxy, AWS ALB)</li>
+          <li>Monolith vs Microservices &mdash; tradeoffs</li>
+          <li>Stateless vs stateful services</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>ByteByteGo channel: <code>https://www.youtube.com/@ByteByteGo</code>; Fireship "Microservices vs Monolith".</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Draw diagram: monolith Student Records API &rarr; split into microservices. Add load balancer in front. Write pros/cons for each.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Draw this in your notes</span>
+[Users]
+   |
+ [LB Nginx]
+   |------|------|
+ [API1][API2][API3]     &larr; horizontal scale
+   |
+ [MySQL primary]
+   +&rarr; [MySQL replica]  &larr; reads
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p11">DAY 2</span><span class="date-tag">Mon Aug 24</span><span class="topic">Caching + CDN + Message Queues</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>Cache = fast storage in front of slow storage (Redis in front of MySQL)</li>
+          <li>Cache patterns: cache-aside, write-through, write-behind</li>
+          <li>TTL, invalidation, "stampede" problem</li>
+          <li>CDN = geographically distributed static file cache (CloudFront, Cloudflare)</li>
+          <li>Message queue = async pipe (Kafka, RabbitMQ, SQS); Producer/Consumer decoupling</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>ByteByteGo Redis + CDN videos; "Message Queues in 5 Min" on YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Design caching strategy for Student Records API: what to cache, TTL, invalidation. Draw CDN + queue architecture for async notifications.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Cache-aside pattern (pseudo)</span>
+<span class="kw">function</span> <span class="fn">get</span>(id):
+  v = cache.get(id)
+  <span class="kw">if</span> v: <span class="kw">return</span> v          <span class="cm"># HIT</span>
+  v = db.query(<span class="str">'...'</span>, id) <span class="cm"># MISS</span>
+  cache.set(id, v, ttl=60)
+  <span class="kw">return</span> v</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p11">DAY 3</span><span class="date-tag">Tue Aug 25</span><span class="topic">CAP Theorem + Sharding + API Gateway</span></div>
+      <div class="db-sec sec-concepts"><h5>Concepts</h5>
+        <ul>
+          <li>CAP: pick 2 of Consistency / Availability / Partition-tolerance</li>
+          <li>Read replicas: clones of DB for read scaling (writes go to primary)</li>
+          <li>Sharding: split data across DBs by key range or hash</li>
+          <li>API Gateway: single entry-point (auth, rate limit, routing)</li>
+        </ul>
+      </div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>ByteByteGo CAP Theorem; "Database Sharding" article; Gaurav Sen Consistent Hashing on YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Write 1-page system design doc: "Scale Student Records API to 1M users". Include load balancer, read replicas, cache, CDN, async jobs. Save to GitHub.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># Shard by user_id hash</span>
+shard_id = hash(user_id) % 4
+db_url   = SHARD_URLS[shard_id]
+
+<span class="cm"># API Gateway responsibilities</span>
+- Auth (JWT verify)
+- Rate limit (100 req/min)
+- Route to internal services
+- Response caching (short TTL)</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>ByteByteGo channel (Alex Xu &mdash; every video is gold): <code>https://www.youtube.com/@ByteByteGo</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>Gaurav Sen channel: <code>https://www.youtube.com/@gkcs</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>freeCodeCamp System Design Interview (2h): <code>https://youtu.be/i7twT3x5yEI</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>Alex Xu "System Design Interview" book + newsletter: <code>https://blog.bytebytego.com</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> No formal beginner cert. Instead: (1) Read "System Design Interview Vol 1" by Alex Xu (book). (2) Attempt 3 free case studies on the ByteByteGo newsletter and publish your write-up on GitHub &mdash; that IS the portfolio artifact.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p11"><span class="pn">Q1 &mdash;</span>Design a URL shortener (like bit.ly). Cover: DB schema, ID generation, read/write split, caching layer, CDN.</div>
+    <div class="pq pq-p11"><span class="pn">Q2 &mdash;</span>Explain CAP theorem. In a system that requires high availability (e.g., Twitter feed), which two properties do you choose and what do you sacrifice?</div>
+    <div class="pq pq-p11"><span class="pn">Q3 &mdash;</span>When would you use horizontal sharding vs read replicas? Give a concrete example where you need both.</div>
+
+    <div class="ibox" style="margin-top:14px;">
+      <h4>Deliverables</h4>
+      <ul class="check">
+        <li>Monolith &rarr; microservices diagram drawn</li>
+        <li>Caching strategy document written</li>
+        <li>"Scale to 1M users" system design doc saved to GitHub</li>
+      </ul>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 11</h4><ol>
+        <li><strong>1M-User Design Doc</strong> &mdash; One-page design: scale Study Log API to 1M users &mdash; LB + read replicas + Redis cache + CDN + async jobs + monitoring.</li>
+        <li><strong>URL Shortener at Scale</strong> &mdash; Design doc for a bit.ly clone: ID generation (base62 vs snowflake), write path, read cache, analytics pipeline, sharding at 100M links.</li>
+        <li><strong>SAP-flavoured Design</strong> &mdash; Design a Fiori launchpad backend that scales for a large enterprise (SSO, tile caching, personalization). Ties Phase 11 to Part II/III.</li>
+      </ol></div>
+  </div>
+</div>
+    </div>
+
+<!-- BREAK AFTER PHASE 11 -->
+<div class="break-box">
+  <h3>Break Day &mdash; Aug 26 (Wednesday)</h3>
+  <p><strong>Purpose:</strong> Wrap Capstone A + prep the mind for the final AI + Capstone phase.</p>
+  <ul>
+    <li>Finish Capstone A polish + push to GitHub with a great README</li>
+    <li>Read the <strong>Full-Stack Capstone B</strong> brief (next page) &mdash; that's your target for the buffer week</li>
+    <li>Read the Claude API "tool_use" documentation (30 min familiarization before Phase 12)</li>
+    <li>Set up n8n locally: <code>npx n8n</code> &mdash; verify the UI opens at localhost:5678</li>
+    <li>Phase 12 (final!) starts fresh Thursday Aug 27.</li>
+  </ul>
+</div>
+
+<!-- ========== CAPSTONE B ========== -->
+<div id="capstone-b" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Full-Stack Capstone B</div>
+    <h1 style="color:#059669;">Study Log &mdash; Scaled, Cached &amp; Observed</h1>
+    <p class="sub">Takes Capstone A + applies every System Design lesson from Phase 11 &bull; Target: buffer week / weekends</p>
+  </div>
+
+  <div class="goal-box" style="border-left:3px solid #059669;background:#f0fdf4;color:#14532d;">
+    <strong>Why this capstone after System Design?</strong> Phase 11 taught you scaling <em>concepts</em>. This capstone forces you to actually <em>apply</em> them to your own live app. You'll add caching, background jobs, monitoring, and CI/CD to the Auth-Guarded Records API you shipped in Capstone A. When an interviewer asks "how do you handle 100k users?", you'll have a real repo to point at.
+  </div>
+
+  <div class="sec-lbl">The Upgrade &mdash; from Capstone A to Capstone B</div>
+  <div class="two-col">
+    <div class="ibox">
+      <h4>Caching Layer</h4>
+      <ul class="plain">
+        <li>Add Redis (Docker Compose service)</li>
+        <li>Cache-aside on <code>GET /sessions/:id</code> (TTL 5 min)</li>
+        <li>Invalidate on PUT/DELETE</li>
+        <li>Response header <code>X-Cache: HIT|MISS</code></li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Async / Queue Work</h4>
+      <ul class="plain">
+        <li>Background job: nightly summary via BullMQ + Redis</li>
+        <li>Retry with exponential backoff on failure</li>
+        <li>Dead-letter queue for permanent failures</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Database Scaling</h4>
+      <ul class="plain">
+        <li>Add read-replica config (or fake with a 2nd MySQL container)</li>
+        <li>Route SELECTs to replica, writes to primary via a wrapper</li>
+        <li>Add composite indexes based on your slowest EXPLAIN plans</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Observability</h4>
+      <ul class="plain">
+        <li>Structured logging with pino (JSON logs)</li>
+        <li>Prometheus <code>/metrics</code> endpoint (request count, latency histogram)</li>
+        <li>Grafana dashboard: p50 / p95 / error rate / cache hit ratio</li>
+        <li>Alert rule: p95 &gt; 1s for 5 minutes &rarr; email</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>CDN + Frontend Perf</h4>
+      <ul class="plain">
+        <li>CloudFront in front of S3 for static uploads</li>
+        <li>Code splitting + lazy routes in the React app</li>
+        <li>Lighthouse target: performance &ge; 90</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>CI/CD Hardening</h4>
+      <ul class="plain">
+        <li>GitHub Actions: test &rarr; build image &rarr; push to ECR</li>
+        <li>Deploy step SSHes to EC2, runs <code>docker compose pull &amp;&amp; up -d</code></li>
+        <li>Rollback command in README</li>
+        <li>Signed commit protection on main branch</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-ideas">
+    <h4>Interview Story You Can Tell After This</h4>
+    <ol>
+      <li>"I moved <code>/sessions</code> reads from 400ms to 15ms by adding a Redis cache-aside layer with 5-minute TTL &mdash; measured with a Grafana p95 chart."</li>
+      <li>"When SELECTs started dominating my primary DB, I split reads to a replica; that dropped the primary CPU by ~40%."</li>
+      <li>"Nightly summaries move to a BullMQ queue so a slow email provider never blocks a user request."</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========== PHASE 12: AGENTIC AI + n8n + CAPSTONE ========== -->
+<div id="phase-12" class="page" style="page-break-before:always;">
+<div class="ph-wrap">
+  <div class="ph-hdr bg-p12">
+    <div class="ph-num">Phase 12 of 12</div>
+    <h2>Agentic AI + n8n + Capstone Project</h2>
+    <div class="ph-meta">5 days &bull; Aug 27 (Thu) - Aug 31 (Mon) &bull; FOUNDATION COMPLETE</div>
+  </div>
+  <div class="ph-body">
+    <div class="goal-box bl-p12">
+      <strong>What is this?</strong> The finale: build a full-stack AI-powered task manager (FocusTrack Pro) using Claude API with tool use, RAG, and an n8n automation workflow. Everything from the previous 11 phases converges here.<br><br>
+      <strong>Why should you learn this?</strong> This project is your <em>portfolio centrepiece</em> for job applications. It shows: React + Node + MySQL + Docker + AWS + Claude API + tool use + RAG + workflow automation &mdash; the exact stack a 2027 "SAP + AI Engineer" role wants.<br><br>
+      <strong>Topics covered:</strong> Claude API basics, messages.create, tool use / function calling, agent loop with maxIterations guard, RAG (SQL-backed retrieval), n8n workflows (schedule trigger, webhook, AI nodes, MySQL node), full-stack integration, Docker deploy, portfolio-quality README
+    </div>
+
+    <div class="sec-lbl">Daily Schedule &mdash; Starting From Pure Basics</div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p12">DAY 1</span><span class="date-tag">Thu Aug 27</span><span class="topic">Claude API: messages.create + Tool Use</span></div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Anthropic docs "Tool Use" (full guide); "Build AI Agents" on Anthropic YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Make your first Claude API call from Node.js. Implement a tool <code>get_weather(city)</code> (mock return). Build a simple agent that decides when to call the tool.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">import</span> Anthropic <span class="kw">from</span> <span class="str">'@anthropic-ai/sdk'</span>;
+<span class="kw">const</span> client = <span class="kw">new</span> <span class="fn">Anthropic</span>();
+<span class="kw">const</span> tools = [{
+  name: <span class="str">'get_weather'</span>,
+  description: <span class="str">'Return current weather for a city'</span>,
+  input_schema: { type: <span class="str">'object'</span>, properties: { city: { type: <span class="str">'string'</span> } }, required: [<span class="str">'city'</span>] },
+}];
+<span class="kw">const</span> msg = <span class="kw">await</span> client.messages.<span class="fn">create</span>({
+  model: <span class="str">'claude-sonnet-4-6'</span>, max_tokens: 512,
+  tools, messages: [{ role: <span class="str">'user'</span>, content: <span class="str">'Weather in Bangalore?'</span> }],
+});
+  </div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p12">DAY 2</span><span class="date-tag">Fri Aug 28</span><span class="topic">Agent Loops + maxIterations Guard + RAG (SQL-based Retrieval)</span></div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Anthropic docs "Building Agents"; "RAG Explained" IBM Technology YouTube.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build an agent loop: query Claude &rarr; if <code>tool_use</code> in response, call tool &rarr; feed result back &rarr; repeat until text response or <code>maxIterations</code>. Build SQL-RAG: store task notes in MySQL, retrieve similar with LIKE/FULLTEXT, inject into prompt.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="kw">async function</span> <span class="fn">runAgent</span>(userMsg, tools, max = 5) {
+  <span class="kw">const</span> messages = [{ role: <span class="str">'user'</span>, content: userMsg }];
+  <span class="kw">for</span> (<span class="kw">let</span> i = 0; i &lt; max; i++) {
+    <span class="kw">const</span> r = <span class="kw">await</span> client.messages.<span class="fn">create</span>({ model, tools, messages, max_tokens: 1024 });
+    messages.<span class="fn">push</span>({ role: <span class="str">'assistant'</span>, content: r.content });
+    <span class="kw">const</span> use = r.content.<span class="fn">find</span>(c =&gt; c.type === <span class="str">'tool_use'</span>);
+    <span class="kw">if</span> (!use) <span class="kw">return</span> r;    <span class="cm">// text reply — done</span>
+    <span class="kw">const</span> out = <span class="kw">await</span> <span class="fn">runTool</span>(use.name, use.input);
+    messages.<span class="fn">push</span>({ role: <span class="str">'user'</span>, content: [{ type: <span class="str">'tool_result'</span>, tool_use_id: use.id, content: <span class="fn">JSON.stringify</span>(out) }] });
+  }
+}</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p12">DAY 3</span><span class="date-tag">Sat Aug 29</span><span class="topic">n8n Workflows: Schedule + Webhook + AI Nodes + MySQL</span></div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>n8n official YouTube (getting started series); n8n docs "AI nodes".</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Build n8n workflows: (1) Daily 8am schedule &rarr; query MySQL for today's tasks &rarr; generate summary with Claude AI node &rarr; send email/webhook. (2) Webhook trigger from app &rarr; AI classifies task priority &rarr; update MySQL.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># n8n daily summary workflow (nodes)</span>
+[Schedule 8:00 AM]
+   &darr;
+[MySQL: SELECT tasks WHERE user_id=? AND due=TODAY]
+   &darr;
+[Claude AI: summarize + prioritize]
+   &darr;
+[Send Email / Webhook]</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p12">DAY 4</span><span class="date-tag">Sun Aug 30</span><span class="topic">Capstone: FocusTrack Pro &mdash; Backend + Frontend Integration</span></div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>Your own Phase 6 React code + Phase 7 Express API + Phase 9 MySQL + Claude API docs.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Wire up: React frontend (Task Tracker from Phase 6) &rarr; Express backend (Auth API from Phase 7) &rarr; MySQL (Student Records DB adapted) + Claude AI endpoint. Add an "AI Suggest" button that calls Claude to suggest next task based on context.</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm">// Express route calling Claude with SQL-RAG</span>
+app.<span class="fn">post</span>(<span class="str">'/ai/suggest'</span>, asyncHandler(<span class="kw">async</span> (req, res) =&gt; {
+  <span class="kw">const</span> ctx = <span class="kw">await</span> <span class="fn">query</span>(
+    <span class="str">'SELECT title, status FROM tasks WHERE user_id=? ORDER BY created DESC LIMIT 5'</span>,
+    [req.user.id]);
+  <span class="kw">const</span> r = <span class="kw">await</span> client.messages.<span class="fn">create</span>({
+    model, max_tokens: 300,
+    messages: [{ role: <span class="str">'user'</span>, content: `Given ${<span class="fn">JSON.stringify</span>(ctx)}, suggest the next best task.` }],
+  });
+  res.<span class="fn">json</span>({ suggestion: r.content[0].text });
+}));</div></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag bg-p12">DAY 5</span><span class="date-tag">Mon Aug 31</span><span class="topic">Final Polish, Docker Deploy, README, Portfolio Prep</span></div>
+      <div class="db-sec sec-read"><h5>Read / Watch</h5><p>GitHub portfolio best practices; "How to Write a Good README" article.</p></div>
+      <div class="db-sec sec-practice"><h5>How to Practice</h5><p>Deploy FocusTrack Pro: <code>docker-compose up</code> on EC2, frontend on Vercel, API on EC2. Write a great README (screenshots, tech stack, setup, architecture diagram). CELEBRATE &mdash; 50-day foundation COMPLETE!</p></div><div class="db-sec sec-code"><h5>Mini Code Snippet</h5><div class="mini-code"><span class="cm"># docker-compose.yml — full stack</span>
+services:
+  api:
+    build: .
+    ports: [<span class="str">"3000:3000"</span>]
+    depends_on: [db]
+    env_file: .env
+  db:
+    image: mysql:8
+    environment: { MYSQL_ROOT_PASSWORD: secret, MYSQL_DATABASE: focustrack }
+    volumes: [<span class="str">"db-data:/var/lib/mysql"</span>]
+volumes:
+  db-data:</div></div>
+    </div>
+
+    <div class="sec-lbl">YouTube + Docs</div>
+    <div class="yt"><span class="yt-b">YT</span><span>Anthropic YouTube (Build AI Agents with Claude): <code>https://www.youtube.com/@AnthropicAI</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>n8n official YouTube (Getting Started): <code>https://www.youtube.com/@n8n-io</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>RAG from Scratch (freeCodeCamp / LangChain playlists on YouTube)</span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>Claude Tool Use docs: <code>https://docs.anthropic.com/en/docs/build-with-claude/tool-use</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>n8n docs: <code>https://docs.n8n.io</code>  |  n8n AI nodes: <code>https://docs.n8n.io/advanced-ai/</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications:</strong> (1) DeepLearning.AI "AI Agents in LangGraph" (free audit) &mdash; conceptually same as Anthropic agents. (2) Anthropic "Claude API Fundamentals" &mdash; if launched by then, take it. (3) The <em>real</em> credential here is your GitHub: pinned FocusTrack Pro with a stellar README = beats most certs.</div>
+
+    <div class="sec-lbl">Practice Questions</div>
+    <div class="pq pq-p12"><span class="pn">Q1 &mdash;</span>Write a Claude API call with tool_use for a <code>create_task(title, priority, dueDate)</code> function. Show the full request and how you parse the tool_use response.</div>
+    <div class="pq pq-p12"><span class="pn">Q2 &mdash;</span>Implement an agent loop function: <code>runAgent(userMessage, tools, maxIterations=5)</code>. Handle the STOP condition when Claude returns a text response instead of tool_use.</div>
+    <div class="pq pq-p12"><span class="pn">Q3 &mdash;</span>Design an n8n workflow that: receives a webhook when a task is marked done &rarr; checks if user has 0 remaining tasks for today &rarr; sends a congratulations message via email. Draw the node graph.</div>
+    <div class="pq pq-p12"><span class="pn">Q4 &mdash;</span>Build a SQL-RAG function: <code>getRelevantContext(userQuery)</code> that does a FULLTEXT search on a <code>task_notes</code> table and returns the top 3 matching notes as a string to inject into a Claude prompt.</div>
+    <div class="pq pq-p12"><span class="pn">Q5 &mdash;</span>What is the difference between a ReAct agent and a simple tool-use agent? How would you implement a basic ReAct loop using the Claude API?</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Capstone: FocusTrack Pro</h4>
+        <ul class="plain">
+          <li><strong>Frontend:</strong> React + Tailwind (from Phase 6)</li>
+          <li><strong>Backend:</strong> Node.js + Express + MySQL (Phases 7-9)</li>
+          <li><strong>AI:</strong> Claude API with tool use (create_task, get_suggestions)</li>
+          <li><strong>Automation:</strong> n8n daily summary + priority classification</li>
+          <li><strong>Deploy:</strong> EC2 + Docker + Vercel frontend</li>
+          <li><strong>Auth:</strong> JWT from Phase 7</li>
+          <li><strong>Docs:</strong> Swagger at /api-docs</li>
+        </ul>
+      </div>
+      <div class="ibox">
+        <h4>Foundation Complete &mdash; Final Checklist</h4>
+        <ul class="check">
+          <li>FocusTrack Pro deployed and accessible</li>
+          <li>GitHub repo with 12 phase folders</li>
+          <li>Prompt Playbook (Phase 1)</li>
+          <li>CLAUDE.md set up for repo</li>
+          <li>Task Tracker React app (Phase 6)</li>
+          <li>Auth API with Swagger docs (Phase 7-8)</li>
+          <li>Student Records MySQL API (Phase 9)</li>
+          <li>System Design doc (Phase 10)</li>
+          <li>Docker + EC2 deployment (Phase 11)</li>
+          <li>FocusTrack Pro full-stack + AI (Phase 12)</li>
+          <li>GitHub profile polished with pinned repos</li>
+          <li>Ready for Part II: SAP Overview + ABAP institute (starts Sep 1, 2026)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a);color:#fff;border-radius:8px;padding:20px 24px;margin-top:16px;text-align:center;">
+      <div style="font-size:22px;font-weight:800;color:#38bdf8;margin-bottom:6px;">Foundation Complete!</div>
+      <div style="font-size:13px;color:#94a3b8;margin-bottom:4px;">49 study days &bull; Aug 31, 2026</div>
+      <div style="font-size:12px;color:#64748b;">Next: 1-week Buffer (Sep 1-7) &mdash; ship Capstones C &amp; D. Then Part II SAP Overview (Sep 8-17).</div>
+    </div>
+      <div class="proj-ideas"><h4>Mini Project Ideas &mdash; Phase 12</h4><ol>
+        <li><strong>FocusTrack Pro (Capstone)</strong> &mdash; React + Node + MySQL + Claude API tool use + n8n automation, deployed via Docker to EC2 + Vercel. AI Suggest + Daily Summary features. THIS is your portfolio centrepiece.</li>
+        <li><strong>Personal Research Agent</strong> &mdash; Node CLI: takes a topic, uses tools (web fetch, note write) in an agent loop with maxIterations=5, outputs a Markdown research brief. <em>(Full brief on next page &mdash; Capstone C.)</em></li>
+        <li><strong>SQL-RAG Q&amp;A</strong> &mdash; Small app: your task notes stored in MySQL; user asks a question; FULLTEXT retrieval top-3 &rarr; injected into Claude prompt &rarr; grounded answer with citations. <em>(Extended brief &mdash; Capstone D.)</em></li>
+      </ol></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== CAPSTONE C ========== -->
+<div id="capstone-c" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Agentic Capstone C</div>
+    <h1 style="color:#7c3aed;">Personal Research Agent &mdash; Multi-Tool CLI</h1>
+    <p class="sub">Uses Claude API + tool use + agent loop &bull; Target: buffer week + weekends</p>
+  </div>
+
+  <div class="goal-box" style="border-left:3px solid #7c3aed;background:#faf5ff;color:#4c1d95;">
+    <strong>Why this project?</strong> Phase 12 taught you the anatomy of an agent loop. Capstone C forces you to build a real one that <em>does useful work</em> from your terminal &mdash; picking tools, calling them, and stopping cleanly. It's the smallest possible interview showcase for "yes, I've built AI agents."
+  </div>
+
+  <div class="sec-lbl">The Project &mdash; "resx"</div>
+  <div class="ibox" style="border-left:3px solid #7c3aed;">
+    <h4 style="color:#4c1d95;">In one sentence</h4>
+    <p>A Node CLI: <code>resx "Explain SAP AI Core vs Azure OpenAI"</code>. The agent picks from tools (web fetch, notes read/write, code sandbox), loops with <code>maxIterations=5</code>, and writes a Markdown research brief with citations.</p>
+  </div>
+
+  <div class="sec-lbl">Required Capabilities</div>
+  <div class="two-col">
+    <div class="ibox">
+      <h4>Tools (3 minimum)</h4>
+      <ul class="plain">
+        <li><code>web_fetch(url)</code> &mdash; download a URL, return trimmed text</li>
+        <li><code>notes_write(path, content)</code> &mdash; persist to <code>./notes/</code></li>
+        <li><code>notes_search(query)</code> &mdash; grep across existing notes</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Agent Loop</h4>
+      <ul class="plain">
+        <li>maxIterations=5; halt on text-only response</li>
+        <li>Log every tool call + result to a run log</li>
+        <li>Cost + token counter printed at the end</li>
+        <li>Graceful error handling on tool failures</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Output</h4>
+      <ul class="plain">
+        <li>Markdown brief with H2 sections + inline citations <code>[1]</code>, <code>[2]</code></li>
+        <li>Sources list at bottom (URLs actually fetched)</li>
+        <li>Saved under <code>./briefs/{timestamp}-{slug}.md</code></li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>CLI Ergonomics</h4>
+      <ul class="plain">
+        <li><code>resx "topic"</code> = quick brief</li>
+        <li><code>resx --deep "topic"</code> = 10 iterations, more sources</li>
+        <li><code>resx list</code> = list past briefs</li>
+        <li>Pretty progress bar while iterations run</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-ideas">
+    <h4>Stretch Goals</h4>
+    <ol>
+      <li><strong>Prompt caching</strong> &mdash; enable ephemeral cache on the system prompt / tool defs; measure token savings.</li>
+      <li><strong>Streaming output</strong> &mdash; use <code>stream: true</code> so partial responses render live in the terminal.</li>
+      <li><strong>Local vector search</strong> &mdash; replace <code>notes_search</code> grep with a real embedding index (SQLite + sqlite-vec).</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========== CAPSTONE D ========== -->
+<div id="capstone-d" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Agentic Capstone D</div>
+    <h1 style="color:#be123c;">RAG Assistant + n8n Automations &mdash; Full Loop</h1>
+    <p class="sub">Uses Claude + vector search + n8n workflows &bull; Target: buffer week</p>
+  </div>
+
+  <div class="goal-box" style="border-left:3px solid #be123c;background:#fff1f2;color:#881337;">
+    <strong>Why this project?</strong> Capstone C proved you can build an agent. Capstone D proves you can plug one into a <em>system</em> &mdash; async pipelines, retrieval, human-in-the-loop workflows. This is the exact pattern SAP Joule custom skills use, so it doubles as a stepping-stone to Part III.
+  </div>
+
+  <div class="sec-lbl">The Project &mdash; "AskMyNotes"</div>
+  <div class="ibox" style="border-left:3px solid #be123c;">
+    <h4 style="color:#881337;">In one sentence</h4>
+    <p>A web app + n8n automation stack: you dump study notes into a folder; a workflow embeds and stores them; a chat UI lets you ask questions and get grounded answers with citations. Daily digests come via email.</p>
+  </div>
+
+  <div class="sec-lbl">Required Layers</div>
+  <div class="two-col">
+    <div class="ibox">
+      <h4>Ingestion Pipeline (n8n)</h4>
+      <ul class="plain">
+        <li>Trigger: file drop into <code>./inbox/</code> or a Google Drive folder</li>
+        <li>Chunk text (500 tokens with 50 overlap)</li>
+        <li>Embed each chunk (Voyage / OpenAI / Anthropic embedding)</li>
+        <li>Store in MySQL FULLTEXT + a vector table (sqlite-vec or pgvector)</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>RAG API (Express)</h4>
+      <ul class="plain">
+        <li><code>POST /ask</code> &mdash; embed question &rarr; vector search top-5 &rarr; inject as context &rarr; Claude</li>
+        <li>Cite chunks by source file + line range</li>
+        <li>Rate-limited + JWT-protected</li>
+        <li>Log every Q/A pair for later evaluation</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Chat UI (React)</h4>
+      <ul class="plain">
+        <li>Chat pane with streaming responses</li>
+        <li>Citations rendered as clickable footnotes</li>
+        <li>"Show me source" opens the referenced chunk</li>
+        <li>Feedback thumbs up/down per answer</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Daily Automation (n8n)</h4>
+      <ul class="plain">
+        <li>7 AM cron: query MySQL for today's roadmap topic</li>
+        <li>Ask the RAG for a 5-bullet summary of what you last studied</li>
+        <li>Email it to yourself (Nodemailer) with a "study now" link</li>
+        <li>Log every run for the "did I open the mail?" tracker</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="proj-ideas">
+    <h4>Stretch Goals</h4>
+    <ol>
+      <li><strong>Multi-tenant</strong> &mdash; make it work for you + a friend, each with their own vector namespace and API key.</li>
+      <li><strong>SAP-flavour port</strong> &mdash; in Part III, port the vector table to HANA Vector Engine and wrap the ask endpoint as a Joule custom skill. Instant SAP portfolio piece.</li>
+      <li><strong>Evaluation harness</strong> &mdash; a set of 20 golden Q/A pairs; nightly cron re-runs them and reports drift.</li>
+    </ol>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:8px;padding:18px 22px;margin-top:16px;text-align:center;">
+    <div style="font-size:18px;font-weight:800;color:#f472b6;margin-bottom:4px;">You now have 4 portfolio-grade capstones.</div>
+    <div style="font-size:12px;color:#94a3b8;">A (auth-guarded app), B (scaled + observed), C (agent CLI), D (RAG + automations). Any one of these beats a certificate.</div>
+  </div>
+</div>
+
+</body>
+</html>

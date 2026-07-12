@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikhil Vanama - Career Roadmap 2026 - Part II: SAP Overview + ABAP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f0f4f8; color: #1e293b; font-size: 13.5px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; }
+@page { size: A4; margin: 10mm 9mm 12mm 9mm; }
+@media print {
+  body { background: #fff; }
+  .page { box-shadow: none; border: none; page-break-after: always; }
+  .goal-box, .buffer-box, .pq, .cert, .project-banner { page-break-inside: avoid; }
+  .sec-lbl, .wk-topics h4 { page-break-after: avoid; }
+  table { page-break-inside: auto; }
+  tr { page-break-inside: avoid; page-break-after: auto; }
+}
+.page { background: #fff; max-width: 794px; margin: 0 auto 16px; padding: 18px 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 6px; }
+.page-title { margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #e2e8f0; }
+.page-title h1 { font-size: 20px; font-weight: 800; color: #0f172a; }
+.page-title .sub { font-size: 12.5px; color: #64748b; margin-top: 3px; }
+.eyebrow { font-size: 10px; color: #94a3b8; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 12px; }
+thead th { background: #1e293b; color: #e2e8f0; padding: 7px 9px; text-align: left; font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+tbody td { padding: 7px 9px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+tbody tr:nth-child(even) td { background: #f8fafc; }
+.sec-lbl { font-size: 10px; font-weight: 700; color: #64748b; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-bottom: 10px; margin-top: 16px; }
+.wk-hdr { background: linear-gradient(90deg, #065f46 0%, #047857 100%); border-radius: 6px 6px 0 0; padding: 14px 18px; color: #fff; }
+.wk-hdr .wn { font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; }
+.wk-hdr h2 { font-size: 17px; font-weight: 800; color: #fff; margin: 2px 0 0; }
+.wk-hdr .wm { font-size: 11.5px; color: rgba(255,255,255,0.75); margin-top: 3px; }
+.wk-body { border: 1px solid #d1fae5; border-top: none; border-radius: 0 0 6px 6px; padding: 12px 16px; margin-bottom: 16px; }
+.goal-box { border-left: 3px solid #059669; padding: 10px 14px; background: #f0fdf4; border-radius: 0 4px 4px 0; margin-bottom: 14px; font-size: 12.5px; color: #14532d; line-height: 1.65; }
+ul.plain { list-style: none; }
+ul.plain li { padding: 2px 0 2px 14px; position: relative; font-size: 12.5px; color: #334155; }
+ul.plain li::before { content: "-"; position: absolute; left: 0; color: #94a3b8; }
+ul.check { list-style: none; }
+ul.check li { padding: 3px 0 3px 18px; position: relative; font-size: 12px; color: #334155; }
+ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #94a3b8; top: 5px; }
+.yt { display: flex; gap: 8px; margin-bottom: 6px; align-items: flex-start; font-size: 12px; }
+.yt-b { background: #fecaca; color: #991b1b; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
+.pq { border: 1px solid #e2e8f0; border-left: 3px solid #059669; border-radius: 4px; padding: 8px 12px; margin-bottom: 7px; font-size: 12px; color: #334155; }
+.pq .pn { font-size: 10.5px; font-weight: 700; color: #64748b; display: block; margin-bottom: 2px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+.ibox { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 12px 14px; }
+.ibox h4 { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; margin-bottom: 8px; }
+.ibox p, .ibox li { font-size: 12px; color: #334155; }
+.buffer-box { background: #fef9c3; border: 2px solid #eab308; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; }
+.buffer-box h3 { color: #713f12; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.buffer-box p, .buffer-box li { font-size: 12.5px; color: #78350f; line-height:1.6; }
+.module-tag { display: inline-block; background: #d1fae5; color: #065f46; font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-right: 4px; margin-bottom: 3px; }
+.wk-topics h4 { font-size: 11.5px; font-weight: 700; color: #065f46; margin-top: 8px; margin-bottom: 3px; }
+.wk-topics ul { padding-left: 16px; list-style: disc; margin:0; }
+.wk-topics ul li { font-size: 11.5px; color: #334155; margin-bottom: 1px; line-height:1.5; }
+.wk-topics p { font-size: 11.5px; color: #334155; margin-bottom: 3px; }
+.project-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); border-radius: 6px; padding: 14px 18px; margin: 16px 0; color: #fff; }
+.project-banner h3 { font-size: 13px; color: #38bdf8; margin-bottom: 4px; }
+.project-banner p { font-size: 12px; color: #94a3b8; }
+.cert { background: linear-gradient(135deg,#fdf4ff,#fae8ff); border:1px solid #e9d5ff; border-radius:6px; padding:10px 14px; font-size:11.5px; color:#6b21a8; margin-top:12px; font-weight:500; }
+.phase-hdr { background: linear-gradient(90deg, #0891b2 0%, #0e7490 100%); border-radius: 6px 6px 0 0; padding: 14px 18px; color: #fff; }
+.phase-hdr .wn { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
+.phase-hdr h2 { font-size: 16px; font-weight: 800; color: #fff; margin: 2px 0 0; }
+.phase-hdr .wm { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 3px; }
+.phase-body { border: 1px solid #cffafe; border-top: none; border-radius: 0 0 6px 6px; padding: 18px; margin-bottom: 24px; }
+.phase-goal { border-left: 3px solid #0891b2; padding: 10px 14px; background: #ecfeff; border-radius: 0 4px 4px 0; margin-bottom: 14px; font-size: 12px; color: #164e63; line-height: 1.65; }
+</style>
+</head>
+<body>
+
+<!-- ========== BUFFER WEEK PAGE ========== -->
+<div id="buffer-week" class="page">
+  <div class="page-title">
+    <div class="eyebrow">Between Part I and Part II</div>
+    <h1 style="color:#b45309;">Buffer Week &mdash; Sep 1-7, 2026</h1>
+    <p class="sub">A full week after the 50-day foundation before touching anything SAP-related. Wrap Phase 12 capstone, revise, breathe.</p>
+  </div>
+
+  <div class="buffer-box">
+    <h3>Why this week exists</h3>
+    <p>The last module of Part I (Phase 12: Agentic AI + n8n + FocusTrack Pro Capstone) ends Aug 31. Trying to jump straight into SAP on Sep 1 leaves no room to <em>finish</em> the capstone properly or revise. This buffer week is your safety net &mdash; it absorbs any slippage from Part I and prepares you mentally for the SAP world.</p>
+  </div>
+
+  <div class="sec-lbl">What to do this week</div>
+  <div class="two-col">
+    <div class="ibox">
+      <h4>Wrap Phase 12 Capstone</h4>
+      <ul class="plain">
+        <li>Finish any incomplete features of FocusTrack Pro</li>
+        <li>Polish the README + record a 2-min demo video</li>
+        <li>Push all Part I code to GitHub (all 12 phases)</li>
+        <li>Deploy capstone (Vercel/Render + AWS EC2)</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Revise Part I Highlights</h4>
+      <ul class="plain">
+        <li>Advanced JS + OOP (Phase 5) &mdash; must be sharp</li>
+        <li>Node + Express (Phase 7) &mdash; foundation for CAP later</li>
+        <li>MySQL + Repository pattern (Phase 9)</li>
+        <li>System Design (Phase 10) &mdash; interview-critical</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Prep for SAP</h4>
+      <ul class="plain">
+        <li>Shortlist 2-3 ABAP institutes (Future Labs, Peers, Genius Corner)</li>
+        <li>Compare fees, batch timings (must fit 12&ndash;9 PM office)</li>
+        <li>Ask on r/SAP + LinkedIn SAP groups for reviews</li>
+        <li>Sign up for openSAP (free) &mdash; browse the catalog</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>Rest &amp; Reset</h4>
+      <ul class="plain">
+        <li>1 full break day &mdash; no laptop, no study (Sunday)</li>
+        <li>Update daily organiser app with Sep&ndash;Nov roadmap</li>
+        <li>Sleep 8 hrs/night &mdash; institute weeks will be intense</li>
+        <li>Enjoy this pause. You've earned it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ibox no-break" style="margin-top:14px;background:#fef3c7;border-color:#eab308;">
+    <h4 style="color:#78350f;">Buffer Rule</h4>
+    <p style="color:#78350f;">This week is NOT for starting SAP topics. If Phase 12 is already done and revision is complete, use the extra days to sleep, hang out with family, or work on SATA maintenance. Starting SAP early will burn you out before Nov even arrives. Trust the buffer.</p>
+  </div>
+</div>
+
+<!-- ========== PART II OVERVIEW ========== -->
+<div id="part2-overview" class="page" style="page-break-before:always;">
+  <div class="page-title">
+    <div class="eyebrow">Part II of IV</div>
+    <h1>SAP Overview + ABAP on HANA (Institute)</h1>
+    <p class="sub">Sep 8, 2026 &rarr; institute wrap (end Nov / mid Dec) &bull; 10 days SAP self-study + institute-paced ABAP course</p>
+  </div>
+
+  <div class="goal-box">
+    Part II has two halves. <strong>Sep 8&ndash;17</strong> is a self-paced SAP <em>orientation</em> &mdash; get the vocabulary, module landscape, and career map into your head before joining an institute. It also gives you time to <strong>shortlist the ABAP institute, arrange fees, and complete enrolment</strong>. <strong>Sep 18 onwards</strong> is the actual ABAP institute course (Future Labs or equivalent, 40 modules, 60 hours). SAPUI5 basics are covered inside the institute curriculum so no separate UI5 phase is needed.
+  </div>
+
+  <div class="sec-lbl">Master Timeline</div>
+  <table>
+    <thead>
+      <tr><th>Block</th><th>Dates</th><th>What Happens</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Phase A</strong></td><td>Sep 8-17 (10 days)</td><td><strong>SAP Overview &amp; Ecosystem</strong> &mdash; self-paced. No coding. Get oriented: SAP company history, modules, S/4HANA vs ECC, cloud vs on-prem, Fiori/UI5 tour, career paths. Also: shortlist institute, sort fees, enrol.</td></tr>
+      <tr><td><strong>Phase B</strong></td><td>Sep 18 &rarr; end Nov / mid Dec (institute-paced)</td><td><strong>ABAP Institute Course</strong> &mdash; 40 modules, 60 hours. <em>Do not treat the module dates below as fixed &mdash; institute pace decides.</em> Vendor Hub side project runs alongside.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="buffer-box">
+    <h3>Important: Institute Pace &gt; Roadmap Pace</h3>
+    <p>You have <strong>not joined the institute yet</strong>. Their batch schedule, homework load, and topic sequence will determine your actual pace &mdash; not this document. So the week-by-week module map below is a <strong>reference outline</strong>, not a daily commitment. Two things follow from that:</p>
+    <ul style="padding-left:16px;margin-top:6px;">
+      <li>Do NOT plan day-by-day activities in your organiser app for institute weeks &mdash; wait until you have the batch schedule.</li>
+      <li>Course completion window: <strong>end Nov to mid Dec</strong> depending on institute intensity.</li>
+      <li>Part III (SAP BTP + AI self-pace) starts <strong>Dec 1 regardless</strong> &mdash; some overlap with the tail of ABAP is fine and expected.</li>
+    </ul>
+  </div>
+
+  <div class="sec-lbl">ABAP Course Module Outline (institute-paced, reference only)</div>
+  <table>
+    <thead>
+      <tr><th>Segment</th><th>Approx Timing</th><th>Modules</th><th>Focus</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Orientation</td><td>First 2-3 days after joining</td><td>Institute joining</td><td>Enrolment, system access, IDE (Eclipse ADT / SE38) setup, first Hello World</td></tr>
+      <tr><td><strong>Segment 1</strong></td><td>~Week 1</td><td>M1-M4</td><td>ABAP Workbench, SE38/ADT, Data Types, Control Flow, Field Strings</td></tr>
+      <tr><td><strong>Segment 2</strong></td><td>~Week 2</td><td>M5-M8</td><td>ABAP Dictionary: Tables, Structures, Views, Data Elements, Domains, Packages</td></tr>
+      <tr><td><strong>Segment 3</strong></td><td>~Week 3</td><td>M9-M12</td><td>Search Helps, Lock Objects, Open SQL SELECT / JOINs / Subqueries</td></tr>
+      <tr><td><strong>Segment 4</strong></td><td>~Week 4</td><td>M13-M16</td><td>Internal Tables (Standard/Sorted/Hashed), Debugging, Selection Screens</td></tr>
+      <tr><td><strong>Segment 5</strong></td><td>~Week 5</td><td>M17-M20</td><td>Modularization: Subroutines, Function Modules, Function Groups, Includes, Packages</td></tr>
+      <tr><td><strong>Segment 6</strong></td><td>~Week 6</td><td>M21-M24</td><td>Reports: Classical, Interactive, ALV (CL_SALV_TABLE)</td></tr>
+      <tr><td><strong>Segment 7</strong></td><td>~Week 7</td><td>M25-M28</td><td>Dialog / Module Pool: Screen Painter, PBO/PAI, POV/POH, Tab Strips</td></tr>
+      <tr><td><strong>Segment 8</strong></td><td>~Week 8</td><td>M29-M31</td><td>OO ABAP: Classes, Inheritance, Polymorphism, Interfaces, Events</td></tr>
+      <tr><td><strong>Segment 9</strong></td><td>~Week 9</td><td>M32-M34</td><td>BDC (Recording, Call Transaction, Session Method), LSMW</td></tr>
+      <tr><td><strong>Segment 10</strong></td><td>~Week 10</td><td>M35-M37</td><td>SAP Scripts, Smart Forms, RFC, ALE, IDocs, EDI</td></tr>
+      <tr><td><strong>Segment 11</strong></td><td>~Week 11</td><td>M38-M39 + UI5 intro</td><td>BAPIs, User Exits, BADIs, Enhancement Framework, CTS + <strong>SAPUI5 basics</strong> (institute-taught)</td></tr>
+      <tr><td><strong>Wrap</strong></td><td>Final week</td><td>M40</td><td>ABAP on HANA &mdash; CDS Views, AMDP, ADBC, Code-to-Data. Vendor Hub demo.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="project-banner">
+    <h3>Side Project: Vendor Hub (runs all 12 weeks)</h3>
+    <p>A Vendor Management System in ABAP. Each week adds a module: Wk 1 basic report &rarr; Wk 2 custom table &rarr; Wk 4 selection screen &rarr; Wk 6 ALV &rarr; Wk 7 dialog app &rarr; Wk 8 OO refactor &rarr; Wk 9 BDC upload &rarr; Wk 11 Fiori/UI5 wrapper &rarr; Wrap: HANA CDS view. By Nov 30 you have a complete, demo-able SAP application.</p>
+  </div>
+
+  <div class="two-col" style="margin-top:16px;">
+    <div class="ibox">
+      <h4>Daily Schedule (Weekdays) &mdash; Institute Phase</h4>
+      <ul class="plain">
+        <li>8:45 &ndash; 11:20 AM &mdash; SAP theory + brochure reading + practice on SAP system</li>
+        <li>12:00 &ndash; 9:00 PM &mdash; Office (Mediacle)</li>
+        <li>10:00 &ndash; 11:15 PM &mdash; Vendor Hub side project OR institute homework</li>
+        <li><strong>Note:</strong> Institute may schedule Sat/Sun classes &mdash; that replaces your usual weekend study block on those days.</li>
+      </ul>
+    </div>
+    <div class="ibox">
+      <h4>SAP System Access</h4>
+      <ul class="plain">
+        <li>SAP ABAP Developer Edition (free download from SAP)</li>
+        <li>OR: SAP BTP Free Trial &mdash; ABAP Cloud Environment</li>
+        <li>IDE: Eclipse ADT (preferred) or SAP GUI (SE38/SE80)</li>
+        <li>Institute usually provides system credentials for a live SAP server</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PHASE A: SAP OVERVIEW (SEP 8-17) ========== -->
+<div id="phase-A" class="page" style="page-break-before:always;">
+  <div class="phase-hdr">
+    <div class="wn">Phase A of Part II &mdash; 10 Days</div>
+    <h2>SAP Overview &amp; Ecosystem Orientation</h2>
+    <div class="wm">Sep 8-17, 2026 &bull; Self-study &bull; No coding &bull; Also: shortlist ABAP institute</div>
+  </div>
+  <div class="phase-body">
+    <div class="phase-goal">
+      <strong>What is this?</strong> A gentle, no-code orientation to the SAP world. Company, product landscape, ERP concepts, modules, technology stack, and where an ABAP + BTP + AI engineer fits in it.<br><br>
+      <strong>Why should you learn this?</strong> When you walk into the institute on Day 1, the trainer will assume you know what "S/4HANA", "Fiori", "FI/CO", and "GUI vs Web IDE" mean. Learning these words <em>before</em> the course lets you focus on ABAP itself instead of context. Bonus: the buffer removes stress from arranging fees + enrolment.<br><br>
+      <strong>Topics covered:</strong> SAP history &amp; company; ERP fundamentals; SAP modules (FI, CO, MM, SD, PP, HR, etc.); S/4HANA vs ECC; Cloud vs on-prem; SAP HANA (in-memory DB); Fiori + UI5 tour; ABAP developer career paths; SAP certifications map
+    </div>
+
+    <div class="sec-lbl">Day-by-Day &mdash; Starting From Pure Basics</div>
+    <table>
+      <thead><tr><th>Day</th><th>Date</th><th>Topic</th><th>What to Watch / Read</th><th>What to Do</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Day 1</td><td>Tue Sep 8</td>
+          <td><strong>What is SAP?</strong><br>• SAP = Systems, Applications &amp; Products in Data Processing<br>• German company founded 1972 by ex-IBM engineers<br>• #1 ERP software vendor globally<br>• Runs 77% of the world's transaction revenue</td>
+          <td>YouTube: "What is SAP?" &mdash; SimpliLearn: <code>https://youtu.be/YKD1oEcNvpM</code>. Also SAP official "SAP at a Glance": <code>https://www.sap.com/about/company.html</code></td>
+          <td>Write 1-page notes: SAP history, top products (S/4HANA, SuccessFactors, Ariba, Concur, Fieldglass), customer segments.</td>
+        </tr>
+        <tr>
+          <td>Day 2</td><td>Wed Sep 9</td>
+          <td><strong>What is ERP?</strong><br>• Enterprise Resource Planning = one system for finance + HR + supply chain + sales<br>• Before ERP: separate systems, painful integrations<br>• Modules talk to each other (SD sale &rarr; FI journal entry auto-created)</td>
+          <td>"ERP in 100 Seconds" (search Fireship on YouTube); Wikipedia "Enterprise resource planning"</td>
+          <td>Draw diagram: 5 core business processes (Order-to-Cash, Procure-to-Pay, Hire-to-Retire, Plan-to-Produce, Record-to-Report). Note which SAP modules handle each.</td>
+        </tr>
+        <tr>
+          <td>Day 3</td><td>Thu Sep 10</td>
+          <td><strong>SAP Modules Landscape</strong><br>• Functional: FI (Finance), CO (Controlling), MM (Materials Mgmt), SD (Sales &amp; Distribution), PP (Prod Planning), HR/HCM, PM (Plant Maintenance), QM (Quality)<br>• Technical: ABAP, BASIS, BW/BI, Security, PI/PO/CPI (integration), Fiori/UI5</td>
+          <td>YouTube: "SAP Modules Overview" search recent 2024/2025 tutorials on ZaranTech or SimpliLearn channels</td>
+          <td>Make a 2-column table: module name + one-line "what it does". You'll refer back to this all through the ABAP course.</td>
+        </tr>
+        <tr>
+          <td>Day 4</td><td>Fri Sep 11</td>
+          <td><strong>S/4HANA vs ECC (R/3)</strong><br>• R/3 = old client-server era (1992, still runs at many companies as ECC 6.0)<br>• S/4HANA = new (2015) &mdash; runs only on HANA in-memory DB. Fiori-first UI. Simplified data model<br>• 2027 deadline: SAP ends mainstream support for ECC &mdash; huge migration wave</td>
+          <td>"S/4HANA vs ECC" &mdash; search SAP official YouTube; blog: <code>https://blogs.sap.com/</code> tag "S/4HANA vs ECC"</td>
+          <td>Write: 5 bullet points on why S/4HANA matters for your career (the 2027 migration deadline creates job demand).</td>
+        </tr>
+        <tr>
+          <td>Day 5</td><td>Sat Sep 12</td>
+          <td><strong>SAP HANA (In-Memory Database)</strong><br>• Traditional DB: stores rows on disk, reads to RAM as needed<br>• HANA: stores columns in RAM, orders of magnitude faster for analytics<br>• "Code-to-data": push logic into DB instead of pulling data to ABAP<br>• Row store vs column store; multi-model (SQL + JSON + graph + spatial)</td>
+          <td>SAP HANA Academy on YouTube: <code>https://www.youtube.com/@saphanaacademy</code>; SAP HANA overview docs</td>
+          <td>Notes: 1 page on HANA architecture. Understand column store &mdash; why it's fast for analytics. You'll see this again in ABAP Week 12 (CDS + AMDP).</td>
+        </tr>
+        <tr>
+          <td>Day 6</td><td>Sun Sep 13</td>
+          <td><strong>Cloud vs On-Prem &bull; SAP BTP</strong><br>• On-prem = customer's own data centre. Cloud = SAP hosts it<br>• Hybrid = mix of both<br>• BTP = Business Technology Platform. The "cloud PaaS" side of SAP<br>• BTP hosts: your custom apps, integrations, AI models, extensions</td>
+          <td>SAP BTP overview: <code>https://www.sap.com/products/technology-platform.html</code>; YouTube "What is SAP BTP" search</td>
+          <td>Notes: what runs on-prem (S/4 core, ABAP) vs what runs on BTP (Fiori launchpad, Joule AI, CAP apps). This preps you for Part III.</td>
+        </tr>
+        <tr>
+          <td>Day 7</td><td>Mon Sep 14</td>
+          <td><strong>Fiori &amp; SAPUI5 Tour</strong><br>• Old UI: SAP GUI (grey Windows client, keyboard-driven)<br>• New UI: Fiori = design language + set of pre-built apps<br>• SAPUI5 = JavaScript framework Fiori uses (like React but SAP-specific)<br>• Fiori launchpad = home page of tiles</td>
+          <td>SAP Fiori demo: <code>https://experience.sap.com/fiori-design/</code>; YouTube "SAP Fiori Introduction" search recent</td>
+          <td>Open the SAP Fiori design demo site. Click through a few apps &mdash; notice the visual patterns. You'll build UI5 apps in Institute Week 11.</td>
+        </tr>
+        <tr>
+          <td>Day 8</td><td>Tue Sep 15</td>
+          <td><strong>ABAP Developer Career Paths</strong><br>• Traditional ABAP dev (reports, dialog, enhancements)<br>• ABAP + Fiori/UI5 (full stack SAP)<br>• ABAP on HANA (CDS, AMDP)<br>• BTP developer (CAP + Fiori + AI)<br>• Functional consultant + ABAP crossover<br>• Freelance vs India Big-4 vs SAP Labs vs product companies</td>
+          <td>Search LinkedIn for "SAP ABAP Developer" JDs. Read 5-10 postings to spot common skill combos and salary bands.</td>
+          <td>Write 1-page: your 5-year SAP career map. Where do you want to be by 2030? (Aligned with your 2027 goal.)</td>
+        </tr>
+        <tr>
+          <td>Day 9</td><td>Wed Sep 16</td>
+          <td><strong>SAP Certifications Map</strong><br>• SAP Certified Development Associate &mdash; ABAP with SAP NetWeaver (C_TAW12_750)<br>• SAP Certified Development Associate &mdash; ABAP on HANA 2.0 (C_HANADEV_18)<br>• SAP Certified Application Associate &mdash; SAP Fiori Application Developer<br>• SAP Certified Development Associate &mdash; BTP Extension Developer<br>• openSAP courses (free) for BTP + AI</td>
+          <td>SAP certification catalog: <code>https://training.sap.com/certification</code>. Note: certs cost ₹40-50K each in India &mdash; plan for 1-2 in 2027.</td>
+          <td>Bookmark 2 certifications you plan to attempt after landing job. Free openSAP courses: sign up now for "ABAP Development for SAP HANA".</td>
+        </tr>
+        <tr>
+          <td>Day 10</td><td>Thu Sep 17</td>
+          <td><strong>Institute Enrolment Day</strong><br>• Compare 2-3 institutes (Future Labs, Peers, Genius Corner, ZaranTech)<br>• Curriculum overlap? Fees? Trainer credentials? System access?<br>• Batch timings that fit your office 12-9 PM schedule<br>• Payment mode &mdash; lump sum vs EMI</td>
+          <td>Institute websites; ask on r/SAP + LinkedIn SAP groups for reviews</td>
+          <td>Enrol in chosen institute. Get system access credentials. Install SAP GUI + Eclipse ADT. Ready for Sep 18 institute start.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sec-lbl">YouTube + Docs (bookmark these for the whole course)</div>
+    <div class="yt"><span class="yt-b">YT</span><span>SAP official: <code>https://www.youtube.com/@SAP</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>SAP Learning: <code>https://www.youtube.com/@SAPLearning</code></span></div>
+    <div class="yt"><span class="yt-b">YT</span><span>SAP HANA Academy: <code>https://www.youtube.com/@saphanaacademy</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>SAP Help Portal (bookmark): <code>https://help.sap.com</code></span></div>
+    <div class="yt"><span class="yt-b">DOCS</span><span>SAP Developers hub (tutorials): <code>https://developers.sap.com</code></span></div>
+
+    <div class="cert"><strong>Recommended certifications (free, do NOW):</strong> (1) openSAP: "ABAP Development for SAP HANA" (free, self-paced, course badge). (2) openSAP: "Fiori for SAP S/4HANA" (free). Both count as SAP-verified learning on your resume.</div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="ibox">
+        <h4>Deliverables Checklist</h4>
+        <ul class="check">
+          <li>1-page SAP overview notes (Day 1)</li>
+          <li>ERP process diagram (Day 2)</li>
+          <li>SAP modules table (Day 3)</li>
+          <li>S/4HANA vs ECC note (Day 4)</li>
+          <li>HANA architecture 1-pager (Day 5)</li>
+          <li>Cloud/BTP notes (Day 6)</li>
+          <li>Fiori/UI5 tour screenshots (Day 7)</li>
+          <li>Career map 1-pager (Day 8)</li>
+          <li>Cert plan bookmarks (Day 9)</li>
+          <li>Institute enrolment DONE (Day 10)</li>
+        </ul>
+      </div>
+      <div class="ibox">
+        <h4>Institute Shortlist Criteria</h4>
+        <ul class="plain">
+          <li>Curriculum covers M1-M40 + HANA CDS + AMDP</li>
+          <li>Trainer has 5+ years SAP experience</li>
+          <li>Live SAP system access provided</li>
+          <li>Batch timing fits your 8:45-11:20 AM slot OR evening/weekend</li>
+          <li>Placement support (interview practice, resume review)</li>
+          <li>Recorded sessions available for revision</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ABAP ORIENTATION (institute joining) ========== -->
+<div id="segment-orientation" class="page" style="page-break-before:always;">
+  <div class="wk-hdr">
+    <div class="wn">Institute Orientation</div>
+    <h2>ABAP Course Kickoff</h2>
+    <div class="wm">Approx Sep 18 onwards (whenever your batch begins) &bull; Enrolment complete, system access ready</div>
+  </div>
+  <div class="wk-body">
+    <div class="goal-box">Institute joining formalities, SAP system credentials, IDE setup, first Hello World. Follow the institute's onboarding &mdash; not a rigid script from this doc. Once your batch starts, use the sections below only as a <em>reference outline</em> for what should be covered by the time you finish each segment.</div>
+    <ul class="plain">
+      <li><strong>Day of joining:</strong> Collect materials, system credentials, batch schedule. Install SAP GUI + Eclipse ADT.</li>
+      <li><strong>Within first 2-3 days:</strong> Log into SAP system, run SE80 Object Navigator, create a Z-namespace, write your first "Hello World" ABAP program.</li>
+      <li><strong>First weekend after joining:</strong> Explore SE38 / SE11 / SE80 / SE84. Set up your local Vendor Hub notes folder + GitHub-style ABAP repo.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== SEGMENT 1 ========== -->
+<div id="segment-1" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 1 of 11 &bull; ~Week 1</div>
+  <h2>ABAP Workbench &amp; Language Basics</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M1&ndash;M4</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Get comfortable in the SAP ABAP development environment. Learn core language syntax: data types, control flow, field strings. Write your first programs.</div>
+
+  <div class="sec-lbl">Brochure Modules Covered</div>
+  <div>
+    <span class="module-tag">M1: Intro to SAP &amp; ABAP</span>
+    <span class="module-tag">M2: ABAP Workbench (SE38, SE80)</span>
+    <span class="module-tag">M3: Data Types &amp; Control Flow</span>
+    <span class="module-tag">M4: Field Strings (Structures)</span>
+  </div>
+
+  <div class="wk-topics">
+    <h4>Topics to cover by end of segment</h4>
+    <ul>
+      <li>SAP 3-tier architecture, R/3 layers, ABAP overview</li>
+      <li>SE38/ADT setup, first program, <code>WRITE</code> statement, SE80 Object Navigator</li>
+      <li>Elementary data types: I, F, P, C, N, D, T, X, STRING &mdash; PACKED and FLOAT precision</li>
+      <li>Control flow: <code>IF/ELSEIF/ELSE</code>, <code>CASE</code>, <code>DO</code>, <code>WHILE</code>, <code>LOOP</code></li>
+      <li>Field Strings (Structures): <code>TYPES</code>, <code>DATA</code>, <code>BEGIN OF...END OF</code>, nested structures</li>
+      <li>SY system variables (<code>SY-SUBRC</code>, <code>SY-UNAME</code>, <code>SY-DATUM</code>), message classes, variants</li>
+    </ul>
+    <h4>Practice targets (do at institute pace, whenever these topics come up)</h4>
+    <ul>
+      <li>Write "Hello World" ABAP program; explore SE80 Object Navigator</li>
+      <li>Declare all data types, assign values, WRITE each</li>
+      <li>FizzBuzz in ABAP; factorial using DO; prime checker using WHILE</li>
+      <li>Define VENDOR structure (id, name, city, category); WRITE all fields</li>
+      <li>Use SY-SUBRC, SY-UNAME, SY-DATUM in a small report; create a variant</li>
+    </ul>
+  </div>
+
+  <div class="sec-lbl">YouTube + Docs</div>
+  <div class="yt"><span class="yt-b">YT</span><span>SAP Training &amp; Adoption "ABAP Tutorial for Beginners" on <code>https://www.youtube.com/@SAPLearning</code></span></div>
+  <div class="yt"><span class="yt-b">YT</span><span>ZaranTech ABAP series (search YouTube for recent 2024/2025)</span></div>
+  <div class="yt"><span class="yt-b">DOCS</span><span>Official ABAP Language docs: <code>https://help.sap.com/doc/abapdocu_latest_index_htm</code></span></div>
+
+  <div class="sec-lbl">Practice Questions</div>
+  <div class="pq"><span class="pn">Q1 &mdash;</span>What are the 4 elementary numeric types in ABAP? What is max precision of type P?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Write ABAP that reads SY-DATUM and outputs day of week in words.</div>
+  <div class="pq"><span class="pn">Q3 &mdash;</span>Define a nested structure: address (street, city, zip) inside a vendor structure. Assign and display.</div>
+
+  <div class="two-col" style="margin-top:12px;">
+    <div class="ibox"><h4>Vendor Hub Week 1</h4><ul class="plain"><li>Program ZVH_REPORT_W1 in SE38</li><li>VENDOR structure (id, name, city, type)</li><li>Hard-code 3 vendors, WRITE each field</li><li>Message class ZVH_MSG</li></ul></div>
+    <div class="ibox"><h4>Deliverables</h4><ul class="check"><li>M1-M4 notes</li><li>Practice programs in SAP system</li><li>Vendor Hub Week 1 program running</li><li>SE38 / ADT IDE set up</li></ul></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 2 ========== -->
+<div id="segment-2" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 2 of 11 &bull; ~Week 2</div>
+  <h2>ABAP Dictionary (DDIC)</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M5&ndash;M8</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Master the ABAP Data Dictionary &mdash; backbone of all SAP data storage. Learn transparent tables, structures, views, data elements, domains, packages.</div>
+
+  <div class="sec-lbl">Brochure Modules Covered</div>
+  <span class="module-tag">M5: Transparent Tables</span>
+  <span class="module-tag">M6: Structures &amp; Views</span>
+  <span class="module-tag">M7: Data Elements &amp; Domains</span>
+  <span class="module-tag">M8: Packages &amp; Object Navigator</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover by end of segment</h4>
+    <ul>
+      <li>DDIC overview: Transparent vs Pooled vs Cluster tables &mdash; when SAP uses each</li>
+      <li>Custom Transparent Table: fields, key fields, technical settings</li>
+      <li>Structures, Database Views, Projection Views, Maintenance Views</li>
+      <li>Data Elements, Domains, value ranges, fixed values</li>
+      <li>Packages, Transport Requests, Object Navigator (SE80)</li>
+      <li>Search Helps (SE11), Table Maintenance Generator (SE54)</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Browse standard tables MARA, MARC, KNA1 in SE11</li>
+      <li>Create <code>ZVHVENDOR</code> (key MANDT+VENDOR_ID; fields NAME, CITY, CATEGORY, STATUS); activate</li>
+      <li>Create database view + maintenance view (SM30)</li>
+      <li>Create domain <code>ZVHCAT</code> (ELEC/CLOTH/FOOD), data element <code>ZVH_CATEGORY</code>, use in table</li>
+      <li>Package <code>ZVHPKG</code> + transport request</li>
+      <li>Elementary search help attached to VENDOR_ID</li>
+    </ul>
+  </div>
+
+  <div class="sec-lbl">Practice Questions</div>
+  <div class="pq"><span class="pn">Q1 &mdash;</span>What is the difference between a Transparent Table and a Cluster Table? When does SAP use each?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Explain the relationship: Domain &rarr; Data Element &rarr; Table Field. Why is this separation useful?</div>
+  <div class="pq"><span class="pn">Q3 &mdash;</span>Write a WHERE clause query on ZVHVENDOR by CATEGORY + STATUS. What does SY-SUBRC tell you?</div>
+
+  <div class="two-col" style="margin-top:12px;">
+    <div class="ibox"><h4>Vendor Hub Week 2</h4><ul class="plain"><li>ZVHVENDOR table activated</li><li>ZVH_CATEGORY domain with fixed values</li><li>Search help attached</li><li>Report reads DB via SELECT + WRITE</li></ul></div>
+    <div class="ibox"><h4>Deliverables</h4><ul class="check"><li>M5-M8 notes</li><li>ZVHVENDOR table in SAP</li><li>Domain + Data Element created</li><li>SELECT query program working</li></ul></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 3 ========== -->
+<div id="segment-3" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 3 of 11 &bull; ~Week 3</div>
+  <h2>Search Helps, Lock Objects, Open SQL</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M9&ndash;M12</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Master search helps (F4), lock objects (concurrent access), and the full Open SQL syntax including JOINs and subqueries.</div>
+
+  <div class="sec-lbl">Brochure Modules Covered</div>
+  <span class="module-tag">M9: Search Helps (F4 Help)</span>
+  <span class="module-tag">M10: Lock Objects</span>
+  <span class="module-tag">M11: Open SQL SELECT</span>
+  <span class="module-tag">M12: Open SQL JOINs &amp; Subqueries</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover by end of segment</h4>
+    <ul>
+      <li>Elementary vs Collective Search Helps; F4 attachment to fields</li>
+      <li>Lock objects: Enqueue/Dequeue FMs, lock modes (S/E/X), SM12</li>
+      <li>Open SQL: <code>SELECT SINGLE</code>, <code>SELECT INTO TABLE</code>, WHERE clauses (EQ, NE, BETWEEN, IN, LIKE)</li>
+      <li>JOINs: INNER, LEFT OUTER; <code>FOR ALL ENTRIES</code></li>
+      <li>Subqueries: EXISTS, IN, correlated; ORDER BY, GROUP BY, HAVING</li>
+      <li>ABAP 7.4+ inline declarations: <code>DATA(result) = ...</code>; performance tips (no <code>SELECT *</code>)</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Elementary + collective search helps; attach to VENDOR_ID</li>
+      <li>Lock object EZVHVENDOR; ENQUEUE_EZVHVENDOR before UPDATE; watch SM12</li>
+      <li>10 Open SQL queries on ZVHVENDOR</li>
+      <li>5 JOIN queries + FOR ALL ENTRIES</li>
+      <li>Vendor Hub milestone: search help on category, lock during update, JOIN with mock order table</li>
+    </ul>
+  </div>
+
+  <div class="sec-lbl">Practice Questions</div>
+  <div class="pq"><span class="pn">Q1 &mdash;</span>Difference between elementary and collective search help? Sketch flow for both.</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Open SQL query selecting vendors WHERE STATUS='ACTIVE' AND CATEGORY IN ('ELEC','CLOTH'), ordered by NAME, max 50 rows.</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 4 ========== -->
+<div id="segment-4" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 4 of 11 &bull; ~Week 4</div>
+  <h2>Internal Tables, Debugging, Selection Screens</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M13&ndash;M16</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Internal tables are the workhorse of ABAP. Master standard/sorted/hashed variants + debugger + selection screens.</div>
+
+  <div class="sec-lbl">Modules Covered</div>
+  <span class="module-tag">M13: Internal Tables (Standard)</span>
+  <span class="module-tag">M14: Sorted &amp; Hashed Tables</span>
+  <span class="module-tag">M15: Debugging</span>
+  <span class="module-tag">M16: Selection Screens</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover by end of segment</h4>
+    <ul>
+      <li>Standard itab: <code>TYPES</code>, <code>DATA</code>, <code>APPEND</code>, <code>LOOP AT</code>, <code>READ TABLE</code></li>
+      <li>Sorted (WITH UNIQUE KEY), Hashed tables &mdash; performance differences</li>
+      <li><code>MODIFY</code>, <code>COLLECT</code>, <code>SORT</code>, <code>DELETE DUPLICATES</code>; field symbols</li>
+      <li>Debugger: breakpoints, watchpoints, call stack, variables, <code>/h</code></li>
+      <li>Selection Screens: <code>PARAMETERS</code>, <code>SELECT-OPTIONS</code>, SELECTION-SCREEN blocks</li>
+      <li>Message classes; <code>AT SELECTION-SCREEN</code> event; validations</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Declare itab of ZVHVENDOR; APPEND 5 rows; LOOP + WRITE; READ TABLE; DELETE WHERE</li>
+      <li>Convert standard &rarr; sorted; try duplicate; convert &rarr; hashed; benchmark READ TABLE</li>
+      <li>FIELD-SYMBOL in-place modify; SORT BY multi-field; DELETE DUPLICATES BY name</li>
+      <li>Debug an earlier program: watchpoints on itab, step through LOOP, use <code>/h</code></li>
+      <li>Vendor Hub milestone: selection screen &rarr; itab &rarr; WRITE loop, category validation</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>When to use Hashed vs Sorted vs Standard itab? Give a use case for each.</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Read ZVHVENDOR into itab, sort by CITY desc, delete dup by CITY, display unique cities.</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 5 ========== -->
+<div id="segment-5" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 5 of 11 &bull; ~Week 5</div>
+  <h2>Modularization &mdash; Subroutines &amp; Function Modules</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M17&ndash;M20</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Split monolithic programs into reusable units: subroutines, function modules, includes, packages.</div>
+
+  <span class="module-tag">M17: Subroutines (FORM/PERFORM)</span>
+  <span class="module-tag">M18: Function Modules (SE37)</span>
+  <span class="module-tag">M19: Function Groups &amp; Includes</span>
+  <span class="module-tag">M20: Modularization Concepts</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover by end of segment</h4>
+    <ul>
+      <li>FORM/PERFORM: <code>USING</code>, <code>CHANGING</code>, <code>TABLES</code> parameters; by-value vs by-reference</li>
+      <li>Function Modules (SE37): <code>IMPORT</code> / <code>EXPORT</code> / <code>TABLES</code> / <code>CHANGING</code> / <code>EXCEPTIONS</code></li>
+      <li>Function Groups, TOP include, global data</li>
+      <li>INCLUDE programs; modular report structure (main, TOP, F01, I01)</li>
+      <li>Packages, dependency management, transports (DEV &rarr; QAS)</li>
+      <li>Exception handling: <code>RAISE</code>, <code>MESSAGE ... RAISING</code></li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Extract Vendor Hub <code>WRITE</code> into FORM; test by-value vs by-reference</li>
+      <li><code>Z_VH_GET_VENDOR</code>: IMPORT VENDOR_ID, EXPORT structure, VENDOR_NOT_FOUND exception</li>
+      <li>Add <code>Z_VH_SAVE_VENDOR</code> to same function group; share via TOP include</li>
+      <li>Split report into main + TOP + F01 + I01</li>
+      <li>Vendor Hub milestone: replace inline logic with FM calls, report = thin orchestrator</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>Difference between USING and CHANGING in FORM? What does TABLES do?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>FM that reads ZVHVENDOR, raises VENDOR_NOT_FOUND. Show EXCEPTIONS block in CALL FUNCTION.</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 6 ========== -->
+<div id="segment-6" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 6 of 11 &bull; ~Week 6</div>
+  <h2>Reports &mdash; Classical, Interactive &amp; ALV</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M21&ndash;M24</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Everything user-facing in classic ABAP is a report. Master classical output, interactive drill-down, and modern ALV grids (CL_SALV_TABLE).</div>
+
+  <span class="module-tag">M21: Classical Reports</span>
+  <span class="module-tag">M22: Interactive Reports</span>
+  <span class="module-tag">M23: ALV CL_SALV_TABLE</span>
+  <span class="module-tag">M24: ALV Grid (REUSE_ALV)</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>Classical output: <code>WRITE</code> formatting, <code>TOP-OF-PAGE</code>, <code>END-OF-PAGE</code></li>
+      <li>Interactive: <code>AT LINE-SELECTION</code>, <code>HIDE</code>, <code>GET CURSOR LINE</code></li>
+      <li><code>AT USER-COMMAND</code>, function keys, SE41 menu painter</li>
+      <li>ALV via <code>CL_SALV_TABLE</code>: factory, columns, hide MANDT, add totals</li>
+      <li>ALV events (link_click, double_click), sorting, filtering, handler class</li>
+      <li>Classic FM ALV: <code>REUSE_ALV_GRID_DISPLAY</code></li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Format Vendor Hub with headers, alignment, colors</li>
+      <li>Drill-down: click vendor &rarr; second list shows details</li>
+      <li>Rewrite Vendor Hub via <code>CL_SALV_TABLE</code>, add totals</li>
+      <li>link_click on VENDOR_ID &rarr; popup detail</li>
+      <li>Vendor Hub milestone: Main list = CL_SALV_TABLE + drill-down detail</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>CL_SALV_TABLE for ZVHVENDOR: no MANDT, sortable NAME, total count row.</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Explain HIDE in interactive reports. What data + how accessed in AT LINE-SELECTION?</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 7 ========== -->
+<div id="segment-7" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 7 of 11 &bull; ~Week 7</div>
+  <h2>Dialog Programming / Module Pool</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M25&ndash;M28</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Build classic SAP GUI transaction screens. Screen Painter, PBO/PAI events, POV/POH F4/F1, tab strips, subscreens.</div>
+
+  <span class="module-tag">M25: Screen Painter (SE51)</span>
+  <span class="module-tag">M26: PBO &amp; PAI</span>
+  <span class="module-tag">M27: POV &amp; POH</span>
+  <span class="module-tag">M28: Tab Strips &amp; Subscreens</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>Module pool concept, SE51 screen painter, input fields, table control</li>
+      <li>PBO (Process Before Output): title, field properties, populate</li>
+      <li>PAI (Process After Input): <code>AT EXIT-COMMAND</code>, FIELD/CHAIN validation, save via FM</li>
+      <li>POV, POH: custom F4 &amp; F1 help</li>
+      <li>Table Control: <code>LOOP AT SCREEN</code>, scroll handling</li>
+      <li>Tab Strips, Subscreens, <code>CALL SCREEN</code> / <code>SET SCREEN</code> / <code>LEAVE SCREEN</code></li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Module pool <code>ZVH_DIALOG</code>; Screen 100 with vendor fields + Save/Back</li>
+      <li>PBO: title, load vendor data if ID provided</li>
+      <li>PAI: validate mandatory, call <code>Z_VH_SAVE_VENDOR</code></li>
+      <li>POV for CATEGORY via search help; custom F1 help popup</li>
+      <li>Tab strip: Basic Info + Contact tabs as subscreens</li>
+      <li>Vendor Hub milestone: full dialog CRUD app (list ALV + detail screen painter)</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>PBO vs PAI &mdash; when does each fire?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>AT EXIT-COMMAND in PAI: what function code triggers it, why checked before validations?</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 8 ========== -->
+<div id="segment-8" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 8 of 11 &bull; ~Week 8</div>
+  <h2>OO ABAP &mdash; Classes, Inheritance, Polymorphism</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M29&ndash;M31</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">OO ABAP is the modern paradigm. Every new SAP framework (CDS, AMDP, BADIs, BOPF) uses classes. This is where ABAP feels like Java.</div>
+
+  <span class="module-tag">M29: Classes &amp; Objects (SE24)</span>
+  <span class="module-tag">M30: Inheritance &amp; Polymorphism</span>
+  <span class="module-tag">M31: Interfaces &amp; Events</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>Classes (SE24): PUBLIC/PROTECTED/PRIVATE, methods, constructors</li>
+      <li>Static vs instance; Singleton pattern</li>
+      <li>Inheritance: <code>INHERITING FROM</code>, <code>REDEFINITION</code>, super calls</li>
+      <li>Polymorphism: parent ref holds child; <code>CAST</code> + <code>CASE TYPE OF</code></li>
+      <li>Interfaces: <code>INTERFACE ... ENDINTERFACE</code>, implementing</li>
+      <li>Events: <code>EVENTS</code>, <code>RAISE EVENT</code>, <code>SET HANDLER</code></li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li><code>ZCL_VENDOR</code>: attributes, constructor, <code>GET_DISPLAY_NAME</code>, <code>SAVE_TO_DB</code></li>
+      <li>Static <code>ZCL_VENDOR=&gt;GET_INSTANCE</code> (singleton)</li>
+      <li><code>ZCL_PREMIUM_VENDOR</code> inheriting; override <code>GET_DISPLAY_NAME</code></li>
+      <li>Interface <code>ZIVH_SAVEABLE</code> with SAVE; implement in <code>ZCL_VENDOR</code> + <code>ZCL_ORDER</code>; call polymorphically</li>
+      <li>VENDOR_SAVED event + handler class logging to a table</li>
+      <li>Vendor Hub milestone: OO refactor &mdash; <code>ZCL_VH_REPO</code> (data) + <code>ZCL_VH_PRESENTER</code> (display)</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>Difference between CLASS-DATA and DATA in ABAP OO? What is CLASS-METHODS?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Implement Observer pattern using EVENTS + SET HANDLER on ZCL_VENDOR.</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 9 ========== -->
+<div id="segment-9" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 9 of 11 &bull; ~Week 9</div>
+  <h2>BDC &amp; LSMW &mdash; Data Migration</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M32&ndash;M34</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Legacy data migration is a huge chunk of ABAP consulting work. BDC (Batch Data Communication) and LSMW are the tools.</div>
+
+  <span class="module-tag">M32: BDC Recording (SHDB)</span>
+  <span class="module-tag">M33: Call Transaction Method</span>
+  <span class="module-tag">M34: Session Method &amp; LSMW</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>BDC concept, <code>BDCDATA</code> structure, use cases, failure modes</li>
+      <li>SHDB recording (e.g., FK01 vendor create)</li>
+      <li>Convert recording to ABAP; <code>CALL TRANSACTION</code> MODE 'A'/'E'/'N'</li>
+      <li>Session Method: <code>BDC_OPEN/INSERT/CLOSE_GROUP</code>, SM35</li>
+      <li>Error handling: MESSAGES itab, restart</li>
+      <li>LSMW overview: Object, Method, 14 steps, mapping</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>SHDB recording of FK01, study BDCDATA</li>
+      <li>BDC program: <code>CALL TRANSACTION 'FK01' USING t_bdcdata</code>; test all modes</li>
+      <li>Session method: 5 vendors in one batch, process via SM35</li>
+      <li>LSMW project for ZVH_VENDOR from flat file, map Excel cols</li>
+      <li>Vendor Hub milestone: BDC bulk-load 20 vendors via session + error log report</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>CALL TRANSACTION vs Session Method &mdash; when each?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>MODE 'E' in CALL TRANSACTION vs MODE 'N' &mdash; error handling difference?</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 10 ========== -->
+<div id="segment-10" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 10 of 11 &bull; ~Week 10</div>
+  <h2>Scripts, Smart Forms, RFC, ALE, IDocs, EDI</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M35&ndash;M37</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Printouts (Scripts / Smart Forms) + system-to-system integration (RFC / ALE / IDocs / EDI). This segment bridges ABAP to the outside world.</div>
+
+  <span class="module-tag">M35: Scripts &amp; Smart Forms</span>
+  <span class="module-tag">M36: RFC (Remote FC)</span>
+  <span class="module-tag">M37: ALE / IDocs / EDI</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>SAP Scripts: SE71, <code>OPEN_FORM</code> / <code>WRITE_FORM</code> / <code>CLOSE_FORM</code></li>
+      <li>Smart Forms: SFP, generated FM, data passing, PDF output</li>
+      <li>RFC: <code>DESTINATION</code>, sRFC / tRFC / aRFC / qRFC, SM59</li>
+      <li>ALE: IDoc types, basic/extension, BD54, WE02/WE05</li>
+      <li>IDoc inbound: WE19 test tool, mapping, inbound FM</li>
+      <li>EDI: X12, EDIFACT, WE20 partner profiles</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Simple invoice layout in SE71; call from ABAP; output to SP01</li>
+      <li>Convert SE71 layout &rarr; Smart Form; PDF output</li>
+      <li>Create RFC-enabled FM; SM59 destination</li>
+      <li>Browse ORDERS05 in WE31; monitor WE02</li>
+      <li>Vendor Hub milestone: print button &rarr; Smart Form PDF vendor summary</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>sRFC vs tRFC &mdash; use case for each.</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>ALE distribution model: logical system, IDoc flow between 2 systems.</div>
+</div>
+</div>
+
+<!-- ========== SEGMENT 11 ========== -->
+<div id="segment-11" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Segment 11 of 11 &bull; ~Week 11</div>
+  <h2>BAPIs, Exits, BADIs, Enhancements, CTS + SAPUI5 Intro</h2>
+  <div class="wm">Institute-paced &bull; Brochure Modules M38&ndash;M39 + UI5 basics (institute-taught)</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Standard SAP hooks: BAPIs (public APIs), User Exits + BADIs + Enhancement Framework (safely modify standard behaviour). CTS (transports). <strong>Plus: institute covers SAPUI5 basics this segment</strong> &mdash; that's why we drop the standalone UI5 phase from Part III.</div>
+
+  <span class="module-tag">M38: BAPIs</span>
+  <span class="module-tag">M39: Exits/BADIs/Enhancements/CTS</span>
+  <span class="module-tag">Bonus: SAPUI5 fundamentals</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>BAPIs: <code>BAPI_VENDOR_GETDETAIL</code> / <code>CREATE</code>; RETURN table; BAPI browser</li>
+      <li>BAPI + <code>COMMIT WORK</code> / <code>BAPI_TRANSACTION_COMMIT</code></li>
+      <li>User Exits: SMOD, CMOD; customer + FM exits</li>
+      <li>BADIs: SE18 / SE19; definition, implementation, filtering</li>
+      <li>Enhancement Framework: implicit vs explicit; source plug-ins</li>
+      <li><strong>SAPUI5 basics (institute-taught):</strong> MVC, XML views, JSONModel, data binding</li>
+      <li>CTS / Transport Management: SE10, TR release, import queue</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Call <code>BAPI_VENDOR_GETDETAIL</code>; read RETURN; compare BAPI vs Open SQL</li>
+      <li>Call <code>BAPI_VENDOR_CREATE</code> + <code>BAPI_TRANSACTION_COMMIT</code>; handle E/W/S messages</li>
+      <li>SMOD/CMOD implement one FK01 exit logging vendor create</li>
+      <li>Find a vendor BADI; implement; method writes to custom log</li>
+      <li>First simple SAPUI5 app in Business Application Studio (follow institute)</li>
+      <li>Release all Vendor Hub TRs; simulate DEV &rarr; QAS; simple UI5 view over ZVHVENDOR</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>User Exit vs BADI &mdash; which is modern SAP approach and why?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Why call BAPI_TRANSACTION_COMMIT after creating BAPI? What happens if you don't?</div>
+
+  <div class="cert"><strong>Recommended certifications after this course:</strong> (1) SAP Certified Development Associate &mdash; ABAP with SAP NetWeaver (<strong>C_TAW12_750</strong>) &mdash; the classic ABAP cert. (2) SAP Certified Development Associate &mdash; ABAP for SAP HANA 2.0 (<strong>C_HANADEV_18</strong>) after wrap segment. Book these for Jan/Feb 2027 alongside job hunt.</div>
+</div>
+</div>
+
+<!-- ========== WRAP: ABAP on HANA ========== -->
+<div id="segment-wrap" class="page" style="page-break-before:always;">
+<div class="wk-hdr">
+  <div class="wn">Wrap Segment &mdash; institute finale</div>
+  <h2>ABAP on HANA &mdash; Course Finale</h2>
+  <div class="wm">Whenever institute wraps (target: end Nov to mid Dec) &bull; Brochure Module M40</div>
+</div>
+<div class="wk-body">
+  <div class="goal-box">Modern ABAP on HANA: push logic into the DB (code-to-data) via CDS views and AMDP procedures. This is the future of ABAP.</div>
+
+  <span class="module-tag">M40: ABAP on HANA &mdash; CDS, AMDP, ADBC, Column Store, Code-to-Data</span>
+
+  <div class="wk-topics">
+    <h4>Topics to cover</h4>
+    <ul>
+      <li>HANA column store vs row store; Code-to-Data paradigm; ABAP 7.4+ inline SELECT</li>
+      <li>CDS Views: DDL in ADT, <code>@AbapCatalog</code> annotations, associations, CASE</li>
+      <li>AMDP: class with <code>IF_AMDP_MARKER_HDB</code>, SQLScript procedure</li>
+      <li>ADBC, SQL Monitor (SQLM)</li>
+    </ul>
+    <h4>Practice targets</h4>
+    <ul>
+      <li>Rewrite complex LOOP + aggregation as single inline SELECT; measure LoC reduction</li>
+      <li>Create <code>ZVH_VENDOR_BASIC</code> CDS view over ZVHVENDOR; add STATUS_TEXT via CASE; <code>@OData.publish</code></li>
+      <li><code>ZCL_VH_AMDP</code> with SQLScript aggregation; call from ABAP report</li>
+      <li><strong>Vendor Hub Final:</strong> reads from CDS view instead of table; full docs; Part II COMPLETE</li>
+    </ul>
+  </div>
+
+  <div class="pq"><span class="pn">Q1 &mdash;</span>What does "code-to-data" mean in ABAP on HANA? How does it differ from traditional ABAP processing?</div>
+  <div class="pq"><span class="pn">Q2 &mdash;</span>Create CDS view joining ZVHVENDOR with a custom order table, groups by CITY, outputs count per city. What annotations are needed?</div>
+
+  <div style="background:linear-gradient(135deg,#14532d,#065f46);color:#fff;border-radius:8px;padding:18px 22px;margin-top:16px;text-align:center;">
+    <div style="font-size:20px;font-weight:800;color:#86efac;margin-bottom:4px;">Part II Complete!</div>
+    <div style="font-size:12px;color:#a7f3d0;margin-bottom:4px;">SAP Overview (10 days) + ABAP Institute (~11 segments, institute-paced) &bull; Target wrap: end Nov to mid Dec</div>
+    <div style="font-size:12px;color:#6ee7b7;">Vendor Hub: fully functional SAP ABAP application &bull; Next: Part III &mdash; SAP BTP + AI (begins Dec 1 self-paced)</div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

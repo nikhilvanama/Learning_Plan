@@ -1,0 +1,16 @@
+{
+  "name": "job-swift",
+  "version": "1.0.0",
+  "main": "to_pdf_v3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "markdown-it": "^14.3.0",
+    "puppeteer": "^25.3.0"
+  }
+}
