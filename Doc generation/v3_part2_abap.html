@@ -58,6 +58,17 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
 .wk-topics ul { padding-left: 16px; list-style: disc; margin:0; }
 .wk-topics ul li { font-size: 11.5px; color: #334155; margin-bottom: 1px; line-height:1.5; }
 .wk-topics p { font-size: 11.5px; color: #334155; margin-bottom: 3px; }
+/* DAY BLOCK (matches Part I) */
+.day-block { border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px; margin-bottom:8px; background:#fff; }
+.day-block .dh { display:flex; align-items:baseline; gap:10px; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid #f1f5f9; }
+.day-block .dh .day-tag { font-size:10.5px; font-weight:700; color:#fff; padding:2px 8px; border-radius:10px; background:#0891b2; }
+.day-block .dh .date-tag { font-size:11px; color:#64748b; font-weight:600; }
+.day-block .dh .topic { font-size:13px; font-weight:700; color:#0f172a; }
+.day-block .db-sec { margin-top:5px; }
+.day-block .db-sec h5 { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#64748b; margin-bottom:3px; }
+.day-block .db-sec ul { padding-left:14px; list-style:disc; margin:0; }
+.day-block .db-sec ul li { font-size:11.5px; color:#334155; margin-bottom:1px; line-height:1.5; }
+.day-block .db-sec p { font-size:11.5px; color:#334155; line-height:1.55; }
 .project-banner { background: linear-gradient(135deg, #1e3a5f, #0f172a); border-radius: 6px; padding: 14px 18px; margin: 16px 0; color: #fff; }
 .project-banner h3 { font-size: 13px; color: #38bdf8; margin-bottom: 4px; }
 .project-banner p { font-size: 12px; color: #94a3b8; }
@@ -76,24 +87,25 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
 <div id="buffer-week" class="page">
   <div class="page-title">
     <div class="eyebrow">Between Part I and Part II</div>
-    <h1 style="color:#b45309;">Buffer Week &mdash; Sep 1-7, 2026</h1>
-    <p class="sub">A full week after the 50-day foundation before touching anything SAP-related. Wrap Phase 12 capstone, revise, breathe.</p>
+    <h1 style="color:#b45309;">Buffer Week &mdash; Sep 8-13, 2026</h1>
+    <p class="sub">Six days (Tue&ndash;Sun) after the 50-day foundation, before touching anything SAP-related. Finish the capstones, revise, breathe.</p>
   </div>
 
   <div class="buffer-box">
     <h3>Why this week exists</h3>
-    <p>The last module of Part I (Phase 12: Agentic AI + n8n + FocusTrack Pro Capstone) ends Aug 31. Trying to jump straight into SAP on Sep 1 leaves no room to <em>finish</em> the capstone properly or revise. This buffer week is your safety net &mdash; it absorbs any slippage from Part I and prepares you mentally for the SAP world.</p>
+    <p>The last module of Part I (Phase 12: Agentic AI + n8n + FocusTrack Pro Capstone) ends <strong>Mon Sep 7</strong>. Jumping straight into SAP the next morning leaves no room to <em>finish</em> the capstones properly or revise. This buffer is your safety net &mdash; it absorbs any slippage from Part I and resets you mentally before the SAP world.</p>
   </div>
 
   <div class="sec-lbl">What to do this week</div>
   <div class="two-col">
     <div class="ibox">
-      <h4>Wrap Phase 12 Capstone</h4>
+      <h4>Ship the Capstones</h4>
       <ul class="plain">
-        <li>Finish any incomplete features of FocusTrack Pro</li>
-        <li>Polish the README + record a 2-min demo video</li>
+        <li>Finish any incomplete FocusTrack Pro features</li>
+        <li>Close out Capstone B (scale + portfolio polish)</li>
+        <li>Close out Capstones C &amp; D (agentic AI + RAG)</li>
+        <li>Deploy everything; README + 2-min demo video each</li>
         <li>Push all Part I code to GitHub (all 12 phases)</li>
-        <li>Deploy capstone (Vercel/Render + AWS EC2)</li>
       </ul>
     </div>
     <div class="ibox">
@@ -102,7 +114,7 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
         <li>Advanced JS + OOP (Phase 5) &mdash; must be sharp</li>
         <li>Node + Express (Phase 7) &mdash; foundation for CAP later</li>
         <li>MySQL + Repository pattern (Phase 9)</li>
-        <li>System Design (Phase 10) &mdash; interview-critical</li>
+        <li>System Design (Phase 11) &mdash; interview-critical</li>
       </ul>
     </div>
     <div class="ibox">
@@ -117,8 +129,8 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
     <div class="ibox">
       <h4>Rest &amp; Reset</h4>
       <ul class="plain">
-        <li>1 full break day &mdash; no laptop, no study (Sunday)</li>
-        <li>Update daily organiser app with Sep&ndash;Nov roadmap</li>
+        <li>1 full break day &mdash; no laptop, no study (Sun Sep 13)</li>
+        <li>Update daily organiser app with Sep&ndash;Dec roadmap</li>
         <li>Sleep 8 hrs/night &mdash; institute weeks will be intense</li>
         <li>Enjoy this pause. You've earned it.</li>
       </ul>
@@ -127,7 +139,16 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
 
   <div class="ibox no-break" style="margin-top:14px;background:#fef3c7;border-color:#eab308;">
     <h4 style="color:#78350f;">Buffer Rule</h4>
-    <p style="color:#78350f;">This week is NOT for starting SAP topics. If Phase 12 is already done and revision is complete, use the extra days to sleep, hang out with family, or work on SATA maintenance. Starting SAP early will burn you out before Nov even arrives. Trust the buffer.</p>
+    <p style="color:#78350f;">This week is NOT for starting SAP topics &mdash; the SAP crash-course begins <strong>Mon Sep 14</strong>. If the capstones are already shipped and revision is done, use the extra days to sleep, see family, or do SATA maintenance. Starting SAP early will burn you out before Nov even arrives. Trust the buffer.</p>
+  </div>
+
+  <div class="ibox no-break" style="margin-top:10px;">
+    <h4>What Comes Next</h4>
+    <ul class="plain">
+      <li><strong>Sep 14-17 (Mon-Thu)</strong> &mdash; SAP Overview &amp; Ecosystem: 4-day no-code crash-course + finalise institute enrolment</li>
+      <li><strong>Sep 18-20 (Fri-Sun)</strong> &mdash; ABAP institute orientation: joining formalities, system access, IDE setup, first Hello World</li>
+      <li><strong>From Sep 21</strong> &mdash; ABAP course proper, at the institute's pace</li>
+    </ul>
   </div>
 </div>
 
@@ -136,11 +157,11 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
   <div class="page-title">
     <div class="eyebrow">Part II of IV</div>
     <h1>SAP Overview + ABAP on HANA (Institute)</h1>
-    <p class="sub">Sep 8, 2026 &rarr; institute wrap (end Nov / mid Dec) &bull; 10 days SAP self-study + institute-paced ABAP course</p>
+    <p class="sub">Sep 14, 2026 &rarr; institute wrap (end Nov / mid Dec) &bull; 4-day SAP crash-course + institute-paced ABAP course</p>
   </div>
 
   <div class="goal-box">
-    Part II has two halves. <strong>Sep 8&ndash;17</strong> is a self-paced SAP <em>orientation</em> &mdash; get the vocabulary, module landscape, and career map into your head before joining an institute. It also gives you time to <strong>shortlist the ABAP institute, arrange fees, and complete enrolment</strong>. <strong>Sep 18 onwards</strong> is the actual ABAP institute course (Future Labs or equivalent, 40 modules, 60 hours). SAPUI5 basics are covered inside the institute curriculum so no separate UI5 phase is needed.
+    Part II has two halves. <strong>Sep 14&ndash;17</strong> is a fast, self-paced SAP <em>orientation</em> &mdash; four no-code days to get the vocabulary, module landscape, and career map into your head before joining an institute, and to <strong>finalise enrolment</strong> (shortlisting + fees should already be done during the buffer week). <strong>Sep 18&ndash;20</strong> is institute orientation, and the ABAP course proper runs from there (Future Labs or equivalent, 40 modules, 60 hours). SAPUI5 basics are covered inside the institute curriculum so no separate UI5 phase is needed.
   </div>
 
   <div class="sec-lbl">Master Timeline</div>
@@ -149,8 +170,9 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
       <tr><th>Block</th><th>Dates</th><th>What Happens</th></tr>
     </thead>
     <tbody>
-      <tr><td><strong>Phase A</strong></td><td>Sep 8-17 (10 days)</td><td><strong>SAP Overview &amp; Ecosystem</strong> &mdash; self-paced. No coding. Get oriented: SAP company history, modules, S/4HANA vs ECC, cloud vs on-prem, Fiori/UI5 tour, career paths. Also: shortlist institute, sort fees, enrol.</td></tr>
-      <tr><td><strong>Phase B</strong></td><td>Sep 18 &rarr; end Nov / mid Dec (institute-paced)</td><td><strong>ABAP Institute Course</strong> &mdash; 40 modules, 60 hours. <em>Do not treat the module dates below as fixed &mdash; institute pace decides.</em> Vendor Hub side project runs alongside.</td></tr>
+      <tr><td><strong>Phase A</strong></td><td>Sep 14-17 (4 days, Mon-Thu)</td><td><strong>SAP Overview &amp; Ecosystem</strong> &mdash; self-paced crash-course. No coding. Get oriented: SAP + ERP basics, module landscape, S/4HANA vs ECC, HANA, BTP, Fiori/UI5, career paths + certifications. Also: finalise institute enrolment.</td></tr>
+      <tr><td><strong>Orientation</strong></td><td>Sep 18-20 (3 days, Fri-Sun)</td><td><strong>Institute Kickoff</strong> &mdash; joining formalities, SAP system credentials, Eclipse ADT / SAP GUI setup, first Hello World program.</td></tr>
+      <tr><td><strong>Phase B</strong></td><td>Sep 21 &rarr; end Nov / mid Dec (institute-paced)</td><td><strong>ABAP Institute Course</strong> &mdash; 40 modules, 60 hours. <em>Do not treat the module segments below as fixed dates &mdash; institute pace decides.</em> Vendor Hub side project runs alongside.</td></tr>
     </tbody>
   </table>
 
@@ -216,83 +238,86 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
 <!-- ========== PHASE A: SAP OVERVIEW (SEP 8-17) ========== -->
 <div id="phase-A" class="page" style="page-break-before:always;">
   <div class="phase-hdr">
-    <div class="wn">Phase A of Part II &mdash; 10 Days</div>
+    <div class="wn">Phase A of Part II &mdash; 4 Days</div>
     <h2>SAP Overview &amp; Ecosystem Orientation</h2>
-    <div class="wm">Sep 8-17, 2026 &bull; Self-study &bull; No coding &bull; Also: shortlist ABAP institute</div>
+    <div class="wm">Sep 14-17, 2026 (Mon-Thu) &bull; Self-study &bull; No coding &bull; Finalise institute enrolment</div>
   </div>
   <div class="phase-body">
     <div class="phase-goal">
-      <strong>What is this?</strong> A gentle, no-code orientation to the SAP world. Company, product landscape, ERP concepts, modules, technology stack, and where an ABAP + BTP + AI engineer fits in it.<br><br>
-      <strong>Why should you learn this?</strong> When you walk into the institute on Day 1, the trainer will assume you know what "S/4HANA", "Fiori", "FI/CO", and "GUI vs Web IDE" mean. Learning these words <em>before</em> the course lets you focus on ABAP itself instead of context. Bonus: the buffer removes stress from arranging fees + enrolment.<br><br>
-      <strong>Topics covered:</strong> SAP history &amp; company; ERP fundamentals; SAP modules (FI, CO, MM, SD, PP, HR, etc.); S/4HANA vs ECC; Cloud vs on-prem; SAP HANA (in-memory DB); Fiori + UI5 tour; ABAP developer career paths; SAP certifications map
+      <strong>What is this?</strong> A fast, no-code crash-course on the SAP world &mdash; company, product landscape, ERP concepts, modules, technology stack, and where an ABAP + BTP + AI engineer fits into it.<br><br>
+      <strong>Why should you learn this?</strong> When you walk into the institute, the trainer will assume you already know what "S/4HANA", "Fiori", "FI/CO", and "GUI vs Web IDE" mean. Learning the vocabulary <em>before</em> the course lets you spend your attention on ABAP itself instead of on context.<br><br>
+      <strong>Why only 4 days?</strong> This is <em>awareness-level</em> reading, not skill-building &mdash; no code, no exercises. The institute teaches the depth. Your shortlisting and fee comparison should already be done during the buffer week (Sep 8-13), so these 4 days are pure orientation plus signing the enrolment form.<br><br>
+      <strong>Topics covered:</strong> SAP history; ERP fundamentals; SAP module landscape (FI, CO, MM, SD, PP, HR); S/4HANA vs ECC; SAP HANA (in-memory DB); Cloud vs on-prem + BTP; Fiori + UI5 tour; ABAP career paths; SAP certifications map
     </div>
 
     <div class="sec-lbl">Day-by-Day &mdash; Starting From Pure Basics</div>
-    <table>
-      <thead><tr><th>Day</th><th>Date</th><th>Topic</th><th>What to Watch / Read</th><th>What to Do</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Day 1</td><td>Tue Sep 8</td>
-          <td><strong>What is SAP?</strong><br>• SAP = Systems, Applications &amp; Products in Data Processing<br>• German company founded 1972 by ex-IBM engineers<br>• #1 ERP software vendor globally<br>• Runs 77% of the world's transaction revenue</td>
-          <td>YouTube: "What is SAP?" &mdash; SimpliLearn: <code>https://youtu.be/YKD1oEcNvpM</code>. Also SAP official "SAP at a Glance": <code>https://www.sap.com/about/company.html</code></td>
-          <td>Write 1-page notes: SAP history, top products (S/4HANA, SuccessFactors, Ariba, Concur, Fieldglass), customer segments.</td>
-        </tr>
-        <tr>
-          <td>Day 2</td><td>Wed Sep 9</td>
-          <td><strong>What is ERP?</strong><br>• Enterprise Resource Planning = one system for finance + HR + supply chain + sales<br>• Before ERP: separate systems, painful integrations<br>• Modules talk to each other (SD sale &rarr; FI journal entry auto-created)</td>
-          <td>"ERP in 100 Seconds" (search Fireship on YouTube); Wikipedia "Enterprise resource planning"</td>
-          <td>Draw diagram: 5 core business processes (Order-to-Cash, Procure-to-Pay, Hire-to-Retire, Plan-to-Produce, Record-to-Report). Note which SAP modules handle each.</td>
-        </tr>
-        <tr>
-          <td>Day 3</td><td>Thu Sep 10</td>
-          <td><strong>SAP Modules Landscape</strong><br>• Functional: FI (Finance), CO (Controlling), MM (Materials Mgmt), SD (Sales &amp; Distribution), PP (Prod Planning), HR/HCM, PM (Plant Maintenance), QM (Quality)<br>• Technical: ABAP, BASIS, BW/BI, Security, PI/PO/CPI (integration), Fiori/UI5</td>
-          <td>YouTube: "SAP Modules Overview" search recent 2024/2025 tutorials on ZaranTech or SimpliLearn channels</td>
-          <td>Make a 2-column table: module name + one-line "what it does". You'll refer back to this all through the ABAP course.</td>
-        </tr>
-        <tr>
-          <td>Day 4</td><td>Fri Sep 11</td>
-          <td><strong>S/4HANA vs ECC (R/3)</strong><br>• R/3 = old client-server era (1992, still runs at many companies as ECC 6.0)<br>• S/4HANA = new (2015) &mdash; runs only on HANA in-memory DB. Fiori-first UI. Simplified data model<br>• 2027 deadline: SAP ends mainstream support for ECC &mdash; huge migration wave</td>
-          <td>"S/4HANA vs ECC" &mdash; search SAP official YouTube; blog: <code>https://blogs.sap.com/</code> tag "S/4HANA vs ECC"</td>
-          <td>Write: 5 bullet points on why S/4HANA matters for your career (the 2027 migration deadline creates job demand).</td>
-        </tr>
-        <tr>
-          <td>Day 5</td><td>Sat Sep 12</td>
-          <td><strong>SAP HANA (In-Memory Database)</strong><br>• Traditional DB: stores rows on disk, reads to RAM as needed<br>• HANA: stores columns in RAM, orders of magnitude faster for analytics<br>• "Code-to-data": push logic into DB instead of pulling data to ABAP<br>• Row store vs column store; multi-model (SQL + JSON + graph + spatial)</td>
-          <td>SAP HANA Academy on YouTube: <code>https://www.youtube.com/@saphanaacademy</code>; SAP HANA overview docs</td>
-          <td>Notes: 1 page on HANA architecture. Understand column store &mdash; why it's fast for analytics. You'll see this again in ABAP Week 12 (CDS + AMDP).</td>
-        </tr>
-        <tr>
-          <td>Day 6</td><td>Sun Sep 13</td>
-          <td><strong>Cloud vs On-Prem &bull; SAP BTP</strong><br>• On-prem = customer's own data centre. Cloud = SAP hosts it<br>• Hybrid = mix of both<br>• BTP = Business Technology Platform. The "cloud PaaS" side of SAP<br>• BTP hosts: your custom apps, integrations, AI models, extensions</td>
-          <td>SAP BTP overview: <code>https://www.sap.com/products/technology-platform.html</code>; YouTube "What is SAP BTP" search</td>
-          <td>Notes: what runs on-prem (S/4 core, ABAP) vs what runs on BTP (Fiori launchpad, Joule AI, CAP apps). This preps you for Part III.</td>
-        </tr>
-        <tr>
-          <td>Day 7</td><td>Mon Sep 14</td>
-          <td><strong>Fiori &amp; SAPUI5 Tour</strong><br>• Old UI: SAP GUI (grey Windows client, keyboard-driven)<br>• New UI: Fiori = design language + set of pre-built apps<br>• SAPUI5 = JavaScript framework Fiori uses (like React but SAP-specific)<br>• Fiori launchpad = home page of tiles</td>
-          <td>SAP Fiori demo: <code>https://experience.sap.com/fiori-design/</code>; YouTube "SAP Fiori Introduction" search recent</td>
-          <td>Open the SAP Fiori design demo site. Click through a few apps &mdash; notice the visual patterns. You'll build UI5 apps in Institute Week 11.</td>
-        </tr>
-        <tr>
-          <td>Day 8</td><td>Tue Sep 15</td>
-          <td><strong>ABAP Developer Career Paths</strong><br>• Traditional ABAP dev (reports, dialog, enhancements)<br>• ABAP + Fiori/UI5 (full stack SAP)<br>• ABAP on HANA (CDS, AMDP)<br>• BTP developer (CAP + Fiori + AI)<br>• Functional consultant + ABAP crossover<br>• Freelance vs India Big-4 vs SAP Labs vs product companies</td>
-          <td>Search LinkedIn for "SAP ABAP Developer" JDs. Read 5-10 postings to spot common skill combos and salary bands.</td>
-          <td>Write 1-page: your 5-year SAP career map. Where do you want to be by 2030? (Aligned with your 2027 goal.)</td>
-        </tr>
-        <tr>
-          <td>Day 9</td><td>Wed Sep 16</td>
-          <td><strong>SAP Certifications Map</strong><br>• SAP Certified Development Associate &mdash; ABAP with SAP NetWeaver (C_TAW12_750)<br>• SAP Certified Development Associate &mdash; ABAP on HANA 2.0 (C_HANADEV_18)<br>• SAP Certified Application Associate &mdash; SAP Fiori Application Developer<br>• SAP Certified Development Associate &mdash; BTP Extension Developer<br>• openSAP courses (free) for BTP + AI</td>
-          <td>SAP certification catalog: <code>https://training.sap.com/certification</code>. Note: certs cost ₹40-50K each in India &mdash; plan for 1-2 in 2027.</td>
-          <td>Bookmark 2 certifications you plan to attempt after landing job. Free openSAP courses: sign up now for "ABAP Development for SAP HANA".</td>
-        </tr>
-        <tr>
-          <td>Day 10</td><td>Thu Sep 17</td>
-          <td><strong>Institute Enrolment Day</strong><br>• Compare 2-3 institutes (Future Labs, Peers, Genius Corner, ZaranTech)<br>• Curriculum overlap? Fees? Trainer credentials? System access?<br>• Batch timings that fit your office 12-9 PM schedule<br>• Payment mode &mdash; lump sum vs EMI</td>
-          <td>Institute websites; ask on r/SAP + LinkedIn SAP groups for reviews</td>
-          <td>Enrol in chosen institute. Get system access credentials. Install SAP GUI + Eclipse ADT. Ready for Sep 18 institute start.</td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag">DAY 1</span><span class="date-tag">Mon Sep 14</span><span class="topic">What is SAP? + What is ERP?</span></div>
+      <div class="db-sec"><h5>Concepts</h5>
+        <ul>
+          <li>SAP = <strong>S</strong>ystems, <strong>A</strong>pplications &amp; <strong>P</strong>roducts in Data Processing</li>
+          <li>German company, founded 1972 by five ex-IBM engineers; the #1 ERP vendor globally</li>
+          <li>Roughly 77% of the world's transaction revenue touches an SAP system</li>
+          <li>ERP = Enterprise Resource Planning: <em>one</em> system for finance + HR + supply chain + sales</li>
+          <li>Before ERP: separate systems per department, painful hand-built integrations</li>
+          <li>Modules talk to each other automatically (an SD sale auto-creates the FI journal entry)</li>
+          <li>Product family beyond S/4HANA: SuccessFactors (HR), Ariba (procurement), Concur (travel), Fieldglass (contingent labour)</li>
+        </ul>
+      </div>
+      <div class="db-sec"><h5>Read / Watch</h5><p>"What is SAP?" &mdash; SimpliLearn: <code>https://youtu.be/YKD1oEcNvpM</code>; SAP official "SAP at a Glance": <code>https://www.sap.com/about/company.html</code>; "ERP in 100 Seconds" (Fireship).</p></div>
+      <div class="db-sec"><h5>What to Do</h5><p>Write 1-page notes: SAP history + top products + customer segments. Then draw the 5 core business processes &mdash; Order-to-Cash, Procure-to-Pay, Hire-to-Retire, Plan-to-Produce, Record-to-Report &mdash; and note which SAP module owns each.</p></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag">DAY 2</span><span class="date-tag">Tue Sep 15</span><span class="topic">Module Landscape + S/4HANA vs ECC + SAP HANA</span></div>
+      <div class="db-sec"><h5>Concepts</h5>
+        <ul>
+          <li><strong>Functional modules:</strong> FI (Finance), CO (Controlling), MM (Materials Mgmt), SD (Sales &amp; Distribution), PP (Production Planning), HR/HCM, PM (Plant Maintenance), QM (Quality)</li>
+          <li><strong>Technical modules:</strong> ABAP, BASIS, BW/BI, Security, PI/PO/CPI (integration), Fiori/UI5</li>
+          <li><strong>R/3 / ECC</strong> = the old client-server era (1992); still running at thousands of companies as ECC 6.0</li>
+          <li><strong>S/4HANA</strong> = the 2015 rewrite &mdash; runs only on the HANA in-memory DB, Fiori-first UI, simplified data model</li>
+          <li><strong>The 2027 deadline:</strong> SAP ends mainstream ECC support &mdash; this creates a huge migration wave and is precisely why the job market is hot for you</li>
+          <li><strong>HANA:</strong> traditional DBs store rows on disk; HANA stores <em>columns in RAM</em> &mdash; orders of magnitude faster for analytics</li>
+          <li><strong>"Code-to-data":</strong> push the logic into the DB instead of pulling data up into ABAP (you'll do this for real in the ABAP-on-HANA wrap segment)</li>
+        </ul>
+      </div>
+      <div class="db-sec"><h5>Read / Watch</h5><p>"SAP Modules Overview" (ZaranTech / SimpliLearn, recent); "S/4HANA vs ECC" on SAP's official YouTube; SAP HANA Academy: <code>https://www.youtube.com/@saphanaacademy</code>.</p></div>
+      <div class="db-sec"><h5>What to Do</h5><p>Make a 2-column table (module name &rarr; one-line "what it does") &mdash; you'll refer back to it all through the ABAP course. Then write 5 bullets on why the 2027 ECC deadline matters for your career, plus a 1-page note on HANA column store.</p></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag">DAY 3</span><span class="date-tag">Wed Sep 16</span><span class="topic">Cloud vs On-Prem, SAP BTP, Fiori &amp; SAPUI5</span></div>
+      <div class="db-sec"><h5>Concepts</h5>
+        <ul>
+          <li>On-prem = customer's own data centre; Cloud = SAP hosts it; Hybrid = a mix (most real customers)</li>
+          <li><strong>BTP</strong> = Business Technology Platform &mdash; the "cloud PaaS" side of SAP</li>
+          <li>BTP hosts your custom apps, integrations, AI models, and extensions (this is all of Part III)</li>
+          <li>What runs where: S/4 core + ABAP on-prem; Fiori launchpad, Joule AI, CAP apps on BTP</li>
+          <li><strong>Old UI:</strong> SAP GUI &mdash; the grey, keyboard-driven Windows client</li>
+          <li><strong>New UI:</strong> Fiori = a design language + a set of pre-built apps</li>
+          <li><strong>SAPUI5</strong> = the JavaScript framework Fiori is built on (think React, but SAP-specific &mdash; your Phase 6 React knowledge transfers directly)</li>
+          <li>Fiori launchpad = the home page of tiles a business user actually lands on</li>
+        </ul>
+      </div>
+      <div class="db-sec"><h5>Read / Watch</h5><p>SAP BTP overview: <code>https://www.sap.com/products/technology-platform.html</code>; "What is SAP BTP" (YouTube); SAP Fiori design demo: <code>https://experience.sap.com/fiori-design/</code>.</p></div>
+      <div class="db-sec"><h5>What to Do</h5><p>Note down what runs on-prem vs on BTP &mdash; this preps you for Part III. Then open the Fiori design demo site and click through a few apps; screenshot the visual patterns you notice. You'll build UI5 apps yourself in institute Segment 11.</p></div>
+    </div>
+
+    <div class="day-block">
+      <div class="dh"><span class="day-tag">DAY 4</span><span class="date-tag">Thu Sep 17</span><span class="topic">Career Paths, Certifications &amp; Enrolment Day</span></div>
+      <div class="db-sec"><h5>Concepts</h5>
+        <ul>
+          <li><strong>Career tracks:</strong> traditional ABAP dev (reports, dialog, enhancements) &rarr; ABAP + Fiori/UI5 (full-stack SAP) &rarr; ABAP on HANA (CDS, AMDP) &rarr; BTP developer (CAP + Fiori + AI)</li>
+          <li>Also: functional consultant + ABAP crossover; freelance vs India Big-4 vs SAP Labs vs product companies</li>
+          <li><strong>Certs to know:</strong> C_TAW12_750 (ABAP with NetWeaver), C_HANADEV_18 (ABAP on HANA 2.0), Fiori Application Developer, BTP Extension Developer</li>
+          <li>Certs cost roughly &#8377;40-50K each in India &mdash; plan for 1-2 in 2027, after you land the job</li>
+          <li>openSAP courses are <strong>free</strong> and give you badges you can put on a resume today</li>
+        </ul>
+      </div>
+      <div class="db-sec"><h5>Read / Watch</h5><p>Search LinkedIn for "SAP ABAP Developer" job descriptions &mdash; read 5-10 postings to spot the common skill combos and salary bands. SAP certification catalog: <code>https://training.sap.com/certification</code>.</p></div>
+      <div class="db-sec"><h5>What to Do</h5><p><strong>Enrol.</strong> Sign with your chosen institute, pay the fee, collect system-access credentials. Install SAP GUI + Eclipse ADT tonight. Bookmark 2 certifications for 2027 and sign up for the free openSAP "ABAP Development for SAP HANA" course. Write a 1-page 5-year SAP career map. You are ready for orientation on <strong>Fri Sep 18</strong>.</p></div>
+    </div>
 
     <div class="sec-lbl">YouTube + Docs (bookmark these for the whole course)</div>
     <div class="yt"><span class="yt-b">YT</span><span>SAP official: <code>https://www.youtube.com/@SAP</code></span></div>
@@ -308,19 +333,20 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
         <h4>Deliverables Checklist</h4>
         <ul class="check">
           <li>1-page SAP overview notes (Day 1)</li>
-          <li>ERP process diagram (Day 2)</li>
-          <li>SAP modules table (Day 3)</li>
-          <li>S/4HANA vs ECC note (Day 4)</li>
-          <li>HANA architecture 1-pager (Day 5)</li>
-          <li>Cloud/BTP notes (Day 6)</li>
-          <li>Fiori/UI5 tour screenshots (Day 7)</li>
-          <li>Career map 1-pager (Day 8)</li>
-          <li>Cert plan bookmarks (Day 9)</li>
-          <li>Institute enrolment DONE (Day 10)</li>
+          <li>5 core business processes diagram (Day 1)</li>
+          <li>SAP modules table &mdash; name &rarr; what it does (Day 2)</li>
+          <li>S/4HANA vs ECC + 2027 deadline note (Day 2)</li>
+          <li>HANA column-store 1-pager (Day 2)</li>
+          <li>On-prem vs BTP notes (Day 3)</li>
+          <li>Fiori/UI5 tour screenshots (Day 3)</li>
+          <li>5-year SAP career map (Day 4)</li>
+          <li>2 certifications bookmarked + openSAP signup (Day 4)</li>
+          <li><strong>Institute enrolment DONE + SAP GUI / Eclipse ADT installed (Day 4)</strong></li>
         </ul>
       </div>
       <div class="ibox">
         <h4>Institute Shortlist Criteria</h4>
+        <p style="margin-bottom:6px;color:#78350f;"><em>Do this during the buffer week (Sep 8-13) so Day 4 is just signing.</em></p>
         <ul class="plain">
           <li>Curriculum covers M1-M40 + HANA CDS + AMDP</li>
           <li>Trainer has 5+ years SAP experience</li>
@@ -337,16 +363,17 @@ ul.check li::before { content: "[ ]"; position: absolute; left: 0; font-family: 
 <!-- ========== ABAP ORIENTATION (institute joining) ========== -->
 <div id="segment-orientation" class="page" style="page-break-before:always;">
   <div class="wk-hdr">
-    <div class="wn">Institute Orientation</div>
+    <div class="wn">Institute Orientation &mdash; 3 Days</div>
     <h2>ABAP Course Kickoff</h2>
-    <div class="wm">Approx Sep 18 onwards (whenever your batch begins) &bull; Enrolment complete, system access ready</div>
+    <div class="wm">Sep 18-20, 2026 (Fri-Sun) &bull; Enrolment complete, system access ready &bull; Course proper starts ~Sep 21</div>
   </div>
   <div class="wk-body">
-    <div class="goal-box">Institute joining formalities, SAP system credentials, IDE setup, first Hello World. Follow the institute's onboarding &mdash; not a rigid script from this doc. Once your batch starts, use the sections below only as a <em>reference outline</em> for what should be covered by the time you finish each segment.</div>
+    <div class="goal-box">Institute joining formalities, SAP system credentials, IDE setup, first Hello World. Follow the institute's onboarding &mdash; not a rigid script from this doc. If your batch actually begins on a different date, shift these 3 days with it. Once the course starts, use the segments below only as a <em>reference outline</em> for what should be covered by the time you finish each block.</div>
     <ul class="plain">
-      <li><strong>Day of joining:</strong> Collect materials, system credentials, batch schedule. Install SAP GUI + Eclipse ADT.</li>
-      <li><strong>Within first 2-3 days:</strong> Log into SAP system, run SE80 Object Navigator, create a Z-namespace, write your first "Hello World" ABAP program.</li>
-      <li><strong>First weekend after joining:</strong> Explore SE38 / SE11 / SE80 / SE84. Set up your local Vendor Hub notes folder + GitHub-style ABAP repo.</li>
+      <li><strong>Fri Sep 18 &mdash; joining day:</strong> Collect materials, system credentials, batch schedule. Install SAP GUI + Eclipse ADT.</li>
+      <li><strong>Sat Sep 19:</strong> Log into the SAP system, run SE80 Object Navigator, create a Z-namespace, write your first "Hello World" ABAP program with a WRITE statement.</li>
+      <li><strong>Sun Sep 20:</strong> Explore SE38 / SE11 / SE80 / SE84. Get familiar with the keyboard shortcuts. Set up your local Vendor Hub notes folder + GitHub-style ABAP repo.</li>
+      <li><strong>From ~Mon Sep 21:</strong> Course proper begins &mdash; Segment 1 (M1-M4). Follow your batch's pace, not this document's.</li>
     </ul>
   </div>
 </div>

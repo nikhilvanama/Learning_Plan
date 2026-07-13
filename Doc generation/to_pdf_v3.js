@@ -84,30 +84,30 @@ async function generatePDF() {
       <th style="color:#e2e8f0;padding:6px 9px;text-align:left;font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">Dates</th>
     </tr></thead>
     <tbody>
-      ${tocRow(b('#38bdf8', 'PART I'), '<strong>50-Day Foundation</strong> &mdash; Master Timeline', 'Jul 6 &mdash; Aug 31', 'overview', false)}
+      ${tocRow(b('#38bdf8', 'PART I'), '<strong>50-Day Foundation</strong> &mdash; Master Timeline', 'Jul 13 - Sep 7', 'overview', false)}
       ${tocRow('', 'Daily Timings &mdash; weekday + weekend rhythm', '&mdash;', 'daily-timings', true)}
       ${tocRow('', 'Mindset &amp; Method &mdash; how to learn effectively', '&mdash;', 'motivation', false)}
-      ${tocRow('', 'Prep Week &mdash; Resource Collection', 'Jul 1-5, 2026', 'prep-week', true)}
-      ${tocRow('', 'Phase 1: Prompt Engineering', 'Jul 6-8', 'phase-1', false)}
-      ${tocRow('', 'Phase 2: Claude Code CLI', 'Jul 9-10', 'phase-2', true)}
-      ${tocRow('', 'Phase 3: CS Fundamentals', 'Jul 11-12', 'phase-3', false)}
-      ${tocRow('', 'Phase 4: JavaScript Basics Warm-up', 'Jul 13-14', 'phase-4', true)}
-      ${tocRow('', 'Phase 5: Advanced JavaScript + OOP', 'Jul 15-19', 'phase-5', false)}
-      ${tocRow('', 'Phase 6: React + Tailwind CSS', 'Jul 20-26', 'phase-6', true)}
-      ${tocRow('', 'Phase 7: Node.js + Express (Deep Dive)', 'Jul 27 - Aug 4', 'phase-7', false)}
-      ${tocRow('', 'Phase 8: REST API Design', 'Aug 5-9', 'phase-8', true)}
-      ${tocRow('', 'Phase 9: MySQL + Node Integration', 'Aug 10-18', 'phase-9', false)}
-      ${tocRow('', 'Phase 10: Git (Advanced) + Docker + AWS', 'Aug 19-22', 'phase-10', true)}
-      ${tocRow('', 'Full-Stack Capstone A &mdash; Deploy the Auth API', 'over Break Aug 22', 'capstone-a', false)}
-      ${tocRow('', 'Phase 11: System Design Fundamentals', 'Aug 23-26', 'phase-11', true)}
-      ${tocRow('', 'Full-Stack Capstone B &mdash; Scale + Portfolio Polish', 'Buffer / Sep 1-7', 'capstone-b', false)}
-      ${tocRow('', 'Phase 12: Agentic AI + n8n + FocusTrack Pro', 'Aug 27-31', 'phase-12', true)}
+      ${tocRow('', 'Prep Week &mdash; Resource Collection', 'Jul 8-12, 2026', 'prep-week', true)}
+      ${tocRow('', 'Phase 1: Prompt Engineering', 'Jul 13-15', 'phase-1', false)}
+      ${tocRow('', 'Phase 2: Claude Code CLI', 'Jul 16-17', 'phase-2', true)}
+      ${tocRow('', 'Phase 3: CS Fundamentals', 'Jul 18-19', 'phase-3', false)}
+      ${tocRow('', 'Phase 4: JavaScript Basics Warm-up', 'Jul 20-21', 'phase-4', true)}
+      ${tocRow('', 'Phase 5: Advanced JavaScript + OOP', 'Jul 22-26', 'phase-5', false)}
+      ${tocRow('', 'Phase 6: React + Tailwind CSS', 'Jul 27 - Aug 2', 'phase-6', true)}
+      ${tocRow('', 'Phase 7: Node.js + Express (Deep Dive)', 'Aug 3-11', 'phase-7', false)}
+      ${tocRow('', 'Phase 8: REST API Design', 'Aug 12-16', 'phase-8', true)}
+      ${tocRow('', 'Phase 9: MySQL + Node Integration', 'Aug 17-25', 'phase-9', false)}
+      ${tocRow('', 'Phase 10: Git (Advanced) + Docker + AWS', 'Aug 26-29', 'phase-10', true)}
+      ${tocRow('', 'Full-Stack Capstone A &mdash; Deploy the Auth API', 'over Break Aug 29', 'capstone-a', false)}
+      ${tocRow('', 'Phase 11: System Design Fundamentals', 'Aug 30 - Sep 2', 'phase-11', true)}
+      ${tocRow('', 'Full-Stack Capstone B &mdash; Scale + Portfolio Polish', 'Buffer / Sep 8-13', 'capstone-b', false)}
+      ${tocRow('', 'Phase 12: Agentic AI + n8n + FocusTrack Pro', 'Sep 3-7', 'phase-12', true)}
       ${tocRow('', 'Agentic Capstone C &mdash; Personal Research Agent', 'Buffer week / weekends', 'capstone-c', false)}
       ${tocRow('', 'Agentic Capstone D &mdash; RAG Assistant + Automations', 'Buffer week / weekends', 'capstone-d', true)}
-      <tr><td style="padding:6px 9px;border-bottom:1px solid #f1f5f9;background:#fef9c3;">${b('#eab308', 'BUFFER')}</td><td style="padding:6px 9px;border-bottom:1px solid #f1f5f9;background:#fef9c3;"><a href="#buffer-week" style="color:inherit;text-decoration:none;display:block;"><strong>1-Week Buffer</strong> &mdash; wrap capstone + prep for SAP</a></td><td style="padding:6px 9px;border-bottom:1px solid #f1f5f9;background:#fef9c3;color:#78350f;">Sep 1-7, 2026</td></tr>
-      ${tocRow(b('#0891b2', 'PART II'), '<strong>Part II Overview</strong> &mdash; SAP Ecosystem + ABAP Institute', 'Sep 8 &rarr; end Nov / mid Dec', 'part2-overview', false)}
-      ${tocRow('', 'Phase A: SAP Overview &amp; Ecosystem (self-study)', 'Sep 8-17', 'phase-A', true)}
-      ${tocRow('', 'Institute Orientation &mdash; kickoff', 'from Sep 18', 'segment-orientation', false)}
+      <tr><td style="padding:6px 9px;border-bottom:1px solid #f1f5f9;background:#fef9c3;">${b('#eab308', 'BUFFER')}</td><td style="padding:6px 9px;border-bottom:1px solid #f1f5f9;background:#fef9c3;"><a href="#buffer-week" style="color:inherit;text-decoration:none;display:block;"><strong>Buffer Week</strong> &mdash; wrap capstones + prep for SAP</a></td><td style="padding:6px 9px;border-bottom:1px solid #f1f5f9;background:#fef9c3;color:#78350f;">Sep 8-13, 2026</td></tr>
+      ${tocRow(b('#0891b2', 'PART II'), '<strong>Part II Overview</strong> &mdash; SAP Ecosystem + ABAP Institute', 'Sep 14 &rarr; end Nov / mid Dec', 'part2-overview', false)}
+      ${tocRow('', 'Phase A: SAP Overview &amp; Ecosystem (self-study)', 'Sep 14-17', 'phase-A', true)}
+      ${tocRow('', 'Institute Orientation &mdash; kickoff', 'Sep 18-20', 'segment-orientation', false)}
       ${tocRow('', 'Segment 1: ABAP Workbench &amp; Language Basics (M1-M4)', '~Week 1', 'segment-1', true)}
       ${tocRow('', 'Segment 2: ABAP Dictionary (DDIC) (M5-M8)', '~Week 2', 'segment-2', false)}
       ${tocRow('', 'Segment 3: Search Helps, Locks, Open SQL (M9-M12)', '~Week 3', 'segment-3', true)}
