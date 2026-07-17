@@ -31,14 +31,19 @@ const CAPTION = captionArg || '';
 const STATS = statsArg ? JSON.parse(statsArg) : [];
 const COMPACT = modeArg === 'compact';
 
-// Compact mode (cheat sheets): big tables / code blocks / blockquotes may
-// break across pages instead of jumping whole to the next page and leaving
-// half-empty pages behind. Table headers repeat on each page; only single
-// rows are kept intact.
+// Compact mode: long TABLES and blockquotes may flow across pages rather than
+// jumping whole to the next page and stranding half-empty pages behind them.
+// Table headers repeat on each page; single rows stay intact.
+//
+// Code blocks are deliberately EXCLUDED from that: a <pre> split across a page
+// boundary reads as broken/cut-off code, so it keeps page-break-inside:avoid
+// from the base stylesheet and moves whole to the next page. (A block taller
+// than one page is broken by the browser regardless — nothing is ever lost.)
 const COMPACT_CSS = `
-  table, pre, blockquote { page-break-inside: auto; }
+  table, blockquote { page-break-inside: auto; }
   thead { display: table-header-group; }
   tr, li { page-break-inside: avoid; }
+  pre { page-break-inside: avoid; }
   h1 { page-break-before: auto; padding-top: 14px; }
   #cover + h1, .mermaid-wrap + h1 { padding-top: 0; }
 `;
@@ -253,6 +258,23 @@ const html = `<!DOCTYPE html>
   tbody tr:nth-child(even) { background: #f8f7fc; }
   td code, th code { font-size: 11.6px; }
 
+  /* ---------------- Telugu (Tenglish) notes ---------------- */
+  /* Authored as raw <p class="te"> so they stay compact — a blockquote per
+     concept would add ~3 pages of margins across the document. */
+  .te {
+    background: #f6f1fe;
+    border-left: 3px solid #a78bfa;
+    padding: 6px 11px;
+    margin: 0 0 9px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13.6px;
+    line-height: 1.5;
+    color: #3b3355;
+    page-break-inside: avoid;
+  }
+  .te strong { color: #6d28d9; }
+  .te code { background: #ece4fb; font-size: 12px; }
+
   /* ---------------- blockquote ---------------- */
   blockquote {
     margin: 13px 0; padding: 12px 16px;
@@ -274,8 +296,12 @@ const html = `<!DOCTYPE html>
     text-align: center; margin: 10px 0 12px;
     page-break-inside: avoid;
   }
+  /* Deliberately NO max-width:100% !important here. Mermaid emits width="100%",
+     so an !important max-width lets small diagrams stretch to the full page
+     (labels ballooning to ~28px) while wide ones shrink (~8px). The script
+     below pins each svg to its viewBox width instead, so every label renders
+     at the same ~13px. */
   .mermaid svg {
-    max-width: 100% !important;
     max-height: 195mm !important;
     height: auto !important;
   }
@@ -314,6 +340,20 @@ ${body}
     sequence: { actorMargin: 45, width: 150, mirrorActors: false },
   });
   await mermaid.run({ querySelector: '.mermaid' });
+
+  // Render every diagram at its NATURAL size (from the viewBox), shrinking
+  // only the ones genuinely wider than the page. Without this, mermaid's
+  // width="100%" scales each diagram by a different factor and label sizes
+  // range from 8px to 28px across the document.
+  for (const svg of document.querySelectorAll('.mermaid svg')) {
+    const vb = svg.viewBox.baseVal;
+    if (!vb || !vb.width) continue;
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+    svg.style.width = vb.width + 'px';
+    svg.style.maxWidth = '100%';
+    svg.style.height = 'auto';
+  }
   window.__mermaidDone = true;
 </script>
 </body>

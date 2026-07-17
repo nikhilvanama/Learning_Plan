@@ -210,10 +210,10 @@ for (let i = 1; i <= 3; i++) setTimeout(() => console.log(i));  // 1 2 3
 **30-second answer:** "`this` is decided at call time by how the function is called, with four rules in priority order: `new` binds it to the fresh object; explicit `call`/`apply`/`bind` binds it to what you pass; a dot call binds it to the object before the dot; a plain call gives `undefined` in strict mode. Arrow functions opt out entirely and inherit `this` from where they were written."
 
 ```mermaid
-graph TD
-    Q{"How is it called?"} -->|"arrow function"| A5["inherits this<br/>from birth scope"]
+graph LR
+    Q{"How is it<br/>called?"} -->|"arrow function"| A5["inherits this<br/>from birth scope"]
     Q -->|"new Fn()"| A1["the new object"]
-    Q -->|"call / apply / bind"| A2["what you passed"]
+    Q -->|"call/apply/bind"| A2["what you passed"]
     Q -->|"obj.fn()"| A3["object before the dot"]
     Q -->|"plain fn()"| A4["undefined (strict)"]
     style Q fill:#4f46e5,color:#fff
