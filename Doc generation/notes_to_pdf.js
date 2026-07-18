@@ -115,6 +115,24 @@ body = body.replace(/<!--MERMAID_(\d+)-->/g, (_, i) =>
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre></div>`
 );
 
+// Inline every LOCAL image as a base64 data URI so the PDF is self-contained
+// (Puppeteer's setContent has no base URL, so relative <img src> can't load;
+// and hotlinked remote images render unreliably). Remote/data URIs are left
+// untouched. Paths resolve relative to the markdown file's own directory.
+const MIME = { png:'image/png', jpg:'image/jpeg', jpeg:'image/jpeg',
+               gif:'image/gif', webp:'image/webp', svg:'image/svg+xml' };
+let imgOK = 0, imgMiss = 0;
+body = body.replace(/(<img\b[^>]*\bsrc=")([^"]+)("[^>]*>)/g, (m, pre, src, post) => {
+  if (/^(https?:|data:)/i.test(src)) return m;
+  const p = path.resolve(path.dirname(mdPath), src);
+  if (!fs.existsSync(p)) { imgMiss++; console.warn(`  ⚠ image not found: ${src}`); return m; }
+  const ext = path.extname(p).slice(1).toLowerCase();
+  const b64 = fs.readFileSync(p).toString('base64');
+  imgOK++;
+  return `${pre}data:${MIME[ext] || 'application/octet-stream'};base64,${b64}${post}`;
+});
+if (imgOK || imgMiss) console.log(`  inlined ${imgOK} image(s)${imgMiss ? `, ${imgMiss} missing` : ''}.`);
+
 // The document's own H1 title + tagline + quote become the cover; drop the duplicate.
 body = body.replace(/^[\s\S]*?<hr>\n/, '');
 
@@ -305,6 +323,93 @@ const html = `<!DOCTYPE html>
     max-height: 195mm !important;
     height: auto !important;
   }
+
+  /* ---------------- figures & real images ---------------- */
+  img { max-width: 100%; height: auto; }
+  figure.fig {
+    margin: 12px 0 14px; text-align: center;
+    page-break-inside: avoid;
+  }
+  figure.fig img {
+    max-width: 100%; border-radius: 8px;
+    border: 1px solid #e2ddf0;
+    box-shadow: 0 1px 5px rgba(40,25,80,.10);
+  }
+  figure.fig.small img { max-width: 260px; }
+  figure.fig.med img   { max-width: 400px; }
+  figcaption {
+    font-size: 12.3px; color: #6b6785; font-style: italic;
+    margin-top: 6px; line-height: 1.4;
+  }
+  .fig-credit { font-style: normal; color: #9a95ad; font-size: 11px; }
+
+  /* ---------------- before / after panels ---------------- */
+  .ba { display: flex; gap: 12px; margin: 12px 0 14px; page-break-inside: avoid; }
+  .ba-col { flex: 1; border-radius: 8px; padding: 10px 13px; font-size: 13px; }
+  .ba-col h4 { margin: 0 0 5px; font-size: 13.5px; }
+  .ba-col ul { margin: 0; padding-left: 17px; }
+  .ba-col li { margin-bottom: 1px; }
+  .ba-before { background: #fef4f2; border: 1px solid #f6cfc6; }
+  .ba-before h4 { color: #b91c1c; }
+  .ba-after { background: #edfbf4; border: 1px solid #b6ecd0; }
+  .ba-after h4 { color: #047857; }
+
+  /* ---------------- Fiori Launchpad mockup ---------------- */
+  .flp {
+    max-width: 540px; margin: 12px auto 6px;
+    border: 1px solid #cfd6de; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(30,40,60,.12); page-break-inside: avoid;
+  }
+  .flp-bar {
+    background: #354a5f; color: #fff; padding: 7px 13px;
+    font-size: 12px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .flp-bar .flp-search { background: rgba(255,255,255,.18); border-radius: 10px; padding: 2px 12px; font-size: 11px; }
+  .flp-body { background: #eceff2; padding: 12px 13px 14px; }
+  .flp-grp { font-size: 10.5px; color: #5a6b7b; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 7px; font-weight: 600; }
+  .flp-grid { display: flex; flex-wrap: wrap; gap: 9px; }
+  .tile {
+    background: #fff; border-radius: 6px; width: 112px; height: 78px;
+    padding: 8px 9px; box-shadow: 0 1px 2px rgba(0,0,0,.14);
+    font-size: 10.8px; color: #32363a; line-height: 1.25;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .tile .t-ic { font-size: 15px; }
+  .tile b { font-size: 21px; color: #0a6ed1; font-weight: 800; }
+  .tile.kpi-amber b { color: #df6e0c; }
+  .tile.kpi-green b { color: #107e3e; }
+
+  /* ---------------- Joule chat mockup ---------------- */
+  .joule {
+    max-width: 460px; margin: 12px auto 6px;
+    border: 1px solid #d9d5ea; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(60,20,80,.12); page-break-inside: avoid;
+  }
+  .joule-bar {
+    background: linear-gradient(90deg, #5b21b6 0%, #a21caf 60%, #c026d3 100%);
+    color: #fff; padding: 8px 13px; font-weight: 600; font-size: 13px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .joule-body { background: #faf9ff; padding: 12px 13px; }
+  .jq {
+    background: #0a6ed1; color: #fff; border-radius: 13px 13px 3px 13px;
+    padding: 7px 12px; margin: 0 0 9px 64px; font-size: 12.4px; line-height: 1.4;
+  }
+  .ja {
+    background: #fff; border: 1px solid #eadff9;
+    border-radius: 13px 13px 13px 3px; padding: 8px 12px; margin: 0 64px 4px 0;
+    font-size: 12.4px; color: #2b2f45; line-height: 1.45;
+  }
+  .ja .ja-do { color: #107e3e; font-weight: 700; }
+
+  /* ---------------- "picture it" callout ---------------- */
+  .pic {
+    background: #eef4ff; border: 1px solid #cfe0ff; border-radius: 8px;
+    padding: 8px 13px; margin: 0 0 10px; font-size: 13.4px; color: #1e3a5f;
+    page-break-inside: avoid;
+  }
+  .pic strong { color: #0a4a8f; }
+
   ${COMPACT ? COMPACT_CSS : ''}
 </style>
 </head>
@@ -373,10 +478,12 @@ ${body}
   page.on('pageerror', e => console.error('  page error:', e.message));
 
   console.log('Loading HTML (fetching mermaid from CDN)...');
-  await page.setContent(html, { waitUntil: 'networkidle0', timeout: 90000 });
+  // Timeouts are generous: the ABAP notes are ~38k lines / 175 diagrams, and a
+  // document that size needs minutes, not seconds, to parse and lay out.
+  await page.setContent(html, { waitUntil: 'networkidle0', timeout: 600000 });
 
   console.log('Rendering mermaid diagrams...');
-  await page.waitForFunction('window.__mermaidDone === true', { timeout: 60000 });
+  await page.waitForFunction('window.__mermaidDone === true', { timeout: 600000 });
 
   // Light background for ASCII-art code blocks (fences with no language class).
   await page.evaluate(() => {
@@ -401,6 +508,25 @@ ${body}
   });
 
   await browser.close();
+
+  // Repair internal (TOC / cross-reference) links. Chromium computes anchor
+  // destinations BEFORE it pushes page-break-inside:avoid blocks (diagrams,
+  // tables, code) to the next page, so every internal link lands a page or
+  // more too early and the drift grows through the document. fix_pdf_links.py
+  // rebuilds each destination from the page where the heading actually renders.
+  // Best-effort: if python/pypdf is missing, the PDF is still fine minus this.
+  try {
+    const { execFileSync } = require('child_process');
+    const fixer = path.join(__dirname, 'fix_pdf_links.py');
+    if (fs.existsSync(fixer)) {
+      console.log('Repairing internal links...');
+      const py = process.platform === 'win32' ? 'python' : 'python3';
+      const out = execFileSync(py, [fixer, outPath, mdPath], { encoding: 'utf8' });
+      process.stdout.write(out);
+    }
+  } catch (e) {
+    console.warn('  ⚠ link repair skipped (need: pip install pypdf):', e.message.split('\n')[0]);
+  }
 
   const mb = (fs.statSync(outPath).size / 1048576).toFixed(2);
   console.log(`\n✅ ${outPath}\n   ${mb} MB · ${diagrams} diagrams`);
