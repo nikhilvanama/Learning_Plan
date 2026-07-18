@@ -25,7 +25,9 @@
 - [Part J — Real-World Scenarios](#part-j-real-world-scenarios)
 - [Part K — Exercises & Deliverables](#part-k-exercises-deliverables)
 - [Part L — Q&A for Every Topic](#part-l-qa-for-every-topic)
-- [Part M — Resources & Quick Reference](#part-m-resources-quick-reference)
+- [Part M — Interview Preparation](#part-m-interview-preparation)
+  - [R1 Fundamentals](#round-1-fundamentals-what-why) · [R2 Internals](#round-2-how-it-works-internally) · [R3 Models](#round-3-models-cost-judgement) · [R4 CLAUDE.md & Commands](#round-4-claudemd-commands-config) · [R5 MCP](#round-5-mcp-integrations) · [R6 Agents](#round-6-agents-hooks-workflows) · [R7 Product Differences](#round-7-product-differences-the-comparison-round) · [R8 Scenarios](#round-8-scenario-situational-star) · [R9 Behavioural](#round-9-behavioural-judgement-the-hr-round) · [R10 Rapid-Fire](#round-10-rapid-fire-one-liners)
+- [Part N — Resources & Quick Reference](#part-n-resources-quick-reference)
 
 ---
 
@@ -847,7 +849,266 @@ A: One giant never-ending session for ten unrelated tasks. Clear between tasks, 
 
 ---
 
-# Part M — Resources & Quick Reference
+# Part M — Interview Preparation
+
+*Now flip roles. This part drills the same material as **interview questions** — the way a senior HR + technical panel actually asks: what, why, differences, scenarios, and behaviour. Every answer uses one shape you can say aloud: **definition → why → example → (trade-off if asked)**. The 🎯 notes reveal the real thing being tested behind each question.*
+
+```mermaid
+graph LR
+    A["One-line<br/>definition"] --> B["Why it<br/>matters"]
+    B --> C["A concrete<br/>example"]
+    C --> D["(if asked)<br/>trade-off"]
+    style A fill:#4f46e5,color:#fff
+    style C fill:#c026d3,color:#fff
+    style D fill:#059669,color:#fff
+```
+
+## Round 1 — Fundamentals (What & Why)
+
+**Q1. What is Claude Code, in one sentence?**
+A: Claude Code is an agentic command-line tool that puts Claude *inside* your project — it reads your files, runs your commands, and edits your code in a loop, while you supervise. It turns Claude from something you *chat with* into something you *delegate to*.
+🎯 *Interviewer is checking:* can you compress a concept into one clean sentence.
+
+**Q2. Why does Claude Code exist — wasn't the chat app enough?**
+A: A chat model only sees the text you paste, so *you* do all the mechanical work — finding files, applying edits, running tests. Claude Code removes that gap by giving Claude the same tools a developer uses (filesystem, terminal, search). The "why" is leverage: you stop being the typist and become the reviewer.
+🎯 *Interviewer is checking:* do you understand the problem it solves, not just the feature.
+
+**Q3. How is an "agent" different from an "assistant"?**
+A: An assistant answers once and stops. An agent runs a loop — think → act with a tool → observe the result → think again — repeating until the goal is met. The loop, plus the ability to take real actions, is the whole difference. Claude Code is essentially the ReAct pattern built into a product.
+🎯 *Interviewer is checking:* the loop concept — the heart of everything.
+
+**Q4. Give a real example where Claude Code beats a chatbot.**
+A: "The login button does nothing on click." A chatbot explains possible causes and I implement the fix by hand. Claude Code *searches* the repo, *reads* the handler, spots that it calls the wrong function, *edits* the file, and *runs the tests* to confirm — end to end, one instruction. The intelligence is similar; the reach is not.
+🎯 *Interviewer is checking:* can you ground theory in a concrete story.
+
+**Q5. Do you need to be a terminal expert to use it?**
+A: No. You type plain English — "fix the login bug" is a valid command. The terminal is just the doorway; the conversation inside is normal language. That's a deliberate design choice to lower the barrier.
+
+## Round 2 — How It Works Internally
+
+**Q6. Walk me through the agentic loop.**
+A: Four repeating steps. **Think** — the model decides the next action. **Act** — it calls a tool (read, edit, bash, search), asking permission if the action changes something. **Observe** — the result is fed back into its context. **Repeat** — informed by that result, it decides again, until the goal is met or it needs me. Each observation makes the next decision smarter — that feedback is what makes it an agent, not a one-shot reply.
+
+**Q7. What is the context window, and why should I care?**
+A: It's Claude's working memory — every token it can currently see: my messages, files it has read, command outputs, and CLAUDE.md. The mental model is a **desk, not a filing cabinet**: Claude only knows what's on the desk right now; a file it hasn't read, it hasn't seen. I care because (a) it explains why I must point it at the right files, and (b) the desk fills up on long sessions, which lowers quality and raises cost — so I `/clear` between tasks and `/compact` when it gets big.
+🎯 *Interviewer is checking:* the "desk" model and the practical habits that follow from it.
+
+**Q8. Who actually runs the tools — the model or the program?**
+A: The program. The model only *requests* a tool with structured arguments; the Claude Code harness executes it and returns the result. The model never touches my disk directly. That boundary is exactly why permissions can exist — there's a gate between "the AI wants to" and "it happened."
+
+**Q9. How does Claude decide which tool to use?**
+A: Each tool has a description that acts like a mini-prompt telling the model what it's for and when to use it. Given the goal and what it has observed, the model picks the tool whose description best fits the next step — the same tool-use principle from prompt engineering, applied automatically.
+
+**Q10. How do permissions work, and why do they matter?**
+A: Anything that changes something or runs a command asks first: **allow once**, **allow always**, or **deny**. A denial is *feedback* — Claude should try another approach, not repeat the same call. I tune it in `settings.json` with allow/ask/deny rules: auto-allow safe, frequent, read-only actions (`git status`, `npm test`), always gate irreversible ones (`git push`, deletes, deploys). The rule of thumb: the more reversible and read-only, the safer to auto-allow.
+
+## Round 3 — Models & Cost Judgement
+
+**Q11. Claude Code can run on different models — how do you choose?**
+A: It's a trade-off triangle: **capability ↔ speed ↔ cost**. My default is **Sonnet** — strong and fast for everyday work. I reach for **Opus** when I'm stuck on a hard bug, doing a big refactor, or making a high-stakes design decision — its deeper reasoning earns its cost. I drop to **Haiku** for trivial, high-volume edits like a bulk rename, where paying for Opus is like hiring a principal engineer to fix a typo.
+🎯 *Interviewer is checking:* judgement and cost-awareness, not memorised model names.
+
+**Q12. Why can using the *more expensive* model be *cheaper* overall?**
+A: Because a stronger model can solve a hard problem in one pass instead of ten failed cheap attempts. Ten Haiku retries that never land can burn more tokens — and far more of my time — than one Opus pass that solves it. Cost isn't per-token; it's per-solved-problem.
+
+**Q13. What's "fast mode" — is it a weaker model?**
+A: No, and that's a common trap in the question. On Opus 4.8/4.7, fast mode speeds up output while keeping Opus-level quality — same brain, quicker delivery. It does not downgrade to a smaller model.
+
+**Q14. Subscription vs API key — what's the difference and who's each for?**
+A: A **Claude Pro/Max subscription** is a flat monthly cost with usage limits — best for individuals; predictable. An **API key** from the Console is pay-per-token (input + output) — best for automation, teams, and heavy use. Same tool, different billing model — like a gym membership versus a pay-per-visit pass.
+
+## Round 4 — CLAUDE.md, Commands & Config
+
+**Q15. What is CLAUDE.md and why do you call it the highest-leverage file?**
+A: It's a Markdown memo Claude reads automatically at the start of every session — the things you'd tell a new teammate on day one: what the project is, the test command, conventions, what not to touch. It's highest-leverage because it turns repeated corrections into permanent rules: every session starts smart instead of clueless, and because it's committed to Git, the whole team's Claude stays consistent.
+
+**Q16. How do you create a good one, and what's the #1 mistake?**
+A: Fastest start is `/init` — Claude explores the repo and drafts it; then I trim to real rules. I can also press `#` mid-session to append a rule. The #1 mistake is bloat: it sits in context *every* session, so every line costs tokens. Write rules, not essays, and prune what's no longer true.
+
+**Q17. Difference between a slash command and a CLI flag?**
+A: A slash command (`/model`, `/clear`) runs *inside* a live session. A CLI flag (`--model`, `-p`) is passed to the `claude` command when I launch it from the shell. Different moments: one steers an ongoing conversation, the other configures the start.
+
+**Q18. `/clear` vs `/compact` — when do you use each?**
+A: `/clear` wipes the context for a genuinely new, unrelated task — a clean desk. `/compact` summarises the current conversation to free space while *keeping the gist* — I use it when I'm deep in one long task that's filling the window but I still need its history. Rule: new task → clear; same task, too big → compact.
+
+**Q19. What's headless mode and why does it matter?**
+A: `claude -p "task"` runs one task with no chat UI and prints the result. It matters because it's the automation gateway — I can drop Claude Code into shell scripts, Git hooks, and CI pipelines. Example: pipe a staged diff into `claude -p "write a commit message"` to auto-generate commit messages.
+
+## Round 5 — MCP & Integrations
+
+**Q20. What is MCP, in one analogy?**
+A: MCP (Model Context Protocol) is the **USB-C of AI tools** — one open standard to plug Claude into any external system (databases, Jira, Figma, Slack, your internal API). Before it, every integration was a custom one-off; MCP means you build a connector once and any MCP-aware app can use it.
+
+**Q21. How does it actually work?**
+A: An MCP *server* exposes a system as a set of tools (e.g. `query_database`, `list_tables`). Claude Code is the MCP *client* that connects to it. Once connected, those external tools appear alongside Claude's built-in ones, and it uses them in the same agentic loop. Servers can offer tools (actions), resources (data to read), and prompts (templates).
+
+**Q22. Give a real example of MCP earning its keep.**
+A: "Which users signed up last week but never logged in?" Without MCP I open a SQL client, write the query, run it, paste results back. With a Postgres MCP server, Claude calls `query_database` itself, gets the rows, answers, and can even draft the follow-up email. The database became one of Claude's hands.
+🎯 *Interviewer is checking:* can you show the before/after value, plus awareness that you only connect servers you trust — especially with write access to production.
+
+## Round 6 — Agents, Hooks & Workflows
+
+**Q23. Why use a subagent instead of doing everything in the main session?**
+A: Two reasons. **Clean context** — a subagent has its own fresh window, does a focused job (say, read 30 files to find every API endpoint), and returns only the *conclusion* to the main agent, so the main desk never gets buried. **Parallelism** — independent subagents run at the same time, so three searches finish in roughly the time of one.
+
+**Q24. Hooks vs. just instructing Claude — when do you need a hook?**
+A: When you need **"always."** Asking Claude "please format after editing" works *usually*; a hook in `settings.json` fires *every single time*, deterministically, because the harness runs it, not the model. Anything you can't afford to have skipped — run tests before every push, format after every edit — belongs in a hook.
+
+**Q25. Describe orchestrating a non-trivial feature end to end.**
+A: Start in **Plan mode** so Claude breaks the task down read-only and I approve the approach. Then it implements — possibly fanning independent parts to subagents in parallel. A **hook** runs the tests automatically after edits. Finally I read the diff and approve. Simple tasks stay single-agent; I only reach for heavy orchestration when the work genuinely needs scale, like a 100-file migration.
+
+## Round 7 — Product Differences (the comparison round)
+
+*This round tests whether you understand the whole Claude ecosystem, not just one tool. These are the "differences" questions interviewers love.*
+
+**Q26. Difference between Claude (chat), Claude Code, and Claude Cowork?**
+A: Same underlying model and agentic foundation — three different jobs and audiences.
+
+| | **Claude (chat)** | **Claude Code** | **Claude Cowork** |
+|---|---|---|---|
+| **Who** | Anyone | Developers | Knowledge workers (non-coders) |
+| **Where** | Browser / app | Terminal & IDE | Claude desktop app (+ web/mobile) |
+| **Does** | Advises — produces text/artifacts | Reads, edits, runs code locally | Works in your files & connected apps (Slack, Drive) |
+| **Style** | Conversation | Power, control, extensibility | Simple, safe, no command line |
+| **Setup** | None | Install & configure yourself | None — just start chatting |
+| **Runs in** | The chat | Your real machine | An isolated/sandboxed VM |
+
+**One-liner:** Claude chat *advises*; Cowork is a *general coworker* that does office/file tasks for non-coders in a safe sandbox; Claude Code is the *power tool* for engineers with full control and extensibility. Anthropic's own guidance: start with Cowork to feel what's possible, graduate to Claude Code when you want precision, speed, and control.
+🎯 *Interviewer is checking:* that you know they're the *same engine, different jobs* — and can match each to a user.
+
+**Q27. So when would you pick Cowork over Claude Code?**
+A: Cowork when the work is **non-coding knowledge work** — turning research into a deck, building a spreadsheet, prepping meeting briefs from Slack + Drive — and the user doesn't want a terminal. It's simpler and safer (sandboxed, isolated from the wider internet) and can run tasks in the background even when your device is offline. Claude Code when the work is **software** and I want precision, speed, extensibility (MCP, hooks, subagents), and reliability on long multi-step tasks. Cowork can stall on very long workflows where Code holds up.
+
+**Q28. Difference between Claude Artifacts and Claude Design?**
+A: **Artifacts** are the general *rendering layer* — when Claude produces substantial standalone output (an HTML app, code, an SVG, a doc, a diagram), it opens in a dedicated side window instead of being buried in chat, and it's interactive and shareable. It's for *any* kind of output.
+
+**Claude Design** is a *specialised product* (Anthropic Labs, powered by Opus 4.7) focused purely on **visual design work** — prototypes, wireframes, slides, one-pagers, pitch decks. Its differentiators: it can read your codebase and Figma files to extract your **design system**, then apply your brand (colours, typography, components) automatically to every project; you refine via inline comments, direct edits, and sliders; and you export to Canva, PDF, PPTX, or HTML — or hand the whole thing to Claude Code as a build bundle.
+
+**One-liner:** Artifacts = a general output canvas *inside chat*; Claude Design = a dedicated *design studio* that's design-system-aware and export/handoff-ready.
+🎯 *Interviewer is checking:* general-purpose vs specialised, and the design-system + handoff angle.
+
+**Q29. Claude Code (CLI) vs the IDE extension — same thing?**
+A: Same brain and same concepts (context, tools, permissions, CLAUDE.md, MCP). The difference is surface: the CLI lives in the terminal (most scriptable, headless-capable); the IDE extension embeds it in VS Code / JetBrains with clickable file links and inline diffs. Choose by workflow, not capability.
+
+**Q30. Claude Code vs a tab-completion tool like GitHub Copilot?**
+A: Different category. Copilot-style tools *autocomplete* as you type — you're still driving line by line. Claude Code is an *agent* — you give a goal and it plans, edits across many files, runs commands, and verifies. Autocomplete helps you write the next line; an agent completes the whole task. They're complementary.
+
+**Q31. Plan mode vs Auto-accept mode — when each?**
+A: **Plan mode** is read-only: Claude researches and writes a step-by-step plan, changing nothing, so I approve the approach before any code moves — ideal for big or risky tasks. **Auto-accept** applies edits without asking each time — ideal when I already trust the task and want speed. They sit at opposite ends of the safety-vs-speed dial; Shift+Tab cycles between them.
+
+## Round 8 — Scenario / Situational (STAR)
+
+*Answer these with Situation → Task → Action → Result. The interviewer wants your judgement under realistic conditions.*
+
+**Q32. Scenario: You join a 500-file codebase with no documentation. How do you use Claude Code on day one?**
+A: I open it in the repo and ask for a tour — what the app does, the stack, how a request flows from URL to database. Claude reads the key files and explains. Then I run `/init` to capture what it learned into a CLAUDE.md so every future session starts informed. *Result:* I'm productive in an hour instead of a week, and the team benefits from the memo I committed.
+
+**Q33. Scenario: A test is failing in CI and you can't reproduce why. Walk me through it.**
+A: I paste the *full* error into Claude Code and ask it to find the cause, fix it, and re-run the tests to confirm. It searches, reads the relevant code, forms a hypothesis, edits, and verifies by running the suite itself — the full agentic loop with self-verification. I read the diff before approving. *Key move:* I give it ground truth (the real error), not my paraphrase.
+
+**Q34. Scenario: You must rename a core function used across 80 files without breaking anything. What's your approach — and which model?**
+A: This is high-stakes, so **Opus**, and I start in **Plan mode**. Claude finds every call site (Grep), shows me the plan, then edits consistently and runs the tests. I review the diff. *Why these choices:* the blast radius is large, so I want the deepest reasoning and a plan I approve before anything changes.
+
+**Q35. Scenario: A junior teammate runs one endless Claude Code session for the whole day and complains it's "getting dumber and expensive." What's happening and what do you advise?**
+A: Classic context bloat — the desk is buried under ten unrelated tasks, so quality drops and input-token cost climbs. Advice: `/clear` between unrelated tasks, `/compact` when a single long task fills the window, and write a CLAUDE.md so it stops re-learning basics. *Result:* sharper answers, lower bill.
+🎯 *Interviewer is checking:* can you diagnose from symptoms and coach a teammate.
+
+**Q36. Scenario: The team wants Claude to *never* push code without running tests first. Memory? A polite instruction? How do you guarantee it?**
+A: Neither instruction nor memory *guarantees* it — those work "usually." I'd add a **hook** in `settings.json` on the pre-push / pre-tool event that runs the test suite, because hooks are deterministic and fire every time regardless of what the model decides. Guarantees belong in hooks, not prompts.
+
+**Q37. Scenario: A non-technical marketing colleague wants AI help building a campaign deck from scattered docs and Slack threads. Do you set them up with Claude Code?**
+A: No — that's a **Cowork** job, not Claude Code. They don't want a terminal, the work is non-coding knowledge work across files and connected apps (Slack, Drive), and Cowork's sandbox is simpler and safer for them. I'd reserve Claude Code for the engineers. *Judgement:* match the tool to the person and the task.
+
+**Q38. Scenario: You need Claude to answer questions from the production database directly. How, and what's your safety stance?**
+A: Connect a database **MCP server** so Claude can query it in its loop instead of me hand-running SQL. Safety-wise, I only connect servers I trust, scope it read-only for production, and keep write/destructive access gated behind explicit permission. Convenience never overrides guarding production.
+
+## Round 9 — Behavioural & Judgement (the HR round)
+
+*Softer questions, but they reveal how you actually work with an AI agent. Be honest and specific.*
+
+**Q39. How do you make sure AI-written code is trustworthy?**
+A: I treat Claude Code as promoting me to *reviewer*. I read every diff, make it verify its own work by running tests or the app, keep risky actions gated behind permissions, and lean on Plan mode for anything large. Approval is a responsibility, not a formality — the moment I rubber-stamp diffs, the value collapses.
+
+**Q40. Tell me about a time a prompt/task went wrong. What did you do?**
+A: (STAR.) When Claude heads down the wrong path, I don't wait for it to finish — I hit **Esc**, redirect with more specifics (the exact file, the real symptom, the constraint I forgot to state), and often switch to Plan mode so I can see its intent before it acts. Course-correcting early keeps the context clean of dead ends.
+🎯 *Interviewer is checking:* that you steer actively rather than passively accept output.
+
+**Q41. What makes someone *good* at using Claude Code versus frustrated by it?**
+A: The good ones invest in a CLAUDE.md, plan big changes, keep one task per session, are specific (code + intent + real error), let it verify itself, and actually read the diffs. The frustrated ones run one giant vague session, use the wrong model for the job, and approve blindly. Same tool, opposite outcomes — it's habits, not luck.
+
+**Q42. How do you keep costs under control on a team?**
+A: Default to Sonnet and escalate to Opus only when justified; `/clear` and `/compact` to keep context small; lean on prompt caching (reused context like CLAUDE.md isn't re-billed at full price); watch `/cost`; and use Haiku for bulk trivial work. Cost discipline is mostly context discipline.
+
+**Q43. Where would you *not* use an AI agent?**
+A: Where the action is irreversible and unverifiable, or where I can't review the outcome — I keep those gated or manual. And I never assume it's right on facts it can't check: hallucination never fully goes away, so trust-but-verify is permanent, especially for anything touching production or security.
+
+## Round 10 — Rapid-Fire One-Liners
+
+*Short questions, one-breath answers — practice saying these fast and clean.*
+
+- **What makes Claude Code an agent?** The loop: think → act → observe → repeat.
+- **Context window in one word?** Memory — the "desk" of what it can see now.
+- **Who runs the tools?** The program, not the model — the model only asks.
+- **Default model?** Sonnet; Opus when stuck; Haiku for trivial bulk.
+- **Highest-leverage file?** CLAUDE.md.
+- **Fastest way to draft it?** `/init`.
+- **`/clear` vs `/compact`?** New task vs same task too big.
+- **MCP in three words?** USB-C for AI.
+- **Why a subagent?** Clean context + parallelism.
+- **Why a hook not a prompt?** Hooks guarantee "always."
+- **Cowork vs Code?** Same engine — knowledge work vs software.
+- **Artifacts vs Design?** General output canvas vs specialised design studio.
+- **Headless mode?** `claude -p` for scripts and CI.
+- **Biggest beginner mistake?** One endless session; approving diffs blindly.
+
+## The comparison cheat-sheet
+
+*If you memorise one table for the "differences" round, make it this.*
+
+| Compare | Key distinction |
+|---|---|
+| **Assistant vs Agent** | Answers once vs acts in a loop until done |
+| **Claude vs Claude Code** | Advises in chat vs edits & runs code locally |
+| **Claude Code vs Cowork** | Developer/terminal/power vs knowledge-worker/desktop/sandboxed — same engine |
+| **Artifacts vs Claude Design** | General output canvas in chat vs specialised, design-system-aware design studio |
+| **CLI vs IDE extension** | Same brain; terminal (scriptable) vs editor (inline diffs) |
+| **Claude Code vs Copilot** | Goal-driven agent vs line-by-line autocomplete |
+| **Opus vs Sonnet vs Haiku** | Deepest vs balanced default vs fast & cheap |
+| **Plan vs Auto-accept** | Approve the plan first vs apply edits fast |
+| **Subagent vs main agent** | Fresh isolated context, runs in parallel vs the main session |
+| **Hook vs instruction** | Deterministic "always" vs "usually" |
+| **Slash command vs CLI flag** | Inside a session vs at launch |
+| **`/clear` vs `/compact`** | Wipe for a new task vs summarise to free space |
+| **Subscription vs API key** | Flat plan (individuals) vs pay-per-token (teams/automation) |
+| **Fast mode vs smaller model** | Same Opus quality, quicker vs actually weaker brain |
+
+## Closing: how to answer any interview question
+
+```mermaid
+graph TD
+    Q["Any interview<br/>question"] --> T{"What type?"}
+    T -->|"What is X"| D["Definition → why → example"]
+    T -->|"X vs Y"| C["Name the ONE core<br/>distinction, then a use-case each"]
+    T -->|"Scenario"| S["STAR: Situation → Task<br/>→ Action → Result"]
+    T -->|"Behavioural"| B["Be specific + honest;<br/>show judgement & trust-but-verify"]
+    style Q fill:#4f46e5,color:#fff
+    style C fill:#c026d3,color:#fff
+    style S fill:#059669,color:#fff
+```
+
+> **Interview recall card**
+> **Structure every answer:** definition → why → example (→ trade-off if asked).
+> **The loop** is the heart of "agent": think → act → observe → repeat.
+> **The desk** is the context window: it only sees what's on it.
+> **Model judgement:** Sonnet default · Opus when stuck / high-stakes · Haiku for trivial bulk.
+> **CLAUDE.md** = highest-leverage file; **hooks** = deterministic "always"; **MCP** = USB-C for AI.
+> **The big three:** Claude chat *advises* · Cowork *does knowledge work (sandboxed)* · Claude Code *does software (power)*.
+> **Artifacts vs Design:** general output canvas vs specialised, design-system-aware studio.
+> **Always:** you're the reviewer — read the diffs, make it verify, trust but verify.
+
+---
+
+# Part N — Resources & Quick Reference
 
 ### Learn more (free, official)
 
