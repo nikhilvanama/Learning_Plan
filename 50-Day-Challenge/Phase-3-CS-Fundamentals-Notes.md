@@ -37,6 +37,8 @@
 
 You are about to spend 45 days on JavaScript, React, Node, MySQL, Docker, AWS, and then a year on SAP. Every one of those sits on top of the same bedrock:
 
+<p class="te"><strong>Telugu:</strong> Nuvvu ranunna 45 rojulu JavaScript, React, Node, MySQL, Docker, AWS — taruvata samvatsaram SAP. Ivanni <strong>ee okate punaadi</strong> meeda nilabadi unnayi: <code>fetch()</code> venaka HTTP/DNS/TCP, React venaka DOM, Node 'non-blocking' venaka threads, MySQL index venaka hash maps &amp; Big O, HANA vegam venaka RAM. Ee phase vadilesthe samvatsaram antha commands <strong>bhattee vestavu</strong>; nerchukunte <strong>alochinchi</strong> samadhanam kanukkuntavu.</p>
+
 | You will learn… | It secretly depends on… |
 | --- | --- |
 | `fetch()` in JavaScript | HTTP, DNS, TCP, TLS |
@@ -88,6 +90,8 @@ graph LR
 
 **Simple definition:** The Central Processing Unit is the chip that executes instructions. It is the only part of your computer that actually *does* anything. Everything else stores things or moves things.
 
+<p class="te"><strong>Telugu:</strong> CPU ante computer ki <strong>magaju</strong> (brain). Idi okate pani chestundi, kaani chala vegam ga: fetch (tarvati instruction teesuko) → decode (dhani artham enti?) → execute (cheyyi) → write back. Sekanuki billion saarlu. Nee React app final ga CPU daggara ki vachesariki kevalam adds, compares, jumps matrame. Gurthupettuko: CPU telivainadi kaadu — <strong>vegam ainadi</strong>.</p>
+
 **Analogy:** A chef who can only follow one recipe step at a time — but reads and executes each step in under a *billionth* of a second.
 
 ### The only thing a CPU does: fetch → decode → execute
@@ -134,6 +138,8 @@ The instructions are absurdly primitive — `ADD these two numbers`, `COMPARE th
 ## A2. RAM (the desk)
 
 **Simple definition:** Random Access Memory is fast, temporary workspace. Every program you have open right now — its code and its data — lives in RAM.
+
+<p class="te"><strong>Telugu:</strong> RAM ante nee <strong>balla</strong> (desk) — ippudu nadustunna programs anni ikkade untayi. Chala vegam, kaani <strong>current pothe anni pothayi</strong> (volatile). 'Random access' ante e address ki ayina okate time lo velladam. Lopala rendu chotlu: <strong>Stack</strong> = function calls (chinnadi, automatic), <strong>Heap</strong> = objects (peddadi, garbage collector shubhram chestundi). Infinite recursion 'stack overflow' ivvadaniki kaaranam ide.</p>
 
 **"Random access"** means the CPU can jump straight to *any* address instantly, in the same amount of time. Contrast a cassette tape (sequential — you must wind through) with a vinyl record (random — drop the needle anywhere). RAM is the record.
 
@@ -202,6 +208,8 @@ RAM given to your program is split into two regions with very different rules:
 
 **Simple definition:** Permanent memory. Survives power loss. Holds your OS, your programs, your files, your databases.
 
+<p class="te"><strong>Telugu:</strong> Storage ante <strong>almirah</strong> — current pothe kuda migilipoye memory (persistent). HDD lo tirige plate + arm untundi (nemmadi); SSD lo chips matrame, kadile bhagalu levu (chala vegam). Mukhyamaina point: <strong>SAP HANA enduku vegam</strong> ante — database antha <strong>RAM lo</strong> pettesindi, disk lo kaadu. Andhuke daanini 'in-memory database' antaru.</p>
+
 **Analogy:** The filing cabinet in the corner. Vast. Slow to walk over to. But when you come back tomorrow, everything is exactly where you left it. This property is called **persistence** (or *non-volatility*).
 
 ### HDD vs SSD
@@ -229,6 +237,8 @@ The trade-off is exactly the one from the analogy: RAM is volatile and expensive
 ## A4. The Memory Hierarchy (the full picture)
 
 Every storage technology trades **speed** against **size** against **cost**. So computers use all of them at once, in layers. Fast+tiny at the top, slow+huge at the bottom.
+
+<p class="te"><strong>Telugu:</strong> Prathi storage lo okate trade-off: <strong>vegam vs size vs kharchu</strong>. Andhuke anni layers ga vaadataru — registers → cache → RAM → SSD → network. Okko meta digithe ~10 nunchi 1000 rettu nemmadi. Network call RAM kanna <strong>daadaapu 10 kotla rettu</strong> kharchu. Ee okka vishayam artham aithe caching, CDN, database index anni enduko ardham avutundi: <strong>data ni avasaram kanna doorm nunchi teesukoku</strong>.</p>
 
 ```
                     ▲ FASTER, SMALLER, COSTLIER
@@ -271,6 +281,8 @@ Look at that table again. **A network call is roughly a hundred million times mo
 ## A5. Binary (why 0s and 1s)
 
 **Simple definition:** Binary is counting with only two digits, `0` and `1`. Computers use it because a wire is either carrying voltage (1) or not (0). Two states are easy to build reliably; ten would need ten distinguishable voltage levels and would misread constantly.
+
+<p class="te"><strong>Telugu:</strong> Wire lo current undi (1) leda ledu (0) — andhuke computers binary vaadutayi. Rendu states ni kanukkovadam sulabham; padi voltage levels petti chuste eppudu tappu chaduvutayi. Decimal lo prathi place 10 powers, binary lo 2 powers. 42 ni maarchali ante <strong>2 tho bhaagistu, remainders ni kinda nunchi paiki</strong> chaduvu → <code>101010</code>. 1 byte = 8 bits = 0 nunchi 255 — andhuke RGB colors lo 255 max.</p>
 
 **Analogy:** A row of light switches. Each is either off (0) or on (1). With enough switches you can encode any number, letter, pixel, or song.
 
@@ -379,6 +391,8 @@ parseInt("101010", 2);   // 42
 
 Binary is correct but unreadable — `11111111` versus `255`. **Hexadecimal (base 16)** is the human-friendly shorthand, because **one hex digit is exactly four bits.**
 
+<p class="te"><strong>Telugu:</strong> Binary correct, kaani chadavadaniki kastam — <code>11111111</code> kanna <code>FF</code> nayam. <strong>Okka hex digit = sarigga 4 bits</strong>, andhuke binary ni 4 groups ga kosi maarchestaru. Colors (<code>#FF5733</code>), memory addresses (<code>0x7ffe</code>), MAC addresses anni hex — enduku ante 8 chirakuga unna bits ni 2 letters lo kudarchachu. Octal (base 8) ippudu Linux permissions (<code>chmod 755</code>) lo matrame migilindi.</p>
+
 Hex digits: `0 1 2 3 4 5 6 7 8 9 A B C D E F` — where `A`=10, `B`=11, … `F`=15.
 
 ```
@@ -438,6 +452,8 @@ parseInt("ff", 16);   // 255
 
 If a computer only stores numbers, how does it store `"Nikhil"`?
 
+<p class="te"><strong>Telugu:</strong> Computer numbers ne dachukuntundi — mari 'Nikhil' ela? Chala simple: <strong>okka lookup table</strong> — 78 ante 'N'. ASCII (1963) 128 characters ichindi (English matrame). <strong>Unicode</strong> prathi bhaasha ki — telugu, emoji anni — okka number ichindi; <strong>UTF-8</strong> aa numbers ni bytes ga rastundi (English 1 byte, Telugu 3, emoji 4). Text lo <code>â€™</code> laaga vintha ga vasthe adi font problem kaadu — <strong>decoding tappu</strong> (charset=utf-8 pettaledu).</p>
+
 **Answer: a lookup table.** Agree that 78 means `N`, 105 means `i`, and so on.
 
 **ASCII** (1963) used 7 bits → 128 characters: English letters, digits, punctuation. Enough for America, useless for the other 95% of humanity.
@@ -473,6 +489,8 @@ String.fromCharCode(78);  // "N"
 ## B1. What an OS actually does
 
 **Simple definition:** The Operating System (Windows, Linux, macOS, Android) is the program that manages hardware and gives every other program a safe, shared, simplified view of it.
+
+<p class="te"><strong>Telugu:</strong> OS ante nee building ki <strong>manager</strong>. Nuvvu current company tho, neeti company tho matladavu — tap tippithe chaalu. Alaage nee program disk model teliyakkarledu; OS chusukuntundi. Ayidu panulu: processes, memory, files, devices, security. Nee app <strong>system call</strong> dwara adigithe OS chestundi — ee gadi (kernel mode vs user mode) valle okka app crash aithe Windows motham padipodu.</p>
 
 **Analogy:** The OS is the **building manager** of an apartment block. You never negotiate with the water company or the electricity grid. You turn a tap. The manager handles the plumbing, makes sure your neighbour's shower doesn't steal your water, and evicts anyone who tries to break into your flat.
 
@@ -520,6 +538,8 @@ When your program needs something privileged (read a file, open a socket), it ma
 ## B2. Process vs Thread
 
 This is the single most-asked OS interview question. Get it exact.
+
+<p class="te"><strong>Telugu:</strong> <strong>Process</strong> = sonta memory unna nadustunna program (veru veru hotels — okari saamanu inkokaru muttalemu). <strong>Thread</strong> = aa process lopala okka pani daari, memory ni <strong>panchukuntundi</strong> (okate vantillu lo nalugu chefs). Process = safe kaani baruvu; thread = chowka kaani race conditions vasthayi. Chrome prathi tab ki veru process — andhuke okka tab crash aina migilinavi bathikuntayi.</p>
 
 **Process** = a running program, *with its own private memory*.
 **Thread** = one line of execution *inside* a process, sharing that process's memory with its sibling threads.
@@ -572,6 +592,8 @@ graph TD
 
 People use these words interchangeably. They are not the same, and the distinction is a favourite interview trap.
 
+<p class="te"><strong>Telugu:</strong> <strong>Concurrency</strong> = chala panulu <strong>nirvahinchadam</strong> (okate core, vegam ga marustu) — okka chef mudu pans juggle chestunnadu. <strong>Parallelism</strong> = nijam ga okesari <strong>cheyyadam</strong> (chala cores) — mugguru chefs, okko pan. JavaScript lo <code>async/await</code> ichedi concurrency, parallelism kaadu — nee JS rendu cores meeda okesari run avvadu.</p>
+
 - **Concurrency** = *dealing with* many things at once (they overlap in time; may be one core switching fast).
 - **Parallelism** = *doing* many things at once (they literally execute at the same instant; needs multiple cores).
 
@@ -596,6 +618,8 @@ The act of pausing task A, saving its state, and loading task B is a **context s
 ## B4. Scheduling, deadlocks, and race conditions
 
 ### Scheduling
+
+<p class="te"><strong>Telugu:</strong> <strong>Race condition</strong>: iddaru okate data ni okesari maarusthe, result evaru mundu vachedi batti maarutundi — bank lo rendu withdrawals 100 chusi rendu 50 rastayi, 50 maayam. Pariskaram <strong>lock</strong> (mutex) — andhuke SAP lo ENQUEUE lock objects unnayi. <strong>Deadlock</strong>: iddaru okari lock kosam inkokaru edurchustu shaswatam ga aagipovadam; nivarana — locks ni eppudu <strong>okate varusalo</strong> teesuko.</p>
 
 With more threads than cores, the OS **scheduler** decides who runs next, using a time slice (a *quantum*, typically 1–100 ms). Common goals: keep the CPU busy, keep interactive apps responsive, don't starve anyone. That is why your mouse keeps moving smoothly while a build is running.
 
@@ -641,6 +665,8 @@ Two threads each hold a lock the other needs. Both wait. Forever.
 
 **Strip away the mysticism first.** The internet is not a cloud. The internet is **wires**.
 
+<p class="te"><strong>Telugu:</strong> Internet ante 'cloud' kaadu — <strong>wires</strong>. Samudram adugu na fibre cables, nee veedhi kinda copper, data centres nindaa computers. Client = adigedi, server = ichedi, router = packet ni okko adugu mundhuku pampedi. <strong>Latency</strong> = okka round trip ki patte time (light speed valla Bangalore→US ~200ms, dabbu tho taggincham); <strong>bandwidth</strong> = sekanuki entha data. Pipe <strong>podavu</strong> vs pipe <strong>veddalpu</strong>.</p>
+
 Specifically: fibre-optic cables lying on ocean floors, copper running under your street, and warehouses full of computers called **data centres**. When you load a website "from the cloud," a laser is pulsing light through glass under the Arabian Sea.
 
 ```mermaid
@@ -672,6 +698,8 @@ graph LR
 ## C2. IP Addresses
 
 **Simple definition:** An IP address is the unique number identifying a device on a network — so packets know where to go.
+
+<p class="te"><strong>Telugu:</strong> IP address ante device ki <strong>intinumber</strong> — packet ekkadiki vellalo teliyadaniki. IPv4 lo naalugu numbers, prathi okkati 0-255 (enduku? okka byte = 8 bits = 256 values). <strong>Public IP</strong> = ISP ichedi, prapancham anthaa chudagaladu; <strong>private IP</strong> (<code>192.168.x.x</code>) = intilo matrame, router ichedi. Mee illu antha okate public IP panchukuntundi — daanini NAT antaru. <code>127.0.0.1</code> = eppudu 'ee machine' (localhost).</p>
 
 **Analogy:** A postal address. `142.250.183.14` is the street address of a Google server. Without it, the postal system (routers) has no idea where to carry your letter.
 
@@ -714,6 +742,8 @@ Your entire home — laptop, phone, TV — shares **one** public IP. The router 
 ## C3. DNS (the internet's phone book)
 
 **Simple definition:** The Domain Name System translates human-friendly names (`google.com`) into IP addresses (`142.250.183.14`), because humans remember words and routers only understand numbers.
+
+<p class="te"><strong>Telugu:</strong> DNS ante internet ki <strong>phone book</strong> — <code>google.com</code> ni <code>142.250.183.14</code> ga maarustundi (manushulaki peru gurthuntundi, routers ki numbers matrame ardham). Vedike varusa: browser cache → OS cache → resolver → root → <code>.com</code> (TLD) → authoritative server. Prathi chota TTL varaku dachukuntaru — <strong>andhuke domain maarchaka site ventane raadu</strong> ('propagation'). Migration ki oka roju mundu TTL ni taggincheyyi.</p>
 
 **Analogy:** Your phone's contact list. You tap "Amma," not `+91 98765 43210`. DNS is that contact list, for the entire internet, kept in sync across millions of servers.
 
@@ -776,6 +806,8 @@ ping google.com            # resolves the name, then sends packets
 
 Once you have an IP address, you need to decide *how* to send the data. There are two ways, and this is a guaranteed interview question.
 
+<p class="te"><strong>Telugu:</strong> <strong>TCP</strong> = registered post — modata handshake (SYN → SYN-ACK → ACK), prathi byte cherindani guarantee, poyinadi malli pampistundi. <strong>UDP</strong> = adiche gattiga arichadam — handshake ledu, guarantee ledu, kaani vegam. Video call lo okka packet poyithe TCP daani kosam anni aapi malli adugutundi — call venakabadutundi; UDP daanini vadilesi real-time lo untundi. Gurthu: <strong>TCP = correctness ki, UDP = time ki</strong>.</p>
+
 ### TCP — Transmission Control Protocol
 
 **Reliable, ordered, connection-based.** It guarantees every byte arrives, in order, exactly once. It achieves that with acknowledgements and retransmissions.
@@ -835,6 +867,8 @@ The rule: **TCP for correctness, UDP for timeliness.**
 
 **Simple definition:** An IP address finds the *machine*; a port number finds the *program* on that machine.
 
+<p class="te"><strong>Telugu:</strong> IP address <strong>machine</strong> ni kanukkuntundi; port <strong>aa machine lo e program</strong> ani cheptundi. IP = apartment building address, port = flat number. 0 nunchi 65535 varaku. Gurthupettuko: 80 HTTP, 443 HTTPS, 22 SSH, 53 DNS, 3306 MySQL, 3000 nee dev server. <code>EADDRINUSE :::3000</code> ante aa flat lo already inkoti undi ani artham.</p>
+
 **Analogy:** The IP is the apartment building's street address. The port is the flat number. `142.250.183.14:443` means "building 142.250.183.14, flat 443" — and flat 443 is where the HTTPS web server lives.
 
 A port is a 16-bit number → `0–65535`.
@@ -870,6 +904,8 @@ Ports `0–1023` are **well-known** and need admin rights to bind — that is wh
 ## C6. HTTP (the language of the web)
 
 **Simple definition:** HyperText Transfer Protocol is the agreed request/response format that browsers and servers use to talk. It rides on top of TCP.
+
+<p class="te"><strong>Telugu:</strong> HTTP ante browser-server madhya <strong>matladukune padhathi</strong> — request pampu, response teesuko. Mukhyam: HTTP <strong>stateless</strong> — server nee gurinchi emi gurthupettukodu, andhuke prathi request tanato patu identity (cookie, JWT) teesukuraavali. Methods: GET chadavadam, POST kotthadi, PUT motham maarchadam, PATCH konchem. Status: 2xx sari, 3xx redirect, 4xx <strong>nee</strong> tappu, 5xx <strong>server</strong> tappu. 401 = 'nuvvevaro teliyadu'; 403 = 'telusu, kaani permission ledu'.</p>
 
 **Analogy:** Ordering at a restaurant. You (client) make a structured request; the kitchen (server) sends back a structured response with a status. Both sides know the format, so no confusion.
 
@@ -942,6 +978,8 @@ Set-Cookie: session_id=abc123
 
 **HTTPS = HTTP + TLS.** Same language, spoken inside a locked, tamper-evident envelope.
 
+<p class="te"><strong>Telugu:</strong> HTTPS = HTTP + TLS. Mudu labhalu: <strong>encryption</strong> (madhyalo evaro chudalēru), <strong>integrity</strong> (maarchalēru), <strong>authentication</strong> (nijam ga bank site ye). SSL puraatanam; ippudu vaadedi TLS. Trick: asymmetric (public/private key) nemmadi kaani secure — daanito okka <strong>session key</strong> ni ottukuntaru, taruvata vegam ayina symmetric tho matladataru. Certificate ante passport — CA (government laantidi) sign chesindi kabatti nammutham.</p>
+
 **What the "S" buys you — three things:**
 
 1. **Encryption** — an eavesdropper on the café WiFi sees gibberish, not your password.
@@ -992,6 +1030,8 @@ Your operating system ships with a list of ~150 CAs it trusts. If the certificat
 ## C8. The OSI Model
 
 **Simple definition:** A 7-layer conceptual model for how network communication is organised. Each layer does one job and talks only to the layers directly above and below it.
+
+<p class="te"><strong>Telugu:</strong> Network ni <strong>7 layers</strong> ga vidadeesi ardham chesukune model; prathi layer okate pani chestundi, pai-kindi layers tho matrame matladutundi. 7 Application (HTTP) · 6 Presentation (TLS) · 5 Session · 4 Transport (TCP/UDP) · 3 Network (IP, router) · 2 Data Link (Ethernet, MAC, switch) · 1 Physical (cable). Gurthu: <strong>A</strong>ll <strong>P</strong>eople <strong>S</strong>eem <strong>T</strong>o <strong>N</strong>eed <strong>D</strong>ata <strong>P</strong>rocessing. Prathi layer tana header ni chuttestundi — adi encapsulation (uttaram → cover → box).</p>
 
 **Your roadmap says "awareness only" — but interviewers ask, so know the layers, one protocol each, and the mnemonic.**
 
@@ -1062,6 +1102,8 @@ OSI is the teaching model. The internet actually runs on the 4-layer **TCP/IP mo
 # Part D — What Happens When You Type google.com
 
 *This is the most famous interview question in software engineering. It exists because answering it well proves you understand **every layer at once**. Below is the full trace. Learn to tell this story in five minutes, out loud, from memory.*
+
+<p class="te"><strong>Telugu:</strong> Idi interviews lo <strong>atyanta ekkuva adige prashna</strong> — enduku ante idi cheppagaligina vaadiki anni layers telusu ani artham. Varusa: URL parse → caches chudu → <strong>DNS</strong> (IP kanukko) → <strong>TCP handshake</strong> → <strong>TLS handshake</strong> → HTTP GET → server 200 OK + HTML → browser DOM+CSSOM kadutundi → layout → paint → composite → page kanipistundi. Deenini <strong>5 nimushalalo, notitho, choodakunda</strong> cheppagaligela nerchuko.</p>
 
 ```mermaid
 graph TD
@@ -1181,6 +1223,8 @@ The server sent you a **string of HTML text**. Somehow that becomes pixels. Here
 
 **Analogy — building a house:**
 
+<p class="te"><strong>Telugu:</strong> Server nee ki HTML <strong>text</strong> pampindi — adi pixels ela avutundi? Illu kattinattu: HTML chadivi <strong>DOM</strong> (plan), CSS chadivi <strong>CSSOM</strong> (decoration spec), rendu kalipi <strong>Render Tree</strong> (kattali anukunna gadulu matrame), taruvata <strong>Layout</strong> (ekkada, entha peddaga — exact px), <strong>Paint</strong> (rangu veyyadam), <strong>Composite</strong> (layers ni GPU pai pettadam). 60 FPS kaavali ante idi antha <strong>16.6ms lopala</strong> avvali.</p>
+
 | Stage | House equivalent |
 | --- | --- |
 | Parse HTML → DOM | Read the architect's structural plan |
@@ -1233,6 +1277,8 @@ graph LR
 ## E2. The DOM
 
 **Simple definition:** The Document Object Model is the browser's live, in-memory **tree of objects** representing your HTML — and the API that lets JavaScript read and change it.
+
+<p class="te"><strong>Telugu:</strong> HTML ante network lo vachina <strong>text</strong>; DOM ante daani nunchi browser memory lo kattina <strong>bathikunna objects chettu</strong> (tree). HTML = blueprint, DOM = <strong>kattina illu</strong> — JS aa intini maarchagaladu, blueprint ni kaadu. <code>querySelector</code> tho pattuko, <code>textContent</code>/<code>classList</code> tho maarchu. <strong>Warning</strong>: <code>innerHTML</code> lo user input pettaku — adi HTML ga parse avutundi, XSS attack vastundi.</p>
 
 **The crucial distinction:** HTML is a *string of text* sent over the network. The DOM is a *tree of live objects* in RAM. HTML is the blueprint; the DOM is the building you can walk through and remodel.
 
@@ -1309,6 +1355,8 @@ button.addEventListener('click', (e) => {
 
 The pipeline doesn't run once. It re-runs, partially, every time something changes — and the cost depends on *how far back* in the pipeline you force it to restart.
 
+<p class="te"><strong>Telugu:</strong> Emi maarchavo daanni batti kharchu maarutundi. <strong>Geometry</strong> (width, height, margin) maaristhe → <strong>reflow</strong> (chala kharchu, taruvata unnavi anni malli lekkinchali). <strong>Rangu</strong> matrame maaristhe → repaint (madhyastham). <code>transform</code>/<code>opacity</code> maaristhe → composite matrame (chowka, GPU chusukuntundi). Andhuke okate rule: <strong>animations ki transform, opacity matrame vaadu</strong> — left, top, width vaadaku.</p>
+
 | You changed… | Triggers | Cost | Examples |
 | --- | --- | --- | --- |
 | **Geometry** (size, position) | **Reflow** → repaint → composite | 💸💸💸 Expensive | `width`, `height`, `margin`, `padding`, `font-size`, adding a DOM node |
@@ -1349,6 +1397,8 @@ boxes.forEach((b, i) => b.style.height = heights[i] + 10 + 'px');   // all write
 ## E4. Render-blocking resources and the Event Loop
 
 ### Render-blocking
+
+<p class="te"><strong>Telugu:</strong> CSS <strong>render-blocking</strong> — CSSOM purthi ayye varaku browser paint cheyadu. Plain <code>&lt;script&gt;</code> <strong>parsing ni aapesthundi</strong> — andhuke <code>defer</code> vaadu (download parallel ga, execute parsing tarvata). Event loop: JS ki <strong>okate thread</strong>. Timer/network pani ni browser threads ki icchi, aa callback ni queue lo pettukoni, stack khaali ayinappudu run chestundi. Okka waiter chala tables — andhuke pedda sync loop rasthe <strong>page motham freeze</strong> avutundi.</p>
 
 - **CSS is render-blocking.** The browser will not paint until the CSSOM is complete — otherwise you'd see a flash of unstyled content. So `<link rel="stylesheet">` goes in the `<head>`, and you keep it small.
 - **`<script>` is parser-blocking.** A plain `<script src="...">` in the middle of the HTML *stops HTML parsing entirely*, downloads, and executes — because that script might call `document.write()`. This is why scripts traditionally went at the end of `<body>`.
@@ -1428,6 +1478,8 @@ graph TD
 
 **What:** An ordered, indexed collection stored in a **contiguous block of memory**. That last phrase is the whole story.
 
+<p class="te"><strong>Telugu:</strong> Array ante <strong>vaparusa ga pakka pakkane</strong> (contiguous) unna lockers. Andhuke <code>arr[500]</code> ventane dorukutundi — vedakadu, <code>start + index × size</code> lekkinchi nerugga velthundi (O(1)). Kaani <strong>mundu</strong> (front) insert cheyyali ante <strong>migilina anni okko adugu jarali</strong> — O(n). <code>push</code>/<code>pop</code> chivara O(1); <code>shift</code>/<code>unshift</code> mundu O(n). Chinna list ki parledu; lakshalu unte ide nee app ni nemmadi chestundi.</p>
+
 **Analogy:** A row of numbered lockers, bolted to the wall, side by side.
 
 ```
@@ -1475,6 +1527,8 @@ arr.includes('c');   // true     O(n)
 ## F2. Object / Hash Map
 
 **What:** A collection of **key → value** pairs with near-instant lookup by key. Called an *object* in JS (`{}`), a `Map`, a dictionary in Python, a hash table in CS.
+
+<p class="te"><strong>Telugu:</strong> Hash map ante theatre lo <strong>coat check</strong> — coat ichi token 47 teesukuntavu; malli teesukoevela evaru vetakaru, nerugga 47 hook daggara ki velthaaru. Lopala <strong>hash function</strong> key ni number (index) ga maarustundi — andhuke lookup O(1). <strong>Idi ee document lo atyanta viluvaina technique</strong>: nested loops (O(n²)) ni hash map tho okka pass (O(n)) ga maarchachu — <strong>vedakadam badulu gurthupettukovadam</strong>. Database index kuda ide.</p>
 
 **Analogy:** A coat check at a theatre. You hand over a coat, get ticket #47. To retrieve it, nobody searches every hook — they walk straight to hook 47. **The ticket number *is* the location.**
 
@@ -1591,6 +1645,8 @@ On 10,000 items the first version does ~50 million comparisons; the second does 
 
 **What:** A collection of **unique** values, with O(1) membership testing. A hash map that only keeps the keys.
 
+<p class="te"><strong>Telugu:</strong> Set ante <strong>guest list</strong> — okkokkaru okka saare untaru, 'itanu list lo unnada?' ani O(1) lo chudochu. Duplicates thanantata poathayi. <code>[...new Set(arr)]</code> — array lo duplicates teeyadaniki JS lo ekkuva vaade line. Mukhyam: loop lopala <code>arr.includes(x)</code> (O(n²)) badulu <code>set.has(x)</code> (O(n)) vaadu.</p>
+
 **Analogy:** A guest list. You only care *whether* someone is on it, and nobody appears twice.
 
 ```js
@@ -1612,6 +1668,8 @@ const unique = [...new Set([1, 2, 2, 3])];   // [1, 2, 3]   O(n)
 ## F4. Stack (LIFO)
 
 **What:** **Last In, First Out.** You may only add to the top and remove from the top.
+
+<p class="te"><strong>Telugu:</strong> Stack ante <strong>plates gaddha</strong> — chivarana pettinadi modata teesukuntavu (Last In, First Out). <code>push</code> (paina pettu), <code>pop</code> (paina teesuko), <code>peek</code> (chudu matrame) — anni O(1), kaani madhyalo unna daanni muttalemu. Enduku ee structure? Closing bracket eppudu <strong>chivari</strong> opening bracket ki match avvali — 'chivari' ante LIFO ye. Nuvvu roju vaadedi: browser back button, Ctrl+Z, JS call stack.</p>
 
 **Analogy:** A stack of plates. The last plate you put down is the first one you pick up. You cannot pull one from the middle without a disaster.
 
@@ -1680,6 +1738,8 @@ isBalanced("(((");       // false  ← stack not empty at the end
 
 **What:** **First In, First Out.** Add at the back, remove from the front. Fair.
 
+<p class="te"><strong>Telugu:</strong> Queue ante <strong>ticket counter line</strong> — modata vachinavaadu modata veltadu (First In, First Out). Venaka add (enqueue), mundu nunchi teeyi (dequeue). <strong>Trap</strong>: <code>array.shift()</code> vaadithe migilina anni jaruguthayi — O(n); badulu <code>#front</code> pointer ni mundhuku jarupu — O(1). Nuvvu chuse chotlu: printer jobs, server requests, JS callback queue, BFS. Okka line lo: <strong>Stack = undo, Queue = nyayam</strong>.</p>
+
 **Analogy:** The queue at a ticket counter. First person to arrive is first served. Cutting in is not allowed.
 
 ```
@@ -1711,6 +1771,8 @@ class Queue {
 ## F6. Linked List
 
 **What:** A chain of **nodes**, each holding a value and a pointer to the next node. Unlike an array, nodes are scattered anywhere in RAM — the pointers hold the chain together.
+
+<p class="te"><strong>Telugu:</strong> Linked list ante <strong>treasure hunt</strong> — prathi clue lo bahumati + tarvati clue address untundi. Nodes RAM lo ekkada padithe akkada untayi, pointers ne vaatini kalupuutayi. Andhuke 3rd item kaavali ante <strong>nadichi vellali</strong> (O(n)) — kaani madhyalo insert/delete ante <strong>rendu pointers maaristhe chaalu</strong> (O(1)), emi jaragadu. Array ki sarigga opposite trade-off. LRU cache = hash map + doubly linked list.</p>
 
 **Analogy:** A treasure hunt. Each clue holds a prize *and* the location of the next clue. To reach clue #7 you must physically walk clues 1→2→…→7. But inserting a new clue between #3 and #4 costs nothing — you just rewrite two slips of paper.
 
@@ -1827,6 +1889,8 @@ list.toArray();    // ['a', 'b', 'c']
 
 **What:** A hierarchical structure. One **root**, and every node has exactly one parent and any number of children. No cycles.
 
+<p class="te"><strong>Telugu:</strong> Tree ante <strong>vamshavruksham</strong> leda company org chart — okka root, prathi node ki okka parent, entha mandi children ayina. Nuvvu ippatike chusinav: DOM, file system (folders lopala folders), JSON, Git history. <strong>Binary Search Tree</strong> lo edamavaipu chinnadi, kudivaipu peddadi — andhuke prathi comparison <strong>sagam</strong> ni padesthundi (O(log n)): 10 lakshala nodes lo ~20 comparisons chaalu. Database index ante ide (B-tree).</p>
+
 **Analogy:** A family tree, or a company org chart. Or — as you saw in [E2](#e2-the-dom) — the DOM.
 
 ```
@@ -1867,6 +1931,8 @@ Searching a *balanced* BST of 1,000,000 nodes takes ~20 comparisons. Searching a
 
 **What:** Nodes (**vertices**) connected by **edges**. Unlike a tree, cycles are allowed and there is no root. A tree is just a graph with rules.
 
+<p class="te"><strong>Telugu:</strong> Graph ante <strong>oorlu + roadlu</strong> — nodes (vertices) mariyu vaatini kalipe edges. Tree kanna free: cycles undochu, root akkarleadu. Facebook friendship (undirected), Twitter follow (directed). Rendu vidhaalu ga tiragachu: <strong>BFS</strong> (queue vaadutundi — level by level, shortest path, 'friends of friends'), <strong>DFS</strong> (stack/recursion — okka daari chivari varaku, cycle detection). <strong>Andhuke mundu Stack, Queue nerchukunnam</strong> — ivi graph traversal engines.</p>
+
 **Analogy:** A map of cities and roads. Or a social network: people are nodes, friendships are edges.
 
 ```
@@ -1895,6 +1961,8 @@ Searching a *balanced* BST of 1,000,000 nodes takes ~20 comparisons. Searching a
 ---
 
 ## F9. Choosing the right structure
+
+<p class="te"><strong>Telugu:</strong> 'Best' data structure ani okati ledu — <strong>e pani ekkuva chestunnavo</strong> daanni vegam cheyyi, migilinavi nemmadi ga unna parledu. Position tho kaavala → Array. Peru/id tho kaavala → Map. 'Idi chusana?' → Set. Undo/brackets → Stack. Varusa nyayam → Queue. Rendu chivarla add/delete → Linked list. Sorted + vega vetuku → Tree. Sambandhalu → Graph. Code nemmadi ga unte chaala saarlu kaaranam <strong>'tappu structure enchukunnanu'</strong> ye.</p>
 
 | I need to… | Use | Why |
 | --- | --- | --- |
@@ -1931,6 +1999,8 @@ Searching a *balanced* BST of 1,000,000 nodes takes ~20 comparisons. Searching a
 
 **Simple definition:** Big O describes **how the work grows as the input grows.** It answers exactly one question: *"If I give this code 10× more data, how much slower does it get?"*
 
+<p class="te"><strong>Telugu:</strong> Big O ante <strong>data pergithe pani entha perugutundi</strong> ani cheppedi — millisekanlu kaadu. Phone book lo peru vetakadam: modati page chadavadam O(1), motham chadavadam O(n), madhyalo terichi sagam padeyyadam O(log n). Mudu rules: constants teesipadeyyi (O(2n)→O(n)), chinna terms teesipadeyyi (O(n²+n)→O(n²)), <strong>worst case</strong> anuko. Enduku intha crude ga? Appude adi <strong>machine tho sambandham lekunda</strong> future ni cheptundi.</p>
+
 **Analogy — finding a name in a phone book of `n` names:**
 
 | Strategy | Work | Big O |
@@ -1953,6 +2023,8 @@ Big O is deliberately crude. It cares only about the **shape of the growth curve
 ---
 
 ## G2. The Complexity Classes
+
+<p class="te"><strong>Telugu:</strong> 10 lakshala items ki: O(1)=1 pani, O(log n)=20, O(n)=10 lakshalu, O(n log n)=2 kotlu, O(n²)=<strong>10 lakshala kotlu</strong>. Aa chivari line chudu — O(n) reppapaatulo aipotundi, O(n²) gantalu patti server chastundi. <strong>O(n) ki O(n²) ki madhya unna teda lone careers untayi.</strong> O(log n) ante prathi adugulo sagam padeyyadam (binary search); O(n log n) ante manchi sorting yokka speed limit.</p>
 
 ```
   ops
@@ -2057,6 +2129,8 @@ function fibFast(n, memo = {}) {
 
 Four mechanical rules. No maths degree needed.
 
+<p class="te"><strong>Telugu:</strong> Naalugu rules chaalu: (1) <strong>Varusa</strong> steps aithe kalupu, peddadi unchu. (2) <strong>Lopala loop</strong> aithe <strong>hecchinchu</strong> (n × n). (3) <strong>Dagina loops</strong> ni marchipoku — <code>includes()</code>, <code>indexOf()</code>, <code>find()</code> ivi thamaku thame O(n); loop lopala pedithe O(n²) avutundi (ide ekkuva mandi chese tappu). (4) Input <strong>sagam</strong> avutunte log n vastundi. Jagratha: rendu <strong>veru</strong> arrays meeda nested loops O(a×b), O(n²) kaadu.</p>
+
 **1. Sequential steps → ADD, then keep the biggest.**
 ```js
 function f(arr) {
@@ -2122,6 +2196,8 @@ while (n > 1) n = Math.floor(n / 2);    // O(log n)
 
 Same idea, measuring **extra memory** instead of time. Input doesn't count — only what you allocate.
 
+<p class="te"><strong>Telugu:</strong> Ide lekka, kaani <strong>extra memory</strong> ki. Konni variables matrame vaadithe O(1); kotta array thayaru chesthe O(n). Mukhyam: <strong>recursion ki kuda space avutundi</strong> — prathi call oka stack frame — andhuke O(n). Prapanchamlo peddha trade-off idi: <strong>space ichi time konukkovachu</strong> — hash map, memoization, database index, cache, CDN anni ide okate vyaparam, veru veru scale lo.</p>
+
 ```js
 // O(1) space — a couple of variables, regardless of input size
 function sum(arr) {
@@ -2149,6 +2225,8 @@ function countdown(n) {
 ## G5. Amortized Analysis
 
 Why is `arr.push()` "O(1)" when a dynamic array must sometimes grow?
+
+<p class="te"><strong>Telugu:</strong> <code>arr.push()</code> O(1) ela avutundi, array nindipothe pedda chesi copy cheyyali kada? Enduku ante nindinappudu <strong>rettimpu</strong> (double) chesi copy chestundi — adi O(n), kaani <strong>chaala arudu ga</strong> jarugutundi. Aa okka pedda kharchu ni migilina anni chinna pushes meeda panchithe, sagatuna okko push O(1). Deenini <strong>amortized O(1)</strong> antaru — 'eppudu vegam' kaadu, 'sagatuna vegam'. Inti addelaage: nelaki okasari peddha payment, kaani rojuvaari budget lo samanam.</p>
 
 Because when the array fills, the engine allocates a **double-sized** block and copies everything over — a genuine O(n) operation. But it happens rarely: after doubling, the next n/2 pushes are free.
 
@@ -2367,6 +2445,8 @@ A: Git is version-control software on your machine (offline); GitHub is a websit
 
 ## L1. Hardware vs Software
 
+<p class="te"><strong>Telugu:</strong> <strong>Hardware</strong> = mutukune vastuvulu (CPU, RAM, SSD) — kinda paditha kaalu meeda padutundi. <strong>Software</strong> = aa hardware ki emi cheyyalo cheppe soochanalu — roopam ledu, kevalam binary. <strong>Firmware</strong> = madhyalo unnadi: chip meedane shaswatam ga unna software (BIOS, router OS). Analogy: hardware = piano, software = sheet music — piano entha paatalaina vaayinchagaladu, kaani music cheppe varaku emi cheyyadu.</p>
+
 - **Hardware** — the physical parts you can touch: CPU, RAM, SSD, network card.
 - **Software** — the instructions telling the hardware what to do; no physical form, just patterns of [binary](#a5-binary-why-0s-and-1s).
 - **Firmware** — the confusing middle: software permanently stored *on* a chip (BIOS/UEFI, your router's OS).
@@ -2389,6 +2469,8 @@ The stack, bottom to top: **Hardware → Firmware → Operating System → Appli
 ## L2. Network Basics — LAN, WAN, MAC, and the boxes on your wall
 
 [Part C](#part-c-how-the-internet-works) explained how data *travels*; this names the equipment.
+
+<p class="te"><strong>Telugu:</strong> <strong>LAN</strong> = okka building lopala (mee inti WiFi); <strong>WAN</strong> = ooru/desam dhaatinadi; <strong>Internet</strong> = anni networks kalisina <strong>network of networks</strong>, anni IP bhasha matladutunnayi. <strong>MAC address</strong> = manufacturer icchina shaswatha peru (Layer 2, local); <strong>IP address</strong> = nuvvu join ayina network icchina chirunama (Layer 3, global). IP packet ni <strong>sarina building</strong> ki teesukellutundi, MAC <strong>sarina flat</strong> ki icchestundi. Boxes: <strong>modem</strong> (ISP signal → digital), <strong>router</strong> (LAN ↔ internet, IP chusedi), <strong>switch</strong> (LAN lopala, MAC chusedi) — mee inti box lo ee mudu okate lo untayi.</p>
 
 **Networks by size:** **LAN** (Local — one building, your home WiFi) · **WAN** (Wide — cities/countries, a company's global offices) · **the Internet** (the largest WAN). The definition worth memorising: **the internet is a network *of networks*, all speaking IP.** A LAN is the roads inside a gated community; a WAN is the national highway system; the internet is every road on Earth using the same traffic rules.
 
@@ -2430,6 +2512,8 @@ graph LR
 
 **One machine (client) requests; another (server) responds.** That pairing underpins nearly the whole internet.
 
+<p class="te"><strong>Telugu:</strong> <strong>Client</strong> adugutundi, <strong>server</strong> istundi — internet antha deenimeedane nadustundi. Hotel laaga: nuvvu vantillu loki velli vandavu; waiter ki cheppu, vantillu (server) chesi pampistundi. Mukhyam: <strong>okka server, vandala clients</strong>. Client <strong>modalu pedutundi</strong>, server <strong>edurchusthu untundi</strong> — <code>npm start</code> chesthe nee laptop kuda server ye. <strong>Website</strong> = content (files), <strong>web server</strong> = vaatini HTTP tho ichedi, <strong>browser</strong> = adigi chupinchedi — pustakam, library, chadive vaadu.</p>
+
 **Analogy:** a restaurant. You (client) don't cook — you ask the waiter; the kitchen (server) prepares it; the response returns to your table. And the kitchen serves hundreds of tables at once: **one server, many clients.**
 
 ```mermaid
@@ -2452,6 +2536,8 @@ The defining asymmetry: the client *initiates*, the server *waits*. A server is 
 ## L4. Servers, Frontend vs Backend, Hosting
 
 ### Frontend vs Backend — the most important vocabulary split in your career
+
+<p class="te"><strong>Telugu:</strong> <strong>Frontend</strong> = user browser lo nadichedi (HTML, CSS, JS, React) — kanipinchedi. <strong>Backend</strong> = server lo nadichedi (Node, Java, ABAP) — auth, database, business rules. Peddha rule: <strong>frontend ni eppudu nammaku</strong> — evaraina DevTools terichi nee JS ni teesesi API ki nerugga <code>curl</code> tho pampagalaru; <strong>mukhyamaina prathi check ni backend lo malli cheyyali</strong>. Deployment ante code ni laptop nunchi andariki andubatu lo unna machine ki teesukelladam: server → code → run → DNS → TLS certificate → reverse proxy (Nginx).</p>
 
 | | **Frontend** (client-side) | **Backend** (server-side) |
 | --- | --- | --- |
@@ -2493,6 +2579,8 @@ Your Phase 10 capstone uses three at once: static frontend, Node API on EC2 behi
 
 The file system is a [Tree](#f7-tree) — the same shape as the [DOM](#e2-the-dom). A **directory** is a node containing others; a **file** is a leaf.
 
+<p class="te"><strong>Telugu:</strong> File system kuda okka <strong>tree</strong> ye — directory ante lopala inkovi unna node, file ante leaf. <strong>Extension (.js, .png) okka soochana matrame, nijam kaadu</strong> — <code>photo.png</code> ni <code>photo.txt</code> ani peru maaristhe bytes maaravu, OS ki tappu cheppinattu. <strong>Absolute path</strong> = root nunchi motham chirunama (ekkada nunchi ayina panichestundi); <strong>relative path</strong> = <strong>nuvvu ippudu unna chota</strong> nunchi daari. '4th flat, MG Road, Bangalore' vs 'rendu intlu munduku'. <code>.</code> = ee folder, <code>..</code> = paiki okati, <code>~</code> = home.</p>
+
 **File extensions** (`.html`, `.js`, `.css`, `.py`) are a **hint, not a fact** — part of the filename only. Rename `photo.png` to `photo.txt` and the bytes are unchanged; you've only told the OS to open it with the wrong program. The real format is the bytes inside — the same idea as HTTP's `Content-Type`.
 
 ### Absolute vs relative paths — half of all "broken image" bugs
@@ -2519,6 +2607,8 @@ Symbols: `.` current dir · `..` parent (up one) · `/` at start = root (absolut
 
 A text interface where you type commands instead of clicking (terminal, shell, console). A GUI is a restaurant menu — only what's pictured, easy. The CLI is talking straight to the chef — ask for anything, combine anything, repeat it a thousand times.
 
+<p class="te"><strong>Telugu:</strong> CLI ante click cheyakunda <strong>type chesi</strong> OS ki cheppadam. GUI = hotel menu (photo lo unnadi matrame order cheyagalavu); CLI = <strong>nerugga chef tho matladadam</strong> (emi ayina adagachu, kalapachu, vey saarlu malli cheyyachu). Enduku tappanisari: remote server ki screen undadu (SSH ichedi terminal matrame); scripts ga raasi malli run cheyyochu; <code>git</code>, <code>npm</code>, <code>docker</code> anni akkade untayi. <strong>Jagratha</strong>: <code>rm</code> ki undo ledu — <code>rm</code> ki mundu eppudu <code>pwd</code> chudu.</p>
+
 **Why developers live in it:** it's the only interface a remote server has (SSH gives you a terminal, nothing else); it's scriptable and repeatable; commands compose via pipes (`cat log | grep ERROR | wc -l` counts errors — three tools, no code); and every tool you'll learn — `npm`, `git`, `docker`, `node` — lives there.
 
 | Command | Does | Windows (PowerShell) |
@@ -2538,6 +2628,8 @@ A text interface where you type commands instead of clicking (terminal, shell, c
 
 **Editor vs IDE:** a text editor edits text (Notepad); a code editor understands code — highlighting, autocomplete, error squiggles (**VS Code**); an IDE bundles editor + debugger + build tools (IntelliJ, SAP's ABAP tools). The features that save the most time: IntelliSense (stops you memorising APIs), the integrated terminal, the **debugger with breakpoints** (pause a running program and inspect it — far better than `console.log`), Git integration, and **extensions** (Prettier auto-formats, ESLint catches bugs; Claude Code is one).
 
+<p class="te"><strong>Telugu:</strong> <strong>Editor</strong> text ni maarustundi; <strong>code editor</strong> (VS Code) code ni artham chesukuntundi (highlighting, autocomplete); <strong>IDE</strong> editor + debugger + build tools anni kalipi istundi. Ekkuva time save chesevi: IntelliSense, integrated terminal, mukhyam ga <strong>debugger breakpoints</strong> (nadustunna program ni aapi lopala chudochu — <code>console.log</code> kanna chala melu), extensions (Prettier, ESLint). <strong>Browser DevTools (F12)</strong> — web development lo atyanta takkuva vaade tool: Elements (DOM), Console (errors), Network (prathi HTTP request), Performance.</p>
+
 **Browser DevTools (F12)** — the most underused tool in web dev, and what you used throughout this document:
 
 | Panel | Shows | Connects to |
@@ -2555,6 +2647,8 @@ A text interface where you type commands instead of clicking (terminal, shell, c
 ## L8. Version Control — Git & GitHub
 
 **Git** records snapshots of your project over time — see what changed, when, by whom, and revert to any past state. A game save system, except you can save anywhere, name each save, branch to try something reckless, and merge the good result back. Without it you're playing with no save button — which is what `final_v2_FINAL.zip` is.
+
+<p class="te"><strong>Telugu:</strong> <strong>Git</strong> ante nee project ki <strong>game save system</strong> — ekkadaina save cheyyi, prathi save ki peru pettu, kotta daari (branch) try cheyyi, nachithe merge cheyyi. <code>final_v2_FINAL.zip</code> ki idi shaswatha pariskaram. <strong>Git ≠ GitHub</strong>: Git nee machine lo (internet akkarleadu), GitHub website (backup, collaboration, recruiters chuse portfolio) — camera vs Instagram. Mudu chotlu: working directory (nee files) → <code>git add</code> → staging area → <code>git commit</code> → local repo → <code>git push</code> → GitHub. <strong><code>.env</code> ni eppudu commit cheyyaku</strong> — bots nimishallo API keys ni pattestayi.</p>
 
 **Git ≠ GitHub:** Git is the tool on *your machine* (offline); GitHub is a *website* hosting Git repos (backup, collaboration, a portfolio recruiters read). The camera vs Instagram. Alternatives: GitLab, Bitbucket.
 

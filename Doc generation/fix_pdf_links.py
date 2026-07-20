@@ -56,14 +56,34 @@ for line in body.split('\n'):
 reader = PdfReader(pdf_path)
 page_text = [norm(p.extract_text() or '') for p in reader.pages]
 
-# The Table of Contents lists EVERY heading, so a TOC page is any page that
-# contains BOTH the first and the last real heading title — a body page never
-# does. Body content starts on the page after the last such TOC page. This is
-# robust to the TOC spanning multiple pages.
+# Find where the TOC ends, because scanning for heading text must start AFTER
+# it — the TOC lists every heading, so a scan that starts too early matches
+# every heading on the TOC page and sends all links to page 1.
+#
+# Primary signal: link density. A TOC page carries dozens of /Link annotations;
+# a body page carries none or a handful. Walk the leading pages and take the
+# contiguous run of link-heavy ones.
+def link_count(page):
+    annots = page.get('/Annots')
+    if not annots:
+        return 0
+    return sum(1 for r in annots if r.get_object().get('/Subtype') == '/Link')
+
+toc_pages = []
+for i in range(min(25, len(reader.pages))):
+    if link_count(reader.pages[i]) >= 5:
+        toc_pages.append(i)
+    elif toc_pages:
+        break                      # the contiguous TOC block has ended
+
+# Secondary signal (kept as a union): a page listing BOTH the first and the
+# last Part heading can only be a TOC page.
 first_h = next((t for _, t in headings if t and 'part' in t), '')
 last_h  = next((t for _, t in reversed(headings) if t and 'part' in t), '')
-toc_pages = [i for i, t in enumerate(page_text)
-             if first_h and last_h and first_h in t and last_h in t]
+toc_pages += [i for i, t in enumerate(page_text)
+              if first_h and last_h and first_h in t and last_h in t
+              and i not in toc_pages]
+
 FIRST_BODY = (max(toc_pages) + 1) if toc_pages else 1
 print(f"  TOC pages: {toc_pages or 'none'}  ->  body starts at page idx {FIRST_BODY}")
 
