@@ -28,6 +28,7 @@
 - [Part M — Interview Preparation](#part-m-interview-preparation)
   - [R1 Fundamentals](#round-1-fundamentals-what-why) · [R2 Internals](#round-2-how-it-works-internally) · [R3 Models](#round-3-models-cost-judgement) · [R4 CLAUDE.md & Commands](#round-4-claudemd-commands-config) · [R5 MCP](#round-5-mcp-integrations) · [R6 Agents](#round-6-agents-hooks-workflows) · [R7 Product Differences](#round-7-product-differences-the-comparison-round) · [R8 Scenarios](#round-8-scenario-situational-star) · [R9 Behavioural](#round-9-behavioural-judgement-the-hr-round) · [R10 Rapid-Fire](#round-10-rapid-fire-one-liners)
 - [Part N — Resources & Quick Reference](#part-n-resources-quick-reference)
+- [Part O — The Big Picture: How It All Connects](#part-o-the-big-picture-how-it-all-connects)
 
 ---
 
@@ -1141,3 +1142,78 @@ graph TD
 > **Effective:** CLAUDE.md first · plan big changes · one task per session · be specific · make it verify · read the diffs.
 
 *Chat models answer. Claude Code does. Brief it well, give it a CLAUDE.md, pick the right model, review its work — and you stop typing code and start directing it. That is the whole craft of Phase 2.*
+
+---
+
+# Part O — The Big Picture: How It All Connects
+
+*Everything in this guide, in one map. Read it top to bottom as the life of a single task — from your goal to the finished work.*
+
+```mermaid
+graph TD
+    U["YOU<br/>give a goal in<br/>plain English"] --> CLI["CLAUDE CODE — the CLI<br/>terminal · IDE · desktop · web"]
+
+    CLI --> AGENT
+
+    subgraph SESS["THE SESSION — the context window (counted in TOKENS)"]
+        MD["CLAUDE.md<br/>project memory,<br/>auto-loaded every session"]
+        AGENT["MAIN AGENT (Claude)<br/>runs the agentic loop:<br/>think → act → observe → repeat"]
+        TOK["TOKENS<br/>the unit that fills the<br/>context and the bill"]
+        MD --> AGENT
+        AGENT -.- TOK
+    end
+
+    MODEL["MODEL — the brain<br/>Opus · Sonnet · Haiku<br/>capability vs speed vs cost"] -->|"powers"| AGENT
+
+    subgraph CAP["WHAT THE AGENT CAN USE"]
+        TOOLS["TOOLS<br/>Read · Edit · Write<br/>Bash · Grep · Web"]
+        SKILLS["SKILLS<br/>packaged, reusable<br/>instructions & commands"]
+        MCP["MCP<br/>the universal plug<br/>(USB-C for AI)"]
+    end
+
+    AGENT --> TOOLS
+    AGENT --> SKILLS
+    AGENT --> MCP
+    MCP --> CONN["CONNECTORS<br/>Database · Jira · Figma<br/>Slack · Drive · your API"]
+
+    AGENT --> SUB["SUB-AGENTS<br/>own fresh context,<br/>run in parallel"]
+    SUB -->|"return only<br/>the answer"| AGENT
+    AGENT --> WF["WORKFLOWS<br/>orchestrate many agents,<br/>then verify"]
+    WF -->|"fan out"| SUB
+
+    TOOLS --> WORK
+    CONN --> WORK
+    AGENT ==> WORK["OVERALL WORK<br/>edited code · fixed tests<br/>data answers · deliverables<br/>— you review the diff"]
+
+    style U fill:#4f46e5,color:#fff
+    style CLI fill:#4338ca,color:#fff
+    style AGENT fill:#7c3aed,color:#fff
+    style MODEL fill:#c026d3,color:#fff
+    style MCP fill:#c026d3,color:#fff
+    style CONN fill:#f5f3ff,color:#1f2333
+    style SUB fill:#9333ea,color:#fff
+    style WF fill:#9333ea,color:#fff
+    style MD fill:#ede9fe,color:#1f2333
+    style TOK fill:#faf5ff,color:#1f2333
+    style TOOLS fill:#ede9fe,color:#1f2333
+    style SKILLS fill:#ede9fe,color:#1f2333
+    style WORK fill:#059669,color:#fff
+```
+
+**Reading the map, piece by piece:**
+
+- **You → CLI** — you type a goal in plain English into Claude Code (terminal, IDE, desktop, or web). Same brain everywhere.
+- **The Session** — one continuous conversation. Everything lives inside the **context window** — the agent's "desk" of what it can see right now.
+- **Tokens** — the unit that both *fills* the context window and *measures the bill*. Bigger context = more tokens = slower and costlier, which is why you `/clear` and `/compact`.
+- **CLAUDE.md** — the project memo loaded automatically at the start, so the agent begins every session already knowing your rules.
+- **Main Agent + the loop** — Claude runs *think → act → observe → repeat* until the goal is met. This loop is what makes it an agent, not a chatbot.
+- **Model** — the brain powering the agent. Swap between Opus, Sonnet, and Haiku to trade capability against speed and cost.
+- **Tools** — the agent's built-in hands: read, edit, write, run commands, search, browse the web.
+- **Skills** — packaged, reusable instructions (and custom slash commands) that turn a repeated procedure into one trigger.
+- **MCP → Connectors** — the universal plug that extends the agent's reach to *external* systems (databases, Jira, Figma, Slack, Drive, your own API), which then appear as extra tools.
+- **Sub-agents** — helper agents with their own fresh context that do focused work in parallel and hand back only the answer, keeping the main desk clean.
+- **Workflows** — orchestration that fans work out to many agents and verifies the results, for jobs too big for one context.
+- **Overall Work** — the finished output: edited code, fixed tests, data answers, deliverables — with *you* as the reviewer approving the diff.
+
+> **The whole system in one line:** *You brief the agent (CLI + CLAUDE.md); it thinks and acts in a loop (context + tokens), powered by a model, using tools, skills, MCP connectors, sub-agents, and workflows — and produces work you review.*
+

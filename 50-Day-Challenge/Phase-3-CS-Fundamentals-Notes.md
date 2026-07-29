@@ -30,6 +30,7 @@
 - [Part L — Appendix: Developer Environment & Web Basics](#part-l-appendix-developer-environment-web-basics)
   - [L1. Hardware vs Software](#l1-hardware-vs-software) · [L2. Network Basics (LAN, WAN, MAC, Router)](#l2-network-basics-lan-wan-mac-and-the-boxes-on-your-wall) · [L3. Client-Server Model](#l3-the-client-server-model) · [L4. Servers, Frontend vs Backend, Hosting](#l4-servers-frontend-vs-backend-hosting) · [L5. Files & Paths](#l5-files-directories-and-paths) · [L6. The Command Line](#l6-the-command-line-cli) · [L7. Development Tools](#l7-development-tools) · [L8. Git & GitHub](#l8-version-control-git-github)
 - [Part K — Resources & Quick Reference](#part-k-resources-and-quick-reference)
+- [Part M — The Big Picture: Every Topic in One Frame](#part-m-the-big-picture-every-topic-in-one-frame)
 
 ---
 
@@ -2730,3 +2731,211 @@ Write real commit messages (`"Fix O(n) dequeue with a front pointer"`, not `"stu
 > **The universal order:** make it work → make it right → make it fast.
 
 *Understand the machine, understand the wire, understand the cost. Every framework you meet for the rest of your career is just these three ideas wearing a new name.*
+
+---
+
+# Part M — The Big Picture: Every Topic in One Frame
+
+*Close the book on this phase with diagrams only. First a one-frame recap of each part, then the single master diagram that connects everything — from the keyboard in your hand to the database in the data centre. If you can walk someone through the last diagram out loud, Phase 3 is genuinely finished.*
+
+<p class="te"><strong>Telugu:</strong> Ee chivari bhagam antha <strong>diagrams matrame</strong> — modata prathi topic ki okka chinna recap, taruvata anni topics ni kalipe <strong>okate pedda master diagram</strong>: nee keyboard nunchi data centre lo database varaku. Aa chivari diagram ni chusi <strong>notitho evariki ayina cheppagaligithe</strong>, Phase 3 nijam ga aipoyinatte.</p>
+
+## M1. Part A — How a Computer Works
+
+```mermaid
+graph LR
+    IN["INPUT<br/>keyboard · mouse"] --> CPU["CPU — the chef<br/>fetch → decode → execute<br/>ALU · Control Unit · registers"]
+    CPU <-->|"100 ns"| RAM["RAM — the desk<br/>stack + heap · volatile"]
+    RAM <-->|"0.1 ms"| ST["STORAGE — the pantry<br/>SSD/HDD · persistent"]
+    CPU --> OUT["OUTPUT<br/>screen · speakers"]
+    B["Everything is BINARY<br/>bits → bytes → hex<br/>numbers · text · pixels"] -.-> RAM
+    style CPU fill:#c026d3,color:#fff
+    style RAM fill:#7c3aed,color:#fff
+    style ST fill:#4338ca,color:#fff
+    style B fill:#059669,color:#fff
+```
+
+**One sentence:** input comes in, the CPU computes on data staged in RAM (never directly on storage), results go out — and every piece of it, from your name to this page, is binary with an agreed interpretation.
+
+## M2. Part B — Operating Systems
+
+```mermaid
+graph TB
+    APPS["APPLICATIONS — user mode<br/>Chrome · VS Code · Node"] -->|"system calls"| K["OS KERNEL — kernel mode<br/>processes · memory · files · devices · security"]
+    K --> HW["HARDWARE"]
+    P1["Process 1<br/>own private memory"] --- K
+    P2["Process 2<br/>own private memory"] --- K
+    P1 --- T1["threads share<br/>the process memory"]
+    T1 --- RC["shared data + threads<br/>= race conditions → use locks"]
+    style K fill:#a21caf,color:#fff
+    style APPS fill:#4338ca,color:#fff
+    style RC fill:#b91c1c,color:#fff
+```
+
+**One sentence:** the OS is the building manager — apps ask it (system calls) for everything; processes are isolated, threads inside them share memory, and that sharing is where locks, races, and deadlocks live.
+
+## M3. Part C — How the Internet Works
+
+```mermaid
+graph LR
+    N["google.com"] -->|"DNS<br/>phone book"| IP["IP address<br/>which machine"]
+    IP --> PORT["+ Port<br/>which program<br/>80 · 443 · 3306"]
+    PORT --> TCP["TCP handshake<br/>reliable, ordered<br/>(UDP = fast, lossy)"]
+    TCP --> TLS["TLS<br/>certificate + session key<br/>= the S in HTTPS"]
+    TLS --> HTTP["HTTP<br/>stateless request/response<br/>GET/POST · 2xx/4xx/5xx"]
+    OSI["OSI: App→TLS→TCP→IP→Ethernet→cable<br/>each layer wraps the one above"] -.-> TCP
+    style N fill:#4338ca,color:#fff
+    style TCP fill:#7c3aed,color:#fff
+    style TLS fill:#a21caf,color:#fff
+    style HTTP fill:#c026d3,color:#fff
+    style OSI fill:#059669,color:#fff
+```
+
+**One sentence:** DNS finds the machine, the port finds the program, TCP makes delivery reliable, TLS makes it private, HTTP is the conversation — and the OSI layers are the envelopes it all travels in.
+
+## M4. Part D — Typing google.com
+
+```mermaid
+graph LR
+    U["URL typed"] --> C["caches?"] --> D["DNS"] --> T["TCP"] --> S["TLS"] --> H["HTTP GET"] --> R["200 OK<br/>+ HTML"] --> DOM["DOM +<br/>CSSOM"] --> PIX["Layout · Paint<br/>· Composite"]
+    style U fill:#4338ca,color:#fff
+    style D fill:#6d28d9,color:#fff
+    style S fill:#a21caf,color:#fff
+    style R fill:#c026d3,color:#fff
+    style PIX fill:#059669,color:#fff
+```
+
+**One sentence:** cache-miss → resolve → connect → encrypt → request → response → build → paint; every arrow is one of the topics above doing its job in order.
+
+## M5. Part E — The Browser
+
+```mermaid
+graph LR
+    H["HTML"] --> DOM["DOM tree"]
+    CSS["CSS"] --> OM["CSSOM"]
+    DOM --> RT["Render Tree<br/>visible nodes only"]
+    OM --> RT
+    RT --> L["LAYOUT<br/>geometry — reflow $$$"]
+    L --> P["PAINT<br/>pixels $$"]
+    P --> CO["COMPOSITE<br/>GPU layers $<br/>transform · opacity live here"]
+    EV["EVENT LOOP<br/>one JS thread<br/>async via queue"] -.->|"can mutate"| DOM
+    style DOM fill:#4338ca,color:#fff
+    style RT fill:#7c3aed,color:#fff
+    style L fill:#a21caf,color:#fff
+    style CO fill:#059669,color:#fff
+    style EV fill:#c026d3,color:#fff
+```
+
+**One sentence:** HTML and CSS become trees, the trees become geometry, the geometry becomes pixels — the further left your change lands in this pipeline, the more it costs, which is why you animate only `transform`/`opacity`.
+
+## M6. Part F — Data Structures
+
+```mermaid
+graph TB
+    DS["PICK BY THE OPERATION<br/>YOU DO MOST"] --> A2["ARRAY<br/>index O(1) · front-insert O(n)"]
+    DS --> HM["HASH MAP / SET<br/>key lookup O(1)<br/>the O(n²) killer"]
+    DS --> SQ["STACK — LIFO undo<br/>QUEUE — FIFO fairness<br/>all ops O(1)"]
+    DS --> LL["LINKED LIST<br/>ends O(1) · index O(n)"]
+    DS --> TR["TREE / BST<br/>sorted search O(log n)<br/>DOM · files · DB index"]
+    DS --> GR["GRAPH<br/>nodes + edges<br/>BFS uses queue · DFS uses stack"]
+    style DS fill:#c026d3,color:#fff
+    style HM fill:#059669,color:#fff
+    style TR fill:#7c3aed,color:#fff
+```
+
+**One sentence:** there is no best structure — arrays for position, hash maps for names, stack/queue for order rules, trees for sorted hierarchy, graphs for relationships; slow code usually means the wrong pick.
+
+## M7. Part G — Big O
+
+```mermaid
+graph LR
+    O1["O(1)<br/>arr[i]<br/>map.get"] --> OL["O(log n)<br/>binary search<br/>BST · DB index"]
+    OL --> ON["O(n)<br/>one loop<br/>includes()"]
+    ON --> ONL["O(n log n)<br/>sort()"]
+    ONL --> ON2["O(n²)<br/>nested loops<br/>THE RED FLAG"]
+    ON2 --> OE["O(2ⁿ)<br/>naive recursion<br/>fix: memoize"]
+    style O1 fill:#059669,color:#fff
+    style OL fill:#4338ca,color:#fff
+    style ON fill:#7c3aed,color:#fff
+    style ONL fill:#a21caf,color:#fff
+    style ON2 fill:#c026d3,color:#fff
+    style OE fill:#b91c1c,color:#fff
+```
+
+**One sentence:** left is scale, right is death — the whole craft is noticing when you've written the right half (usually a hidden loop) and buying your way left with space (hash map, memo, index).
+
+## M8. Part L — The Developer's World
+
+```mermaid
+graph LR
+    F["FILES and PATHS<br/>tree · relative vs absolute"] --> ED["EDITOR + CLI<br/>VS Code · terminal<br/>DevTools F12"]
+    ED --> G["GIT<br/>add → commit"]
+    G --> GH["GITHUB<br/>push · portfolio"]
+    GH -->|"deploy:<br/>pull · run · DNS · TLS"| SRV["SERVER<br/>Nginx to Node backend<br/>frontend in the browser"]
+    style F fill:#4338ca,color:#fff
+    style G fill:#7c3aed,color:#fff
+    style GH fill:#a21caf,color:#fff
+    style SRV fill:#059669,color:#fff
+```
+
+**One sentence:** you edit files in a tree, drive everything from the CLI, snapshot with Git, publish through GitHub, and deployment is just getting those files onto an always-on machine behind DNS + TLS.
+
+---
+
+## M9. THE MASTER DIAGRAM — everything, connected
+
+*Follow the numbers **1 → 10** — you press a key and every part of this phase fires in sequence: your machine → home LAN → the internet → the data centre → back to your screen.*
+
+```mermaid
+graph LR
+    subgraph CLIENT["YOUR MACHINE — CLIENT (A · B · E)"]
+        direction TB
+        INP["INPUT<br/>keyboard"] --> CPU2["CPU<br/>fetch–decode<br/>–execute"]
+        CPU2 <--> RAM2["RAM<br/>stack + heap"]
+        RAM2 <--> SSD2["Storage"]
+        OS2["OS KERNEL<br/>processes · threads<br/>syscalls"] --- CPU2
+        BR2["BROWSER<br/>1 type google.com<br/>9 HTML → DOM<br/>10 layout·paint<br/>→ SCREEN"] --- OS2
+    end
+
+    subgraph HOME["HOME LAN (L2)"]
+        direction TB
+        SW2["Switch<br/>MAC"] --> RT2["Router<br/>IP · NAT"] --> MD2["Modem"]
+    end
+
+    subgraph WAN["INTERNET — WAN (C · D)"]
+        direction TB
+        DNS2["2 DNS<br/>name → IP"] --> HS["3 TCP handshake<br/>4 TLS handshake"]
+        HS --> PKT["5 encrypted GET<br/>packets wrapped:<br/>HTTP⊂TLS⊂TCP<br/>⊂IP⊂Ethernet"]
+        PKT --> RTS["6 routers forward<br/>hop by hop<br/>reading only IP"]
+    end
+
+    subgraph DC2["DATA CENTRE — SERVER (L3 · L4 · L8)"]
+        direction TB
+        LB2["Load balancer"] --> NX2["Nginx :443<br/>TLS ends here"]
+        NX2 --> APP2["7 Node.js :3000<br/>backend logic"]
+        APP2 --> DB2[("8 Database :3306<br/>B-tree · O(log n)")]
+        GH2["GitHub<br/>git push → deploy"] -.-> APP2
+    end
+
+    BR2 -->|request| SW2
+    MD2 --> DNS2
+    RTS --> LB2
+    APP2 -.->|"9 · 200 OK + HTML<br/>back through every layer"| BR2
+
+    style CLIENT fill:#eef2ff,stroke:#4338ca
+    style HOME fill:#f5f3ff,stroke:#7c3aed
+    style WAN fill:#faf5ff,stroke:#a21caf
+    style DC2 fill:#fdf4ff,stroke:#c026d3
+    style CPU2 fill:#c026d3,color:#fff
+    style BR2 fill:#4338ca,color:#fff
+    style PKT fill:#a21caf,color:#fff
+    style APP2 fill:#7c3aed,color:#fff
+    style DB2 fill:#059669,color:#fff
+    style GH2 fill:#059669,color:#fff
+```
+
+<p class="te"><strong>Telugu:</strong> Ee okka bommalo phase antha undi. <strong>1</strong> nuvvu type chestav (input → CPU → RAM, OS anni nadipistundi) · <strong>2</strong> DNS peru ni IP ga maarustundi · <strong>3-4</strong> TCP + TLS handshakes · <strong>5</strong> request encrypt ayyi packets ga muriki, prathi packet layers lo chuttabadi (HTTP lopala TLS lopala TCP lopala IP lopala Ethernet) · <strong>6</strong> routers okko adugu forward chestayi · <strong>7-8</strong> data centre lo Nginx → Node backend → database (B-tree index tho O(log n) lo vetiki) · <strong>9</strong> 200 OK + HTML anni layers gunda venakki · <strong>10</strong> browser DOM katti, layout–paint–composite chesi pixels chupistundi. Code server ki ela vellindi? <strong>git push → GitHub → deploy</strong>. Idi cheppagaligithe interview lo edaina cheppagalavu.</p>
+
+**The ten steps, in words:** ① you type (input → CPU/RAM, OS orchestrating) → ② DNS turns the name into an IP → ③ TCP handshake → ④ TLS handshake → ⑤ the encrypted request is chopped into packets, each wrapped layer-in-layer → ⑥ routers forward hop by hop reading only IP → ⑦ the backend runs your logic → ⑧ the database answers via its B-tree index → ⑨ the response returns through every layer and becomes the DOM → ⑩ layout–paint–composite puts pixels on your screen. And the code itself reached that server by `git push → GitHub → deploy`.
+
+**Every part of this phase is in that picture.** Hardware and the OS live in the client box. Networking is the middle. Data structures and Big O live inside the database (and inside your own code). The browser pipeline is the last mile. The appendix — files, CLI, Git, hosting — is the green box that put the application there in the first place.
