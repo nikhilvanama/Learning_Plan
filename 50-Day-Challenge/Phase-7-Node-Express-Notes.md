@@ -1999,7 +1999,7 @@ Don't master SQL now — just know the model/CRUD mindset carries straight over 
 
 ```bash
 # .env  (project root, NEVER committed)
-MONGO_URI=mongodb+srv://nikhil:secret@cluster0.mongodb.net/tasktracker
+MONGO_URI=mongodb+srv://<db_username>:<db_password>@cluster0.xxxxx.mongodb.net/tasktracker
 JWT_SECRET=a_long_random_string_used_to_sign_tokens
 PORT=3000
 ```
