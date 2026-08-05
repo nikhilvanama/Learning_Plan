@@ -34,6 +34,8 @@
   - [K1. The 12-Day Countdown](#k1-the-12-day-countdown) · [K2. Accounts & Installs Checklist](#k2-accounts-installs-checklist) · [K3. Track A vs Track B — Which to Pick](#k3-track-a-vs-track-b-which-to-pick)
 - [Part L — Day-Of Playbook & Glossary](#part-l-day-of-playbook-glossary)
   - [L1. What to Bring & Set Up](#l1-what-to-bring-set-up) · [L2. Smart Questions to Ask Speakers](#l2-smart-questions-to-ask-speakers) · [L3. Glossary — Quick Reference](#l3-glossary-quick-reference) · [L4. After the Event](#l4-after-the-event)
+- [Part M — AMD Terms Glossary — One Para Each, with Years](#part-m-amd-terms-glossary-one-para-each-with-years)
+  - CPU vs GPU vs NPU · AMD 1969 · AMD64 · Zen · Ryzen · EPYC · Radeon · RDNA/CDNA · Instinct · ROCm · XDNA · chiplets · Xilinx/FPGA · Versal · Pensando · ZT Systems · TOPS · Lisa Su
 
 ---
 
@@ -927,6 +929,161 @@ Asking one good question gets you remembered (and maybe hired). Steal these:
 - **Keep one project going:** pick the workshop you loved and build a small real thing with it over the next month.
 
 > **The mindset:** you're not going to master AMD's stack in one day — you're going to *demystify* it, meet the community, and leave with 3–4 concrete skills and projects. Come prepped with this doc, and every session upgrades from "interesting blur" to "oh, I've done a small version of this." That's the whole goal.
+
+---
+
+# Part M — AMD Terms Glossary — One Para Each, with Years
+
+*The reference you revise on the metro to the venue: every AMD term from this doc — plus the silicon basics — one paragraph each, with the year it launched. Parts A and C tell the story; this part is the flash-card deck.*
+
+<p class="te"><strong>Telugu:</strong> Ee bhagam antha silicon gurinchi — nee software nadiche chips, mariyu AMD (nee DevDay company). Brackets lo unna years ante aa product release ayina year — ivi telisthe peru cheppadam kaadu, <strong>artham chesukuni</strong> matladagalav.</p>
+
+### CPU (Central Processing Unit)
+
+The CPU is the general-purpose brain: a few very powerful cores (4–16 in laptops, up to 192+ in servers) optimised for **low latency** — finishing *one* task as fast as possible, then the next. It runs your OS, your browser, your Node.js code — anything, in any order, with heavy branching logic. Its cores are complex: caches, branch predictors, out-of-order execution. **Example:** parsing JSON, running Express routes, executing SQL — serial, unpredictable, logic-heavy work is CPU territory. AMD's CPUs are Ryzen (consumer) and EPYC (server).
+
+<p class="te"><strong>Telugu:</strong> CPU ante general-purpose <strong>brain</strong> — konni chala powerful cores, okka pani ni atyanta vega ga complete cheyyadaniki (low latency). OS, browser, nee Node code — edaina, e order lo aina nadipistundi. Logic ekkuva unna pani antha CPU de.</p>
+
+### GPU (Graphics Processing Unit)
+
+The GPU is the parallel monster: **thousands** of small, simple cores that all do the same operation on different data simultaneously — built for graphics (millions of pixels, same maths each) and, it turned out, perfect for AI (neural networks are giant matrix multiplications). Optimised for **throughput**, not latency: any single operation is slower than a CPU's, but a million together finish far sooner. **Example:** training an LLM means multiplying billion-entry matrices — a 64-core CPU would take months; a rack of GPUs does it in days. AMD's GPUs: Radeon (gaming) and Instinct (AI/data centre).
+
+<p class="te"><strong>Telugu:</strong> GPU ante <strong>parallel monster</strong> — velakoladi chinna cores, anni okate operation ni veru veru data meeda okesari chestayi. Graphics ki puttindi (lakshala pixels, same lekka), AI ki perfect ani telisindi (neural networks ante pedda matrix multiplication). Okka pani slow, kaani <strong>lakshala panulu kalipi</strong> chala fast.</p>
+
+### NPU (Neural Processing Unit)
+
+The NPU is the newest sibling (mainstream ~2023): a small accelerator dedicated to **AI inference at very low power** — running an already-trained model (transcription, background blur, local copilots) using a fraction of the battery a GPU would burn. It can't do graphics or general compute; it does one thing, efficiently, all day. Measured in **TOPS**. **Example:** live captions translating a video call on a laptop that stays cool and lasts the flight — that's the NPU working while CPU and GPU idle. AMD's NPU is the **XDNA** engine inside Ryzen AI chips (2023), descended from Xilinx technology.
+
+<p class="te"><strong>Telugu:</strong> NPU ante kotha family member (~2023) — <strong>chala takkuva power tho AI inference</strong> matrame chese chinna chip. Trained model ni nadipistundi (transcription, background blur) — battery burn cheyakunda, rojantha. Graphics/general pani cheyyaledu — okate pani, efficient ga. AMD di: <strong>XDNA</strong> (Ryzen AI lo).</p>
+
+### CPU vs GPU vs NPU — the one-table difference
+
+Think of a restaurant: the CPU is the **head chef** — handles any dish, complex orders, decisions. The GPU is **500 kitchen helpers** all chopping onions at once — one repetitive task at massive scale. The NPU is the **rice cooker** — one job, silently, using almost no gas. Modern "AI PC" chips (like Ryzen AI) put all three on one die and route each task to whichever does it cheapest.
+
+| | **CPU** | **GPU** | **NPU** |
+| --- | --- | --- | --- |
+| Cores | Few, powerful | Thousands, simple | Specialised array |
+| Optimised for | Latency (one task fast) | Throughput (many tasks at once) | Efficiency (AI per watt) |
+| Best at | Logic, OS, apps, branching | Graphics, AI **training**, parallel maths | AI **inference** on-device |
+| Power draw | Medium | Huge (300–700W+ for AI cards) | Tiny (single-digit watts) |
+| Metric | GHz, cores | TFLOPS | TOPS |
+| AMD product | Ryzen, EPYC | Radeon, Instinct | XDNA (Ryzen AI) |
+
+<p class="te"><strong>Telugu:</strong> Hotel analogy: CPU = <strong>head chef</strong> (edaina vandagalladu, decisions), GPU = <strong>500 helpers</strong> andaru okesari ullipayalu kosam (okate pani, massive scale), NPU = <strong>rice cooker</strong> (okate pani, gas daadapu zero). AI PC ante mudu okate chip lo — pani deniki cheap o daaniki veltundi.</p>
+
+### AMD — Advanced Micro Devices (founded 1969)
+
+AMD is one of the two companies (with Intel) that build the x86 processors most computers run on — and, since its 2010s comeback, the only company competing across **all four** silicon fronts: CPUs (Ryzen/EPYC), GPUs (Radeon/Instinct), NPUs (XDNA), and adaptive chips (Xilinx FPGAs). Founded in 1969 by Jerry Sanders; nearly bankrupt by 2014; revived by the Zen architecture into one of the world's most valuable chip companies. **Example:** the PS5, your gaming laptop, Frontier (the first exascale supercomputer, 2022), and a growing share of AI data centres all run on AMD silicon.
+
+<p class="te"><strong>Telugu:</strong> AMD (1969, Jerry Sanders) ante Intel tho paatu x86 processors chese rendu companies lo okati — ippudu <strong>naalugu fronts</strong> lo pote unna okate company: CPU (Ryzen/EPYC), GPU (Radeon/Instinct), NPU (XDNA), adaptive chips (Xilinx). 2014 lo daadapu bankrupt; Zen tho tirigi lechi top chip companies lo okati ayyindi.</p>
+
+### x86 & AMD64 (2003)
+
+x86 is the instruction-set architecture — the vocabulary of instructions a CPU understands — that Intel created (1978) and AMD licenses and co-develops. AMD's historic move: in **2003** it invented the 64-bit extension (**AMD64 / x86-64**, launched with Opteron and Athlon 64) while Intel was betting on a different architecture — Intel ended up adopting *AMD's* design, and every Windows/Linux PC today runs it. **Example:** when you download software labelled "x64" or "amd64" — including on an Intel machine — that name is AMD's 2003 victory fossilised into filenames.
+
+<p class="te"><strong>Telugu:</strong> x86 ante CPU ki ardham ayye instructions bhasha (Intel, 1978). AMD 2003 lo daaniki <strong>64-bit version (AMD64)</strong> kanipettindi — Intel ye taruvata AMD design ni adopt chesindi. Ippatiki downloads lo kanipinche "amd64" aa gelupu gurthu — Intel machine meeda kuda.</p>
+
+### Zen Architecture (2017)
+
+Zen is the CPU core design that saved AMD: launched **March 2017** after years of falling behind, it delivered a ~52% performance-per-clock jump over AMD's previous cores and has iterated relentlessly — Zen 2 (2019, chiplets), Zen 3 (2020), Zen 4 (2022), Zen 5 (2024). Every Ryzen, Threadripper, and EPYC since 2017 is a Zen variant. **Example:** the comeback story interviewers and keynotes love: AMD stock was ~$2 in 2015; Zen-based EPYC then took server market share from Intel every single quarter for years.
+
+<p class="te"><strong>Telugu:</strong> Zen (March 2017) ante AMD ni kaapadina CPU core design — mundu generation kanna ~52% performance jump. Prathi Ryzen, EPYC deeni variant ye: Zen 2 (2019, chiplets), Zen 3 (2020), Zen 4 (2022), Zen 5 (2024). $2 stock nunchi comeback ki punaadi ide.</p>
+
+### Ryzen (2017)
+
+Ryzen is AMD's consumer CPU brand — desktops and laptops — launched **March 2017** as the first Zen product, instantly making 8 cores mainstream when Intel was selling 4. Naming works like car tiers: Ryzen 3 (budget), 5 (mainstream), 7 (performance), 9 (enthusiast). **Example:** a "Ryzen 7 9800X3D" gaming build or the Ryzen inside most non-Apple laptops on sale today; the "X3D" variants stack extra cache in 3D — a chiplet-era trick.
+
+<p class="te"><strong>Telugu:</strong> Ryzen (2017) ante AMD consumer CPU brand — desktops, laptops. Intel 4 cores ammutunte Ryzen 8 cores ni mainstream chesindi. Tiers car laaga: Ryzen 3 / 5 / 7 / 9.</p>
+
+### Threadripper (2017)
+
+Threadripper is Ryzen's extreme sibling (**August 2017**): workstation CPUs with enormous core counts (16 at launch; up to 96 today) for people whose work is parallel — 3D rendering, video, simulation, code compilation. It sits between desktop Ryzen and server EPYC. **Example:** a VFX artist rendering a film frame across 96 cores, or compiling a monster C++ codebase in minutes instead of an hour.
+
+<p class="te"><strong>Telugu:</strong> Threadripper (2017) ante Ryzen ki extreme anna — 16 nunchi 96 cores workstation CPUs. Parallel pani chesevaallaki: 3D rendering, video, pedda code compile. Desktop Ryzen ki server EPYC ki madhyalo untundi.</p>
+
+### EPYC (2017)
+
+EPYC is AMD's server CPU line (**June 2017**) — the chips inside cloud data centres, with up to 192 cores per socket today. Its Zen-plus-chiplets design let AMD pack more cores per socket at better efficiency than Intel's Xeon, taking AMD's server share from ~1% (2017) to ~a third of the market. **Example:** many AWS instance types (the "a" in `m7a.large` means AMD) and the Frontier and El Capitan supercomputers run EPYC — your Phase 10 EC2 box may literally be one.
+
+<p class="te"><strong>Telugu:</strong> EPYC (2017) ante AMD server CPU — cloud data centres lo undedi, socket ki 192 cores varaku. Intel Xeon kanna cores ekkuva, efficiency better — server market ~1% nunchi ~third ki perigindi. AWS lo <code>m7a</code> laanti "a" instances ante AMD.</p>
+
+### APU & Semi-Custom (2011)
+
+An APU (Accelerated Processing Unit) is AMD's term for CPU + GPU on one chip (first: Llano, **2011**) — one die does both compute and graphics, ideal for laptops and consoles. AMD's **semi-custom** business designs bespoke APUs for clients. **Example:** the PlayStation 4 and Xbox One (2013), PS5 and Xbox Series X (2020), and the Steam Deck (2022) are all AMD semi-custom APUs — practically every gaming console this decade is AMD inside.
+
+<p class="te"><strong>Telugu:</strong> APU ante CPU + GPU okate chip lo (2011 nunchi) — laptops, consoles ki perfect. Semi-custom ante client kosam pratyekam ga design chesedi: PS4, PS5, Xbox, Steam Deck — ee decade lo daadapu prathi console lopala AMD ye.</p>
+
+### Radeon (2000 · ATI acquired 2006)
+
+Radeon is AMD's graphics brand for gamers and creators — born at ATI in **2000**, joining AMD when it bought ATI in **2006** ($5.4B). It's the perennial rival to NVIDIA's GeForce; current cards are the RX series. **Example:** an "RX 9070 XT" in a gaming build, or the Radeon graphics integrated into every Ryzen laptop chip — plus, via semi-custom, the graphics inside your PS5.
+
+<p class="te"><strong>Telugu:</strong> Radeon ante AMD gaming graphics brand — ATI lo puttindi (2000), 2006 lo AMD ATI ni konnappudu vachindi ($5.4B). NVIDIA GeForce ki shaswatha rival. Prathi Ryzen laptop lo integrated Radeon untundi.</p>
+
+### RDNA & CDNA (2019 · 2020)
+
+In 2019 AMD split its GPU designs in two: **RDNA** (2019, RX 5000 series) optimised for gaming — frames per second, latency; **CDNA** (2020, Instinct MI100) optimised for compute — pure matrix throughput for AI and HPC, no display outputs at all. The 2025 roadmap merges lessons from both into **UDNA**. **Example:** RDNA renders Cyberpunk on your Radeon; CDNA multiplies matrices in a national lab — same DNA suffix, opposite jobs.
+
+<p class="te"><strong>Telugu:</strong> 2019 lo AMD GPU designs rendu ga vidipoyayi: <strong>RDNA</strong> (2019) gaming ki — FPS, latency; <strong>CDNA</strong> (2020) compute ki — AI/HPC matrix maths matrame, display outputs kuda undavu. Same family, opposite panulu.</p>
+
+### Instinct MI Series (2016 · MI300X 2023)
+
+Instinct is AMD's data-centre AI accelerator line (first announced **2016**), and the **MI300X (December 2023)** is the one that made it real competition to NVIDIA — 192GB of memory per chip (vs H100's 80GB) meant bigger models fit on fewer GPUs. Successors: MI325X (2024), MI350 series (2025). **Example:** Microsoft Azure and Meta run MI300X fleets for LLM inference; when a keynote says "we serve GPT-scale models on AMD," this chip family is what they mean — expect it constantly at DevDay.
+
+<p class="te"><strong>Telugu:</strong> Instinct ante AMD data-centre AI accelerator (2016 nunchi); <strong>MI300X (Dec 2023)</strong> tho NVIDIA ki nijamaina poti modalayyindi — chip ki 192GB memory (H100 di 80GB), pedda models takkuva GPUs meeda pattestayi. Microsoft, Meta LLM inference ki vaadutunnayi. DevDay lo idi malli malli vintav.</p>
+
+### ROCm (2016)
+
+ROCm (Radeon Open Compute) is AMD's open-source software stack for GPU computing — its answer to NVIDIA's CUDA, launched **2016**. It's the layer that lets PyTorch and TensorFlow run on AMD GPUs; its HIP tool converts CUDA code to portable code. NVIDIA's real moat is CUDA's 15-year head start, so ROCm's maturity is *the* strategic question in AI hardware. **Example:** `pip install torch` with the ROCm build, and your PyTorch model trains on an MI300X with no code changes — that sentence becoming routinely true is what AMD's AI future depends on.
+
+<p class="te"><strong>Telugu:</strong> ROCm (2016) ante AMD open-source GPU software stack — NVIDIA CUDA ki jawab. PyTorch/TensorFlow ni AMD GPUs meeda nadipinchedi ide. NVIDIA asli balam CUDA ki unna 15 yella head start — anduke ROCm maturity ye AI hardware lo pedda strategic prashna.</p>
+
+### Ryzen AI & XDNA (2023)
+
+Ryzen AI is AMD's brand for laptop chips with a built-in NPU, and XDNA is that NPU's architecture — technology inherited from the Xilinx acquisition, first shipped in the Ryzen 7040 series (**2023**), the first x86 laptop chips with an NPU. XDNA 2 (**2024**, Ryzen AI 300) reaches ~50 TOPS, clearing Microsoft's 40-TOPS bar for **Copilot+ PC** features. **Example:** a Ryzen AI laptop running local Windows Studio Effects and small LLMs offline, on battery — the "AI PC" category every chip company is now chasing.
+
+<p class="te"><strong>Telugu:</strong> Ryzen AI ante NPU unna laptop chips brand; <strong>XDNA</strong> aa NPU architecture — Xilinx nunchi vachina technology, 2023 lo Ryzen 7040 tho first x86 laptop NPU. XDNA 2 (2024) ~50 TOPS — Microsoft Copilot+ PC bar (40 TOPS) daati. 'AI PC' race idi.</p>
+
+### Infinity Fabric & Chiplets (2017 · 2019)
+
+Infinity Fabric (**2017**) is AMD's high-speed interconnect — the nervous system linking cores, memory, and chips. It enabled the **chiplet** revolution (mainstream with Zen 2, **2019**): instead of one huge expensive die, build several small dies and wire them together — small dies have far better manufacturing yield, so more cores for less money. The whole industry followed. **Example:** a 96-core EPYC is ~13 chiplets on one package; the MI300X mixes CPU, GPU, and memory chiplets in 3D — impossible as a single die.
+
+<p class="te"><strong>Telugu:</strong> Infinity Fabric (2017) ante chips lopala/madhya high-speed connection — nervous system. Adi <strong>chiplets</strong> (2019, Zen 2) ni saadhyam chesindi: okka pedda die badulu chinna dies katti kaluputaru — yield better, cores ekkuva, khreedu takkuva. Industry antha follow ayyindi.</p>
+
+### Xilinx & the FPGA (1985 · acquired 2022)
+
+Xilinx invented the **FPGA** (first chip **1985**) — a Field-Programmable Gate Array, a chip whose *circuits themselves* can be rewired by software after manufacturing: hardware you can reprogram like code. AMD bought Xilinx in **February 2022** for ~$49B (then the largest semiconductor acquisition ever), gaining the adaptive-computing portfolio and the AI-engine technology that became XDNA. **Example:** 5G base stations, Mars rovers, and stock-exchange trading systems use FPGAs where algorithms must change after deployment but CPUs are too slow — telecom gear updates its silicon behaviour via a file.
+
+<p class="te"><strong>Telugu:</strong> Xilinx <strong>FPGA</strong> ni kanipettindi (1985) — manufacture ayyaka kuda <strong>circuits ni software tho re-wire</strong> cheyagalige chip; code laaga reprogram chese hardware. AMD 2022 lo ~$49B ki konnadi (appatlo semiconductor history lo largest deal). XDNA NPU technology ikkadinunchey vachindi.</p>
+
+### Versal & Alveo (2018)
+
+Two flagship Xilinx product lines now under AMD. **Versal** (announced **2018**) is an "adaptive SoC": FPGA fabric + ARM CPU cores + AI engines on one chip — for 5G, automotive, aerospace. **Alveo** (**2018**) packages FPGA power as plug-in data-centre accelerator cards for workloads like video transcoding and network processing. **Example:** a broadcaster transcoding hundreds of live streams on Alveo cards, or a car's driver-assist system running on a Versal chip that gets smarter with each over-the-air update.
+
+<p class="te"><strong>Telugu:</strong> Rendu Xilinx flagship lines: <strong>Versal</strong> (2018) = FPGA + ARM CPU + AI engines okate chip lo — 5G, cars, aerospace ki. <strong>Alveo</strong> (2018) = data centre lo pettukune FPGA accelerator cards — video transcoding laanti panulaki.</p>
+
+### Pensando & the DPU (acquired 2022)
+
+Pensando (bought by AMD, **May 2022**, ~$1.9B) makes **DPUs** — Data Processing Units: smart network chips that offload networking, storage, and security work from the CPU, so every server core does *paying* work instead of plumbing. The trio "CPU + GPU + DPU" is the modern data-centre formula. **Example:** in a cloud data centre, encryption, firewalling, and traffic routing run on the DPU in the network card — freeing whole CPU cores per server, which at 100,000 servers is a fortune.
+
+<p class="te"><strong>Telugu:</strong> Pensando (AMD konnadi 2022, ~$1.9B) <strong>DPU</strong> lu chestundi — networking, storage, security pani ni CPU nunchi teesukune smart network chips. Server cores anni <strong>dabbulu vacche pani</strong> ke ankitham — plumbing DPU chusukuntundi. Modern data centre formula: CPU + GPU + DPU.</p>
+
+### ZT Systems (acquired 2025)
+
+ZT Systems builds **rack-scale AI infrastructure** — not chips but the complete racks: thousands of GPUs integrated with cooling, power, and networking, ready to roll into a data centre. AMD bought it (announced **August 2024**, completed **March 2025**, $4.9B) to sell what NVIDIA sells: full AI *systems*, not loose chips — keeping ZT's ~1,000 design engineers while selling the manufacturing arm (to Sanmina, 2025). **Example:** a cloud provider ordering "an AI cluster" now gets AMD-designed complete racks of MI-series GPUs — the acquisition is why that sentence is possible, and why you'll hear "rack-scale" at DevDay.
+
+<p class="te"><strong>Telugu:</strong> ZT Systems chips kaadu — <strong>complete AI racks</strong> kadutundi: veyyi GPUs + cooling + power + networking, data centre lo pettadame taruvayi. AMD $4.9B ki konnadi (complete March 2025) — NVIDIA laaga <strong>full systems</strong> ammadaniki, chips matrame kaadu. DevDay lo 'rack-scale' ane maata deeni valle.</p>
+
+### TOPS (Tera Operations Per Second)
+
+TOPS is the marketing-and-engineering unit for NPU speed: trillions of (usually low-precision INT8) operations per second. It's how "AI PC" capability is graded — but like megapixels, more TOPS doesn't automatically mean better real-world AI; memory and software matter too. **Example:** Microsoft's Copilot+ PC badge requires **40+ TOPS**; XDNA 2 delivers ~50. When a spec sheet shouts "80 TOTAL AI TOPS," read the footnote — that often sums CPU + GPU + NPU.
+
+<p class="te"><strong>Telugu:</strong> TOPS ante NPU speed unit — second ki trillions of operations. 'AI PC' grade cheyyadaniki idi vaadutaru: Copilot+ badge ki <strong>40+ TOPS</strong> kaavali, XDNA 2 ~50 istundi. Kaani megapixels laage — TOPS ekkuva ante automatic ga AI better ani kaadu.</p>
+
+### Lisa Su (CEO since 2014)
+
+Dr. Lisa Su took over AMD in **October 2014** when it was near bankruptcy (~$2/share) and executed one of the great corporate turnarounds in tech history: bet everything on the Zen architecture, re-entered servers with EPYC, bought Xilinx, and pushed AMD into AI — the stock rose over 50× during the run. An MIT-trained electrical engineer, she's the rare CEO who can walk a fab floor and an earnings call with equal credibility. **Example:** her keynotes (CES, Computex, Advancing AI) are where AMD's roadmap is announced — watch one before DevDay and you'll recognise every product in this glossary.
+
+<p class="te"><strong>Telugu:</strong> Lisa Su 2014 lo CEO ayyindi — AMD daadapu bankrupt, share ~$2. Zen meeda antha pettubadi, EPYC tho servers loki, Xilinx konnadi, AI loki — tech history lo goppa turnarounds lo okati (stock 50 rettu paiga). MIT electrical engineer; keynotes lo roadmap antha aame prakatistundi. DevDay ki mundu okka keynote chudu.</p>
 
 ---
 
