@@ -1085,6 +1085,89 @@ Dr. Lisa Su took over AMD in **October 2014** when it was near bankruptcy (~$2/s
 
 <p class="te"><strong>Telugu:</strong> Lisa Su 2014 lo CEO ayyindi — AMD daadapu bankrupt, share ~$2. Zen meeda antha pettubadi, EPYC tho servers loki, Xilinx konnadi, AI loki — tech history lo goppa turnarounds lo okati (stock 50 rettu paiga). MIT electrical engineer; keynotes lo roadmap antha aame prakatistundi. DevDay ki mundu okka keynote chudu.</p>
 
+### The Big Picture — every term in one frame
+
+*Follow the arrows: the foundations (Zen, AMD64, chiplets) feed every product; your AI PC routes each task to the cheapest engine; one software stack (ROCm) drives both your laptop GPU and the data-centre Instinct; and Xilinx technology flows into the NPU and the racks. Every term from this part appears exactly once.*
+
+```mermaid
+graph LR
+    subgraph FOUND["FOUNDATIONS"]
+        direction TB
+        X86["x86 ISA (1978)<br/>+ AMD64 (2003)<br/>the language every<br/>core speaks"]
+        ZEN["Zen architecture (2017)<br/>the comeback core<br/>Zen 2→5: 2019–2024"]
+        CHIP["Chiplets + Infinity<br/>Fabric (2017·2019)<br/>small dies wired into<br/>big packages"]
+        SU["Lisa Su — CEO 2014<br/>bet it all on Zen"]
+        SU -.-> ZEN
+        X86 --- ZEN
+        ZEN --- CHIP
+    end
+
+    subgraph AIPC["YOUR AI PC — one Ryzen AI chip (an APU)"]
+        direction TB
+        OS3["App + OS<br/>routes each task to<br/>the cheapest engine"]
+        CPU3["CPU — Zen cores<br/>Ryzen (2017)<br/>logic · branching<br/>latency-first · GHz"]
+        GPU3["GPU — Radeon (2000)<br/>RDNA (2019)<br/>1000s of cores<br/>throughput · TFLOPS"]
+        NPU3["NPU — XDNA (2023)<br/>all-day AI inference<br/>low power · TOPS<br/>Copilot+ needs 40+"]
+        OS3 --> CPU3
+        OS3 -->|"parallel maths<br/>graphics"| GPU3
+        OS3 -->|"quiet background<br/>AI"| NPU3
+    end
+
+    subgraph SW["SOFTWARE STACK"]
+        direction TB
+        FW["PyTorch · TensorFlow<br/>Lemonade · GAIA"]
+        ROCM["ROCm (2016)<br/>AMD's answer to CUDA<br/>HIP converts CUDA code"]
+        FW --> ROCM
+    end
+
+    subgraph DC3["DATA CENTRE"]
+        direction TB
+        EPYC3["EPYC (2017)<br/>server CPU<br/>up to 192 Zen cores"]
+        MI3["Instinct MI300X (2023)<br/>CDNA (2020) compute GPU<br/>192GB — trains + serves LLMs"]
+        DPU3["Pensando DPU (2022)<br/>offloads network +<br/>security from the CPU"]
+        ZT3["ZT Systems (2025)<br/>assembles it all into<br/>rack-scale AI clusters"]
+        EPYC3 --- MI3
+        EPYC3 --- DPU3
+        MI3 --> ZT3
+        DPU3 --> ZT3
+    end
+
+    subgraph XLX["ADAPTIVE — XILINX (acq. 2022)"]
+        direction TB
+        FPGA3["FPGA (1985)<br/>circuits you rewire<br/>with software"]
+        VER["Versal (2018)<br/>FPGA + ARM + AI engines"]
+        ALV["Alveo (2018)<br/>plug-in accelerator cards"]
+        FPGA3 --> VER
+        FPGA3 --> ALV
+    end
+
+    ZEN ==> CPU3
+    ZEN ==> EPYC3
+    CHIP -.-> MI3
+    ROCM ==> GPU3
+    ROCM ==> MI3
+    FPGA3 -.->|"AI-engine tech<br/>became XDNA"| NPU3
+    ALV -.-> ZT3
+
+    style FOUND fill:#eef2ff,stroke:#4338ca
+    style AIPC fill:#f5f3ff,stroke:#7c3aed
+    style SW fill:#faf5ff,stroke:#a21caf
+    style DC3 fill:#fdf4ff,stroke:#c026d3
+    style XLX fill:#ecfdf5,stroke:#059669
+    style ZEN fill:#4338ca,color:#fff
+    style CPU3 fill:#7c3aed,color:#fff
+    style GPU3 fill:#a21caf,color:#fff
+    style NPU3 fill:#c026d3,color:#fff
+    style ROCM fill:#6d28d9,color:#fff
+    style MI3 fill:#a21caf,color:#fff
+    style ZT3 fill:#059669,color:#fff
+    style FPGA3 fill:#059669,color:#fff
+```
+
+<p class="te"><strong>Telugu:</strong> Ee okka bommalo Part M antha undi. <strong>Edama</strong>: foundations — x86/AMD64 bhasha, Zen core design (2017), chiplets + Infinity Fabric; ivi anni products ki punaadi. <strong>Nee AI PC</strong>: okate Ryzen AI chip lo mudu engines — OS prathi pani ni cheapest engine ki pampistundi: logic CPU ki, parallel maths GPU ki, background AI NPU ki. <strong>Madhya</strong>: software stack — PyTorch laantivi ROCm dwara AMD GPUs meeda nadustayi (CUDA ki AMD jawab). <strong>Data centre</strong>: EPYC + Instinct MI300X + Pensando DPU — anni kalipi ZT Systems full racks ga kadutundi. <strong>Kudi</strong>: Xilinx FPGA prapancham — mariyu daani AI-engine technology ye nee laptop lo XDNA NPU ga maarindi. Okka frame lo mottham AMD katha.</p>
+
+**How a single AI task flows through this picture:** you ask your laptop to summarise a document → the **OS** hands the app logic to the **CPU** (Zen) → the model's matrix maths goes to the **GPU** or, if it's a small quiet model, the **NPU** (XDNA) → the same PyTorch-on-**ROCm** code, scaled up, runs on **Instinct** GPUs beside **EPYC** CPUs in a **ZT-built** rack when the model is too big for your lap. One architecture family, one software stack, laptop to data centre — that is AMD's whole pitch, and now the diagram in your head matches the one on their keynote slides.
+
 ---
 
 *Prep doc for AMD AI DevDay India 2026 · Taj West End, Bengaluru · Aug 8, 2026. Built from the published agenda + AMD's 2026 stack (Ryzen AI Max+ 395 "Strix Halo", Instinct MI350X, ROCm 7, Lemonade Server, GAIA). Verify session details against the official site closer to the date — agendas shift.*
