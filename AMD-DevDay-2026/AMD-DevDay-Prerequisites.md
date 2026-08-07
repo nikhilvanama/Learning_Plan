@@ -36,6 +36,8 @@
   - [L1. What to Bring & Set Up](#l1-what-to-bring-set-up) · [L2. Smart Questions to Ask Speakers](#l2-smart-questions-to-ask-speakers) · [L3. Glossary — Quick Reference](#l3-glossary-quick-reference) · [L4. After the Event](#l4-after-the-event)
 - [Part M — AMD Terms Glossary — One Para Each, with Years](#part-m-amd-terms-glossary-one-para-each-with-years)
   - CPU vs GPU vs NPU · AMD 1969 · AMD64 · Zen · Ryzen · EPYC · Radeon · RDNA/CDNA · Instinct · ROCm · XDNA · chiplets · Xilinx/FPGA · Versal · Pensando · ZT Systems · TOPS · Lisa Su
+- [Part N — AMD's 2026 Product Catalogue: Every Chip, Every Device](#part-n-amds-2026-product-catalogue-every-chip-every-device)
+  - [N1. The Whole Line-Up on One Page](#n1-the-whole-line-up-on-one-page) · [N2. Instinct MI400 & Helios — The 2026 Headline](#n2-instinct-mi400-helios-the-2026-headline) · [N3. EPYC "Venice" — The 6th-Gen Server CPU](#n3-epyc-venice-the-6th-gen-server-cpu) · [N4. Ryzen — Desktops, Laptops and the AI PC](#n4-ryzen-desktops-laptops-and-the-ai-pc) · [N5. Threadripper — The Workstation Monster](#n5-threadripper-the-workstation-monster) · [N6. Radeon — Gaming Cards and the AI PRO R9700](#n6-radeon-gaming-cards-and-the-ai-pro-r9700) · [N7. Ryzen AI Halo — The Deskside Agent Computer](#n7-ryzen-ai-halo-the-deskside-agent-computer) · [N8. Ryzen AI Embedded X100, Kria and Physical AI](#n8-ryzen-ai-embedded-x100-kria-and-physical-ai) · [N9. Adaptive Computing — Versal, Alveo, Pensando](#n9-adaptive-computing-versal-alveo-pensando) · [N10. Semi-Custom — Consoles, Handhelds and Devices You Own](#n10-semi-custom-consoles-handhelds-and-devices-you-own) · [N11. The Software Stack — ROCm 7 to ROCm.ai](#n11-the-software-stack-rocm-7-to-rocmai) · [N12. AMD's Role in Agentic Development](#n12-amds-role-in-agentic-development) · [N13. The Roadmap — 2026 to 2028](#n13-the-roadmap-2026-to-2028) · [N14. What to Watch For on Stage](#n14-what-to-watch-for-on-stage)
 
 ---
 
@@ -1168,6 +1170,303 @@ graph LR
 
 **How a single AI task flows through this picture:** you ask your laptop to summarise a document → the **OS** hands the app logic to the **CPU** (Zen) → the model's matrix maths goes to the **GPU** or, if it's a small quiet model, the **NPU** (XDNA) → the same PyTorch-on-**ROCm** code, scaled up, runs on **Instinct** GPUs beside **EPYC** CPUs in a **ZT-built** rack when the model is too big for your lap. One architecture family, one software stack, laptop to data centre — that is AMD's whole pitch, and now the diagram in your head matches the one on their keynote slides.
 
+
+# Part N — AMD's 2026 Product Catalogue: Every Chip, Every Device
+
+*The part to read the night before. On stage they will name products fast — MI455X, Helios, Venice, Halo, X100, ROCm.ai — and assume you know what each one is. Here is every current AMD product, what it actually is, what it competes with, and which device in your life already contains one. Everything here reflects AMD's line-up as of the **Advancing AI 2026** event (San Francisco, 22–23 July 2026), two weeks before your DevDay.*
+
+<p class="te"><strong>Telugu:</strong> Ee bhagam event ki mundu ratri chadavalsindi. Stage meeda vaallu perlu vega ga chepthaaru — MI455X, Helios, Venice, Halo, X100, ROCm.ai — meeku telusu ani anukuntaru. Ikkada <strong>prathi current AMD product</strong>: adi enti, deenitho poti, mariyu mee jeevitham lo e device lo adi already undo. Idantha <strong>Advancing AI 2026</strong> (San Francisco, July 22–23, 2026) event prakaram — mee DevDay ki rendu vaaralu mundu jarigindi.</p>
+
+## N1. The Whole Line-Up on One Page
+
+Nine product families. Learn this table and every slide on stage has a home to go to.
+
+| Family | What it is | Latest in 2026 | Competes with |
+|--------|-----------|----------------|---------------|
+| **Instinct** | Data-centre AI GPU | **MI455X** (432GB HBM4) · MI430X for HPC | NVIDIA Rubin / GB300 |
+| **Helios** | Full AI **rack**, not a chip | 72 MI455X + 18 EPYC Venice + Pensando | NVIDIA NVL72 / NVL144 |
+| **EPYC** | Server CPU | **6th Gen "Venice"** — Zen 6, TSMC 2nm, up to 256 cores | Intel Xeon 6+, Arm Graviton |
+| **Ryzen** | Consumer CPU / APU | Ryzen 9000 (Zen 5), Ryzen AI 300, **Ryzen AI Max+ 395**, Gorgon Point refresh | Intel Core Ultra series 3 |
+| **Threadripper** | Workstation CPU | 9000 series, up to 96 cores | Intel Xeon W |
+| **Radeon** | Gaming + pro GPU | **RX 9000** (RDNA 4) · **Radeon AI PRO R9700** 32GB | GeForce RTX 50 |
+| **Ryzen AI Halo** | Deskside "agent computer" | 128GB unified memory, runs ~200B-parameter models | NVIDIA DGX Spark |
+| **Ryzen AI Embedded / Kria** | Robotics & physical AI | **X100 series**, Kria SOM + Robotics Developer Platform | NVIDIA Jetson |
+| **Adaptive (Xilinx) & Pensando** | FPGA, adaptive SoC, DPU/NIC | Versal, Alveo, Pensando Pollara/Salina | Intel Altera, NVIDIA BlueField |
+| **Semi-custom** | Chips built for one customer | PlayStation 5, Xbox, Steam Deck, handhelds | (AMD has this market almost alone) |
+| **ROCm / ROCm.ai** | The software that drives it all | **ROCm.ai** — agentic developer platform | NVIDIA CUDA |
+
+<p class="te"><strong>Telugu:</strong> AMD lo <strong>tommidi product families</strong> unnayi. Ee table gurthu pettukunte, stage meeda e slide vachchina "idi ee family di" ani ventane pettochu. <strong>Instinct</strong> = data centre AI GPU. <strong>Helios</strong> = chip kaadu, motham rack. <strong>EPYC</strong> = server CPU. <strong>Ryzen</strong> = laptop/desktop. <strong>Threadripper</strong> = workstation. <strong>Radeon</strong> = gaming + pro GPU. <strong>Ryzen AI Halo</strong> = table meeda pettukune AI computer. <strong>Embedded/Kria</strong> = robots. <strong>Semi-custom</strong> = PS5, Xbox, Steam Deck. Anni pai nunchi nadipedi <strong>ROCm</strong> software.</p>
+
+## N2. Instinct MI400 & Helios — The 2026 Headline
+
+**Simple definition:** **Instinct** is AMD's data-centre AI GPU line. The 2026 generation is the **MI400 series**, and the way AMD now sells it is not as a card but as **Helios** — a complete, pre-wired rack of 72 GPUs that behaves like one enormous computer.
+
+<figure class="fig med"><img src="assets/instinct-mi50-card.jpg"><figcaption>What a data-centre AI GPU physically looks like — an older AMD Instinct card with its cooler removed. Note the large central die surrounded by memory stacks, and <strong>no display outputs at all</strong>: this is a pure compute engine. The MI455X follows the same idea at roughly 20× the scale. <span class="fig-credit">Photo: Мой Компьютер, CC BY 3.0 via Wikimedia Commons (cropped).</span></figcaption></figure>
+
+**The MI400 family**
+
+| Part | Built for | Headline spec |
+|------|-----------|---------------|
+| **Instinct MI455X** | Frontier-scale AI training and inference | **432GB HBM4** per GPU, ~320 billion transistors, up to ~40 PFLOPS class AI compute |
+| **Instinct MI430X** | HPC / scientific computing (high FP64) | Same family, tuned for simulation rather than tokens |
+| *(previous gen)* MI355X | Shipping volume through 2025–26 | 288GB HBM3e |
+
+**Helios — the rack** combines, in one cabinet:
+
+- **72 × Instinct MI455X** GPUs
+- **18 × 6th Gen EPYC "Venice"** CPUs
+- **AMD Pensando** networking for front-end, scale-up and scale-out
+- **ROCm** as the single software stack across all of it
+
+AMD's own claim is up to **30% more tokens per dollar** than the leading competing rack. A Helios rack has been reported at around **$5.25 million**. Early named customers include **Microsoft Azure** and **Oracle**, and **OpenAI plus Meta together have committed to around 12 gigawatts** of AMD accelerator capacity — the single strongest signal that AMD is now a genuine second source, not a science project.
+
+```mermaid
+graph TB
+  subgraph HELIOS["ONE HELIOS RACK"]
+    direction TB
+    G["72 × Instinct MI455X<br/>432GB HBM4 each<br/>≈ 31 TB of HBM in one rack"]
+    C["18 × EPYC Venice CPUs<br/>Zen 6 · 2nm · up to 256 cores<br/>feed and orchestrate the GPUs"]
+    N["Pensando networking<br/>scale-up inside the rack<br/>scale-out to other racks"]
+    S["ROCm software<br/>one stack, laptop to rack"]
+    C --> G
+    G --- N
+    S -.-> G
+    S -.-> C
+  end
+  HELIOS --> OUT["Claimed: up to 30% more<br/>tokens per dollar vs the<br/>leading competitor rack"]
+  style G fill:#a21caf,color:#fff
+  style C fill:#4f46e5,color:#fff
+  style N fill:#059669,color:#fff
+  style S fill:#6d28d9,color:#fff
+  style OUT fill:#16a34a,color:#fff
+```
+
+**Why AMD moved to selling racks:** a single fast GPU no longer wins deals. Frontier models are trained and served across dozens of GPUs at once, so what matters is how fast those GPUs talk to each other and how much memory they collectively hold. NVIDIA proved this with NVL72; Helios is AMD's answer, and 2026 is the first year AMD is competing at that level rather than one card at a time.
+
+<p class="te"><strong>Telugu:</strong> <strong>Instinct</strong> = AMD data-centre AI GPU. 2026 generation <strong>MI400 series</strong>: <strong>MI455X</strong> (okka GPU ki <strong>432GB HBM4</strong> memory, ~320 billion transistors) mariyu <strong>MI430X</strong> (scientific computing kosam). Kaani ippudu AMD card ammadam ledu — <strong>Helios</strong> ane motham rack ammutondi: 72 MI455X GPUs + 18 EPYC Venice CPUs + Pensando networking + ROCm, anni okate cabinet lo. AMD claim: competitor rack kanna <strong>oka dollar ki 30% ekkuva tokens</strong>. Okka rack dhara daadapu <strong>$5.25 million</strong>. Customers: Microsoft Azure, Oracle; OpenAI + Meta kalipi <strong>~12 gigawatts</strong> AMD capacity ki commit ayyaru. Enduku rack ga ammutunnaru? Endukante ippudu okka GPU speed tho gelavaledu — <strong>GPUs okatitho okati entha vega matladutunnayo</strong> ade asalu lekka.</p>
+
+## N3. EPYC "Venice" — The 6th-Gen Server CPU
+
+**Simple definition:** **EPYC** is AMD's server CPU. The 2026 generation, **6th Gen "Venice"**, is built on the **Zen 6** core and is the **first x86 server processor in volume production on TSMC's 2nm process** — a genuine industry first for AMD.
+
+<figure class="fig"><img src="assets/epyc-9754-server.jpg"><figcaption>An AMD EPYC server processor beside the memory it feeds — 24 DDR5 modules for a dual-socket server. The chip is roughly the size of a matchbox lid; the memory around it is what an AI or database workload actually eats. <span class="fig-credit">Photo: 极客湾Geekerwan, CC BY 3.0 via Wikimedia Commons.</span></figcaption></figure>
+
+| Spec | Venice (6th Gen, 2026) | Turin (5th Gen, 2024) |
+|------|------------------------|------------------------|
+| Core architecture | **Zen 6** | Zen 5 |
+| Process | **TSMC 2nm** | TSMC 4nm/3nm |
+| Max cores / threads | **256 / 512** | 192 / 384 |
+| Claimed compute gain | **up to 1.7× Turin** | — |
+| Role in Helios | 18 per rack, hosting the GPUs | — |
+
+**Why the host CPU still matters in an AI rack:** the GPUs do the maths, but the CPU loads the data, runs the operating system, manages storage and networking, and orchestrates the job. A slow host starves fast GPUs. AMD's advantage is that both halves come from the same company, tuned together — which is exactly the argument Intel and NVIDIA had to form a partnership to match.
+
+<p class="te"><strong>Telugu:</strong> <strong>EPYC</strong> = AMD server CPU. 2026 version <strong>"Venice"</strong> (6th Gen): <strong>Zen 6</strong> core, <strong>TSMC 2nm</strong> meeda volume lo velle modati x86 server chip — idi nijam ga industry first. <strong>256 cores / 512 threads</strong> varaku, Turin kanna <strong>1.7 rettu</strong> varaku compute. AI rack lo CPU enduku kavali? Lekkalu GPU chestundi, kaani <strong>data teesukocchi pettedi, OS nadipedi, storage/network chusukunedi CPU ye</strong>. Host slow aithe GPUs khaali ga kurchuntayi. AMD ki rendu (CPU+GPU) sonta ve — anduke Intel mariyu NVIDIA daaniki javabu ga partnership pettukovalsi vachindi.</p>
+
+## N4. Ryzen — Desktops, Laptops and the AI PC
+
+**Simple definition:** **Ryzen** is the consumer CPU brand. In 2026 it spans four sub-families, and the naming genuinely confuses people, so here is the map.
+
+<figure class="fig med"><img src="assets/ryzen-9-7900x.jpg"><figcaption>A desktop Ryzen 9 processor. The metal lid (IHS) spreads heat; underneath it sit the chiplets shown in the next photo. <span class="fig-credit">Photo: CristoCalis, CC BY-SA 4.0 via Wikimedia Commons.</span></figcaption></figure>
+
+| Sub-family | Where it goes | 2026 status |
+|-----------|---------------|-------------|
+| **Ryzen 9000** ("Granite Ridge", Zen 5) | Desktop, socket AM5 | Current desktop line; **X3D** versions stack extra cache for gaming |
+| **Ryzen AI 300** ("Strix Point") | Mainstream AI laptops | XDNA 2 NPU at 50 TOPS — clears the Copilot+ bar |
+| **Ryzen AI Max / Max+ 395** ("Strix Halo") | Premium thin workstations, mini-PCs | The local-AI star: up to **128GB unified memory**, 40 RDNA 3.5 GPU CUs |
+| **Gorgon Point** | Laptops, 2026 | A Zen 5 refresh — higher clocks, tuned NPU, not a new architecture |
+| **Medusa Point** | Laptops, 2027 | The real **Zen 6** generation; Medusa Halo succeeds Strix Halo |
+
+**The chiplet trick, in one photograph.** A modern Ryzen is not one piece of silicon — it is two or three small dies packaged together. The photo below is a desktop Ryzen with the lid removed: the two rectangles on top are **CCDs** (the CPU core chiplets, made on the newest, most expensive process) and the larger die below is the **I/O die** (memory controller, PCIe — made on an older, cheaper process because it doesn't need the newest one).
+
+<figure class="fig"><img src="assets/ryzen-chiplets.jpg"><figcaption>Inside a Ryzen: two CPU core chiplets (top) and one I/O die (bottom) on a single package. Building it this way is why AMD can offer more cores for less money than a single giant die would allow — and it is the same idea, scaled up, inside EPYC and Instinct. <span class="fig-credit">Photo: Zenmaster2021, CC BY-SA 4.0 via Wikimedia Commons.</span></figcaption></figure>
+
+**Why Ryzen AI Max+ 395 keeps coming up at this event:** because its **unified memory** means the CPU, GPU and NPU all address the same large pool — so a laptop-class machine can hold a model that would need a much more expensive discrete GPU. That is the entire premise of the local-model demos you will see in the Vibe Coding and Lemonade sessions (Parts C5, C6, G3).
+
+<p class="te"><strong>Telugu:</strong> <strong>Ryzen</strong> = consumer CPU brand, 2026 lo naalugu rakalu: <strong>Ryzen 9000</strong> (desktop, Zen 5; X3D versions gaming ki extra cache), <strong>Ryzen AI 300</strong> (mainstream AI laptops, 50 TOPS NPU), <strong>Ryzen AI Max+ 395</strong> (premium — 128GB varaku <strong>unified memory</strong>, local AI star), <strong>Gorgon Point</strong> (2026 refresh), <strong>Medusa Point</strong> (2027, asalu Zen 6). Photo lo chudandi — Ryzen ante okka silicon mukka kaadu: paina rendu <strong>CCD</strong> (CPU cores, kotha khareedaina process), kinda <strong>I/O die</strong> (memory/PCIe, paatha cheap process). Ee <strong>chiplet</strong> trick valla ne AMD takkuva dhara ki ekkuva cores ivvagalugutondi. Max+ 395 ee event lo enduku pade pade vinipistundo teliyalante — daani <strong>unified memory</strong> valla laptop lone pedda models nadustayi.</p>
+
+## N5. Threadripper — The Workstation Monster
+
+**Simple definition:** **Threadripper** sits between desktop Ryzen and server EPYC: enormous core counts (up to 96 in the current 9000 series) for people whose work is massively parallel — 3D rendering, video, simulation, compiling, and increasingly running several AI models at once locally.
+
+<figure class="fig med"><img src="assets/threadripper-7970x.jpg"><figcaption>The underside of a Threadripper in its shipping carrier. Those thousands of gold pads are the <strong>LGA</strong> contacts that meet the pins in the motherboard socket — the sheer contact count is what feeds a 96-core chip with power and memory bandwidth. <span class="fig-credit">Photo: PantheraLeo1359531, CC BY 4.0 via Wikimedia Commons.</span></figcaption></figure>
+
+Two variants worth knowing: plain **Threadripper** (HEDT — enthusiast/creator) and **Threadripper PRO** (workstation — more memory channels, more PCIe lanes, manageability features, and what OEMs like Lenovo and HP actually ship in certified workstations).
+
+<p class="te"><strong>Telugu:</strong> <strong>Threadripper</strong> = desktop Ryzen ki, server EPYC ki madhya unde workstation CPU — 96 cores varaku. 3D rendering, video, simulation, pedda code compile, mariyu ippudu <strong>local ga konni AI models okesari nadapadam</strong> — ilaanti parallel pani cheseevaariki. Photo lo kindi vaipu unna vela banaru-bangaru pads ye <strong>LGA</strong> contacts — anni pads enduku ante, 96 cores ki current mariyu memory bandwidth ivvadaniki. Rendu rakalu: <strong>Threadripper</strong> (creators) mariyu <strong>Threadripper PRO</strong> (companies vaade certified workstations).</p>
+
+## N6. Radeon — Gaming Cards and the AI PRO R9700
+
+**Simple definition:** **Radeon** is AMD's GPU brand for everything that isn't a data centre — gaming cards, workstation cards, and the integrated graphics inside Ryzen chips.
+
+<figure class="fig"><img src="assets/radeon-rx6800xt.jpg"><figcaption>A Radeon RX desktop graphics card. Unlike the Instinct card earlier, this one has fans, display outputs and a consumer cooler — same company, completely different job. <span class="fig-credit">Photo: Vitaly Zdanevich, CC BY-SA 4.0 via Wikimedia Commons.</span></figcaption></figure>
+
+| Product | Architecture | Memory | Aimed at |
+|---------|-------------|--------|----------|
+| **Radeon RX 9070 XT / 9070** | **RDNA 4** (TSMC 4nm) | 16GB GDDR6 | Mainstream gaming at $549–599; 2nd-gen ray-tracing accelerators, much stronger AI accelerators than RDNA 3 |
+| **Radeon AI PRO R9700** | RDNA 4 (Navi 48) | **32GB GDDR6** | Local AI: inference and fine-tuning on a workstation, ~$1,299, blower cooler for multi-card builds |
+| Integrated Radeon (RDNA 3.5) | Inside Ryzen AI chips | Shares system memory | Thin laptops, handhelds, mini-PCs |
+
+**FSR 4** is the Radeon equivalent of DLSS — AI upscaling and frame generation, now machine-learning based on RDNA 4 hardware.
+
+**Why the R9700 matters more than its price suggests:** 32GB of VRAM on a workstation card is the cheapest legitimate way to fine-tune or serve a mid-size model locally. For a developer in India buying their own hardware, the memory-per-rupee argument is AMD's strongest pitch — and the reason ROCm support on Radeon (not just Instinct) is a recurring theme at these events.
+
+<p class="te"><strong>Telugu:</strong> <strong>Radeon</strong> = data centre kaani GPUs anni — gaming cards, workstation cards, Ryzen lopala integrated graphics. 2026 lo: <strong>RX 9070 XT/9070</strong> (RDNA 4, 16GB, ~$549–599 — mainstream gaming), <strong>Radeon AI PRO R9700</strong> (<strong>32GB</strong>, ~$1,299 — local AI fine-tuning/inference ki), mariyu Ryzen lopala integrated Radeon. <strong>FSR 4</strong> = DLSS ki AMD javabu (AI upscaling). R9700 enduku mukhyam ante — <strong>32GB VRAM ni ee dhara ki</strong> vere evaru ivvaledu; sonta hardware konna developer ki "oka rupayi ki entha memory" ane lekka lo AMD ye gelustundi.</p>
+
+## N7. Ryzen AI Halo — The Deskside Agent Computer
+
+**Simple definition:** announced at Advancing AI 2026, **Ryzen AI Halo** is a small desktop machine built specifically so developers can build and run **AI agents locally**, with no cloud account and no per-token bill.
+
+| Spec | What it means |
+|------|---------------|
+| **Ryzen AI Max+ 395** (Strix Halo) | Zen 5 CPU + 40 RDNA 3.5 GPU CUs + XDNA 2 NPU in one package |
+| **128GB unified LPDDR5X** | CPU, GPU and NPU share one big memory pool |
+| **Runs models up to ~200 billion parameters** | Frontier-class open models, on your desk |
+| **ROCm preloaded, Windows and Linux** | Nothing to compile before you start |
+| ~**$3,999**, pre-orders from June 2026 | Positioned directly against NVIDIA's DGX Spark |
+| **Ryzen AI Max PRO 400 series** | The commercial/managed version of the same silicon |
+
+**Why this product exists:** agents are chatty. A single agent run can consume hundreds of thousands of tokens across many steps, and doing that against a metered cloud API while you are still *developing* is expensive and slow to iterate on. A local box with enough memory turns that cost into a fixed, one-time purchase — which is exactly the argument AMD will make on stage.
+
+<p class="te"><strong>Telugu:</strong> <strong>Ryzen AI Halo</strong> (Advancing AI 2026 lo prakatana) = developers <strong>AI agents ni local ga</strong> build chesi nadapadaniki katti chinna desktop machine — cloud account akkarledu, token bill akkarledu. Lopala: Ryzen AI Max+ 395, <strong>128GB unified memory</strong>, ~200 billion parameters models varaku nadustayi, ROCm already install chesi untundi (Windows + Linux), dhara ~<strong>$3,999</strong>. Enduku ee product? <strong>Agents chala matladatayi</strong> — okka agent run lo lakshala tokens; develop chestunnappudu prathi token ki cloud lo dabbu kattadam khareedu mariyu slow. Local box unte adi <strong>okkasari kharchu</strong>. Idi NVIDIA DGX Spark ki neruga poti.</p>
+
+## N8. Ryzen AI Embedded X100, Kria and Physical AI
+
+**Simple definition:** AMD's 2026 entry into **physical AI** — robots, drones, industrial machines and anything that senses and acts in the real world. Three pieces were announced together:
+
+| Piece | What it is |
+|-------|-----------|
+| **Ryzen AI Embedded X100 series** | Strix Halo-class silicon in embedded form: Zen 5 CPU + RDNA 3.5 GPU + **XDNA 2 NPU up to 50 TOPS**. Six parts: **X199** (16 cores, 40 GPU CUs), **X188** (12 cores, 32 CUs), **X168** (8 cores, 32 CUs) and others. Default **55W**, configurable **45–120W** |
+| **Kria SOM + Robotics Developer Platform** | A ready-made system-on-module (from the Xilinx side of the house) plus a turnkey robotics software stack |
+| **AMD Robotics Partner Network** | An ecosystem of partners so customers don't have to integrate everything themselves |
+
+**Why "physical AI" needs different silicon:** a robot must run perception, planning and control **in real time, in a sealed box, on a power budget**, often with hard latency guarantees and long product lifetimes. That is a different problem from a rack GPU — it needs deterministic behaviour (the FPGA/Kria strength) plus efficient inference (the NPU), which is precisely the combination AMD acquired from Xilinx and now packages together. This line competes with NVIDIA's Jetson family and, from 2026, with Intel's edge push.
+
+<p class="te"><strong>Telugu:</strong> <strong>Physical AI</strong> = robots, drones, factory machines — nijamaina prapanchamlo chusi, pani chese vaatilo AI. 2026 lo AMD mudu vishayalu prakatinchindi: (1) <strong>Ryzen AI Embedded X100</strong> — Strix Halo silicon ne embedded roopam lo (Zen 5 + RDNA 3.5 + <strong>XDNA 2 NPU 50 TOPS varaku</strong>; X199 lo 16 cores/40 GPU CUs; 45–120W). (2) <strong>Kria SOM + Robotics Developer Platform</strong> — readymade module + software stack. (3) <strong>Robotics Partner Network</strong>. Robot ki veru silicon enduku? Endukante robot lo pani <strong>real time lo, mudina box lo, parimitha power tho</strong> jaragali — data centre GPU laaga kaadu. Deeniki FPGA/Kria "time ki sariggaa" behaviour + NPU efficiency rendu kavali — ade AMD Xilinx nunchi teccha strength. Poti: NVIDIA Jetson.</p>
+
+## N9. Adaptive Computing — Versal, Alveo, Pensando
+
+The Xilinx and Pensando halves of AMD, which most people forget exist — and which pay for themselves quietly in telecom, defence, automotive and networking.
+
+| Product | What it is | Where it runs |
+|---------|-----------|---------------|
+| **Versal** | Adaptive SoC — FPGA fabric + Arm CPUs + AI engines on one chip | 5G base stations, radar, medical imaging, automotive |
+| **Alveo** | Plug-in FPGA accelerator cards | Trading, video transcoding, genomics, network functions |
+| **Artix / Kintex / Virtex** | Classic FPGA families | Industrial, aerospace, test equipment |
+| **Kria** | Small system-on-modules for vision and robotics | Cameras, robots, kiosks |
+| **Pensando (DPU / SmartNIC)** | Programmable networking silicon — **Pollara** (AI NICs) and **Salina** (front-end) | Cloud networking, and the networking inside **Helios** |
+
+**The strategic point:** Pensando is why AMD can sell a whole rack. Without its own networking, AMD would have to wire Helios with someone else's — and NVIDIA's biggest structural advantage after CUDA is precisely that it owns the network (InfiniBand, Spectrum-X, NVLink).
+
+<p class="te"><strong>Telugu:</strong> AMD lo Xilinx mariyu Pensando bhaagalu — chala mandi marchipoyedi ivi, kaani telecom, defence, cars, networking lo prashantham ga dabbu techchevi. <strong>Versal</strong> (FPGA + Arm + AI engines okate chip lo — 5G towers, radar, medical scanners), <strong>Alveo</strong> (plug-in FPGA cards), <strong>Kria</strong> (robotics modules), <strong>Pensando</strong> (programmable network chips — Pollara, Salina). Strategy point: <strong>Pensando valla ne AMD motham rack ammagalugutundi</strong>. Sonta networking lekapothe Helios ni vere vaari network tho kattali — mariyu CUDA taruvata NVIDIA ki unna pedda balam ade: <strong>network kuda vaalladhe</strong>.</p>
+
+## N10. Semi-Custom — Consoles, Handhelds and Devices You Own
+
+**Simple definition:** **semi-custom** means AMD designs a chip for one customer's product. It is AMD's quietest business and its most universal — you almost certainly own one.
+
+<figure class="fig"><img src="assets/ps5-motherboard.jpg"><figcaption>A PlayStation 5 motherboard. The large square package in the centre is a <strong>custom AMD APU</strong> — Zen 2 CPU cores and an RDNA 2 GPU on one die, designed by AMD specifically for Sony. The dark chips around it are GDDR6 memory. <span class="fig-credit">Photo: Fritzchens Fritz, CC0 via Wikimedia Commons.</span></figcaption></figure>
+
+| Device | AMD silicon inside |
+|--------|--------------------|
+| **PlayStation 5 / PS5 Pro** | Custom APU: Zen 2 CPU + RDNA 2-class GPU (Pro adds a much larger GPU and AI upscaling) |
+| **Xbox Series X / S** | Custom APU, same broad recipe |
+| **Steam Deck** | Custom "Van Gogh" APU: Zen 2 + RDNA 2 |
+| **ROG Ally, Legion Go and other handhelds** | Ryzen **Z1 / Z2 / Z2 Extreme** APUs |
+| **Framework Desktop, many mini-PCs** | Ryzen AI Max+ 395 "Strix Halo" |
+| **Tesla infotainment (some models)** | Custom Ryzen APU |
+| **Most non-Apple laptops on sale** | Ryzen / Ryzen AI |
+| **Frontier and El Capitan supercomputers** | EPYC + Instinct |
+
+<figure class="fig"><img src="assets/steam-deck.jpg"><figcaption>The Steam Deck — a handheld PC running a custom AMD APU. The same CPU+GPU-on-one-die approach that powers consoles is what makes a machine this small viable. <span class="fig-credit">Photo: Liam Dawe / GamingOnLinux, PNG version by VulcanSphere, CC BY-SA 4.0 via Wikimedia Commons.</span></figcaption></figure>
+
+**Why AMD owns this market:** a console maker wants **one** vendor to supply CPU *and* GPU on *one* die, at a fixed price, for seven years. Only AMD can credibly do all of that — Intel lacks the GPU pedigree at that scale, and NVIDIA's business model rarely accepts console margins. This is also why AMD's graphics know-how, bought with ATI in 2006, keeps paying dividends two decades later.
+
+<p class="te"><strong>Telugu:</strong> <strong>Semi-custom</strong> ante — oka customer product kosam matrame AMD prathyekam ga chip design cheyyadam. Idi AMD lo evaru matladani business, kaani <strong>meeku okati kachitham ga undi</strong>: PS5, Xbox, Steam Deck, ROG Ally laanti handhelds, chala mini-PCs, konni Tesla cars, mariyu Apple kaani chala laptops. Ee market AMD ke enduku dakkindi? Console company ki kavalsindi — <strong>okate vendor</strong>, <strong>okate die meeda CPU+GPU</strong>, <strong>fixed dhara</strong>, <strong>7 yellu supply</strong>. Idi ivvagalige okate company AMD. 2006 lo ATI ni konnadu — aa graphics gnyanam ippatiki dabbu istondi.</p>
+
+## N11. The Software Stack — ROCm 7 to ROCm.ai
+
+**Simple definition:** hardware is half the story; **ROCm** is AMD's open-source answer to CUDA. The 2026 news is that it stopped being only a driver stack and became an **agentic developer platform** called **ROCm.ai**.
+
+| Piece | What it does |
+|-------|-------------|
+| **ROCm 7** | The mature base: PyTorch, TensorFlow, vLLM, SGLang and Triton run on AMD GPUs |
+| **HIP** | The tool that converts CUDA source into code that compiles for AMD |
+| **ROCm.ai** (2026) | The AI-native developer experience layered on top |
+| **AMD Skills** | AMD-authored expertise injected into coding assistants — **Claude, Cursor, Codex** — so the agent actually understands ROCm and AMD hardware |
+| **ROCm CLI** | One command-line tool to install, validate, serve and manage AI workloads |
+| **Hyperloom** | Open-source **agentic system that optimises end-to-end inference workloads automatically** |
+| **Lemonade Server** | Local model server for Ryzen AI (Part C6) — OpenAI-compatible API on your own laptop |
+| **GAIA** | AMD's local agent/RAG application framework for Ryzen AI |
+| **AMD Developer Cloud** | Rent AMD GPUs by the hour to try ROCm without owning hardware |
+
+AMD's own claimed numbers for ROCm.ai versus ROCm 7 **on identical hardware**: about **3.3× inference** and **2.4× training** improvement — gains that come from AI-driven optimisation of kernels, memory management and scheduling rather than from new silicon.
+
+<p class="te"><strong>Telugu:</strong> Hardware sagam ye — <strong>ROCm</strong> ante CUDA ki AMD open-source javabu. 2026 lo pedda maarpu: adi kevalam driver stack kaakunda <strong>ROCm.ai</strong> ane <strong>agentic developer platform</strong> ga maarindi. Andulo: <strong>AMD Skills</strong> (Claude, Cursor, Codex laanti coding agents ki AMD/ROCm gnyanam nerpadam), <strong>ROCm CLI</strong> (install/serve/manage okate command tool), <strong>Hyperloom</strong> (inference ni automatic ga optimise chese open-source agentic system), <strong>Lemonade</strong> (laptop lo local model server), <strong>GAIA</strong> (local agent/RAG framework), <strong>Developer Cloud</strong> (gantalaki AMD GPUs adde ki). AMD claim: <strong>ade hardware meeda</strong> ROCm 7 kanna ROCm.ai tho ~<strong>3.3 rettu inference</strong>, ~<strong>2.4 rettu training</strong> — kotha chip kaadu, <strong>software optimisation</strong> valla.</p>
+
+## N12. AMD's Role in Agentic Development
+
+This is the theme of the whole 2026 event, and it is worth separating into three distinct claims, because they are often blurred together on stage.
+
+**Claim 1 — AMD hardware runs your agents.** An agent is a loop: think → call a tool → read the result → think again. Every "think" step is an LLM inference call, so an agent burns **10–100× more tokens** than a single chat answer. That makes agents an **inference-economics problem**, and inference economics is AMD's strongest argument: more memory per GPU, more tokens per dollar per watt, an open stack. Helios' "30% more tokens per dollar" claim is aimed directly at companies running agent fleets.
+
+**Claim 2 — AMD helps you build agents (ROCm.ai).** Rather than only asking developers to learn ROCm, AMD is teaching **coding agents** to know ROCm — **AMD Skills** for Claude, Cursor and Codex — and shipping **Hyperloom**, an agentic system that optimises inference pipelines by itself. The strategic bet: if the assistant knows how to write good AMD kernels, the human doesn't need to.
+
+**Claim 3 — AMD sells the machine agents live on.** **Ryzen AI Halo** and the **Ryzen AI Max PRO 400** series are pitched as "agent computers" — enough unified memory to keep a large model and a long context resident locally, so an agent can run all day without a metered API.
+
+```mermaid
+graph TB
+  A["AN AGENT LOOP<br/>think → call tool → read → think"] --> B["Each 'think' = one LLM inference<br/>10–100× the tokens of a single chat"]
+  B --> C{"Where does it run?"}
+  C -->|"data centre fleet"| D["Instinct MI455X / Helios<br/>tokens per dollar per watt"]
+  C -->|"your desk"| E["Ryzen AI Halo · Max PRO 400<br/>128GB unified · no token bill"]
+  C -->|"in a robot"| F["Ryzen AI Embedded X100<br/>Kria · real-time, low power"]
+  G["ROCm.ai · AMD Skills · Hyperloom<br/>agents that help you BUILD for AMD"] -.-> D
+  G -.-> E
+  G -.-> F
+  style A fill:#4f46e5,color:#fff
+  style D fill:#a21caf,color:#fff
+  style E fill:#c026d3,color:#fff
+  style F fill:#059669,color:#fff
+  style G fill:#6d28d9,color:#fff
+```
+
+**The honest caveat to carry into the room:** every performance figure above is AMD's own. Independent, reproducible benchmarks of ROCm.ai versus a tuned CUDA stack were still thin as of mid-2026, and software maturity — not silicon — remains the gap AMD is closing. Asking a speaker *"which of these numbers has been reproduced outside AMD's labs?"* is a genuinely good question, politely asked.
+
+<p class="te"><strong>Telugu:</strong> Ee event motham theme ide, kaani <strong>mudu veru claims</strong> ni kalapakandi. (1) <strong>Agents ni AMD hardware nadupu tundi</strong>: agent ante loop — think → tool call → chadavadam → malli think; prathi think oka LLM call, kabatti okka chat kanna <strong>10–100 rettu tokens</strong>. Ante agents ante <strong>inference economics</strong> problem — akkade AMD balam (ekkuva memory, oka dollar ki ekkuva tokens). (2) <strong>Agents ni build cheyyadaniki AMD sahayam</strong>: developers ni ROCm nerchukomani adagadam kaadu — <strong>coding agents ke</strong> (Claude, Cursor, Codex) ROCm nerputunnaru (AMD Skills), mariyu Hyperloom ye optimisation chestundi. (3) <strong>Agents nivasinche machine</strong>: Ryzen AI Halo / Max PRO 400 — "agent computers". <strong>Jagratha</strong>: ee numbers anni AMD sonta lab vi. Bayati vaallu tirigi prove chesina benchmarks inka takkuve. Speaker ni maryada ga "ee numbers lo edi AMD bayata reproduce ayindi?" ani adagandi — chala manchi prashna.</p>
+
+## N13. The Roadmap — 2026 to 2028
+
+What AMD has publicly committed to next, so nothing on stage sounds like a surprise:
+
+| When | Data centre | Client / edge |
+|------|-------------|---------------|
+| **2026** | MI455X + Helios shipping; EPYC Venice (Zen 6, 2nm) | Gorgon Point laptops; Ryzen AI Halo; X100 embedded; RDNA 4 Radeon |
+| **2027** | **Instinct MI500** — AMD calls it the biggest generational leap in Instinct history: next-gen HBM, larger scale-up domain, **copper *and* optical** interconnect; EPYC **"Verano"** | **Medusa Point** (Zen 6 laptops), Medusa Halo |
+| **2028** | **MI600** already in development; annual Helios-class rack cadence | Zen 7 era; next-gen Radeon architecture |
+
+The cadence itself is the message: **a new rack-scale system every year**, matching NVIDIA's annual rhythm. AMD spent 2017–2024 proving it could ship CPUs on time; 2026–2028 is the same promise applied to AI systems.
+
+<p class="te"><strong>Telugu:</strong> Munduku em vastundo: <strong>2026</strong> — MI455X + Helios, EPYC Venice, Gorgon Point laptops, Ryzen AI Halo, X100. <strong>2027</strong> — <strong>Instinct MI500</strong> (AMD ye antundi: Instinct charitralo ati pedda generational leap; kotha HBM, pedda scale-up domain, <strong>copper + optical</strong> interconnect), EPYC "Verano", Medusa Point laptops. <strong>2028</strong> — MI600 already development lo. Asalu sandesham ee cadence ye: <strong>prathi sanvatsaram kotha rack-scale system</strong> — NVIDIA rhythm ni match cheyyadam. 2017–2024 lo CPUs time ki icchi nirupinchukunnaru; ippudu ade promise AI systems ki.</p>
+
+## N14. What to Watch For on Stage
+
+A practical decoder for Saturday. When you hear it, this is what it means:
+
+| If a speaker says… | They mean | The follow-up question worth asking |
+|---------------------|-----------|--------------------------------------|
+| "Tokens per dollar" | Inference cost economics — AMD's core pitch | "Measured at what batch size, context length and precision?" |
+| "Rack-scale" | Helios, not a single GPU | "What's the largest single-node memory domain?" |
+| "Open ecosystem" | ROCm, UALink, Ultra Ethernet vs NVIDIA's proprietary stack | "Which parts are open today, and which are on the roadmap?" |
+| "Unified memory" | Strix Halo-class APUs — CPU/GPU/NPU share one pool | "What's the real memory bandwidth, not just the capacity?" |
+| "Agentic" | Either running agents *or* ROCm.ai building them — check which | "Is this about my agents, or about agents writing AMD kernels?" |
+| "Physical AI" | X100, Kria, robotics partner network | "What's the latency and power budget in a real robot?" |
+| "Day-zero support" | New open models run on ROCm on launch day | "Which models, and on which GPUs — Instinct only, or Radeon too?" |
+| "MI500 / Verano" | 2027 roadmap, not something you can buy | "What can I actually get access to this year?" |
+
+**And the single most useful thing you can do on the day:** ask someone at the AMD booth for access to the **AMD Developer Cloud**, then run one of your own Phase-7 Node or Phase-6 React projects against a model served on an Instinct GPU. Walking out having *run* something on AMD hardware is worth more than any set of notes — including this one.
+
+<p class="te"><strong>Telugu:</strong> Saturday kosam practical decoder — e maata vinnappudu artham enti, mariyu em adagalo table lo undi. Mariyu <strong>aa roju cheyyagaligina ati manchi pani</strong>: AMD booth daggara <strong>AMD Developer Cloud</strong> access adagandi, taruvata mee sonta Phase-6/Phase-7 project ni Instinct GPU meeda serve chesina model tho connect chesi run cheyyandi. <strong>Notes kanna, AMD hardware meeda okkasari nijam ga run cheyyadam ye</strong> ekkuva viluvaina anubhavam — ee doc kanna kuda.</p>
+
 ---
 
-*Prep doc for AMD AI DevDay India 2026 · Taj West End, Bengaluru · Aug 8, 2026. Built from the published agenda + AMD's 2026 stack (Ryzen AI Max+ 395 "Strix Halo", Instinct MI350X, ROCm 7, Lemonade Server, GAIA). Verify session details against the official site closer to the date — agendas shift.*
+*Prep doc for AMD AI DevDay India 2026 · Taj West End, Bengaluru · Aug 8, 2026. Built from the published agenda + AMD's 2026 stack, and updated after **Advancing AI 2026** (San Francisco, 22–23 July 2026) with the full product catalogue in Part N — Instinct MI455X & Helios, EPYC "Venice", Ryzen AI Halo, Ryzen AI Embedded X100 and ROCm.ai. Product photos are licensed from Wikimedia Commons and credited in their captions. Verify session details and any performance figure against primary sources — vendor benchmarks and agendas both shift.*
