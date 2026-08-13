@@ -16,6 +16,7 @@
 - [Part F — Architecture & Scale](#part-f-architecture-scale) — microservices, scaling, latency, serverless…
 - [Part G — Security](#part-g-security) — encryption, hashing, secrets, SQL injection, DDoS…
 - [Part H — The AI Era](#part-h-the-ai-era) — LLM, prompt, agent, RAG, vector DB…
+- [Part I — The Builder's Toolbox: The 2026 Tool Landscape](#part-i-the-builders-toolbox-the-2026-tool-landscape) — who uses what: frontend, backend, DB/auth, payments, deploy, AI, and the hidden gems
 
 *How to use this: don't read it cover to cover. Skim a part, then come back every time you meet one of these words in a tutorial, a job description, or a meeting. By the third visit the word is yours.*
 
@@ -568,5 +569,279 @@ Fine-tuning continues training an existing LLM on your own examples, baking a be
 <p class="te"><strong>Telugu:</strong> Fine-tuning ante existing LLM ni <strong>nee examples meeda inka train</strong> cheyyadam — behaviour weights lone digipotundi. Costly. Order: mundu prompting, taruvata RAG, chivaraga fine-tune.</p>
 
 ---
+
+---
+
+# Part I — The Builder's Toolbox: The 2026 Tool Landscape
+
+*Every domain of software, and the tools actually used in each — the famous ones, the rising ones, and the hidden gems nobody tells beginners about. **You are not supposed to learn all of these.** This map exists so that (a) no name in a job post or tutorial ever scares you again, and (b) when you build something, you can pick one tool per row and start — the picking is 90% of the paralysis.*
+
+*How to read the tables: the **bold** entry in each table is the safe default in 2026 — most jobs, most tutorials, most community help. Everything else is context: cheaper, faster, newer, or niche.*
+
+<p class="te"><strong>Telugu:</strong> Ee part lo prathi domain ki industry lo nijam ga vaade tools anni okka chota unnayi — famous vi, kotthavi, evaru cheppani <strong>hidden gems</strong> kuda. Ivi anni nerchukovaddu! Ee map enduku ante: (a) job post lo e peru chusina bhayam undakudadu, (b) edaina build cheyyali ante prathi row lo <strong>okkati</strong> pick chesi start cheyyachu — tool picking lo ne 90% time waste avutundi. Prathi table lo <strong>bold</strong> unnadi 2026 lo safe default.</p>
+
+## I1. Programming Languages
+
+| Language | What it's for · why pick it |
+| --- | --- |
+| **JavaScript / TypeScript** | The web's language, frontend *and* backend (Node). TypeScript = JS + types; the industry default for anything serious. Your stack. |
+| Python | AI/ML, data, scripting, backends (FastAPI). The other "learn this" language — every AI tutorial assumes it |
+| Java | Enterprise backends, Android, big banks. Spring Boot runs half the corporate world |
+| C# | Microsoft world: enterprise apps, Unity games, .NET backends |
+| Go | Cloud infrastructure & fast APIs — Docker and Kubernetes are written in it. Small language, learn in a week |
+| Rust | Systems programming without crashes — CLIs, performance-critical tools. Loved, hard, growing |
+| Kotlin / Swift | The native languages of Android / iOS respectively |
+| PHP | Still runs ~75% of the CMS web (WordPress, Laravel). Unfashionable, employed |
+| SQL | Not optional — every developer queries databases forever |
+| ABAP | SAP's language — your Part II. Niche + enterprise = well paid |
+
+<p class="te"><strong>Telugu:</strong> Rule: <strong>JS/TS + Python + SQL</strong> — ee mudu unte 90% doors terchukuntayi. Migithavi avasaram vachinappudu: enterprise ki Java/C#, infra ki Go, SAP ki ABAP.</p>
+
+## I2. Frontend — What Users See
+
+| Tool | One-liner |
+| --- | --- |
+| HTML · CSS · JS | The non-negotiable base — frameworks come and go, these stay |
+| **React** | The dominant UI library — most jobs, most tutorials, most components. Your Phase 6 |
+| **Next.js** | React + routing + server rendering + API routes — "React for production." The default full-stack React framework |
+| Vue / Nuxt | React's friendlier rival — loved in Asia/Europe; Nuxt = its Next.js |
+| Angular | Google's all-in-one framework — enterprise dashboards, banks, SAP-adjacent shops |
+| Svelte / SvelteKit | Compiles away the framework — smaller, faster, beloved; fewer jobs |
+| Astro | Content sites that ship almost zero JS — blogs, docs, marketing pages |
+| htmx | Hidden gem: modern interactivity with plain HTML attributes, no JS build at all — backend devs love it |
+| **Tailwind CSS** | Utility-class styling — the 2026 default (your Phase 6) |
+| shadcn/ui | Copy-paste React components built on Tailwind + Radix — the hottest UI kit of this era |
+| Vite | The build tool — instant dev server; replaced Webpack for new projects |
+| Zustand / TanStack Query | Hidden gems: tiny state manager / server-data fetching+caching — the modern Redux replacements |
+| Framer Motion · GSAP · Three.js | Animation (React) · animation (anything, your GSAP repos) · 3D in the browser |
+
+<p class="te"><strong>Telugu:</strong> Nee daari: HTML/CSS/JS → <strong>React + Tailwind</strong> (Phase 6) → taruvata Next.js. shadcn/ui + Zustand + TanStack Query — ee mudu hidden gems nee React ni 2026 level ki teestayi.</p>
+
+## I3. Mobile Apps
+
+| Tool | One-liner |
+| --- | --- |
+| **React Native + Expo** | Write React, ship iOS + Android from one codebase — your React skills transfer directly. Expo removes all the native pain |
+| Flutter | Google's rival — Dart language, beautiful UIs, one codebase; huge in India |
+| Swift / SwiftUI | True-native iOS — best feel, Apple-only |
+| Kotlin / Jetpack Compose | True-native Android |
+| Capacitor | Wrap any web app into an app-store app — the shortcut for existing sites |
+| PWA | No store at all: a website that installs, works offline, sends notifications |
+
+<p class="te"><strong>Telugu:</strong> Nee ki React vastundi kabatti mobile daadapu free: <strong>React Native + Expo</strong> tho okate codebase iOS + Android rendinta nadustundi. Flutter India lo pedda rival — kaani daaniki Dart nerchukovali.</p>
+
+## I4. Backend — APIs & Servers
+
+| Tool | One-liner |
+| --- | --- |
+| **Node.js + Express** | The classic JS backend — your Phase 7. Boring, everywhere, employable |
+| Fastify / NestJS | Faster Express / structured "Angular of backends" for big teams |
+| Hono | Hidden gem: tiny, ultra-fast JS framework that runs anywhere (Node, Bun, Cloudflare Workers) |
+| Bun / Deno | Node rivals: Bun = drop-in + much faster; Deno = secure-by-default TypeScript |
+| **FastAPI** (Python) | The modern Python API framework — auto-docs, types; the AI-industry default |
+| Django / Flask | Python batteries-included classic / micro-framework |
+| Spring Boot (Java) | The enterprise standard — banks, insurers, SAP-neighbourhood |
+| Laravel (PHP) · Rails (Ruby) | Full-stack "everything included" frameworks — startups ship absurdly fast on them |
+| Go (Gin/Echo) · .NET | High-performance APIs / Microsoft shops |
+
+<p class="te"><strong>Telugu:</strong> Nee daari: <strong>Node + Express</strong> (Phase 7). AI side ki velthe Python <strong>FastAPI</strong> — prathi AI company lo ide. Hono ni gurthupettuko — edge deployment (Cloudflare) ki chinna hidden gem.</p>
+
+## I5. Databases, BaaS & ORMs
+
+| Tool | One-liner |
+| --- | --- |
+| **PostgreSQL** | The default database of 2026 — relational, free, does everything (even vectors via pgvector) |
+| MySQL | The classic relational DB — your Phase 9; everywhere in hosting & enterprise |
+| SQLite | A whole DB in one file — mobile apps, small tools, and (surprise) real production via Turso/LiteFS |
+| MongoDB | Document (JSON) database — flexible schema, Node-friendly |
+| Redis | In-memory key-value — caching, sessions, queues, leaderboards |
+| **Supabase** | Hidden-gem-turned-mainstream: hosted Postgres + auth + storage + realtime + APIs, generous free tier — a whole backend in minutes |
+| Firebase | Google's original BaaS — realtime DB, auth, hosting; great for mobile |
+| Neon / PlanetScale / Turso | Serverless Postgres (branches like Git!) / serverless MySQL / edge SQLite — the new-wave hosted DBs |
+| Upstash | Serverless Redis + queues, pay-per-request — pairs with Vercel |
+| PocketBase / Appwrite | Hidden gems: open-source Firebase alternatives you self-host (PocketBase = one single file!) |
+| **Prisma** / Drizzle | TypeScript ORMs: Prisma = friendliest; Drizzle = lighter, SQL-closer, rising fast |
+| Pinecone / Chroma / pgvector | Vector databases for AI/RAG (see Part H) |
+
+<p class="te"><strong>Telugu:</strong> Nerchukovadaniki <strong>MySQL</strong> (Phase 9), kotta projects ki <strong>Postgres</strong>, weekend build ki <strong>Supabase</strong> (DB + auth + storage anni okate chota, free). PocketBase okka file lo full backend — side projects ki adbhutam.</p>
+
+## I6. Authentication
+
+| Tool | One-liner |
+| --- | --- |
+| **Clerk** | Drop-in signup/login/profiles for React/Next — prettiest DX, free tier; the 2026 startup default |
+| Auth0 | The enterprise auth service — every login method, priced accordingly |
+| Firebase Auth / **Supabase Auth** | Comes free with the BaaS — easiest if you're already there |
+| Auth.js (NextAuth) | Open-source, self-hosted auth for Next.js — free forever, more wiring |
+| Better Auth | Hidden gem: the rising open-source TypeScript auth library — owns your data, no vendor |
+| Keycloak | Open-source enterprise SSO — what big companies self-host |
+| Passport + JWT | The DIY route you'll build in Phase 8 — learn it once so the services above aren't magic |
+
+<p class="te"><strong>Telugu:</strong> Phase 8 lo <strong>JWT tho DIY</strong> auth kattav — adi nerchukunnaka ee services anni 'magic' kaadu ani telustundi. Real projects lo speed kosam: Clerk (React) leda Supabase Auth (already Supabase vaadutunte).</p>
+
+## I7. Payments
+
+| Tool | One-liner |
+| --- | --- |
+| **Stripe** | The global standard — best docs & API in the industry; every SaaS tutorial uses it |
+| **Razorpay** | India's Stripe — UPI, cards, netbanking, subscriptions; what Indian startups actually use |
+| Cashfree / PayU | Razorpay's Indian rivals — payouts, escrow, similar coverage |
+| PhonePe / UPI intent | Direct UPI integration for India-first apps |
+| Paddle / Lemon Squeezy | Merchant-of-record: they handle global taxes/GST for you — hidden gems for selling software worldwide solo |
+| PayPal | Legacy but still expected for global checkout |
+
+<p class="te"><strong>Telugu:</strong> India app ki <strong>Razorpay</strong> (UPI sahitham), global SaaS ki <strong>Stripe</strong>. Solo ga software ammali ante Paddle/Lemon Squeezy hidden gems — prapancham antha tax/GST vaalle chusukuntaru.</p>
+
+## I8. Deployment & Hosting
+
+| Tool | One-liner |
+| --- | --- |
+| **Vercel** | Push to GitHub → live URL in 30 seconds — made for Next.js/React; generous free tier |
+| Netlify | Vercel's twin for static sites & functions |
+| **Railway** / Render | Full-stack hosting (backend + DB + cron) with almost no config — where your Node API + MySQL goes free/cheap |
+| Fly.io | Run Docker containers close to users worldwide — hidden gem for global apps |
+| Cloudflare Pages/Workers | Static hosting + code at the edge in 300 cities — absurdly generous free tier |
+| AWS / GCP / Azure | The real clouds — more power, more setup; AWS EC2/S3 is your Phase 10 |
+| DigitalOcean / Hetzner | Simple/cheap VPS providers — Hetzner is the hidden gem (EU/US servers at half price) |
+| Coolify / Dokploy | Hidden gems: self-hosted "your own Vercel" on any ₹400/mo VPS — one dashboard, deploy anything |
+| GitHub Pages | Free static hosting for your portfolio — zero excuse not to have one |
+
+<p class="te"><strong>Telugu:</strong> Frontend ki <strong>Vercel</strong> (30 seconds lo live), backend + DB ki <strong>Railway/Render</strong>, nerchukovadaniki <strong>AWS</strong> (Phase 10). Hetzner + Coolify combo hidden gem — nela ki ₹400 VPS meeda sonta Vercel laantidi nadipochu.</p>
+
+## I9. DevOps & Infrastructure
+
+| Tool | One-liner |
+| --- | --- |
+| **Docker** | Package any app into a run-anywhere container — your Phase 10; the baseline skill |
+| Kubernetes (K8s) | Orchestrates thousands of containers — enterprise scale; learn *about* it, not *it*, at first |
+| **GitHub Actions** | CI/CD inside GitHub — test + deploy on every push; the default pipeline |
+| GitLab CI / Jenkins | The GitLab-native / legacy-enterprise pipeline tools |
+| Terraform / OpenTofu | Infrastructure-as-code — your servers described in files, applied like Git |
+| Nginx / **Caddy** | Reverse proxies — Caddy is the hidden gem: automatic HTTPS in 2 lines of config |
+| Ansible | Configure many servers from one playbook |
+| Portainer / Dozzle | Hidden gems: web UI for your Docker / live container logs in the browser |
+
+<p class="te"><strong>Telugu:</strong> Phase 10 lo <strong>Docker + GitHub Actions + AWS</strong> — ide job-ready DevOps core. Caddy hidden gem: Nginx config 50 lines ayyedi Caddy lo 2 lines, HTTPS automatic.</p>
+
+## I10. AI & LLM Development
+
+| Tool | One-liner |
+| --- | --- |
+| **OpenAI / Anthropic / Google APIs** | The frontier models as a service — GPT, Claude, Gemini; most AI apps are these + your code |
+| Hugging Face | GitHub of models — 1M+ open models, datasets, spaces |
+| **Ollama** | Run open models (Llama, Qwen, Mistral) locally with one command — the local-AI gateway drug |
+| PyTorch | The deep-learning framework (see AMD doc) — for when you go under the hood |
+| LangChain / LlamaIndex | LLM app frameworks — chains, RAG pipelines; powerful, sometimes overkill |
+| LangGraph / CrewAI | Agent frameworks — multi-step, multi-agent workflows |
+| vLLM / SGLang | Serve open models fast at scale (see AMD doc Part F) |
+| **n8n** | Visual automation + AI workflows — your Phase 12 tool; Zapier you can self-host |
+| Claude Code / Cursor / Copilot | AI coding: agentic CLI (you're using it) / AI-first editor / autocomplete standard |
+| v0 / Lovable / Bolt | Prompt-to-app builders — generate working UIs/apps from a description; prototype in minutes |
+| Whisper / ElevenLabs | Speech-to-text / text-to-speech APIs — voice features in an afternoon |
+
+<p class="te"><strong>Telugu:</strong> AI apps ante ekkuvaga <strong>frontier API (Claude/GPT) + nee code</strong>. Local ga free ga try cheyyali ante <strong>Ollama</strong> okka command. Phase 12 ki <strong>n8n</strong>. v0/Lovable tho prompt istene UI vachestundi — prototype speed ki hidden gems.</p>
+
+## I11. Data Engineering & Analytics
+
+| Tool | One-liner |
+| --- | --- |
+| Pandas / Polars | Python data wrangling — Polars is the fast new hidden gem |
+| Apache Spark | Big-data processing across clusters — the enterprise heavyweight |
+| Apache Kafka | The event-stream backbone — every large company's data pipeline |
+| Airflow / Dagster | Schedule and orchestrate data pipelines |
+| dbt | Transform data inside the warehouse with SQL — the analytics-engineer standard |
+| Snowflake / BigQuery / Databricks | The cloud data warehouses/platforms |
+| **Metabase** / Superset | Hidden gems: open-source BI dashboards — ask questions of your DB without SQL |
+| Power BI / Tableau | The corporate dashboard duo — huge in Indian enterprise jobs |
+
+<p class="te"><strong>Telugu:</strong> Ee domain lo full-time vellakapoyina, <strong>Metabase</strong> gurthupettuko — nee MySQL ki free dashboards, SQL raayakunda. Enterprise interviews lo Power BI/Tableau perlu vinipistayi.</p>
+
+## I12. Testing & Code Quality
+
+| Tool | One-liner |
+| --- | --- |
+| **Vitest** / Jest | Unit testing for JS/TS — Vitest is the modern Vite-native pick |
+| **Playwright** | End-to-end browser testing — Microsoft's tool that beat Cypress; also does scraping |
+| Cypress | The older E2E favourite — still everywhere in job posts |
+| Testing Library | Test React components the way users use them |
+| **Postman** / Bruno / Hoppscotch | API testing — Postman is standard; Bruno (offline, Git-friendly) and Hoppscotch (open web) are the hidden gems |
+| ESLint + Prettier | Linting + formatting — non-negotiable on any team |
+| SonarQube | Enterprise code-quality scanning — big-company CI staple |
+
+<p class="te"><strong>Telugu:</strong> Minimum kit: <strong>Vitest</strong> (unit) + <strong>Playwright</strong> (E2E) + <strong>Postman</strong> (API) + ESLint/Prettier (prathi team lo tappanisari). Bruno try cheyyi — Postman kanna light, files Git lo untayi.</p>
+
+## I13. Collaboration & Product Tools
+
+| Tool | One-liner |
+| --- | --- |
+| **Git + GitHub** | Version control + the world's code home — your portfolio lives here |
+| GitLab / Bitbucket | GitHub's rivals — GitLab big in enterprises that self-host |
+| **Jira** | The enterprise ticket/sprint tracker — you *will* meet it |
+| Linear | The startup Jira — fast, beautiful; hidden gem for your own projects |
+| Notion / Obsidian | Docs & knowledge — team wiki / personal second-brain (markdown, local) |
+| Slack / Teams / Discord | Team chat: startups / corporates / dev communities |
+| **Figma** | Interface design & prototypes — designers hand you Figma files; learn to read them |
+| Excalidraw / Mermaid | Hidden gems: hand-drawn-style diagrams / diagrams-as-code (this doc's diagrams!) |
+
+<p class="te"><strong>Telugu:</strong> Job lo guaranteed ga kanipinchevij: <strong>GitHub, Jira, Slack/Teams, Figma</strong>. Sonta projects ki Linear + Notion. Excalidraw tho system diagrams andam ga veyyachu — interviews lo kuda.</p>
+
+## I14. CMS, E-commerce & Content
+
+| Tool | One-liner |
+| --- | --- |
+| WordPress | Still ~43% of the web — themes, plugins, client work |
+| **Strapi / Sanity / Payload** | Headless CMS trio — admin panel for content, API for your React frontend; Payload is the TS hidden gem |
+| Contentful | The enterprise headless CMS |
+| **Shopify** | Hosted e-commerce empire — themes + apps are a real freelance market |
+| WooCommerce | WordPress e-commerce — half of small-store internet |
+| Medusa | Hidden gem: open-source Shopify alternative in Node/TypeScript — your stack exactly |
+| Stripe Checkout + DB | The minimal path: sell things with no store platform at all |
+
+<p class="te"><strong>Telugu:</strong> Client websites ki WordPress inka rules chestundi. Nee React skills tho <strong>headless CMS</strong> (Strapi/Sanity) + Next.js combo modern client work. <strong>Medusa</strong> = Node/TS lo open-source Shopify — nee stack tho e-commerce.</p>
+
+## I15. Monitoring, Analytics & Email
+
+| Tool | One-liner |
+| --- | --- |
+| **Sentry** | Error tracking — know your app crashed before the user tweets it; free tier, add to every project |
+| Grafana + Prometheus | The open-source metrics/dashboards standard for infrastructure |
+| Datadog / New Relic | The paid enterprise observability suites |
+| **PostHog** | Hidden gem: product analytics + session replay + feature flags + A/B — open source, generous free tier |
+| Plausible / Umami | Privacy-friendly Google Analytics alternatives — one script tag |
+| UptimeRobot / BetterStack | "Is my site down?" pings + status pages — free |
+| **Resend** | Hidden gem: the modern email API (by React devs, React email templates) — transactional email in minutes |
+| SendGrid / Postmark / Brevo | The established email APIs |
+| Twilio / MSG91 | SMS & WhatsApp APIs — global / India-focused |
+| Novu / OneSignal | Notification infrastructure: in-app/push/email in one — open-source gem / push standard |
+
+<p class="te"><strong>Telugu:</strong> Prathi project ki free kit: <strong>Sentry</strong> (errors) + <strong>PostHog</strong> (analytics + replay) + <strong>UptimeRobot</strong> (down aithe alert) + <strong>Resend</strong> (emails). Ee naalugu pettadaniki okka sayantram chaalu — app professional aipotundi.</p>
+
+## I16. Enterprise Platforms (your Part II world)
+
+| Tool | One-liner |
+| --- | --- |
+| **SAP** (ABAP · BTP · CAP · Fiori/UI5 · HANA) | The ERP giant running most large companies' finance/logistics — your career track |
+| Salesforce (Apex, LWC) | The CRM giant — its own language, its own economy of admins & devs |
+| ServiceNow | IT service management platform — workflows for big-company operations |
+| Microsoft Power Platform | Low-code apps/automation inside Office — Power Apps, Power Automate, Power BI |
+| Workday / Oracle ERP | The HR / finance enterprise suites — SAP's neighbours |
+| MuleSoft / SAP CPI | Enterprise integration layers — connecting all of the above |
+
+<p class="te"><strong>Telugu:</strong> Enterprise prapancham lo languages/frameworks kaadu — <strong>platforms</strong> untayi: SAP (nee track), Salesforce, ServiceNow. Prathi daaniki sonta economy, certifications, jobs. Ivi 'boring' ga kanipistayi kaani salaries boring kaadu.</p>
+
+## I17. Pick-a-Stack Cheat Sheet
+
+Stop collecting tools; combine them. Four proven recipes:
+
+| Goal | The stack |
+| --- | --- |
+| **Your roadmap stack** (job-ready fundamentals) | React + Tailwind → Node/Express → MySQL → JWT auth → Docker → AWS EC2 · GitHub Actions · Sentry |
+| **Ship-this-weekend stack** (side project, ₹0) | Next.js + Tailwind + shadcn/ui → Supabase (DB+auth+storage) → Vercel → Resend + Razorpay → PostHog |
+| **AI-app stack** | Next.js frontend → FastAPI or Node backend → Claude/GPT API → pgvector/Chroma (RAG) → Ollama for local → deployed on Railway |
+| **Freelance-client stack** | WordPress or Next.js + headless CMS (Sanity/Strapi) → Vercel → Razorpay → Plausible |
+
+> **The honest rule:** tools are 10% of the job; the concepts in Parts A–H are the 90% that transfers. Every table above is just the same ideas — server, database, auth, deploy — wearing different logos. Learn the concept once, and every new logo is a weekend, not a semester.
+
+<p class="te"><strong>Telugu:</strong> Tools collect cheyyadam aapu — <strong>combine</strong> cheyyi. Nee roadmap stack already proven (React → Node → MySQL → AWS). Weekend project ki: Next.js + Supabase + Vercel — ₹0 lo live. Chivari nijam: tools 10% matrame; Parts A–H lo unna concepts 90% — concept okka saari nerchukunte, prathi kotta logo okka weekend pani, semester kaadu.</p>
 
 *That's the vocabulary. None of these words are magic — each one is a plain idea you now recognise. When you meet one in a job post or a meeting, come back, reread its paragraph, and move on unafraid.*

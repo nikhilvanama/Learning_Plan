@@ -16,6 +16,9 @@
 - [6. Implement From Scratch](#6-implement-from-scratch) — the classic hand-coding rounds
 - [7. One-Breath Answers](#7-one-breath-answers) — the 10 most-asked questions, pre-worded
 - [8. The Last-Minute Card](#8-the-last-minute-card) — read this outside the interview room
+- [9. Practice Lab A — JavaScript, Topic by Topic](#9-practice-lab-a-javascript-topic-by-topic) — worked example + practice tasks for all 14 JS topics
+- [10. Practice Lab B — Node.js & Backend, Topic by Topic](#10-practice-lab-b-nodejs-backend-topic-by-topic) — runtime → fs → streams → Express → REST → MySQL → JWT → production hygiene
+- [11. Real-World Builds](#11-real-world-builds-ten-challenges-that-are-actually-the-job) — ten portfolio challenges that are miniatures of the actual job
 
 ---
 
@@ -646,3 +649,704 @@ const data = await retry(() => fetchJSON("/api/flaky"));
 > **Interview meta:** think aloud · say the one-liner first, expand if invited · if unsure of an output, *reason* through stack → micro → macro on paper.
 
 *You built a to-do app with all of this and wrote every pattern by hand. You're not recalling trivia — you're describing your own code. Go.*
+
+---
+
+# 9. Practice Lab A — JavaScript, Topic by Topic
+
+*Every JS topic from the Phase 4–5 notes: one worked example you should be able to write blind, then practice tasks. Type them — reading is 20%, typing is the other 80%. Hints are at the end of each topic; full techniques live in the phase notes.*
+
+<p class="te"><strong>Telugu:</strong> Prathi topic ki: okka <strong>worked example</strong> (chudakunda raayagalagali) + <strong>practice tasks</strong>. Chadavadam 20% matrame — <strong>type chesi run cheyyadam</strong> migilina 80%. Hints prathi topic chivarana unnayi.</p>
+
+## 9.1 Variables, Types & Coercion
+
+```js
+// const by default; let only when reassigning. Types: 7 primitives + object.
+const user = "Nikhil";          // string
+let score = 0;                  // number — the only numeric type (plus BigInt)
+score += 1;
+
+typeof null;                    // "object"  ← famous bug, memorise
+0.1 + 0.2 === 0.3;              // false — binary floats; use Number.EPSILON
+1 + "2";                        // "12"  → + with a string concatenates
+1 - "2";                        // -1    → other math operators convert to number
+Boolean("");                    // false — falsy: 0 "" null undefined NaN false
+"5" == 5;                       // true  (coerces) — never use
+"5" === 5;                      // false (strict)  — always use
+```
+
+**Practice:**
+1. Predict, then run: `[] + []`, `[] + {}`, `"5" - - "2"`, `null == undefined`, `NaN === NaN`.
+2. Write `isEmpty(value)` → true for `""`, `null`, `undefined`, `[]`, `{}` — but **false** for `0`.
+3. Write `toNumberSafe(str)` returning a number or `null` (never `NaN`) — handle `"12px"`, `""`, `"3.5"`.
+
+*Hints: 1) `[]+[]` is `""` — arrays stringify. 2) check `value?.length`/`Object.keys`. 3) `Number()` + `Number.isNaN()` guard.*
+
+## 9.2 Strings & Template Literals
+
+```js
+const name = "Nikhil", items = 3;
+const msg = `Hi ${name}, you have ${items} item${items === 1 ? "" : "s"}`; // interpolation + expression
+
+"  hello  ".trim().toUpperCase();     // "HELLO"      — methods chain
+"JavaScript".slice(0, 4);             // "Java"       — slice never mutates
+"a-b-c".split("-").join("→");         // "a→b→c"      — split↔join round trip
+"pad".padStart(5, "0");               // "00pad"      — invoice numbers, clocks
+```
+
+**Practice:**
+1. `titleCase("the quick brown fox")` → `"The Quick Brown Fox"`.
+2. `mask(email)` → `"nik***@gmail.com"` (keep first 3 chars of the local part).
+3. `slugify("Phase 3: CS Fundamentals!")` → `"phase-3-cs-fundamentals"` (you did this in the PDF generator's world).
+
+*Hints: 1) split(" ").map + slice. 2) indexOf("@") + slice + padEnd. 3) lowercase → replace non-alphanumerics → collapse hyphens.*
+
+## 9.3 Conditionals & Loops
+
+```js
+const grade = s => s >= 90 ? "A" : s >= 75 ? "B" : "C";   // ternary chain — keep short
+
+for (const fruit of ["apple", "mango"]) console.log(fruit);       // of = VALUES
+for (const key in { a: 1, b: 2 }) console.log(key);               // in = KEYS
+for (const [k, v] of Object.entries({ a: 1 })) console.log(k, v); // both
+
+// switch needs break — forgetting it "falls through" (bug #1)
+switch (status) {
+  case 200: msg = "OK"; break;
+  case 404: msg = "Not found"; break;
+  default:  msg = "Unknown";
+}
+```
+
+**Practice:**
+1. FizzBuzz 1–30, but as a function returning an **array** (no console.log inside).
+2. Sum only the odd numbers of `[1..100]` three ways: `for`, `for…of`, `.filter().reduce()`.
+3. Print a 5-row star pyramid with nested loops — then do it again with `"*".repeat()` and no inner loop.
+
+*Hints: 2) odd test `n % 2 !== 0`. 3) row i needs `" ".repeat(5-i)` + `"*".repeat(2*i-1)`.*
+
+## 9.4 Functions & Arrows
+
+```js
+function greet(name = "friend") { return `Hi ${name}`; }   // declaration — hoisted
+const add = (a, b) => a + b;                               // arrow — implicit return
+const makeId = (prefix, ...nums) => `${prefix}-${nums.join("")}`; // rest params
+
+// Arrows have NO own `this` — that's the interview point:
+const timer = {
+  seconds: 0,
+  start() {                       // method: regular function → `this` = timer
+    setInterval(() => this.seconds++, 1000);  // arrow inherits that `this` ✅
+  }
+};
+```
+
+**Practice:**
+1. Write `once(fn)` — returned function runs `fn` only the first call; later calls return the first result.
+2. Write `compose(f, g)` → `compose(double, inc)(5)` = `double(inc(5))` = 12.
+3. Convert to arrows where *correct*, and say why one must stay regular: `function sq(n){return n*n}`, an object method using `this`, an event handler using `this`.
+
+*Hints: 1) closure over `called` + `result`. 2) `(x) => f(g(x))`. 3) methods/handlers that need dynamic `this` stay regular.*
+
+## 9.5 Arrays — map, filter, reduce & friends
+
+```js
+const products = [
+  { name: "Laptop", price: 60000, qty: 1 },
+  { name: "Mouse",  price: 500,   qty: 2 },
+  { name: "Desk",   price: 8000,  qty: 1 },
+];
+
+const names  = products.map(p => p.name);                       // transform each
+const cheap  = products.filter(p => p.price < 10000);           // keep some
+const total  = products.reduce((sum, p) => sum + p.price * p.qty, 0); // fold to one value → 69000
+const desk   = products.find(p => p.name === "Desk");           // first match
+const anyBig = products.some(p => p.price > 50000);             // true
+const sorted = [...products].sort((a, b) => a.price - b.price); // copy first! sort mutates
+```
+
+**Practice:**
+1. From `products`: one chained expression → the names of items under ₹10,000, uppercased, alphabetical.
+2. `countBy(["a","b","a","c","a"])` → `{ a: 3, b: 1, c: 1 }` using reduce.
+3. `chunk([1,2,3,4,5], 2)` → `[[1,2],[3,4],[5]]`.
+4. Flatten one level without `.flat()`: `[[1,2],[3]] → [1,2,3]` using reduce.
+
+*Hints: 1) filter→map→sort. 2) `(acc, k) => (acc[k] = (acc[k] ?? 0) + 1, acc)`. 3) slice in a for loop stepping by size. 4) `reduce((a, x) => a.concat(x), [])`.*
+
+## 9.6 Objects, Destructuring & Spread
+
+```js
+const user = { name: "Nikhil", city: "Bangalore", skills: ["JS", "React"] };
+
+const { name, city: town = "Unknown" } = user;   // rename + default
+const [first, ...restSkills] = user.skills;      // array destructuring
+
+const updated = { ...user, city: "Hyderabad" };  // copy + override (user untouched)
+const merged  = { ...defaults, ...options };     // later spread wins
+
+// ⚠ spread is SHALLOW — nested objects are still shared:
+const a = { nested: { x: 1 } };
+const b = { ...a };
+b.nested.x = 99;
+a.nested.x;                                      // 99 — both point at one nested object
+const deep = structuredClone(a);                 // true deep copy
+```
+
+**Practice:**
+1. `pick(obj, ["name", "city"])` → new object with only those keys.
+2. Swap two variables in one line with destructuring.
+3. Given `{ data: { user: { address: { city } } } }` — destructure `city` safely when `address` may be missing.
+4. Write `updateItem(cartArray, id, changes)` that returns a **new** array with one item's fields updated immutably (the exact shape of a React state update).
+
+*Hints: 1) reduce over keys, or `Object.fromEntries(keys.map(k => [k, obj[k]]))`. 2) `[a, b] = [b, a]`. 3) `const { city } = obj.data.user.address ?? {}`. 4) `arr.map(it => it.id === id ? { ...it, ...changes } : it)`.*
+
+## 9.7 Closures
+
+```js
+// A closure = a function + the variables it captured from where it was born.
+function makeCounter() {
+  let count = 0;                       // private — nothing outside can touch it
+  return {
+    inc:   () => ++count,
+    value: () => count,
+  };
+}
+const c = makeCounter();
+c.inc(); c.inc();
+c.value();                             // 2
+c.count;                               // undefined — truly private
+
+// The classic trap: var shares one variable across the loop
+for (var i = 0; i < 3; i++) setTimeout(() => console.log(i));  // 3 3 3
+for (let j = 0; j < 3; j++) setTimeout(() => console.log(j));  // 0 1 2 — let = fresh per iteration
+```
+
+**Practice:**
+1. `makeBank(initial)` → `{ deposit(n), withdraw(n), balance() }` with the balance impossible to modify directly.
+2. `createLimiter(fn, max)` — allows only `max` calls, then returns `"limit reached"`.
+3. Explain (out loud, 30 seconds) why the `var` loop prints `3 3 3` — then fix it **without** `let` (IIFE).
+
+*Hints: 1) same shape as makeCounter. 2) closure over a counter. 3) `for(var i…){ (function(i){ setTimeout(()=>log(i)) })(i) }`.*
+
+## 9.8 `this`, Classes & Prototypes
+
+```js
+class Account {
+  #balance = 0;                              // real private field
+  constructor(owner) { this.owner = owner; }
+  deposit(amount) {                          // method — `this` = the instance
+    this.#balance += amount;
+    return this;                             // returning this enables chaining
+  }
+  get balance() { return this.#balance; }    // getter
+  static bank() { return "SBI"; }            // on the class, not instances
+}
+
+class Savings extends Account {
+  deposit(amount) { return super.deposit(amount * 1.01); }  // override + super
+}
+
+new Savings("Nikhil").deposit(1000).deposit(500).balance;   // 1515
+
+// The `this` rules in one block:
+const obj = { name: "A", say() { return this.name; } };
+const loose = obj.say;
+loose();                       // undefined — lost its receiver
+loose.call({ name: "B" });     // "B"      — call sets `this` explicitly
+const bound = obj.say.bind(obj);
+bound();                       // "A"      — bind locks it forever
+```
+
+**Practice:**
+1. Build `class Stack` (push/pop/peek/size) with the array as a `#private` field — your Phase 3 exercise, now class-flavoured.
+2. Add a `toJSON()` method to Account so `JSON.stringify` outputs `{ owner, balance }` despite the private field.
+3. Predict `this` in four spots: a method, an arrow inside a method, a detached method, an inline `onClick` arrow in React — then verify.
+
+*Hints: 2) JSON.stringify calls toJSON automatically. 3) instance · inherited instance · undefined · lexical component scope.*
+
+## 9.9 Async — Promises & async/await
+
+```js
+const wait = ms => new Promise(res => setTimeout(res, ms));   // promisified timer
+
+async function loadUser(id) {
+  try {
+    const res = await fetch(`/api/users/${id}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);       // fetch does NOT reject on 404!
+    return await res.json();
+  } catch (err) {
+    console.error("loadUser failed:", err.message);
+    throw err;                                                // re-throw — let the caller decide
+  }
+}
+
+// Sequential vs parallel — the #1 real-world async mistake:
+const slow = async () => { await loadUser(1); await loadUser(2); };        // 2× the time
+const fast = async () => { await Promise.all([loadUser(1), loadUser(2)]); }; // together
+// Promise.allSettled → never rejects; .race → first to finish; .any → first to succeed
+```
+
+**Practice:**
+1. Write `retry(fn, times)` — await `fn()`, on failure wait 500ms and try again, up to `times`.
+2. Fetch 3 URLs in parallel; return `{ ok: [...], failed: [...] }` using `allSettled`.
+3. Convert callback-style `fs.readFile(path, cb)` into a promise by hand (no `util.promisify`).
+4. Predict the order: `console.log(1); setTimeout(()=>console.log(2)); Promise.resolve().then(()=>console.log(3)); console.log(4);`
+
+*Hints: 1) for-loop + try/catch + `await wait(500)`. 2) filter by `s.status`. 3) `new Promise((res, rej) => fs.readFile(p, (e, d) => e ? rej(e) : res(d)))`. 4) 1 4 3 2 — microtasks before macrotasks.*
+
+## 9.10 Event Loop (predict & explain)
+
+```js
+console.log("A");                                   // 1 — sync
+setTimeout(() => console.log("B"), 0);              // 4 — macrotask queue
+Promise.resolve().then(() => console.log("C"));     // 3 — MICROtask queue (runs first)
+console.log("D");                                   // 2 — sync
+// Output: A D C B — stack empties → ALL microtasks → one macrotask → repeat
+```
+
+**Practice:**
+1. Add `queueMicrotask(() => log("E"))` and an `async` function with a log before and after its first `await` — predict the full order.
+2. Explain in 60 seconds why a `while(true)` loop freezes the page but `setInterval` doesn't.
+3. Write the event-loop order rule from memory as three bullet points.
+
+*Hints: 1) code before the first `await` is synchronous. 2) the loop never lets the stack empty. 3) sync → microtasks (all) → render → one macrotask → repeat.*
+
+## 9.11 DOM & Events
+
+```js
+const list  = document.querySelector("#todo-list");
+const input = document.querySelector("#new-todo");
+
+document.querySelector("#add").addEventListener("click", () => {
+  const li = document.createElement("li");
+  li.textContent = input.value;               // textContent — never innerHTML for user input (XSS)
+  li.classList.add("todo");
+  list.appendChild(li);
+  input.value = "";
+});
+
+// Event DELEGATION — one listener on the parent handles all children, even future ones:
+list.addEventListener("click", e => {
+  if (e.target.matches("li.todo")) e.target.classList.toggle("done");
+});
+
+document.querySelector("form").addEventListener("submit", e => {
+  e.preventDefault();                          // stop the page reload — every SPA form needs this
+});
+```
+
+**Practice:**
+1. Build the full mini to-do: add, toggle done (delegation), delete button per item, count display.
+2. Add keyboard support: Enter adds the todo (`keydown`, check `e.key`).
+3. Explain bubbling in one sentence and name the API that stops it.
+
+*Hints: 1) delete = `e.target.closest("li").remove()`. 3) events travel child→ancestors; `e.stopPropagation()`.*
+
+## 9.12 Error Handling
+
+```js
+class ValidationError extends Error {            // custom error type
+  constructor(field, message) {
+    super(message);
+    this.name = "ValidationError";
+    this.field = field;
+  }
+}
+
+function saveUser(user) {
+  if (!user.email?.includes("@")) throw new ValidationError("email", "Invalid email");
+  // …
+}
+
+try {
+  saveUser({ email: "nope" });
+} catch (err) {
+  if (err instanceof ValidationError) showFieldError(err.field, err.message);
+  else throw err;                                // unknown errors: never swallow — re-throw
+} finally {
+  hideSpinner();                                 // runs on success AND failure
+}
+```
+
+**Practice:**
+1. Write `safeJsonParse(str)` → `{ ok: true, data }` or `{ ok: false, error }` — no exceptions escape.
+2. Add a global net: `window.addEventListener("unhandledrejection", …)` that logs the reason.
+3. Wrap `loadUser` from 9.9 so network errors show "You're offline" but HTTP 500 shows "Server issue" — different messages, one try/catch.
+
+*Hints: 1) try/catch around JSON.parse. 3) `TypeError` from fetch = network; check `err.message` for HTTP.*
+
+## 9.13 JSON, localStorage & fetch
+
+```js
+// The persistence trio every real app uses:
+const cart = [{ id: 1, qty: 2 }];
+
+localStorage.setItem("cart", JSON.stringify(cart));            // objects must be stringified
+const saved = JSON.parse(localStorage.getItem("cart") ?? "[]"); // ?? guards first visit
+
+// POST JSON to an API:
+const res = await fetch("/api/orders", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ items: saved, coupon: "SAVE10" }),
+});
+const order = await res.json();
+```
+
+**Practice:**
+1. `usePersistentCounter()` — a counter that survives page refresh (read on load, write on change).
+2. Store a `Date` in localStorage and get a working Date back (JSON turns dates into strings — handle it).
+3. Build `api.get(url)` / `api.post(url, data)` helpers that set headers, check `res.ok`, and parse JSON — then rewrite 9.9's `loadUser` with them.
+
+*Hints: 2) `new Date(JSON.parse(x))` or store `getTime()`. 3) one `request(method, url, data)` core, two thin wrappers.*
+
+## 9.14 Modules & Modern Operators
+
+```js
+// math.js
+export const add = (a, b) => a + b;
+export default function multiply(a, b) { return a * b; }
+
+// app.js
+import multiply, { add } from "./math.js";      // default + named in one line
+
+// The modern operator kit:
+const city   = user?.address?.city;             // ?. — stop safely at missing links
+const name   = user.nickname ?? "Guest";        // ?? — default ONLY for null/undefined (0 and "" pass!)
+user.settings ??= { theme: "dark" };            // ??= — assign if nullish
+const isAdmin = user?.roles?.includes("admin") ?? false;
+```
+
+**Practice:**
+1. Split the 9.5 products code into `products.js` (data + `cartTotal`) and `app.js` (imports and logs) — run with `<script type="module">`.
+2. Rewrite with modern operators: `const theme = settings && settings.ui && settings.ui.theme ? settings.ui.theme : "light"`.
+3. Explain why `count || 10` is a bug when `count` is `0`, and `count ?? 10` isn't.
+
+*Hints: 2) `settings?.ui?.theme ?? "light"`. 3) `||` treats all falsy as missing; `??` only null/undefined.*
+
+---
+
+# 10. Practice Lab B — Node.js & Backend, Topic by Topic
+
+*Every topic from the Phase 7 Node/Express notes, same drill format. These assume `npm init -y` and, where marked, `npm i express`.*
+
+<p class="te"><strong>Telugu:</strong> Ide format Node/backend ki — Phase 7 notes loni prathi topic: worked example + practice. Ivi anni chinna folder lo <code>npm init -y</code> chesi type chesi run cheyyi — backend confidence ki idi shortcut.</p>
+
+## 10.1 Node Runtime & Globals
+
+```js
+// No DOM here — Node's globals are about the machine and the process:
+console.log(process.version);         // node version
+console.log(process.env.NODE_ENV);    // environment variables — config lives here
+console.log(process.argv);            // CLI arguments: [node, script, ...yours]
+console.log(import.meta.dirname);     // this file's folder (ESM; CJS uses __dirname)
+
+process.exit(1);                      // non-zero = "I failed" — CI reads this
+```
+
+**Practice:**
+1. `greet.js` — run `node greet.js Nikhil Telugu` → prints a greeting built from `process.argv`.
+2. Print all env vars whose names start with `DB_`.
+3. Make a script exit `1` with a usage message when required args are missing (test `echo $LASTEXITCODE` / `$?`).
+
+*Hints: 1) `process.argv.slice(2)`. 2) `Object.entries(process.env).filter(([k]) => k.startsWith("DB_"))`.*
+
+## 10.2 Modules — CommonJS vs ESM
+
+```js
+// CommonJS (default .js in most existing code):
+const fs = require("fs");
+module.exports = { readConfig };
+
+// ESM (add "type": "module" to package.json — the modern default):
+import fs from "node:fs";
+export const readConfig = () => { /* … */ };
+
+// Interop rule of thumb: new projects → ESM; old tutorials/codebases → CJS. Know both shapes.
+```
+
+**Practice:**
+1. Write `logger.js` exporting `info()` and `error()` twice — once CJS, once ESM.
+2. Break it on purpose: `require` an ESM file and read the error; `import` without `"type": "module"` and read that one — you'll meet both messages in real life.
+
+## 10.3 fs & path — Files Done Right
+
+```js
+import fs from "node:fs/promises";                 // promise API — the one to use
+import path from "node:path";
+
+const file = path.join(import.meta.dirname, "data", "notes.json");  // never "folder/" + "file" by hand
+
+const raw   = await fs.readFile(file, "utf8");     // async — doesn't block the event loop
+const notes = JSON.parse(raw);
+notes.push({ id: Date.now(), text: "learn streams" });
+await fs.writeFile(file, JSON.stringify(notes, null, 2));
+
+await fs.mkdir(path.join("backups"), { recursive: true });  // no error if it exists
+```
+
+**Practice:**
+1. `stats.js <folder>` — list every file with its size in KB, largest first.
+2. A tiny JSON "database": `db.get(key)`, `db.set(key, value)` persisted to `store.json`.
+3. Copy every `.md` file from one folder to `backup/` — then explain why `readFileSync` in a web server is a sin (event loop!).
+
+*Hints: 1) `fs.readdir` + `fs.stat` + sort. 3) sync I/O blocks the single thread — every user waits.*
+
+## 10.4 EventEmitter
+
+```js
+import { EventEmitter } from "node:events";
+
+const orders = new EventEmitter();
+
+orders.on("placed", order => console.log("email:", order.id));     // many listeners,
+orders.on("placed", order => console.log("stock:", order.id));     // same event
+orders.once("first-sale", () => console.log("🎉 only fires once"));
+
+orders.emit("placed", { id: 42 });     // fire — both listeners run
+// This is Express, streams, WebSockets — everything in Node is an EventEmitter underneath.
+```
+
+**Practice:**
+1. Build a `TicketQueue` emitter: `emit("created")` → two listeners (log + "assign agent"); `emit("closed")` → one.
+2. Add an `error` listener — then emit an error **without** one registered and see Node crash (this is why error listeners matter).
+
+## 10.5 Streams — Big Data, Small Memory
+
+```js
+import fs from "node:fs";
+import { pipeline } from "node:stream/promises";
+import zlib from "node:zlib";
+
+// Copy + gzip a 2GB file using ~64KB of RAM — chunks flow through, nothing loads fully:
+await pipeline(
+  fs.createReadStream("huge.log"),
+  zlib.createGzip(),
+  fs.createWriteStream("huge.log.gz"),
+);
+// readFile would try to hold all 2GB in RAM. Streams are the memory-hierarchy lesson applied.
+```
+
+**Practice:**
+1. Stream-copy a file and log each chunk's size (`data` events) — count the chunks.
+2. Build a line counter for a big file using `readline.createInterface` over a read stream.
+3. Say in one sentence when you'd pick `readFile` vs a stream.
+
+*Hints: 3) small file read once → readFile; big file / unknown size / pass-through → stream.*
+
+## 10.6 Bare `http` — a Server With No Framework
+
+```js
+import http from "node:http";
+
+const server = http.createServer((req, res) => {
+  if (req.url === "/health" && req.method === "GET") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    return res.end(JSON.stringify({ ok: true }));
+  }
+  res.writeHead(404).end("Not found");
+});
+
+server.listen(3000, () => console.log("http://localhost:3000"));
+// Express is *this*, plus routing, parsing, and middleware sugar. Build it bare once — then Express is never magic.
+```
+
+**Practice:**
+1. Add `GET /time` returning the server time as JSON.
+2. Handle `POST /echo` — collect the body chunks manually (`req.on("data")`) and echo them back. Feel the pain Express's `express.json()` removes.
+
+## 10.7 Express — Routes, Params & Query
+
+```js
+import express from "express";
+const app = express();
+app.use(express.json());                      // body parser — forget this, req.body is undefined
+
+let notes = [{ id: 1, text: "learn Express" }];
+
+app.get("/api/notes",     (req, res) => res.json(notes));
+app.get("/api/notes/:id", (req, res) => {                   // :id = route PARAM
+  const note = notes.find(n => n.id === +req.params.id);
+  if (!note) return res.status(404).json({ error: "Not found" });
+  res.json(note);
+});
+app.get("/api/search",    (req, res) => {                   // ?q= = QUERY string
+  const { q = "", limit = 10 } = req.query;
+  res.json(notes.filter(n => n.text.includes(q)).slice(0, +limit));
+});
+
+app.listen(3000);
+```
+
+**Practice:**
+1. Add `POST /api/notes` (201 + created note), `PATCH /api/notes/:id`, `DELETE /api/notes/:id` (204).
+2. Add validation: POST without `text` → 400 with a helpful message.
+3. Test every route with Postman/Bruno **and** with `fetch` from a browser console — feel CORS fail, then fix it with the `cors` package.
+
+*Hints: 1) PATCH = find + `Object.assign(note, req.body)`. 3) the browser call fails cross-origin until `app.use(cors())`.*
+
+## 10.8 Middleware — the Assembly Line
+
+```js
+// A middleware = (req, res, next). Express is just a chain of them.
+const logger = (req, res, next) => {
+  console.log(req.method, req.url);
+  next();                                   // forget next() → request hangs forever
+};
+
+const requireKey = (req, res, next) => {
+  if (req.headers["x-api-key"] !== process.env.API_KEY)
+    return res.status(401).json({ error: "Unauthorized" });   // stop the chain
+  next();
+};
+
+app.use(logger);                            // runs on every request
+app.get("/admin", requireKey, handler);     // runs on this route only
+
+// The ERROR middleware — 4 args, defined LAST:
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status ?? 500).json({ error: err.message ?? "Server error" });
+});
+```
+
+**Practice:**
+1. Write `timer` middleware logging how many ms each request took (`res.on("finish")`).
+2. Write `validate(schema)` — a middleware **factory** that 400s when `req.body` is missing schema keys.
+3. Throw inside an async route and watch Express 4 *not* catch it; fix with a `wrap(fn)` helper (or Express 5). This is the classic production bug.
+
+*Hints: 2) return a middleware from a function. 3) `const wrap = fn => (req,res,next) => fn(req,res,next).catch(next)`.*
+
+## 10.9 REST Design — the Rules That Make APIs Guessable
+
+```js
+// Resources are NOUNS, verbs come from HTTP:
+// GET    /api/tasks          list   (200)
+// POST   /api/tasks          create (201 + body)     — NOT /api/createTask
+// GET    /api/tasks/:id      one    (200 | 404)
+// PATCH  /api/tasks/:id      edit   (200)
+// DELETE /api/tasks/:id      remove (204, empty body)
+// Filters/pagination/sort are QUERY: /api/tasks?done=true&page=2&sort=-createdAt
+
+// One consistent envelope makes frontends trivial:
+res.json({ data: tasks, meta: { page: 2, total: 57 } });          // success
+res.status(400).json({ error: { message: "text is required" } }); // failure
+```
+
+**Practice:**
+1. Design (paper only) the full route table for a Library API: books, members, borrowings — including "borrow a book" (tricky: it's a POST to which resource?).
+2. Add `?page=&limit=` pagination to the notes API with a `meta` block.
+3. Say why `GET /api/deleteNote/5` is wrong twice (verb in URL, unsafe GET).
+
+*Hints: 1) borrowing = `POST /api/borrowings` with bookId+memberId in the body. 2) `slice((page-1)*limit, page*limit)`.*
+
+## 10.10 MySQL from Node
+
+```js
+import mysql from "mysql2/promise";
+
+const pool = mysql.createPool({                     // pool, not single connection
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: "notes_app",
+  connectionLimit: 10,
+});
+
+// PARAMETERISED queries — the ? placeholders are your SQL-injection armour:
+const [rows] = await pool.query("SELECT * FROM notes WHERE user_id = ?", [userId]);
+const [info] = await pool.query("INSERT INTO notes (user_id, text) VALUES (?, ?)", [userId, text]);
+res.status(201).json({ id: info.insertId, text });
+```
+
+**Practice:**
+1. Swap the in-memory `notes` array from 10.7 for real MySQL — same routes, same responses.
+2. Write the injection attack against a string-glued version (`'; DROP TABLE notes; --`), prove `?` placeholders stop it.
+3. Add an index on `user_id`, then `EXPLAIN` the SELECT before and after — Phase 3's B-tree lesson, live.
+
+## 10.11 JWT Auth — Register, Login, Protect
+
+```js
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+
+// REGISTER: never store the password — store its hash
+app.post("/api/register", wrap(async (req, res) => {
+  const hash = await bcrypt.hash(req.body.password, 10);
+  const [r]  = await pool.query("INSERT INTO users (email, password_hash) VALUES (?, ?)",
+                                [req.body.email, hash]);
+  res.status(201).json({ id: r.insertId });
+}));
+
+// LOGIN: compare, then sign a token
+app.post("/api/login", wrap(async (req, res) => {
+  const [[user]] = await pool.query("SELECT * FROM users WHERE email = ?", [req.body.email]);
+  if (!user || !await bcrypt.compare(req.body.password, user.password_hash))
+    return res.status(401).json({ error: "Invalid credentials" });
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  res.json({ token });
+}));
+
+// PROTECT: middleware verifies the Bearer token
+const auth = (req, res, next) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    req.user = jwt.verify(token, process.env.JWT_SECRET);     // throws if fake/expired
+    next();
+  } catch { res.status(401).json({ error: "Login required" }); }
+};
+
+app.get("/api/me", auth, (req, res) => res.json({ userId: req.user.id }));
+```
+
+**Practice:**
+1. Wire this into the notes API: every note belongs to `req.user.id`; users only ever see their own.
+2. Return 403 (not 404) when a user requests someone else's note — then argue the opposite choice (information leaking).
+3. Add token refresh: short-lived access token + `/api/refresh` using a longer-lived one.
+
+## 10.12 Config, Validation & Production Hygiene
+
+```js
+import "dotenv/config";                         // loads .env into process.env — .env goes in .gitignore!
+import helmet from "helmet";                    // security headers
+import cors from "cors";
+import rateLimit from "express-rate-limit";
+import { z } from "zod";                        // schema validation
+
+app.use(helmet());
+app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use("/api/login", rateLimit({ windowMs: 60_000, max: 5 }));   // brute-force brake
+
+const NoteSchema = z.object({ text: z.string().min(1).max(500) });
+app.post("/api/notes", auth, (req, res, next) => {
+  const parsed = NoteSchema.safeParse(req.body);
+  if (!parsed.success) return res.status(400).json({ error: parsed.error.issues });
+  // …parsed.data is now TRUSTED
+});
+```
+
+**Practice:**
+1. Create `.env` + `.env.example` (same keys, fake values) — commit only the example.
+2. Zod-validate the register route: real email, password ≥ 8 chars — return field-level errors.
+3. Hit the rate-limited login 6 times fast and read the 429 — then explain to an imaginary teammate why it's on login specifically.
+
+---
+
+# 11. Real-World Builds — Ten Challenges That Are Actually the Job
+
+*Each one is a miniature of something you'll build professionally. Specs only — the point is that you now own every tool they need. Order = difficulty.*
+
+<p class="te"><strong>Telugu:</strong> Ee padi challenges nijamaina job pani ki chinna versions. Specs matrame ichamu — kaavalsina tools anni paina unnayi. Varusaga kastam perugutundi. Okko dani ki oka sayantram — ivi complete chesthe nee GitHub okka portfolio aipotundi.</p>
+
+1. **Debounced live search** *(9.7, 9.11, 9.13)* — an input that calls `/api/search?q=` only after 400ms of silence, shows results, handles the out-of-order-response bug (a slow earlier request must not overwrite a fast later one). *Key moves: closure timer, `clearTimeout`, an "current request" id or `AbortController`.*
+2. **Cart engine** *(9.5, 9.6, 9.13)* — add/remove/change-qty as pure immutable functions, totals with `reduce` (subtotal, 18% GST, coupon), persisted in localStorage, rendered with delegation. *This is Redux's shape, hand-made.*
+3. **Form validator** *(9.12, 9.11)* — name/email/password rules, field-level messages on `blur`, submit blocked until valid, all rules in one config object so adding a field = adding one entry.
+4. **Paginated table** *(9.5, 9.14)* — 500 fake rows; search + sort + page-size as one `pipeline(rows, state)` function of chained array methods; state in one object.
+5. **fetch with timeout & retry** *(9.9, 9.12)* — `apiFetch(url, { retries: 3, timeout: 5000 })` using `AbortController`; exponential backoff (500ms → 1s → 2s); distinguish network vs HTTP errors.
+6. **CLI toolbox** *(10.1, 10.3)* — `node tool.js count <folder>` (files by extension), `node tool.js todos <folder>` (grep TODO comments to a report file). Your first "I automated it" story.
+7. **Notes API, production shape** *(10.7–10.12 combined)* — Express + MySQL + JWT + zod + helmet + rate limit + central error middleware + pagination. **This is your Phase 8 capstone rehearsal.**
+8. **File upload service** *(10.7, multer)* — `POST /api/upload` accepting images only, 2MB cap, random safe filename, served back from `/uploads`; reject a renamed `.exe` by checking the magic bytes, not the extension (Phase 3, L5!).
+9. **Streaming CSV report** *(10.5, 10.10)* — `GET /api/notes/export` streams a million DB rows to CSV without loading them in memory (`pool.query().stream()` → transform → `res`), and the download starts instantly.
+10. **Webhook receiver** *(10.6, 10.8, crypto)* — `POST /webhook/payment` that verifies an HMAC signature header before trusting the body, responds 200 in <1s, and queues the slow work (an EventEmitter is enough) — the exact shape of every Razorpay/Stripe integration.
+
+> **How to use this lab:** one topic a day as revision, one build a weekend. Every build goes to GitHub with a README and a screenshot. Ten weekends from now, your portfolio *is* the interview.
