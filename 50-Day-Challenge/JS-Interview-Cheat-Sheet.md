@@ -19,6 +19,7 @@
 - [9. Practice Lab A — JavaScript, Topic by Topic](#9-practice-lab-a-javascript-topic-by-topic) — worked example + practice tasks for all 14 JS topics
 - [10. Practice Lab B — Node.js & Backend, Topic by Topic](#10-practice-lab-b-nodejs-backend-topic-by-topic) — runtime → fs → streams → Express → REST → MySQL → JWT → production hygiene
 - [11. Real-World Builds](#11-real-world-builds-ten-challenges-that-are-actually-the-job) — ten portfolio challenges that are miniatures of the actual job
+- [12. The Project Ladder](#12-the-project-ladder-24-projects-small-to-big) — 24 projects from vanilla frontend to system design, one clear goal each
 
 ---
 
@@ -1350,3 +1351,263 @@ app.post("/api/notes", auth, (req, res, next) => {
 10. **Webhook receiver** *(10.6, 10.8, crypto)* — `POST /webhook/payment` that verifies an HMAC signature header before trusting the body, responds 200 in <1s, and queues the slow work (an EventEmitter is enough) — the exact shape of every Razorpay/Stripe integration.
 
 > **How to use this lab:** one topic a day as revision, one build a weekend. Every build goes to GitHub with a README and a screenshot. Ten weekends from now, your portfolio *is* the interview.
+
+---
+
+# 12. The Project Ladder — 24 Projects, Small to Big
+
+*The complete climb: vanilla frontend → APIs → React → backend → databases → system design. Every project gets four things: **what you build** (so you can picture the finished thing), the **concepts** it forces you to implement, the **approach** (build order — start at ①, never at the fancy part), and the one **goal** that makes the project worth doing. Bold ✅ = already in your roadmap. Don't skip rungs — the impressive projects are easy **because** of the boring ones.*
+
+<p class="te"><strong>Telugu:</strong> Idi complete ladder — chinna vanilla project nunchi system design varaku. Prathi project ki naalugu ichamu: <strong>emi kadutunnavo</strong> (finished thing ela untundo picture avvadaniki), <strong>concepts</strong> (andulo emi implement chestavo), <strong>approach</strong> (① nunchi order lo — fancy part tho eppudu start cheyyaku), mariyu <strong>goal</strong>. Rungs skip cheyyaku — pedda projects easy avvadaniki kaaranam chinna projects ye. Prathi okkati GitHub ki, README + screenshot tho.</p>
+
+---
+
+### Tier 1 — Vanilla Frontend Basics *(one evening–one weekend each)*
+
+#### 1. Counter + Theme Toggle
+
+**What you build:** a number on screen with **+ / − / reset** buttons, and a dark-mode switch — and both the count and the theme are still there when you refresh the page.
+**Concepts:** `querySelector`, `addEventListener`, a state variable, a `render()` that writes `textContent`, `classList.toggle`, `localStorage`.
+**Approach:** ① static HTML first — number, three buttons, toggle ② select the elements once at the top ③ `let count = 0` and a `render()` that paints it ④ each button changes state *then calls render()* — never edits the DOM directly ⑤ theme = one class on `<body>`, saved to localStorage, re-applied on load.
+**Goal:** prove the smallest possible **event → state → render** loop — the pattern all 23 projects below repeat.
+
+<p class="te"><strong>Telugu:</strong> Chinna project, pedda pattern: buttons state ni maarustayi, <code>render()</code> screen ni maarustundi — buttons nerugga DOM ni <strong>eppudu muttavu</strong>. Ee discipline ikkada nerchukunte cart, React anni easy. Refresh chesina count nilavali — localStorage.</p>
+
+#### 2. To-Do List
+
+**What you build:** the classic — type a task, add it, tick it done (strikethrough), delete it, filter All/Active/Done, and the list survives refresh.
+**Concepts:** an array of `{ id, text, done }` objects, `map().join("")` rendering, **event delegation**, `data-id`, `filter`, form `submit` + `preventDefault`, localStorage JSON.
+**Approach:** ① `todos = []` + `render()` that rebuilds the `<ul>` from the array ② add via form submit (`preventDefault`!) ③ **one** click listener on the `<ul>` — `closest()` + `data-id` decides toggle vs delete ④ filters set a `view` variable; `render()` filters before painting ⑤ save/load with `JSON.stringify`/`parse`.
+**Goal:** CRUD on the DOM with **event delegation** — the pattern every list UI uses forever.
+
+<p class="te"><strong>Telugu:</strong> Prathi interview lo unde project. Mukhyam: prathi task button ki listener <strong>kaadu</strong> — <code>ul</code> ki okate listener (delegation), <code>data-id</code> tho e task o telusukovadam. Array ni maarchi, motham list ni malli render cheyyadam — ide ninna cart lo, repu React lo.</p>
+
+#### 3. Quiz App
+
+**What you build:** one question at a time with four options; clicking shows right/wrong colour for a second, then the next question; at the end a score screen with a restart button.
+**Concepts:** an array of question objects, a **state machine** (`{ index, score, finished }`), conditional rendering (question screen vs result screen), `setTimeout` for feedback delay, disabling buttons mid-transition.
+**Approach:** ① questions as data — `{ q, options, answer }` ② state object with `index`/`score`/`finished` ③ `render()` branches: finished ? result screen : current question ④ option click → mark correct/wrong, `score++` if right, `setTimeout` 800ms → `index++` → render ⑤ restart = reset state, render.
+**Goal:** **state transitions** — your first state machine, the mental model behind every wizard, checkout, and game.
+
+<p class="te"><strong>Telugu:</strong> Ikkada kotha idea: <strong>state machine</strong> — app eppudu okka "sthithi" lo untundi ({index, score, finished}) mariyu clicks aa sthithi ni maarustayi. Render eppudu state ni chusi em chupinchalo decide chestundi. Checkout flows, wizards anni ide pattern.</p>
+
+#### 4. Form Validator
+
+**What you build:** a signup form (name, email, password, confirm) that shows a specific error under each field the moment you leave it, and refuses to submit until everything passes.
+**Concepts:** a **rules config object** (data, not if-chains), `blur` + `submit` events, basic regex, creating/removing error elements, `aria-invalid`, disabled submit state.
+**Approach:** ① write rules as data: `{ email: [required, isEmail], password: [required, min8] }` ② `validateField(name)` runs that field's rules, returns the first error or null ③ on `blur` validate one field and paint its error `<p>` ④ on `submit` validate all; block with `preventDefault` if any fail ⑤ adding a new field = adding one entry to the config — if it needs code changes elsewhere, refactor.
+**Goal:** **validation as configuration** + the habit that the frontend validates for *kindness* — the backend will re-check for *security* (Tier 4).
+
+<p class="te"><strong>Telugu:</strong> Rules ni <strong>data ga</strong> raayi (config object), if-else ladder ga kaadu — kotha field add cheyyali ante okka entry chaalu. Inko nijam gurthupettuko: frontend validation <strong>saukaryam</strong> kosam; nijamaina security backend lo (Tier 4 lo malli chestham).</p>
+
+#### 5. Shopping Cart ✅ *(built — `Projects/JS/shopping-cart`)*
+
+**What you build:** a product grid with search/filter/sort, a cart with quantity controls, coupon codes, and a live GST invoice — VanillaCart.
+**Concepts:** an **immutable state engine** separated from rendering, `reduce` totals, module split (data/store/ui/app), delegation, debounce, localStorage.
+**Approach:** the four-file architecture: ① data module ② store of pure functions that return *new* state ③ render functions that only paint ④ one `update()` every change flows through. The full function-by-function walkthrough is in the project's `EXPLANATION.pdf`.
+**Goal:** the **React mental model, built by hand** — so the framework, when it arrives, is a convenience and not magic.
+
+<p class="te"><strong>Telugu:</strong> Idi already kattav ✅. Deeni asalu viluva: React ki mundu React laaga alochinchadam — state okate nijam, prathi marpu kotha state, render antha state nunchi. <code>EXPLANATION.pdf</code> lo prathi function vivarana undi — adi chadivi inkokariki cheppagalagali.</p>
+
+---
+
+### Tier 2 — Vanilla + Real APIs *(the async rungs)*
+
+#### 6. Weather App
+
+**What you build:** type a city (or allow location access) → current temperature, condition icon, and a 3-day strip — with a spinner while loading and a friendly message when the city doesn't exist or the network is down.
+**Concepts:** `fetch` + `async/await`, `try/catch`, the **loading/success/error** state triad, `encodeURIComponent` for user input in URLs, reading nested JSON, optionally `navigator.geolocation`.
+**Approach:** ① pick a free API (Open-Meteo needs no key) and get one successful fetch in the console ② `getWeather(city)` with try/catch that *throws* on `!res.ok` ③ a `status` variable — `"loading" | "ready" | "error"` — and `render()` branches on it ④ form submit → set loading → await → set ready/error → render ⑤ distinguish "city not found" (API's 404) from "you're offline" (fetch threw) — different messages.
+**Goal:** the **async UI triad** — every screen you ever build that talks to a server has these three states; do them properly once.
+
+<p class="te"><strong>Telugu:</strong> Prathi API screen ki <strong>mudu states</strong> untayi: loading, success, error. Ee project aa mudinti ni sariggā cheyyadam nerpistundi. Mukhyam: "city ledu" (404) veru, "net ledu" (fetch throw) veru — user ki veru veru messages. Modata console lo okka fetch success cheyyi, taruvata UI.</p>
+
+#### 7. Movie Search
+
+**What you build:** a search box that shows a poster grid of matching movies *as you type* — no search button — smooth, fast, and never showing stale results.
+**Concepts:** **debounce** (closure), **`AbortController`**, the out-of-order response race, keyboard UX, empty/no-results states.
+**Approach:** ① static grid from one hard-coded fetch first ② wire input → debounced 400ms search ③ **cause the bug on purpose**: type fast, watch a slow early response overwrite a fast later one ④ fix: keep the current `AbortController`, `abort()` it before each new fetch, ignore `AbortError` in catch ⑤ polish: "Start typing…", "No results for 'xyz'".
+**Goal:** kill the **out-of-order-response race** — the bug that separates tutorials from production search boxes.
+
+<p class="te"><strong>Telugu:</strong> Ikkada okka <strong>nijamaina bug</strong> ni kaavalane create chesi, taruvata fix chestav: slow ga vachina paatha response, fast ga vachina kotha results ni overwrite cheyyadam. Fix = prathi kotha search ki mundu paatha fetch ni <code>AbortController</code> tho cancel cheyyadam. Ee bug production search boxes lo nijamga untundi.</p>
+
+#### 8. GitHub Profile Viewer
+
+**What you build:** enter a username → their avatar, bio, follower count, and their top-5 repos sorted by stars, each linking to GitHub.
+**Concepts:** **`Promise.all`** (profile + repos are two endpoints), sorting API data, rendering lists of objects, HTTP 404 vs 403 (rate limit!), caching a result.
+**Approach:** ① fetch `/users/:name` alone and render the card ② add `/users/:name/repos` and run both in `Promise.all` ③ sort by `stargazers_count`, `slice(0, 5)` ④ handle 404 ("no such user") and 403 ("rate limited — try later") separately ⑤ cache the last successful result in localStorage so a refresh doesn't spend API quota.
+**Goal:** **parallel API calls + real HTTP status handling** — two requests that must land together, and errors with different meanings.
+
+<p class="te"><strong>Telugu:</strong> Rendu API calls okesari kaavali (profile + repos) — <code>Promise.all</code>. Mariyu HTTP statuses ki <strong>artham</strong> untundi: 404 = user ledu, 403 = rate limit dhaatav. Rendinti ki veru messages. Chivariga: result ni cache chesi API quota save cheyyi.</p>
+
+#### 9. Kanban Board
+
+**What you build:** a Trello-lite — three columns (To Do / Doing / Done), add cards, and **drag cards between columns** with the mouse; everything persists.
+**Concepts:** the drag & drop event family (`dragstart`, `dragover`, `drop`), `dataTransfer`, **nested state** (`columns → cards`), immutable moves between arrays, delegation at two levels.
+**Approach:** ① state = `[{ id, title, cards: [{id, text}] }]` and full render ② add-card form per column ③ make cards `draggable="true"`; on `dragstart` store the card id in `dataTransfer` ④ columns listen for `dragover` (must `preventDefault`!) and `drop` — move the card from source array to target array *immutably*, render ⑤ persist; bonus: a delete zone.
+**Goal:** **complex nested state updates** — moving an item between two arrays without mutation is the exact shape of real app state.
+
+<p class="te"><strong>Telugu:</strong> Rendu kotha vishayalu: <strong>drag & drop events</strong> (dragover lo <code>preventDefault</code> marchipovaddu — lekapothe drop pani cheyyadu!) mariyu <strong>nested state</strong> — okka card ni okka array nunchi teesi inkoka array lo pettadam, rendinti ni mutate cheyakunda. Idi real apps lo roju unde update shape.</p>
+
+#### 10. Expense Tracker with Chart
+
+**What you build:** add expenses (amount, category, date) → a monthly summary with a total and a **bar chart by category** you build yourself from divs — no chart library.
+**Concepts:** **`reduce` group-by**, `Object.entries`, date filtering, percentage maths → CSS heights, `Intl.NumberFormat` (₹), derived data discipline.
+**Approach:** ① expenses array + add form + plain list ② `byCategory = reduce` into `{ Food: 4200, Travel: 1800 }` ③ bars: each category a div whose height is `sum / max × 100%` — label + amount on top ④ month selector filters *before* the reduce ⑤ everything recomputes from the raw array — delete an expense and watch the chart follow.
+**Goal:** **derived data on real numbers** — the chart is never stored, always computed; the same principle as the cart's totals, at chart scale.
+
+<p class="te"><strong>Telugu:</strong> Chart library <strong>vaadaku</strong> — divs + CSS heights tho nuvve kattu. Andulo point: chart data eppudu store avvadu, prathi saari raw expenses nunchi <code>reduce</code> tho lekkinchabadutundi. Okka expense delete cheste chart daanantata adi maarali — adi jarigithe nuvvu derived-data ni artham chesukunnattu.</p>
+
+---
+
+### Tier 3 — React *(redo the ideas; feel what the framework automates — Phase 6)*
+
+#### 11. Task Tracker ✅ *(your Phase 6 capstone)*
+
+**What you build:** the to-do concept, grown up: tasks with priorities and filters, componentised, styled with Tailwind, **deployed live on Vercel** with a real URL.
+**Concepts:** components & props, `useState`, lifting state up, controlled inputs, conditional rendering, `useEffect` + localStorage, deploy.
+**Approach:** ① sketch the component tree on paper first (App → Header, TaskForm, FilterBar, TaskList → TaskItem) ② state lives in `App`; children get data + handler props ③ the form is a controlled input ④ filters are *derived* in render — not copied state ⑤ `useEffect` persists; push → Vercel → the URL goes in your resume.
+**Goal:** thinking in **components and props** — and the deploy muscle, because an undeployed project half-exists.
+
+<p class="te"><strong>Telugu:</strong> React lo modati adugu: UI ni <strong>components chettu</strong> ga break cheyyadam (paper meeda modata!), state ni App lo unchi, pillalaki props ga pampadam. Filters ni state lo <strong>copy cheyaku</strong> — render lo derive cheyyi (cart lo nerchukunna rule ye). Deploy tappanisari — link lekapothe project sagame.</p>
+
+#### 12. VanillaCart → ReactCart
+
+**What you build:** project #5, rebuilt in React — same features, same look — with `store.js` carried over almost untouched.
+**Concepts:** **`useReducer`** (your store functions become the reducer!), component decomposition, props vs context, `useEffect` for persistence, keys in lists.
+**Approach:** ① copy `store.js` in; reshape into `reducer(state, action)` with a switch on `action.type` ② components: `ProductGrid`, `ProductCard`, `Cart`, `CartLine`, `Summary` ③ `dispatch({ type: "add", id })` replaces `update(addItem(...))` ④ `useEffect` watches state → localStorage ⑤ diff the two repos: your hand-written `render()` calls are simply *gone* — that's what React does for a living.
+**Goal:** **feel precisely what React automates** (re-rendering) and what it never will (your state logic) — the moment frameworks stop being magic.
+
+<p class="te"><strong>Telugu:</strong> Ide project ni React lo malli kattadam — kaani <code>store.js</code> daadapu <strong>alaage</strong> reducer avutundi. Diff chusthe okate teda: nuvvu prathi chota rasina <code>render()</code> calls maayam — adi React pani. Appudu nee ki telustundi: framework <strong>rendering</strong> automate chestundi, <strong>nee logic</strong> kaadu — adi eppudu nee pane.</p>
+
+#### 13. Dashboard with Routing
+
+**What you build:** a small admin panel — a list page, a detail page, and a create/edit form — against any public API, with URL-driven navigation and cached server data.
+**Concepts:** React Router (routes, `useParams`, links), **TanStack Query** (`useQuery`, `useMutation`, invalidation), loading skeletons, form → refetch flow.
+**Approach:** ① routes: `/items`, `/items/:id`, `/items/new` ② list page = `useQuery(["items"])` with a skeleton while loading ③ detail = `useQuery(["items", id])` reading `useParams` ④ create = `useMutation` that invalidates `["items"]` on success → the list refetches itself ⑤ shared layout with nav; deploy.
+**Goal:** **URL-driven UI + server-state caching** — the shape of every internal tool and admin panel you will ever be paid to build.
+
+<p class="te"><strong>Telugu:</strong> Prathi company lo unde app idi: list → detail → form. Rendu kotha ideas: <strong>URL ye state</strong> (route batti em chupinchalo) mariyu <strong>server data ni TanStack Query</strong> chusukuntundi (cache, refetch, loading). Mutation success ayyaka invalidate cheste list adi adhe refresh avutundi — magic kaadu, pattern.</p>
+
+---
+
+### Tier 4 — Backend *(the server rungs — Phases 7–8)*
+
+#### 14. CLI Toolbox
+
+**What you build:** a command-line tool: `node tool.js count <folder>` prints files grouped by extension; `node tool.js todos <folder>` finds every `// TODO` in a codebase and writes a report file.
+**Concepts:** `process.argv`, subcommand routing, `fs` (readdir/stat/readFile), recursion through folders, exit codes, writing output files.
+**Approach:** ① parse `argv` → `[command, target]`; unknown command → usage message + `process.exit(1)` ② `walk(dir)` — a recursive function collecting file paths (skip `node_modules`!) ③ `count`: group with reduce by `path.extname` ④ `todos`: read each file, regex match lines, collect `{file, line, text}` ⑤ write `report.md` and print a summary.
+**Goal:** **Node without HTTP** — files, arguments, exit codes; your first "I automated something real" story.
+
+<p class="te"><strong>Telugu:</strong> Server kaadu — <strong>automation</strong>. Folder antha recursive ga tirigi (node_modules skip!), files ni lekkinchadam, TODOs vetiki report raayadam. Interview lo "nenu edaina automate chesa" ani cheppadaniki modati katha idi. Exit codes marchipoku — fail aithe <code>process.exit(1)</code>.</p>
+
+#### 15. Notes REST API
+
+**What you build:** a clean Express API — `GET/POST /api/notes`, `GET/PATCH/DELETE /api/notes/:id` — in-memory array, correct status codes, tested entirely from Postman/Bruno (no frontend at all).
+**Concepts:** Express routes, `express.json()`, route params vs query, **status codes** (200/201/204/400/404), validation, router/controller file split.
+**Approach:** ① one file, `GET /api/notes` working in Bruno ② add POST — 400 when `text` missing, 201 + the created note when valid ③ GET one / PATCH / DELETE with proper 404s ④ add `?page=&limit=` pagination with a `meta` block ⑤ split into `routes/` + `controllers/` — feel why the split exists.
+**Goal:** **REST done correctly before a database exists** — routes, verbs, and status codes as habits, with zero SQL distraction.
+
+<p class="te"><strong>Telugu:</strong> Database <strong>ledu</strong> — array matrame. Enduku ante modata REST rules (nouns, verbs, status codes) alavatu avvali: create ki 201, delete ki 204, lekapothe 404, thappudu input ki 400. Frontend kuda ledu — Bruno/Postman tho test. DB tarvata add avutundi (#17), rules appatike raktham lo untayi.</p>
+
+#### 16. Auth API ✅ *(your Phase 8 capstone)*
+
+**What you build:** registration and login returning a JWT, a middleware that protects routes, and per-user data — the notes API where you only ever see *your* notes.
+**Concepts:** bcrypt hashing, JWT sign/verify, `Authorization: Bearer` header, auth middleware, zod validation, 401 vs 403, rate limiting the login.
+**Approach:** ① `/register` — zod-validate, bcrypt-hash, store; never store the raw password ② `/login` — compare hash, sign a 1-hour JWT ③ `auth` middleware — verify token, attach `req.user`, else 401 ④ scope every notes query to `req.user.id` ⑤ rate-limit `/login`; return field-level zod errors.
+**Goal:** the **complete auth flow** — the single most reused backend skill in existence; every SaaS you ever build starts here.
+
+<p class="te"><strong>Telugu:</strong> Prathi app ki kaavalsina flow: register (password ni <strong>hash chesi</strong> dachadam — never raw), login (compare + JWT ivvadam), middleware (prathi request lo token verify), mariyu prathi query ki <code>req.user.id</code> scope. Idi okkasari sariggā kattithe, jeevitham antha reuse chestav.</p>
+
+#### 17. URL Shortener
+
+**What you build:** `POST /api/shorten` with a long URL → `https://yourapp/x7Kp2`; visiting that short link **301-redirects** to the original and counts the click; a stats endpoint shows totals.
+**Concepts:** your **first persistent backend** — MySQL table design, unique short-code generation, HTTP redirects (`res.redirect(301, …)`), UPDATE counters, URL validation.
+**Approach:** ① table: `id, code (unique), url, clicks, created_at` ② POST: validate the URL, generate a 6-char code (retry on the rare collision), INSERT ③ `GET /:code`: SELECT → 404 page if missing → `UPDATE clicks + 1` → redirect ④ `GET /api/stats/:code` returns the numbers ⑤ same long URL twice → return the existing code (decide and document).
+**Goal:** **data that survives restart** + the redirect mechanic — a tiny app you'll later scale into project #21.
+
+<p class="te"><strong>Telugu:</strong> Modatisari data <strong>server restart ni survive</strong> avutundi — MySQL. Chinna app, kaani andulo: unique code generation (collision handle), 301 redirect, click counter UPDATE. Deenine #21 lo scale chestham — Redis, rate limit, load test. Ippude foundation sariggā veyyi.</p>
+
+---
+
+### Tier 5 — Full-Stack + Database *(the JOIN rungs — Phase 9)*
+
+#### 18. Blog Platform API
+
+**What you build:** the backend of a Medium-lite: users write posts, posts have comments, posts carry multiple tags (and tags belong to many posts), everything paginated.
+**Concepts:** **schema design**, one-to-many (user→posts, post→comments), **many-to-many** via a junction table (post_tags), JOIN queries, indexes, pagination with total counts.
+**Approach:** ① draw the schema on paper *before any code* — 5 tables including `post_tags` ② write the CREATE TABLEs with foreign keys ③ CRUD for posts ④ the money queries: post-with-author-and-tags (JOIN ×3), posts-by-tag, comment counts per post (GROUP BY) ⑤ paginate with `LIMIT/OFFSET` + a `meta.total`; EXPLAIN your hottest query and add the index it begs for.
+**Goal:** **JOINs and junction tables stop being theory** — the project where relational modelling becomes muscle.
+
+<p class="te"><strong>Telugu:</strong> Code kanna mundu <strong>paper meeda schema</strong> geeyyi — 5 tables, andulo <code>post_tags</code> junction table (many-to-many ki ide daari). Asalu practice: JOIN queries — post + author + tags okate query lo. Chivariga EXPLAIN chesi index add cheyyi — Phase 3 B-tree gnyanam ikkada panichestundi.</p>
+
+#### 19. Full-Stack Store
+
+**What you build:** your React cart with the training wheels off — products come from MySQL, checkout writes a real order inside a **transaction**, a fake payment step confirms it, and an order-history page shows past orders.
+**Concepts:** the full loop (browser → API → DB → back), transactions (orders + order_items + stock together), API error handling in the UI, order status flow, environment configs.
+**Approach:** ① products table + `GET /api/products` — delete `products.js` from the frontend and fetch instead ② cart stays client-side; checkout POSTs `{ items }` ③ the transaction: insert order, insert order_items, decrement stock — all or nothing (test by making one step fail!) ④ fake payment: a confirm step that flips order status ⑤ `GET /api/orders` (auth from #16) → history page.
+**Goal:** **one feature travelling every layer** — this repo is the sentence "I am a full-stack developer," with proof.
+
+<p class="te"><strong>Telugu:</strong> Ippudu anni layers okate feature lo: React cart → API → MySQL → tirigi UI. Star concept: <strong>transaction</strong> — order + order_items + stock okate unit ga, madhyalo fail aithe motham rollback (kaavalane fail chesi test cheyyi!). Ee okka repo "full-stack developer" ane maatiki saakshyam.</p>
+
+#### 20. Real-Time Chat
+
+**What you build:** chat rooms — join one, messages appear for everyone in it *instantly*, history loads from MySQL when you join, and a "Nikhil is typing…" indicator flickers as people type.
+**Concepts:** WebSockets (socket.io), rooms/broadcast, push vs request/response, persisting a stream, debounced typing events, reconnect handling.
+**Approach:** ① socket.io server + client, one global room, messages echo to all ② rooms: `socket.join(room)`, broadcast only to it ③ persist each message; on join, send the last 50 from MySQL ④ typing indicator = debounced `typing` event with a 2s auto-clear ⑤ handle disconnect/reconnect gracefully (show status in the UI).
+**Goal:** **push beyond request/response** — the server talks *first*; a different mental model, and the basis of every live feature.
+
+<p class="te"><strong>Telugu:</strong> Ippativaraku client adigithe server icchindi. Ikkada <strong>server mundhuga matladutundi</strong> — WebSocket eppudu open ga untundi, message vachina ventane andariki push. History MySQL nunchi, live messages socket nunchi — rendu kalipina design ne nerchukovadam. Typing indicator = debounce malli (nee #7 skill).</p>
+
+---
+
+### Tier 6 — System-Design Flavoured *(think in systems — Phases 10–11)*
+
+#### 21. URL Shortener at Scale
+
+**What you build:** project #17, hardened: Redis caches hot codes, a rate limiter guards creation, the whole thing runs in Docker on EC2 — and a README with **before/after load-test numbers** proves the difference.
+**Concepts:** caching + invalidation, cache-hit ratio, rate limiting, Docker/compose, deployment, load testing (autocannon), *measuring before optimising*.
+**Approach:** ① load-test the plain version first — record req/s and p95 latency (this number is the whole point) ② Redis: check cache → miss → MySQL → fill cache; expire sensibly ③ re-test, compute hit ratio, write the numbers down ④ rate-limit `POST /shorten` ⑤ docker-compose (app + MySQL + Redis) → EC2 → test once more over the real internet.
+**Goal:** **measure → cache → protect** — your first performance story with real numbers; "I took it from 800 to 4,000 req/s" is interview gold.
+
+<p class="te"><strong>Telugu:</strong> Rule okate: <strong>modata kolavu, taruvata optimise cheyyi</strong>. Plain version ni load-test chesi number raasuko; Redis cache petti malli kolavu; teda ne nee interview katha. Cache-hit ratio, p95 latency — ee padalu ikkada nee sontham avutayi. Docker + EC2 tho nijam internet meeda deploy.</p>
+
+#### 22. Job Queue Worker
+
+**What you build:** an API that accepts "send 1,000 emails" and responds **instantly** — while a separate worker process eats the queue in the background with retries and backoff; a status endpoint reports `pending/processing/done/failed` counts live.
+**Concepts:** decoupling accept-from-do, producer/consumer, a jobs table (or Redis list), polling workers, **retry + exponential backoff**, idempotent job handling, graceful shutdown.
+**Approach:** ① `jobs` table: `id, type, payload, status, attempts, run_at` ② `POST /jobs` just INSERTs and returns 202 + id — nothing else ③ `worker.js` — a separate process: claim a pending job (mark `processing` atomically!), do it (simulate failures), mark done ④ on failure: `attempts++`, `run_at = now + 2^attempts` seconds; after 5, `failed` ⑤ `GET /jobs/:id` + a counts endpoint; run two workers at once and make sure no job runs twice.
+**Goal:** **accepting work ≠ doing work** — the message-queue pattern behind every email, invoice, and export feature at every large company.
+
+<p class="te"><strong>Telugu:</strong> API pani <strong>accept cheyyadam matrame</strong> — instant ga 202 return; nijamaina pani veru worker process chestundi, tana speed lo. Fail aithe retry with backoff (2, 4, 8 sec…). Kastam ayina bhagam: rendu workers okate job ni teesukokudadu — atomic claim. Idi Kafka/RabbitMQ la venuka unna pattern, nuvve chinna ga kattutunnav.</p>
+
+#### 23. Split-the-Bill App
+
+**What you build:** a Splitwise-lite: groups, shared expenses, and a "settle up" screen that computes the *minimum* set of who-pays-whom transfers — correct even when two people edit the group at the same moment.
+**Concepts:** settlement algorithm (net balances → greedy matching), **transactions + row locking** (`SELECT … FOR UPDATE`), concurrency testing, money as integers (paise!), audit history.
+**Approach:** ① schema: groups, members, expenses, splits ② balances: reduce expenses into net per person ③ settlement: repeatedly match the biggest debtor with the biggest creditor ④ **break it**: fire two parallel expense-adds (Promise.all two fetches) and catch the corruption ⑤ fix with a transaction + `FOR UPDATE`; store money in paise, never floats.
+**Goal:** **ACID under concurrency** — the difference between an app that works in the demo and one that's safe with real users and real money.
+
+<p class="te"><strong>Telugu:</strong> Rendu highlights: settlement algorithm (evaru evariki entha — minimum transfers tho) mariyu <strong>concurrency</strong> — iddaru okesari expense add chesthe balance corrupt avvakudadu. Kaavalane parallel requests pampi bug ni chudu, taruvata transaction + <code>FOR UPDATE</code> tho fix cheyyi. Money eppudu paise lo (integers) — floats tho dabbu lekkalu cheyakudadu (0.1+0.2 gurthundha?).</p>
+
+#### 24. FocusTrack Pro + AI ✅ *(your Phase 12 capstone path)*
+
+**What you build:** your focus-session tracker, plus an assistant that answers "what did I work on last week?" from **your own data** — RAG over your sessions, and an n8n automation that mails you a weekly summary.
+**Concepts:** everything above, plus embeddings + vector search (RAG), grounded prompting ("answer only from the context"), LLM API calls from your backend, n8n workflow automation.
+**Approach:** ① the tracker itself: CRUD + charts (Tiers 3–5 skills, nothing new) ② embed each session note into a vector store (pgvector/Chroma) ③ `/api/ask`: embed the question → retrieve top-5 sessions → prompt the LLM with them + "answer only from this context" ④ show sources with the answer ⑤ n8n: cron → query the week → LLM summary → email.
+**Goal:** ship a product with an **AI feature grounded in your own database** — the 2026-shaped portfolio piece that ties both halves of your roadmap together.
+
+<p class="te"><strong>Telugu:</strong> Chivari rung: nee sonta app + nee sonta data meeda AI. RAG ante ikkada nijam ga chestav: session notes ni embeddings ga dachi, prashna vachinappudu daggari 5 sessions teesi, "veeti nunchi matrame samadhanam cheppu" ani LLM ki ivvadam — hallucination aagipotundi. n8n tho weekly summary email — Phase 12 + nee SAP AI katha rendu ikkade kalustayi.</p>
+
+---
+
+### How to climb
+
+- **One rung at a time, finished > fancy.** A deployed #6 beats a half-built #19.
+- **Every project:** GitHub repo → README with a screenshot → deployed link where possible. The ladder *is* the portfolio.
+- **Revisit rule:** each tier reuses the last — the cart becomes ReactCart becomes the full-stack store; the shortener becomes the scaled shortener. You're not building 24 things; you're growing ~8 things through 24 stages.
+- **When stuck, shrink the step** — every approach above starts with a version so small it can't fail (one fetch in the console, one hard-coded render). Get that working, then grow it.
+- **Interview mapping:** Tiers 1–2 answer "do you know JS?", Tiers 3–4 answer "can you build features?", Tier 5 answers "can you own a system end-to-end?", Tier 6 answers "can you think at scale?" — the senior-shaped question.
+
+<p class="te"><strong>Telugu:</strong> Okka rung okkasari — <strong>complete chesindi</strong> > fancy ga modalupettindi. Prathi approach chinna, fail avvalēni step tho start avutundi (console lo okka fetch, okka hard-coded render) — adi work ayyake perigincha. 24 veru projects kaadu: cart → ReactCart → full-stack store laaga <strong>ade project perugutundi</strong>. Tier 5 varaku vasthe "full-stack developer"; Tier 6 vasthe "scale gurinchi alochinchagalanu" — adi senior-level samadhanam.</p>

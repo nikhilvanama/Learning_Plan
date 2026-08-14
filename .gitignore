@@ -23,6 +23,5 @@ desktop.ini
 *.key
 *.pem
 
-# build outputs / debug artefacts we don't need in git
-Doc generation/roadmap_v3_combined.html
-Doc generation/notes_debug.html
+# PDF generation tooling — local only, not uploaded
+Doc generation/
