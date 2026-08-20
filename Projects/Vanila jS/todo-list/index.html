@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanilla To-Do</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="app">
+    <h1>✅ My Tasks</h1>
+
+    <!-- ADD: a form, so pressing Enter works too.
+         script.js catches `submit` and calls preventDefault. -->
+    <form id="add-form">
+      <input id="new-task" placeholder="What needs doing?" autocomplete="off" />
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- FILTERS: three buttons; data-filter tells JS which one -->
+    <nav class="filters">
+      <button data-filter="all"    class="active">All</button>
+      <button data-filter="active">Active</button>
+      <button data-filter="done">Done</button>
+    </nav>
+
+    <!-- THE LIST: script.js rebuilds this <ul> from the todos array.
+         ONE click listener here handles every tick + delete button
+         that will ever exist (event delegation). -->
+    <ul id="todo-list"></ul>
+
+    <!-- FOOTER: "3 left" counter + clear-completed -->
+    <footer class="foot">
+      <span id="count"></span>
+      <button id="clear-done">Clear completed</button>
+    </footer>
+  </main>
+
+  <!-- Plain script, loaded last so the HTML above exists.
+       Double-click index.html — it just runs. -->
+  <script src="script.js"></script>
+</body>
+</html>

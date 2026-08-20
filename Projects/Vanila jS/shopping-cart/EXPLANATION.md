@@ -9,35 +9,35 @@
 ## Table of Contents
 
 - [1. The Skeleton — One Overall Diagram](#1-the-skeleton-one-overall-diagram)
-- [2. products.js — The Data](#2-productsjs-the-data)
-- [3. store.js — The State Engine, Function by Function](#3-storejs-the-state-engine-function-by-function)
-- [4. ui.js — The Render Layer, Function by Function](#4-uijs-the-render-layer-function-by-function)
-- [5. app.js — The Wiring, Function by Function](#5-appjs-the-wiring-function-by-function)
+- [2. Section 1 — The Data](#2-section-1-the-data)
+- [3. Section 2 — The State Engine, Function by Function](#3-section-2-the-state-engine-function-by-function)
+- [4. Section 3 — The Render Layer, Function by Function](#4-section-3-the-render-layer-function-by-function)
+- [5. Section 4 — The Wiring, Function by Function](#5-section-4-the-wiring-function-by-function)
 - [6. The Flows — What Happens When…](#6-the-flows-what-happens-when)
 
 ---
 
 # 1. The Skeleton — One Overall Diagram
 
-Four files, four jobs, one direction of data flow. Every feature in the app is some path through this picture:
+One file — `script.js` — with four labelled sections, four jobs, one direction of data flow. Every feature in the app is some path through this picture:
 
 ```mermaid
 graph TB
     subgraph LOOP["THE ONE-WAY LOOP — every feature travels this circle"]
         direction LR
-        EV["EVENT<br/>click · input · submit<br/>caught by delegated<br/>listeners in app.js"] --> ST["STORE FUNCTION<br/>addItem · setQty<br/>removeItem · applyCoupon<br/>pure · no DOM"]
+        EV["EVENT<br/>click · input · submit<br/>caught by delegated<br/>listeners in Section 4"] --> ST["STORE FUNCTION<br/>addItem · setQty<br/>removeItem · applyCoupon<br/>pure · no DOM"]
         ST --> NS["NEW STATE<br/>items + coupon<br/>old state untouched"]
         NS --> UP["update()<br/>saveState →<br/>localStorage"]
         UP --> RE["render()<br/>cartDetails() totals<br/>filter/sort pipeline"]
         RE --> DOM["DOM REPAINT<br/>renderProducts<br/>renderCart · badge"]
     end
 
-    subgraph FILES["WHO OWNS WHAT"]
+    subgraph FILES["WHO OWNS WHAT — the four sections of script.js"]
         direction LR
-        F1["products.js — DATA<br/>PRODUCTS · COUPONS · GST_RATE"]
-        F2["store.js — STATE LOGIC<br/>all update functions + cartDetails"]
-        F3["ui.js — RENDERING<br/>renderProducts · renderCart<br/>money · toast"]
-        F4["app.js — WIRING<br/>7 listeners · update() · render()"]
+        F1["SECTION 1 — DATA<br/>PRODUCTS · COUPONS · GST_RATE"]
+        F2["SECTION 2 — STATE<br/>all update functions + cartDetails"]
+        F3["SECTION 3 — RENDER<br/>renderProducts · renderCart<br/>money · toast"]
+        F4["SECTION 4 — WIRING<br/>7 listeners · update() · render()"]
         F1 ~~~ F2 ~~~ F3 ~~~ F4
     end
 
@@ -55,11 +55,11 @@ graph TB
 
 **The rule the diagram encodes:** events never touch the DOM directly, and render functions never make decisions. Everything goes *around* the loop: **event → store → new state → save → render → DOM**. One way, every time.
 
-<p class="te"><strong>Telugu:</strong> Naalugu files, naalugu panulu: <strong>products</strong> = data, <strong>store</strong> = logic (DOM muttadu), <strong>ui</strong> = drawing (decisions undavu), <strong>app</strong> = wiring. Prathi feature ee circle lo ne tirugutundi: event → store → kotha state → save → render → DOM. <strong>Okate direction, prathi saari.</strong></p>
+<p class="te"><strong>Telugu:</strong> Okate file, naalugu sections — naalugu panulu: <strong>products</strong> = data, <strong>store</strong> = logic (DOM muttadu), <strong>ui</strong> = drawing (decisions undavu), <strong>app</strong> = wiring. Prathi feature ee circle lo ne tirugutundi: event → store → kotha state → save → render → DOM. <strong>Okate direction, prathi saari.</strong></p>
 
 ---
 
-# 2. products.js — The Data
+# 2. Section 1 — The Data
 
 No functions here — three exported constants, and one design decision.
 
@@ -75,7 +75,7 @@ No functions here — three exported constants, and one design decision.
 
 ---
 
-# 3. store.js — The State Engine, Function by Function
+# 3. Section 2 — The State Engine, Function by Function
 
 Every function here takes state in, returns **new** state out. None of them touch the DOM, none of them mutate their input.
 
@@ -90,7 +90,7 @@ The shape of "nothing in the cart," written once and reused by `loadState` and `
 ## 3.2 `loadState()`
 
 ```js
-export function loadState() {
+function loadState() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? emptyState();
   } catch {
@@ -105,26 +105,26 @@ export function loadState() {
 3. `?? emptyState()` — if the result was `null`/`undefined`, start fresh. `??` and not `||`, so a legitimate falsy value would survive.
 4. `try/catch` — if someone hand-edited the storage into invalid JSON, `parse` throws; a storage problem must never crash the app, so we recover with an empty cart.
 
-**Called from:** the top of `app.js`, once, at page load.
+**Called from:** the top of the WIRING section, once, at page load.
 
 <p class="te"><strong>Telugu:</strong> localStorage <strong>strings matrame</strong> dachutundi — anduke <code>JSON.parse</code> tho object ga maarchali. Modatisari visit lo <code>null</code> vastundi → <code>??</code> khaali cart istundi. Data corrupt aithe <code>try/catch</code> app ni crash avvakunda kaapadutundi.</p>
 
 ## 3.3 `saveState(state)`
 
 ```js
-export function saveState(state) {
+function saveState(state) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 ```
 
 The mirror of `loadState`: object → `JSON.stringify` → string → storage. The key `"vanillacart-v1"` is versioned on purpose — if a future version changes the state shape, bumping to `-v2` abandons old incompatible data instead of crashing on it.
 
-**Called from:** `update()` in app.js — which means *every* state change is persisted automatically. There is no way to change the cart and forget to save it.
+**Called from:** `update()` in the WIRING section — which means *every* state change is persisted automatically. There is no way to change the cart and forget to save it.
 
 ## 3.4 `addItem(state, id)`
 
 ```js
-export function addItem(state, id) {
+function addItem(state, id) {
   const existing = state.items.find(it => it.id === id);
   const items = existing
     ? state.items.map(it => it.id === id ? { ...it, qty: it.qty + 1 } : it)
@@ -146,7 +146,7 @@ export function addItem(state, id) {
 ## 3.5 `setQty(state, id, qty)`
 
 ```js
-export function setQty(state, id, qty) {
+function setQty(state, id, qty) {
   if (qty < 1) return removeItem(state, id);
   const capped = Math.min(qty, 99);
   return {
@@ -161,12 +161,12 @@ export function setQty(state, id, qty) {
 2. `Math.min(qty, 99)` caps the quantity — defensive coding against a rogue value.
 3. Same `map`-with-replacement pattern as `addItem`.
 
-**Called from:** the cart's + and − buttons (`inc`/`dec` actions in app.js).
+**Called from:** the cart's + and − buttons (`inc`/`dec` actions in the WIRING section).
 
 ## 3.6 `removeItem(state, id)`
 
 ```js
-export function removeItem(state, id) {
+function removeItem(state, id) {
   return { ...state, items: state.items.filter(it => it.id !== id) };
 }
 ```
@@ -176,7 +176,7 @@ export function removeItem(state, id) {
 ## 3.7 `clearCart()`
 
 ```js
-export function clearCart() { return emptyState(); }
+function clearCart() { return emptyState(); }
 ```
 
 Doesn't even need the old state — clearing is just "return the empty shape." The coupon resets too, because the empty shape says `coupon: null`.
@@ -184,7 +184,7 @@ Doesn't even need the old state — clearing is just "return the empty shape." T
 ## 3.8 `applyCoupon(state, code)`
 
 ```js
-export function applyCoupon(state, code) {
+function applyCoupon(state, code) {
   const clean = code.trim().toUpperCase();
   if (!COUPONS[clean]) return { state, ok: false };
   return { state: { ...state, coupon: clean }, ok: true };
@@ -196,14 +196,14 @@ export function applyCoupon(state, code) {
 2. Look the code up in the `COUPONS` table. Unknown code → return the state **unchanged** plus `ok: false`.
 3. Known code → new state with `coupon` set, plus `ok: true`.
 
-**Why return `{ state, ok }` instead of just state?** The caller (app.js) needs to know whether to toast "applied 🎉" or "invalid ❌". Returning both keeps the store silent about UI — it reports facts; the wiring decides what to show.
+**Why return `{ state, ok }` instead of just state?** The caller (the WIRING section) needs to know whether to toast "applied 🎉" or "invalid ❌". Returning both keeps the store silent about UI — it reports facts; the wiring decides what to show.
 
-<p class="te"><strong>Telugu:</strong> Input ni modata <strong>shubhram cheyyi</strong> (trim + uppercase). Code table lo unte kotha state + <code>ok: true</code>; lekapothe paatha state + <code>ok: false</code>. Store UI gurinchi em telidu — <strong>facts matrame cheptundi</strong>, toast em chupinchalo app.js decide chestundi.</p>
+<p class="te"><strong>Telugu:</strong> Input ni modata <strong>shubhram cheyyi</strong> (trim + uppercase). Code table lo unte kotha state + <code>ok: true</code>; lekapothe paatha state + <code>ok: false</code>. Store UI gurinchi em telidu — <strong>facts matrame cheptundi</strong>, toast em chupinchalo the WIRING section decide chestundi.</p>
 
 ## 3.9 `cartDetails(state)` — where the money is computed
 
 ```js
-export function cartDetails(state) {
+function cartDetails(state) {
   const lines = state.items.map(it => {
     const product = PRODUCTS.find(p => p.id === it.id);
     return { ...product, qty: it.qty, lineTotal: product.price * it.qty };
@@ -247,12 +247,12 @@ graph LR
 
 ---
 
-# 4. ui.js — The Render Layer, Function by Function
+# 4. Section 3 — The Render Layer, Function by Function
 
 ## 4.1 `money(n)`
 
 ```js
-export const money = n =>
+const money = n =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 })
     .format(Math.round(n));
 ```
@@ -273,7 +273,7 @@ grid.innerHTML = products.map(p => `
 ```
 
 **How it works:**
-1. Takes the already-filtered/sorted array (app.js decides *what*; this function only draws).
+1. Takes the already-filtered/sorted array (the WIRING section decides *what*; this function only draws).
 2. Empty array → a friendly "no products match" message and an early return.
 3. `map` turns each product into an HTML string; `join("")` glues them; **one** `innerHTML` assignment paints the lot. One assignment = one reflow (cheap), versus one reflow per card with repeated `appendChild`.
 4. `data-id="${p.id}"` stamps each button with its product's id — this is the bridge the click handler will read back.
@@ -306,7 +306,7 @@ setTimeout(() => el.remove(), 1800);
 
 ---
 
-# 5. app.js — The Wiring, Function by Function
+# 5. Section 4 — The Wiring, Function by Function
 
 ## 5.1 The two state variables
 
@@ -410,7 +410,7 @@ An object lookup replaces an if/else ladder — adding a "move to wishlist" acti
 
 ```mermaid
 graph LR
-    A["Browser parses HTML<br/>empty containers"] --> B["app.js module loads<br/>imports run once"]
+    A["Browser parses HTML<br/>empty containers"] --> B["script.js loads<br/>(plain script, no build)"]
     B --> C["loadState()<br/>localStorage → state"]
     C --> D["7 listeners attached"]
     D --> E["render()"]

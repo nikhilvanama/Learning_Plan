@@ -1,0 +1,86 @@
+/* Vanilla Quiz — one small stylesheet, same look family */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --indigo: #4338ca;
+  --violet: #7c3aed;
+  --ink: #1f2333;
+  --muted: #6b7280;
+  --line: #e8e6f2;
+  --green: #059669;
+  --red: #dc2626;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(160deg, var(--indigo), var(--violet));
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  color: var(--ink);
+}
+
+.app {
+  width: min(520px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- question screen ---------- */
+
+.progress {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.question { font-size: 1.25rem; margin-bottom: 18px; line-height: 1.4; }
+
+.options { display: grid; gap: 10px; }
+
+.option {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 1rem;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.option:hover:not(:disabled) { border-color: var(--violet); transform: translateY(-1px); }
+
+/* Feedback colours — render() adds these classes after a pick */
+.option.correct { border-color: var(--green); background: #ecfdf5; font-weight: 600; }
+.option.wrong   { border-color: var(--red);   background: #fef2f2; }
+
+.option:disabled { cursor: default; opacity: 0.85; }
+
+/* ---------- result screen ---------- */
+
+.result { text-align: center; padding: 12px 0; }
+
+.result .big { font-size: 3.4rem; margin-bottom: 8px; }
+
+.result h1 { font-size: 2.2rem; color: var(--indigo); margin-bottom: 6px; }
+
+.result p { color: var(--muted); margin-bottom: 20px; }
+
+#restart {
+  padding: 11px 26px;
+  border: none;
+  border-radius: 10px;
+  background: var(--violet);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+#restart:hover { background: var(--indigo); }

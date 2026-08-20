@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanilla Quiz</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❓</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="app">
+    <!-- The ENTIRE app renders inside this one box.
+         script.js decides what to show by looking at the state:
+         playing  → the current question + options
+         finished → the score screen + restart button        -->
+    <div id="screen"></div>
+  </main>
+
+  <!-- Plain script, loaded last. Double-click index.html to run. -->
+  <script src="script.js"></script>
+</body>
+</html>
