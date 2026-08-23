@@ -46,6 +46,10 @@
   - [Q1. The Kinds of SAP Projects](#q1-the-kinds-of-sap-projects) · [Q2. The Developer Career Tracks](#q2-the-developer-career-tracks) · [Q3. Where Your Roadmap Lands You](#q3-where-your-roadmap-lands-you)
 - [Part R — Interview Cheat-Sheet](#part-r-interview-cheat-sheet)
 - [Part S — Glossary & Quick Reference](#part-s-glossary-quick-reference)
+- [Part T — The Working Vocabulary](#part-t-the-working-vocabulary)
+  - [T1. The System You Log Into](#t1-the-system-you-log-into) · [T2. Getting Around](#t2-getting-around) · [T3. Where Code Lives — Repository, Package, Transport](#t3-where-code-lives-repository-package-transport) · [T4. The Data Dictionary (DDIC)](#t4-the-data-dictionary-ddic) · [T5. The Three Kinds of Data](#t5-the-three-kinds-of-data) · [T6. Programs and Code](#t6-programs-and-code) · [T7. How Work Actually Runs](#t7-how-work-actually-runs) · [T8. Talking to Other Systems](#t8-talking-to-other-systems) · [T9. Users, Roles and Authorizations](#t9-users-roles-and-authorizations) · [T10. Project Vocabulary](#t10-project-vocabulary) · [T11. The Twenty Terms to Know Cold](#t11-the-twenty-terms-to-know-cold) · [T12. Putting the Vocabulary Together](#t12-putting-the-vocabulary-together)
+- [Part U — The SAP Product Universe](#part-u-the-sap-product-universe)
+  - [U1. The Frame — "SAP Business Suite" (2025 Onward)](#u1-the-frame-sap-business-suite-2025-onward) · [U2. The Core ERP Family](#u2-the-core-erp-family) · [U3. The Bundles — RISE and GROW](#u3-the-bundles-rise-and-grow) · [U4. The Line-of-Business Cloud Suite](#u4-the-line-of-business-cloud-suite) · [U5. Supply Chain, Manufacturing and the Business Network](#u5-supply-chain-manufacturing-and-the-business-network) · [U6. SAP BTP — the Platform, Service by Service](#u6-sap-btp-the-platform-service-by-service) · [U7. Data and Analytics — What Changed in 2026](#u7-data-and-analytics-what-changed-in-2026) · [U8. Business AI — Joule and the Agents](#u8-business-ai-joule-and-the-agents) · [U9. The Transformation Tools](#u9-the-transformation-tools) · [U10. How They All Integrate](#u10-how-they-all-integrate) · [U11. Two Real End-to-End Flows](#u11-two-real-end-to-end-flows) · [U12. Where a Developer Actually Touches Each Product](#u12-where-a-developer-actually-touches-each-product)
 
 ---
 
@@ -1389,4 +1393,672 @@ built by CAP (Node/Java, BTP)   consumed by users
         all on HANA
 ```
 
-**You now hold the whole map.** Pair this with your **SAP Fiori & UI5** notes for the frontend depth, and your Phase 1–7 notes for the JS/AI foundations — together they cover the exact profile the 2026 SAP market is hungry for. Go build.
+---
+
+# Part T — The Working Vocabulary
+
+*Part S lists acronyms. **This part is different.** These are the everyday words that get spoken in an SAP room and typed into an SAP screen — client, T-code, DDIC, package, transport, master data, BAPI, LUW. Nobody defines them for you, because everyone assumes you know. Each entry says three things: **what it is**, **why it matters**, and **whether you will actually use it**.*
+
+<p class="te"><strong>Telugu:</strong> Part S lo acronyms unnayi. <strong>Idi veru</strong> — ivi SAP room lo roju maatlade padalu: client, T-code, DDIC, package, transport, master data, BAPI, LUW. Ee padalu evaru neeku explain cheyyaru, endukante "andariki telusu" ani anukuntaru. Prathi padaniki moodu vishayalu cheptunna: <strong>adi emiti, adi enduku mukhyam, nuvvu nijamga vaadutava leda</strong>. Ee section chadivaka, class lo, interview lo, project lo — evaru em maatladutunnaro ardham avutundi.</p>
+
+**How to read the "Do you use it?" column:**
+
+| Mark | Meaning |
+|---|---|
+| **Daily** | You will type or touch this most days |
+| **Know it** | You must understand it and answer on it, but rarely touch it |
+| **Aware** | Recognise the word when someone says it; do not study it now |
+
+---
+
+## T1. The System You Log Into
+
+**Simple definition:** the words that describe *where* you are — which machine, which data set, which stage of the pipeline.
+
+<p class="te"><strong>Telugu:</strong> Nuvvu <strong>ekkada</strong> unnavo cheppe padalu. Ivi lo <strong>Client</strong> chala mukhyam — deeni ki web lo equivalent ledu, anduke kotta vaallu ikkade confuse avutaru.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **Client** (German: **Mandant**) | A completely separate set of **business data** inside one SAP system. Stored in the `MANDT` field, the first key of nearly every table | Data in client 100 is invisible in client 200 — same programs, same database. "I can't see your record" is almost always a client mismatch | **Daily** |
+| **Client-dependent** | Data that belongs to one client — table *rows*, config, business documents | This is most business data | **Daily** |
+| **Client-independent** | Objects shared by all clients — programs, tables, DDIC objects, classes | Your Z table's **definition** exists everywhere; its **rows** do not | **Daily** |
+| **SID** | The 3-character System ID, e.g. `S4H`, `DEV` | Shown in the status bar; how people name systems in conversation | **Daily** |
+| **Instance / Application server** | The middle tier that runs ABAP, between the GUI and the database | Explains why "the server is slow" is not a GUI problem | Know it |
+| **Landscape** | The chain of systems: **DEV → QAS → PRD** | Your code is written in DEV and travels. Nothing is written directly in production | **Know it** |
+| **Work process** | A server slot that executes one request. Types: dialog, background, update, enqueue, spool | Explains why long-running work must be a background job | Know it |
+| **Dialog step** | One round trip: you press Enter, the server processes, a screen returns | Dialog steps are **time-limited** (often ~10 min). Exceed it and you get a `TIME_OUT` dump | **Know it** |
+
+**The one to be sure about: client.** A single S/4HANA system can host development (client 100), training (200) and a sandbox (300) at once. Same programs, three separate worlds of data.
+
+**Anchor to what you know:** one WordPress installation serving several sites from one database, where every table has a `site_id` and every query silently filters on it. In SAP that column is `MANDT`, and the filter is added by the runtime automatically — you never write it in your SELECT.
+
+---
+
+## T2. Getting Around
+
+**Simple definition:** the words for navigation — how you reach a screen and how many you can have open.
+
+<p class="te"><strong>Telugu:</strong> Navigation padalu. <strong>T-code</strong> ye anni kanna mukhyam — adi SAP lo URL laantidi. T-codes telisthe nuvvu vegam ga pani chestavu, teliyakapote menu lo vetukutune untavu.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **Transaction code (T-code)** | A short name — `SE11`, `VA03`, `ME23N` — that jumps straight to a program or screen | **The single most-used concept in SAP GUI.** Typed into the command field. Defined in SE93, stored in table `TSTC` | **Daily** |
+| **Transaction** (business sense) | A complete business action — creating a sales order, posting an invoice | The same word means two different things; context tells you which | **Daily** |
+| **Session** | One SAP GUI window. Usually up to six per user | Two sessions side by side — code in one, table data in the other — is the standard developer workflow | **Daily** |
+| **Command field** | The white box at the top left where T-codes are typed | `/n` = same window, `/o` = new window | **Daily** |
+| **SAP Easy Access** | The tree screen you land on after logging in | Its **Favorites** list is the only part most people use | Daily |
+| **SPRO / IMG** | The **Implementation Guide** — the tree where all configuration is done | Where functional consultants live. You will be sent here to check a setting | **Know it** |
+| **Screen / Dynpro** | One SAP screen, classical style, identified by a 4-digit number | Legacy UI technology, still everywhere in old code | Aware |
+
+**Interview relevance:** *"How do you find a transaction code you don't know?"* is a real screening question. The answer: `SEARCH_SAP_MENU`, SE93 with a wildcard, or table `TSTCT` in SE16N.
+
+---
+
+## T3. Where Code Lives — Repository, Package, Transport
+
+**Simple definition:** the words describing how development objects are stored and how they move between systems.
+
+<p class="te"><strong>Telugu:</strong> Nee code ekkada untundi, DEV nunchi PROD ki ela veltundi — ee padalu adi cheptayi. <strong>Transport</strong> ante SAP lo deployment. Git lo commit + push laage, kaani ikkada <strong>revert cheyyadam kastam</strong> — anduke prathi company deeni meeda gattiga control pedutundi.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **Repository** | The store of every development object — programs, tables, classes, CDS views | Client-independent. Browsed with SE80 or SE84 | Know it |
+| **Package** (old name: **Development class**) | A folder for repository objects that also decides transportability | Every object must be in one. Group your work properly and reviewers notice | **Daily** |
+| **`$TMP` / Local object** | The temporary personal package | **Cannot be transported.** Fine for scratch work, fatal for anything you need to ship | **Daily** |
+| **Namespace** | The name prefix reserved for you: **Z** and **Y** are the customer namespace | Guarantees your objects never collide with SAP's. Registered namespaces look like `/ABCD/` | **Daily** |
+| **Transport request** | A numbered container recording your changes so they can move to QAS and PRD | **This is deployment in SAP.** Created when you save a transportable object | **Daily** |
+| **Task** | Your personal slice inside a request | You release your task, then the request is released as a whole | **Daily** |
+| **Workbench request** | Holds repository objects — programs, tables, classes | What developers create | **Daily** |
+| **Customizing request** | Holds configuration settings, client-specific | What functional consultants create | Know it |
+| **TMS** | Transport Management System — the basis tool that imports requests into the next system | Explains why you cannot deploy on your own | Know it |
+| **Modification** | Changing SAP's **own** standard code | Requires an access key, and breaks or complicates every future upgrade. **Avoid — use an enhancement** | **Know it** |
+| **Access key (SSCR)** | The key SAP issues to permit modifying a standard object | Being asked for one is your signal to stop and find an enhancement instead | Aware |
+
+**Anchor to what you know:** a task is your commit, a request is the pull request, and releasing is the merge. The important difference: SAP transports **objects in their current state**, not diffs, and rollback is genuinely hard. That is why production imports are scheduled, controlled events everywhere.
+
+---
+
+## T4. The Data Dictionary (DDIC)
+
+**Simple definition:** **DDIC** — the ABAP Dictionary — is SAP's central catalogue of every data definition in the system: tables, fields, types, views, help and locks.
+
+<p class="te"><strong>Telugu:</strong> DDIC ante SAP lo <strong>data yokka master catalogue</strong>. Tables, fields, types — anni ikkade define chestaru. Idi kevalam "database schema" kaadu — deenilo <strong>artham (meaning), labels, help text, validation</strong> anni untayi. Anduke SAP lo oke sari define cheste, system antha aa marpu vastundi.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **DDIC / ABAP Dictionary** | The central metadata store, maintained in **SE11** | Everything about data starts here. Interviewers open with "what is DDIC?" | **Daily** |
+| **Domain** | The **technical** layer — data type, length, decimals, allowed values | Define once, reuse in hundreds of fields. Fixed values give free F4 help and validation | **Daily** |
+| **Data element** | The **semantic** layer — field labels and the F1 documentation, built on a domain | Change the label here and every screen in the system updates | **Daily** |
+| **Transparent table** | A DDIC table with a one-to-one database table behind it | What you create and what almost all business data uses | **Daily** |
+| **Pooled / Cluster table** | Several logical tables stored inside one physical table | Legacy. You will read them, not create them | Aware |
+| **Structure** | A named group of fields with **no** database table behind it | Used for passing data around in programs | **Daily** |
+| **Table type** | A definition of an internal table's shape | Used to type internal tables cleanly | Know it |
+| **Internal table** | An **in-memory** table inside a running program | The most-used data structure in all of ABAP | **Daily** |
+| **View** (classical) | A join across DDIC tables, defined in SE11 | Superseded by CDS views for new work | Know it |
+| **CDS view** | The modern view — associations, annotations, expressions, HANA-optimised | **The foundation of RAP and Fiori Elements.** Built in Eclipse, not SE11 | **Daily** (from Oct) |
+| **Search help** | The definition behind **F4** value help | Attach at data-element level and every field using it inherits the help | Know it |
+| **Lock object** | Generates `ENQUEUE_`/`DEQUEUE_` function modules to stop two users editing one record | The source of "Object is locked by user X" | Know it |
+| **Buffering** | Caching table rows on the application server | Speeds up small config tables; causes stale reads if misused on busy tables | Know it |
+| **Delivery class** | Says what kind of data a table holds — **A** application, **C** customizing, **L** temporary | Set when you create a table; **A** is your default | Know it |
+
+**The chain to memorise — it is asked constantly:**
+
+```
+Domain  →  Data Element  →  Table Field  →  Table
+(type)     (meaning)        (usage)        (storage)
+CHAR 1     "PR Status"      STATUS         ZPURCH_REQ
+```
+
+**Anchor to what you know:** a domain is a TypeScript type; a data element is that type plus i18n labels and documentation; the field is a variable declared with it. You already know why shared types beat repeating `string` everywhere — this is the same argument across 90,000 tables.
+
+---
+
+## T5. The Three Kinds of Data
+
+**Simple definition:** SAP sorts all data into three buckets, and which bucket something is in decides where it is created, who owns it, and how it moves between systems.
+
+<p class="te"><strong>Telugu:</strong> SAP lo data <strong>moodu rakalu</strong>. Idi chala mukhyam, endukante prathi rakam <strong>vere vidhanga</strong> create avutundi inka vere vidhanga systems madhya veltundi. Interviews lo "master data vs transaction data teda emiti?" ani <strong>tappaka</strong> adugutaru.</p>
+
+| Kind | What it is | Examples | How it moves | Use? |
+|---|---|---|---|---|
+| **Master data** | Relatively stable business entities, reused across many documents | Customer, vendor, material, employee, G/L account | Created by users in each system; migrated at go-live | **Know it** |
+| **Transaction data** | Day-to-day business documents, created constantly | Sales order, purchase order, invoice, goods movement | Never transported — created by users | **Know it** |
+| **Configuration (Customizing) data** | Settings that make SAP behave the way this company works | Tax rates, document types, plant definitions, number ranges | **Transported** via customizing requests | **Know it** |
+
+**The distinction in one sentence:** *master data is who and what, transaction data is what happened, configuration is the rules.*
+
+**Organisational structure — the config terms you will meet constantly:**
+
+| Term | What it is |
+|---|---|
+| **Client** | The top level — the whole company group's data set |
+| **Company code** | A **legal entity** that produces its own balance sheet, e.g. "India Ltd" vs "US Inc" |
+| **Plant** | A physical location — factory, warehouse, branch |
+| **Storage location** | A place inside a plant where stock sits |
+| **Sales organisation** | The unit responsible for selling in a market |
+| **Purchasing organisation** | The unit responsible for buying |
+| **Number range** | The scheme that assigns document numbers (maintained in SNRO) |
+
+**Why an ABAP developer needs these:** your SELECT statements will filter on `BUKRS` (company code) and `WERKS` (plant) constantly. When a functional consultant says "only for the Bangalore plant", they mean a `WERKS` value in your WHERE clause.
+
+---
+
+## T6. Programs and Code
+
+**Simple definition:** the words for the different kinds of ABAP object, and for extending SAP without breaking it.
+
+<p class="te"><strong>Telugu:</strong> ABAP lo <strong>enni rakala</strong> code objects untayo cheppe padalu. Ikkada chala mukhyamainadi — <strong>Enhancement</strong> inka <strong>Modification</strong> teda. SAP code ni direct ga marchadam (modification) <strong>tappu</strong>; pakkana kalapadam (enhancement) <strong>sari</strong>. Idi interviews lo tappaka vastundi.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **Report / Executable program** | A program you run with F8, often with a selection screen | Your first and most common program type | **Daily** |
+| **Include** | A code fragment pulled into another program at compile time | Splits big programs; you will read many | Know it |
+| **Subroutine (FORM / PERFORM)** | Old-style reusable code block inside a program | Legacy — read it, do not write new ones | Aware |
+| **Function module** | A reusable procedure living in a **function group**; can be made remote-callable | Still everywhere. Built and tested in SE37 | **Know it** |
+| **BAPI** | A **Business API** — a standardised, RFC-enabled function module operating on a business object | The **supported** way to create SAP documents from code or from outside. Its interface is guaranteed stable across upgrades | **Know it** |
+| **Class / Method** | Object-oriented ABAP, built in SE24 | **Mandatory** — ABAP Cloud and RAP are 100% OO | **Daily** |
+| **Enhancement** | Adding your logic to SAP standard **without changing SAP's code** | The correct way to customise behaviour | **Know it** |
+| **BAdI** | Business Add-In — the modern, object-oriented enhancement mechanism (SE18/SE19) | The one you will most often be asked to implement | **Know it** |
+| **User exit / Customer exit** | Older enhancement mechanisms (CMOD/SMOD) | Legacy but still live in older systems | Aware |
+| **Activation** | Compiling a saved object into a runnable version (**Ctrl+F3**) | **Save is not Activate.** Forgetting this is the classic beginner time-waster | **Daily** |
+| **Where-used list** | Shows everywhere an object is referenced (Ctrl+Shift+F3) | Your impact analysis tool before changing anything | **Daily** |
+| **Short dump** | A runtime error with a full call stack and variable state, viewed in **ST22** | Reading one confidently is a genuine interview differentiator | **Know it** |
+
+**The enhancement-vs-modification answer, ready to say out loud:** *"A modification changes SAP's own code — it needs an access key and it makes every future upgrade painful. An enhancement adds my logic at a defined point without touching SAP's source, so upgrades stay clean. In S/4HANA this is formalised as clean core: extend through released APIs and extension points, never by modifying."*
+
+---
+
+## T7. How Work Actually Runs
+
+**Simple definition:** the words describing execution — interactive versus scheduled, and the transaction model that decides whether your data is really saved.
+
+<p class="te"><strong>Telugu:</strong> Code <strong>ela run avutundo</strong> cheppe padalu. Ikkada <strong>LUW</strong> inka <strong>COMMIT WORK</strong> chala mukhyam — nuvvu database ki data raasinappudu, adi <strong>nijamga</strong> save avvadam eppudu jarugutundo ee padalu cheptayi. SQL lo transaction telisina neeku idi sulabham.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **Dialog processing** | Interactive execution — a user is waiting | **Time-limited.** Long work here produces a `TIME_OUT` dump | **Know it** |
+| **Background job (batch)** | Scheduled execution with no user and no time limit (SM36 to create, SM37 to watch) | Where all long-running work belongs — data loads, nightly reports | **Know it** |
+| **LUW (Logical Unit of Work)** | A set of database changes that must all succeed or all fail | The SAP equivalent of a database transaction | **Know it** |
+| **`COMMIT WORK`** | Makes the changes permanent and ends the LUW | Without it, your inserts can be silently rolled back | **Know it** |
+| **`ROLLBACK WORK`** | Discards everything since the last commit | Your error path | Know it |
+| **Update task** | Database updates handed to a separate work process to run asynchronously | Why a user can see "saved" and the data still fail later — visible in SM13 | Know it |
+| **Enqueue / Dequeue** | Setting and releasing an application lock | Prevents two users overwriting one record; current locks shown in SM12 | Know it |
+| **Spool request** | Output queued for printing or download | How reports reach paper or PDF | Aware |
+
+**Anchor to what you know:** the LUW is your SQL `BEGIN … COMMIT`. The unfamiliar part is the **update task** — SAP often defers the actual database write to a separate process for throughput, which means "the screen said success" and "the row is in the table" are not always the same instant. That is what SM13 exists to investigate.
+
+---
+
+## T8. Talking to Other Systems
+
+**Simple definition:** the integration vocabulary — how SAP exchanges data with other SAP systems and with the outside world.
+
+<p class="te"><strong>Telugu:</strong> SAP vere systems tho <strong>ela maatladutundo</strong> cheppe padalu. Purathanam: RFC, IDoc, ALE. Kotta vidhanam: <strong>OData</strong>. Nuvvu OData meeda concentrate cheyyali — adi nee Fiori inka RAP ki base. Kaani IDoc, BAPI, RFC ane padalu prathi project lo vintavu, kabatti avi emito telisi undali.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **RFC** | Remote Function Call — calling a function module in another system | The classic SAP-to-SAP mechanism. Destinations configured in **SM59** | **Know it** |
+| **BAPI** | A stable, RFC-enabled business API | The supported route for external systems to create SAP documents | **Know it** |
+| **IDoc** | **Intermediate Document** — a structured message format for exchanging business documents | The workhorse of SAP EDI. Monitored in WE02/WE05, tested in WE19 | **Know it** |
+| **ALE** | Application Link Enabling — the framework that distributes data between SAP systems using IDocs | You will hear it alongside IDoc | Aware |
+| **OData** | SAP's modern REST-style protocol for exposing data and operations | **Your track.** What Fiori consumes and what RAP produces | **Daily** (from Oct) |
+| **SAP Gateway** | The component that exposes ABAP logic as OData services | The bridge between your ABAP and your Fiori app | **Daily** (from Oct) |
+| **Web service / SOAP** | XML-based service calls | Older integration style; still present | Aware |
+| **CPI / Integration Suite** | SAP's cloud middleware on BTP | The modern answer to "how do we connect system A to system B?" | Aware |
+
+**The one-line comparison worth having ready:** *"IDoc and RFC are the classic, batch-friendly, SAP-to-SAP mechanisms. OData is the modern, HTTP-based, real-time one — it is what Fiori and any web or mobile client uses. New development goes OData; existing landscapes are full of IDocs."*
+
+---
+
+## T9. Users, Roles and Authorizations
+
+**Simple definition:** how SAP decides who may do what.
+
+<p class="te"><strong>Telugu:</strong> Evaru em cheyyochu ani SAP ela decide chestundo — ee padalu adi cheptayi. Developer ki idi lothuga avasaram ledu, kaani <strong>SU53</strong> matram telisi undali — "naaku authorization ledu" ani user cheppinappudu modata adi ye teruchali.</p>
+
+| Term | What it is | Why it matters | Use? |
+|---|---|---|---|
+| **User master record** | The user account itself, maintained in SU01 | Holds your ID, roles, defaults and validity | Know it |
+| **Role** | A bundle of authorizations, built in **PFCG** | Users get access by being assigned roles, never individually | Know it |
+| **Authorization object** | A named permission with fields and allowed values, e.g. `S_TCODE` for transaction access | The actual unit SAP checks in code with `AUTHORITY-CHECK` | **Know it** |
+| **Profile** | The technical object generated from a role and attached to the user | Mostly invisible day to day | Aware |
+| **SU53** | Shows the **last failed** authorization check for a user | **The first thing to open** when someone reports "no authorization" | **Know it** |
+| **Segregation of Duties (SoD)** | Rules preventing one person holding conflicting rights (e.g. create a vendor *and* pay it) | An audit requirement on every real project | Aware |
+
+**What a developer actually does with this:** you write `AUTHORITY-CHECK` in your programs so custom reports respect the same rules as standard SAP. Interviewers ask whether you *know* to do it — omitting it is a common finding in code reviews.
+
+---
+
+## T10. Project Vocabulary
+
+**Simple definition:** the words spoken in meetings rather than typed into screens. Knowing them is what makes you sound like someone who has been on a project.
+
+<p class="te"><strong>Telugu:</strong> Ivi screen lo type chese padalu kaadu — <strong>meetings lo maatlade</strong> padalu. Ivi telisthe nuvvu "project chusina manishi" laaga anipistavu, "kevalam course chesina manishi" laaga kaadu. Interview lo idi pedda teda.</p>
+
+| Term | What it means | Why it matters |
+|---|---|---|
+| **Functional consultant** | Knows the business process and configures SAP; writes the requirement | The person who will hand you your work |
+| **Technical consultant / ABAPer** | Writes the code | **You** |
+| **FS — Functional Spec** | The business requirement document from the functional consultant | The input to your work |
+| **TS — Technical Spec** | Your document describing how you will build it | You write this before coding |
+| **Fit-to-standard** | Workshops deciding what SAP can do as delivered vs what needs building | Determines how much custom code a project has |
+| **Custom code / Z-code** | Everything built for this customer, in the Z namespace | Your output |
+| **Clean core** | The principle of keeping S/4HANA standard and extending via released APIs and side-by-side apps | **The defining architectural idea of 2026 SAP** — expect a question on it |
+| **Sandbox** | A throwaway system for experiments | Where you try things without consequence |
+| **Golden client** | The client holding the master configuration | Config is done here and transported out |
+| **Cutover** | The switch-over activities at go-live — final data loads, freezes | Intense, planned to the hour |
+| **Go-live** | The day the system starts running the real business | |
+| **Hypercare** | The support period straight after go-live | All hands, fast fixes |
+| **Ticket / Incident** | A reported problem in a running system | Most of a support project's work |
+| **Change request (CR)** | A request for new or changed functionality | Most of a development project's work |
+| **Greenfield / Brownfield / Bluefield** | New implementation / system conversion / selective migration | The three ways to get to S/4HANA — see Part F4 |
+
+**Why this table earns its place:** in a December interview, *"have you worked on a project?"* is answered honestly with no. But being able to say *"I understand the flow — the functional consultant writes an FS, I write the TS and build it in DEV, it moves by transport to QAS for testing, then to PRD"* demonstrates that you understand how the work happens. That is worth a great deal more than another memorised syntax rule.
+
+---
+
+## T11. The Twenty Terms to Know Cold
+
+**Simple definition:** if you learn nothing else from this part, learn these — they carry the most weight per word in an interview.
+
+<p class="te"><strong>Telugu:</strong> Ee <strong>iravai (20) padalu</strong> matram gattiga nerchuko. Interview lo ivi ye ekkuva sarlu vastayi. Prathi dhaaniki <strong>oka vaakyam</strong> lo jawaabu cheppagalagali — pedda explanation avasaram ledu.</p>
+
+| # | Term | The one-sentence answer |
+|---|---|---|
+| 1 | **Client** | A separate set of business data inside one SAP system, keyed by `MANDT` |
+| 2 | **T-code** | A shortcut name that launches a program or screen |
+| 3 | **DDIC** | The ABAP Dictionary — SAP's central catalogue of all data definitions |
+| 4 | **Domain vs Data element** | Domain = technical type and allowed values; data element = meaning, labels and F1 help |
+| 5 | **Transparent table** | A DDIC table with a one-to-one database table behind it |
+| 6 | **Internal table** | An in-memory table inside a running ABAP program |
+| 7 | **Package** | A folder for repository objects that decides transportability; `$TMP` cannot be transported |
+| 8 | **Transport request** | The container that moves your changes from DEV to QAS to PRD |
+| 9 | **Master vs Transaction data** | Master = stable entities (customer, material); transaction = documents (orders, invoices) |
+| 10 | **Customizing** | Configuration done in SPRO, moved by customizing requests |
+| 11 | **Function module vs BAPI** | A BAPI is a standardised, RFC-enabled function module on a business object, with a stable interface |
+| 12 | **Enhancement vs Modification** | Enhancement adds logic without touching SAP code; modification changes SAP code and breaks upgrades |
+| 13 | **BAdI** | The modern object-oriented enhancement mechanism |
+| 14 | **Activation** | Compiling a saved object so it actually runs — Save is not Activate |
+| 15 | **LUW / COMMIT WORK** | A logical unit of work; all changes succeed or all fail |
+| 16 | **Lock object** | Generates enqueue/dequeue modules so two users cannot edit one record |
+| 17 | **CDS view** | The modern HANA-optimised view with associations and annotations — the base of RAP |
+| 18 | **OData** | The REST-style protocol Fiori uses to talk to the backend |
+| 19 | **RAP** | The RESTful Application Programming model — how modern OData services are built in ABAP |
+| 20 | **Clean core** | Keep S/4HANA standard; extend through released APIs and side-by-side apps |
+
+**How to practise these:** cover the right column and say each answer out loud. Twenty terms, one sentence each — ten minutes a day for a week and they are permanent. Do this in November, before the December applications go out.
+
+---
+
+## T12. Putting the Vocabulary Together
+
+**Simple definition:** one paragraph using the words in context, so you can hear how they sound in a real sentence.
+
+<p class="te"><strong>Telugu:</strong> Ee padalu anni kalipi oka nija sentence lo ela vinipistayo chuduu. Ee paragraph ni <strong>ardham chesukogalithe</strong>, ee part motham nee ki vachinattu.</p>
+
+> "The functional consultant wrote an **FS** for a new purchase-requisition approval report. I wrote the **TS**, then built it in **DEV** client 100. I created a **transparent table** in **DDIC** with a **domain** and **data elements** for the status field, put everything in a **Z package**, and it went onto a **workbench transport request**. The logic reads **master data** for the vendor and **transaction data** for the requisition, respects the **company code** the user is authorised for via an `AUTHORITY-CHECK`, sets an **enqueue lock** before updating, and issues a **COMMIT WORK**. Because the requirement needed extra logic inside standard SAP, I used a **BAdI** rather than a **modification** — **clean core**. Once **activated** and unit-tested, I released the **task** and the **request**, and basis imported it to **QAS**. After testing it goes to **PRD** at the next **cutover**."
+
+**Read that paragraph again in a week.** If every bolded word is obvious, you have the working vocabulary of an SAP developer — and that is genuinely most of what "sounding experienced" consists of.
+
+**Where to go next:** for the SAP GUI screens where most of these words appear, use the **SAP GUI — The Complete Tour** guide. For the ABAP syntax behind them, the **ABAP Notes**. For the front end, the **Fiori & UI5 Notes**.
+
+---
+
+# Part U — The SAP Product Universe
+
+*SAP sells hundreds of things. Most people who work with SAP for years still could not name half of them, and job descriptions assume you recognise the names. This part gives you the **map** — what each product is, who uses it, and how they connect. You will not use most of them. You need to **recognise every one** and know where it sits.*
+
+<p class="te"><strong>Telugu:</strong> SAP vandala products ammutundi. Chala mandi years paatu SAP lo pani chesina kuda sagam perlu cheppaleru — kaani job descriptions lo, meetings lo ee perlu vastune untayi. Ee part neeku <strong>map</strong> istundi: prathi product emiti, evaru vaadutaru, avi ela kalustayi. Nuvvu vaatilo <strong>chala varaku vaadavu</strong> — kaani prathi peru <strong>vinnappudu adi emito telisi undali</strong>. Adi chaalu.</p>
+
+**Portfolio facts here were web-verified in August 2026.** SAP renames and repackages faster than any other enterprise vendor, so treat product *names* as perishable and the *layers* as stable.
+
+---
+
+## U1. The Frame — "SAP Business Suite" (2025 Onward)
+
+**Simple definition:** in February 2025 SAP relaunched the name **SAP Business Suite** — not as one product, but as the umbrella architecture tying together three pillars: **Applications**, **Data**, and **AI**.
+
+<p class="te"><strong>Telugu:</strong> February 2025 lo SAP <strong>"SAP Business Suite"</strong> ane peru malli teesukoccindi. Idi <strong>oka product kaadu</strong> — idi oka <strong>architecture vision</strong>: (1) Applications — S/4HANA inka LoB apps, (2) Data — Business Data Cloud, (3) AI — Joule. Ee moodu kalisi pani cheyyali ani SAP yokka 2026 strategy. Interviews lo idi adigithe, ee moodu pillars cheppu.</p>
+
+```mermaid
+graph TD
+  subgraph AI["3 · BUSINESS AI"]
+    J["Joule · Joule Agents<br/>Joule Studio"]
+  end
+  subgraph DATA["2 · DATA"]
+    B["SAP Business Data Cloud<br/>(Datasphere + SAC + Databricks)"]
+  end
+  subgraph APPS["1 · APPLICATIONS"]
+    S["S/4HANA"]
+    L["SuccessFactors · Ariba<br/>Concur · Fieldglass · CX"]
+  end
+  P["SAP BTP — the platform everything is built and extended on"]
+  APPS --> DATA
+  DATA --> AI
+  AI -.->|"acts on"| APPS
+  P --- APPS
+  P --- DATA
+  P --- AI
+  style B fill:#4f46e5,color:#fff
+  style J fill:#0a6ed1,color:#fff
+  style P fill:#107e3e,color:#fff
+```
+
+| Pillar | What it means | The products |
+|---|---|---|
+| **1. Applications** | The systems that run business processes | S/4HANA, SuccessFactors, Ariba, Concur, Fieldglass, Customer Experience |
+| **2. Data** | One governed layer so all that data is usable together | **SAP Business Data Cloud** |
+| **3. AI** | Intelligence that reads the data and acts inside the apps | **Joule**, Joule Agents, Joule Studio |
+
+**A naming warning that trips people up:** "SAP Business Suite" was *also* the name of the old ECC-era bundle (2007–2015). If an older colleague says "Business Suite" they may mean the legacy thing. Since 2025 the name means the modern three-pillar architecture. Context tells you which.
+
+**Why this frame is worth learning first:** every product below fits into one of the three pillars, plus the platform underneath. Once you can place a product in a pillar, you understand roughly what it does even if you have never touched it.
+
+---
+
+## U2. The Core ERP Family
+
+**Simple definition:** the ERP itself — the system that holds finance, logistics, and the business processes. Everything else orbits this.
+
+<p class="te"><strong>Telugu:</strong> ERP ye SAP yokka <strong>gundelu (heart)</strong>. Migilinavi anni deeni chuttu tirugutayi. Ikkada mukhyam — <strong>oke S/4HANA ki moodu rakala editions</strong> unnayi, inka avi <strong>chala vere</strong>. Nuvvu e edition meeda pani chestunnavo, adi nee code ni, nee freedom ni decide chestundi.</p>
+
+| Product | What it is | Who runs it | Your relevance |
+|---|---|---|---|
+| **SAP S/4HANA** (on-premise) | The full ERP, installed in the customer's own data centre | The customer | **High** — classic ABAP, full freedom, most custom code |
+| **S/4HANA Cloud, Private Edition** | The same product, single-tenant, hosted and managed by SAP. Sold through **RISE** | SAP manages infra | **High** — near on-prem capability, most common target today |
+| **S/4HANA Cloud, Public Edition** | Multi-tenant SaaS. Standardised, quarterly upgrades. Sold through **GROW** | SAP | **High** — **ABAP Cloud only**, extensions must be clean-core |
+| **SAP ECC** | The previous-generation ERP | The customer | **Know it** — mainstream maintenance ends 2027 (extensions to 2030/2033). Most migration projects start here |
+| **SAP Business One** | A separate, simpler ERP for small businesses | Partner-hosted | Aware — different codebase, no ABAP |
+| **SAP Business ByDesign** | Older SMB cloud ERP | SAP | Aware — de-emphasised; SAP steers SMB to GROW |
+
+**The difference that will affect your daily work:**
+
+| | On-prem / Private (RISE) | Public (GROW) |
+|---|---|---|
+| **ABAP you may write** | Classic ABAP **and** ABAP Cloud | **ABAP Cloud only** |
+| **Table access** | Any table directly | Only **released** APIs and CDS views |
+| **Upgrades** | You choose when | Quarterly, automatic |
+| **Modifications** | Technically possible | **Impossible** |
+| **Where extensions live** | On-stack or side-by-side | Developer extensibility on-stack, or side-by-side on BTP |
+
+**Why this matters to you specifically:** the ABAP Cloud restrictions your Launch Plan keeps mentioning are not academic. They are what Public Edition *enforces*, and they are increasingly the standard everywhere because of clean core. Learning ABAP Cloud rules now means you can work on any of the three; learning only classic ABAP limits you to the oldest.
+
+---
+
+## U3. The Bundles — RISE and GROW
+
+**Simple definition:** RISE and GROW are not products. They are **commercial packages** that bundle an S/4HANA edition with infrastructure, tools and services into one contract.
+
+<p class="te"><strong>Telugu:</strong> RISE inka GROW — ivi <strong>products kaadu</strong>, ivi <strong>packages (contracts)</strong>. Software + infrastructure + tools + services anni kalipi oke contract lo ammutaru. RISE = pedda companies, purathana system nunchi migrate ayyevaallu. GROW = kotta / chinna companies, direct ga cloud lo modalu pettevaallu. Interviews lo "RISE vs GROW teda?" ani <strong>tappaka</strong> adugutaru.</p>
+
+| | **RISE with SAP** | **GROW with SAP** |
+|---|---|---|
+| **Underlying product** | S/4HANA Cloud, **Private** Edition | S/4HANA Cloud, **Public** Edition |
+| **Who it is for** | Existing SAP customers migrating from ECC | New or smaller customers starting fresh |
+| **Approach** | Bring your processes, transform gradually | Adopt SAP standard, "fit-to-standard" |
+| **Customisation** | Extensive | Deliberately limited |
+| **Typically bundles** | The ERP, hyperscaler infra, BTP credits, Signavio, LeanIX, Cloud ALM, tools | The ERP, BTP credits, Build, learning, Cloud ALM |
+
+**The one-line answer for an interview:** *"RISE is for existing customers moving their own processes to a managed private cloud; GROW is for customers adopting SAP standard in the public cloud. Both bundle S/4HANA with infrastructure and platform services — they are commercial packages, not separate products."*
+
+---
+
+## U4. The Line-of-Business Cloud Suite
+
+**Simple definition:** the specialist cloud applications, almost all acquired, each owning one business function that S/4HANA does not do best itself.
+
+<p class="te"><strong>Telugu:</strong> Ivi <strong>SAP konna companies</strong> — prathi okkati oka business function ki specialist. HR ki SuccessFactors, procurement ki Ariba, travel expenses ki Concur. Ivi S/4HANA tho <strong>integrate</strong> avutayi, kaani <strong>vere products</strong>, vere technology. Nuvvu vaatilo code raayavu, kaani <strong>perlu, avi em chestayo</strong> telisi undali — meetings lo ivi roju vinipistayi.</p>
+
+| Product | Function | Acquired | Integrates with S/4HANA for |
+|---|---|---|---|
+| **SAP SuccessFactors** | HR / Human Experience Management — the whole employee lifecycle | 2012 | Employee master data → payroll and cost centres |
+| **SmartRecruiters** | AI-powered recruiting, now part of the HCM portfolio | **2025** | Feeds hires into SuccessFactors |
+| **SAP Ariba** | Procurement and the supplier network | 2012 | Purchase requisitions, POs, invoices |
+| **SAP Concur** | Travel and expense management | 2014 | Expense reports → financial postings |
+| **SAP Fieldglass** | External / contingent workforce and services procurement | 2014 | Contractor costs and time |
+| **SAP Customer Experience (CX)** | The customer-facing family — see below | various | Orders, customers, pricing |
+| **SAP Signavio** | Process mining and process management | 2021 | Analyses how your processes actually run |
+| **SAP LeanIX** | Enterprise architecture management | 2023 | Maps the whole application landscape |
+| **WalkMe** | Digital adoption — in-app guidance overlays | 2024 | Helps users through any SAP screen |
+
+**Inside SAP Customer Experience:**
+
+| | What it does |
+|---|---|
+| **Sales Cloud** | CRM, quotes, sales performance (from CallidusCloud, 2018) |
+| **Service Cloud** | Customer service and ticketing |
+| **Commerce Cloud** | E-commerce storefronts (from Hybris, 2013) |
+| **Emarsys** | Marketing automation and campaigns (2020) |
+| **Customer Data Cloud** | Consent, identity and profile management (from Gigya, 2017) |
+
+**One correction worth carrying, because it is commonly got wrong:** **Qualtrics is no longer an SAP product.** SAP acquired it in 2018 and **sold it in 2023** to Silver Lake and CPP Investments. Older blog posts and training decks still list it under SAP. Saying "SAP owns Qualtrics" in an interview dates your knowledge by three years.
+
+---
+
+## U5. Supply Chain, Manufacturing and the Business Network
+
+**Simple definition:** the products that plan, move and make physical things — the area where the most ABAP work outside finance happens.
+
+<p class="te"><strong>Telugu:</strong> Physical vastuvulu — plan cheyyadam, tayaru cheyyadam, taralinchadam. Finance tarvaata <strong>ABAP work ekkuva ee area lo ne</strong> untundi. Anduke ee perlu telisi undadam neeku upayogam.</p>
+
+| Product | What it does |
+|---|---|
+| **SAP Integrated Business Planning (IBP)** | Demand, supply and inventory planning in the cloud |
+| **SAP Extended Warehouse Management (EWM)** | Detailed warehouse operations — putaway, picking, packing |
+| **SAP Transportation Management (TM)** | Freight planning, carrier selection, freight cost |
+| **SAP Digital Manufacturing** | Shop-floor execution and machine integration |
+| **SAP Asset Performance Management** | Predictive maintenance on equipment |
+| **SAP Business Network** | The supplier/logistics/asset networks where companies transact with each other — Ariba Network is the largest part |
+
+**Why an ABAP developer meets these:** EWM and TM run *inside* or alongside S/4HANA and are heavily extended with custom ABAP. If a job description says "S/4HANA EWM" it is asking for an ABAP developer who knows warehouse processes — a well-paid niche and a reasonable specialisation to grow into later.
+
+---
+
+## U6. SAP BTP — the Platform, Service by Service
+
+**Simple definition:** **SAP Business Technology Platform** is the cloud platform where everything gets extended, integrated, analysed and automated. It is not one product — it is a catalogue of services you subscribe to individually.
+
+<p class="te"><strong>Telugu:</strong> BTP ante <strong>oka product kaadu</strong> — adi <strong>services catalogue</strong>. Neeku kavalasina service ni teesukuni vaadutavu. Nee ki mukhyam: <strong>ABAP Environment</strong> (RAP ikkade practice chestavu), <strong>Build Work Zone</strong> (Fiori Launchpad), inka <strong>Integration Suite</strong>. Migilinavi telisthe chaalu.</p>
+
+| Group | Service | What it does | Your relevance |
+|---|---|---|---|
+| **App development** | **ABAP Environment** | ABAP Cloud + RAP as a cloud service — **the free trial you should be using** | **Daily from Oct** |
+| | **Cloud Foundry** | Runtime for Node.js, Java, Python apps | Know it |
+| | **Kyma** | Managed Kubernetes runtime | Aware |
+| | **CAP** | The Node/Java framework for building services | Know it |
+| | **SAP Build Apps** | Low-code app builder | Aware |
+| | **SAP Build Code** | AI-assisted pro-code development | Aware |
+| | **SAP Build Work Zone** | The modern Fiori Launchpad / entry portal | **Know it** |
+| **Integration** | **Integration Suite** | The integration hub — see U10 | **Know it** |
+| **Data** | **HANA Cloud** | HANA as a managed cloud database | Know it |
+| **AI** | **AI Core / AI Launchpad** | Run and manage AI models | Aware |
+| | **Generative AI Hub** | Governed access to LLMs | Aware |
+| | **Joule Studio** | Build custom Joule skills and agents | **Aware — your 2027 direction** |
+| **Automation** | **SAP Build Process Automation** | Workflows, business rules, RPA | Know it |
+| **Identity** | **IAS / IPS / XSUAA** | Authentication, provisioning, app authorization | Know it |
+
+**The three you should actually touch:** **ABAP Environment** (where your RAP portfolio app can live), **Build Work Zone** (where a Fiori app gets published), and **Integration Suite** (the word every integration conversation uses).
+
+**Anchor to what you know:** BTP is SAP's AWS. AWS gives you EC2, S3, RDS, Lambda as separate services on one account; BTP gives you ABAP Environment, HANA Cloud, Integration Suite, AI Core the same way. Your Phase 10 AWS notes map across almost one-to-one.
+
+---
+
+## U7. Data and Analytics — What Changed in 2026
+
+**Simple definition:** SAP consolidated its data and analytics products into one offering, **SAP Business Data Cloud**. This is the most significant recent rename in the portfolio, and getting it wrong dates you immediately.
+
+<p class="te"><strong>Telugu:</strong> Idi <strong>2025-26 lo jarigina pedda marpu</strong>. Mundu Datasphere inka SAC ani rendu vere products undevi. Ippudu avi rendu <strong>SAP Business Data Cloud (BDC)</strong> lopala kalisipoyayi — viderigga ammadam ledu. Interview lo "Datasphere teesukondi" ani cheppadam ippudu <strong>purathanam</strong>. BDC ani cheppu.</p>
+
+| Product | What it is | Status in 2026 |
+|---|---|---|
+| **SAP Business Data Cloud (BDC)** | The unified data foundation — combines Datasphere, SAP Analytics Cloud and curated SAP business data products, with **Databricks** built in | **The current answer.** Launched Feb 2025 |
+| **SAP Datasphere** | Data warehousing, virtualisation, modelling — keeps SAP business semantics intact | **Now delivered through BDC.** Removed from eligible cloud services for new BTP subscriptions from **1 Jan 2026** |
+| **SAP Analytics Cloud (SAC)** | Dashboards, reporting, and planning | Same — delivered through BDC |
+| **SAP BW/4HANA** | The classic on-premise data warehouse | Legacy; still widely running |
+| **Intelligent Applications** | Prebuilt analytical apps on BDC (formerly called *Insight Apps*) | Renamed — AI-powered, Joule-integrated |
+
+**Why SAP did this:** AI needs one governed, semantically-rich data layer. Three separate products with three data models could not give Joule a reliable view of the business. BDC is the answer to *"where does the AI get trustworthy data?"* — which is the question that decides whether enterprise AI works at all.
+
+**Your one-line version:** *"SAP Business Data Cloud is the unified data layer — it brought Datasphere and Analytics Cloud together with Databricks so that Business AI has one governed source of business data."*
+
+---
+
+## U8. Business AI — Joule and the Agents
+
+**Simple definition:** SAP's AI layer. **Joule** is the copilot embedded across SAP applications; **Joule Agents** act autonomously on business tasks; **Joule Studio** is where you build your own.
+
+<p class="te"><strong>Telugu:</strong> Idi <strong>nee long-term thesis</strong> (ABAP → RAP → BTP → Joule → agents) yokka chivari bhagam. <strong>Joule</strong> = copilot, apps lopala untundi. <strong>Joule Agents</strong> = sonthaga pani chese agents. <strong>Joule Studio</strong> = nuvvu sontha agents kattadaniki tool — idi <strong>December 2025 lo GA ayindi</strong>, ippudu vaadochu. 2027-28 lo idi nee direction.</p>
+
+| | What it is | Where it lives |
+|---|---|---|
+| **Joule** | The generative-AI copilot embedded in SAP apps — ask in natural language, it acts | Inside S/4HANA, SuccessFactors, Ariba, Concur |
+| **Joule Skills** | Individual capabilities Joule can perform — SAP ships **2,400+** | Prebuilt |
+| **Joule Agents** | Autonomous agents that carry out multi-step business tasks; SAP ships **40+** specialised agents across finance, HR, procurement, supply chain | Across the suite |
+| **Joule Studio** | The tool for building custom skills and agents, grounded in live business data. **GA December 2025**, generally accessible from Q1 2026 | SAP BTP |
+| **Generative AI Hub** | Governed access to third-party and SAP models | SAP BTP |
+| **AI Core / AI Launchpad** | Training, deploying and operating models | SAP BTP |
+| **Joule for Developers** | AI assistance for ABAP development | ADT / Build Code |
+
+**On the 2026 roadmap:** SAP has announced **Joule Work** and **Joule A2A** (agent-to-agent communication), with general availability targeted for Q4 2026 — agents coordinating with other agents rather than only with people.
+
+**Why this section matters more to you than to most readers:** your Phase 12 material — tool-calling loops, MCP, RAG, agent design — is the *same engineering* as Joule Studio, in a different wrapper. Once you have studied Phase 12 and built something, this is the part of the SAP portfolio where you have a genuinely uncommon head start. **Not for December** — for 2027 and beyond.
+
+---
+
+## U9. The Transformation Tools
+
+**Simple definition:** products that help a company decide *what* to change before anyone writes code. You will meet these on projects without ever configuring them.
+
+<p class="te"><strong>Telugu:</strong> Ivi code raayakamundu, "em marchali?" ani decide cheyyadaniki vaade tools. Nuvvu ivi configure cheyyavu, kaani <strong>project lo ee perlu vintavu</strong> — anduke telisi undali.</p>
+
+| Product | What it answers |
+|---|---|
+| **SAP Signavio** | *"How do our processes actually run today, and where do they leak time and money?"* — process mining and modelling |
+| **SAP LeanIX** | *"What applications do we own, what depends on what, and what should we retire?"* — enterprise architecture |
+| **WalkMe** | *"Users can't figure out this screen"* — in-app guidance overlaid on any application |
+| **SAP Cloud ALM** | *"How do we run the implementation and then operate it?"* — project and operations management |
+| **SAP Build Process Automation** | *"Can we automate this approval chain without a developer?"* — workflows, rules, RPA |
+
+**Signavio and LeanIX are bundled into RISE**, which is why they appear on nearly every S/4HANA migration project. If you join a migration in 2027, you will hear both names in your first week.
+
+---
+
+## U10. How They All Integrate
+
+**Simple definition:** SAP's answer to connecting all of the above is **SAP Integration Suite** on BTP — plus a set of protocols that predate it and still carry most of the traffic.
+
+<p class="te"><strong>Telugu:</strong> Ee products anni ela kalustayi? Kotta vidhanam — <strong>Integration Suite</strong> (BTP lo). Purathana vidhanalu — <strong>IDoc, RFC, BAPI</strong>. Rendu ippatiki nadustunnayi. Nee ki mukhyam: <strong>OData</strong> — adi Fiori inka RAP vaade daari.</p>
+
+```mermaid
+graph LR
+  S["S/4HANA"] --- I["SAP Integration Suite<br/>(on BTP)"]
+  H["SuccessFactors"] --- I
+  A["Ariba"] --- I
+  C["Concur"] --- I
+  I --- X["Non-SAP<br/>Salesforce · Oracle<br/>banks · logistics"]
+  I --- B["Business Data Cloud"]
+  style I fill:#4f46e5,color:#fff
+```
+
+**Inside Integration Suite:**
+
+| Capability | What it does |
+|---|---|
+| **Cloud Integration** (formerly CPI) | The pipeline engine — routes, maps and transforms messages between systems |
+| **API Management** | Publishes, secures and throttles APIs |
+| **Event Mesh** | Publish/subscribe eventing so systems react instead of polling |
+| **Open Connectors** | Prebuilt connectors to hundreds of non-SAP applications |
+| **Integration Advisor** | AI-assisted mapping between message formats |
+| **Trading Partner Management** | B2B/EDI relationships |
+
+In 2026 SAP positions Integration Suite as the **"AI integration fabric"** — the same pipes that carry business data are what ground Joule agents in real, live data. Recent releases added 15+ third-party adapters including Adobe Sign, Google Suite, Oracle, and Salesforce Service and Marketing Cloud.
+
+**The protocols underneath — know which is which:**
+
+| Protocol | Era | Used for | Your relevance |
+|---|---|---|---|
+| **OData** | Modern | Fiori, mobile, any web client, RAP services | **Daily** |
+| **REST / JSON** | Modern | Non-SAP integrations | Daily |
+| **IDoc** | Classic | Bulk business documents, EDI | Know it |
+| **RFC / BAPI** | Classic | SAP-to-SAP function calls | Know it |
+| **SOAP** | Older | Enterprise web services | Aware |
+| **Events** | Modern | Reacting to business events across systems | Know it |
+
+**Prebuilt content matters more than it sounds:** SAP ships thousands of ready-made integration flows on the **SAP Business Accelerator Hub**. On a real project, the first question is never "how do I build this integration?" but "does SAP already ship it?" Saying that in an interview signals practical judgement.
+
+---
+
+## U11. Two Real End-to-End Flows
+
+**Simple definition:** the products above, shown working together on two processes that exist at almost every SAP customer.
+
+<p class="te"><strong>Telugu:</strong> Perlu gurthupettukovadam kastam. Kaani <strong>oka process lo avi ela kalisi pani chestayo</strong> chuste, avi gurthu untayi. Ee rendu flows prathi SAP company lo untayi.</p>
+
+**Flow 1 — Hire-to-Retire (an employee's whole lifecycle):**
+
+```
+SmartRecruiters      SuccessFactors        S/4HANA            Concur
+   (recruit)   ──▶   (hire, master   ──▶   (payroll     ◀──   (expenses
+                      data, org)            posting, FI)        reimbursed)
+                            │                    │
+                            └──▶ Fieldglass ─────┘
+                                 (contractors)
+                                        │
+                              Business Data Cloud
+                              (workforce analytics)
+```
+
+| Step | Product | What moves |
+|---|---|---|
+| 1 | SmartRecruiters | Candidate becomes a hire |
+| 2 | SuccessFactors | Employee master data, org assignment, cost centre |
+| 3 | S/4HANA | Payroll results post to Finance |
+| 4 | Concur | Expense claims flow back as financial postings |
+| 5 | Business Data Cloud | Everything lands for workforce analytics |
+
+**Flow 2 — Source-to-Pay (buying something):**
+
+| Step | Product | What happens |
+|---|---|---|
+| 1 | **Ariba** | Sourcing event, supplier selected, contract signed |
+| 2 | **S/4HANA (MM)** | Purchase requisition → purchase order |
+| 3 | **Ariba Network / Business Network** | PO sent to the supplier; supplier confirms |
+| 4 | **S/4HANA (MM)** | Goods receipt posted when materials arrive |
+| 5 | **S/4HANA (FI)** | Invoice matched three ways and paid |
+| 6 | **Joule Agent** | Flags exceptions and suggests resolutions |
+| 7 | **Signavio** | Later shows where the process is slow |
+
+**Notice where you sit in flow 2:** steps 2, 4 and 5 are S/4HANA — that is where custom ABAP reports, enhancements and Fiori apps live. **Your December portfolio app is a purchase requisition approval, which is step 2.** You are not building a toy; you are building the most common object in the most common SAP process.
+
+---
+
+## U12. Where a Developer Actually Touches Each Product
+
+**Simple definition:** the honest filter — of everything above, what will actually be under your hands in your first two years.
+
+<p class="te"><strong>Telugu:</strong> Ee anni products lo, nuvvu <strong>nijamga chethulu pettedi enni?</strong> — chala thakkuva. Migilinavi <strong>perlu telisthe chaalu</strong>. Ee table chusi, ekkada time pettalo decide chesuko. Anni nerchukovadaniki try cheyyaku.</p>
+
+| Product / area | You will | When |
+|---|---|---|
+| **S/4HANA (on-stack ABAP)** | **Build in it daily** | Now → forever |
+| **ABAP Dictionary, SE11/SE80** | **Build daily** | Now |
+| **CDS + RAP** | **Build daily** | From October |
+| **SAP Gateway / OData** | **Build** | From October |
+| **Fiori / SAPUI5** | **Build** | From October |
+| **BTP ABAP Environment** | **Build** — free trial, and the portfolio app | From October |
+| **BTP Build Work Zone** | Deploy your Fiori app | Occasionally |
+| **Integration Suite** | Read flows others built; maybe extend one | Year 1–2 |
+| **SAP Build Process Automation** | Maybe build a workflow | Year 1–2 |
+| **Joule Studio** | **Your 2027–28 direction** | Later |
+| **SuccessFactors, Ariba, Concur, Fieldglass, CX** | **Recognise the names**, know what data they exchange | Never configure |
+| **Signavio, LeanIX, WalkMe, Cloud ALM** | Hear them in meetings | Never configure |
+| **Business Data Cloud, SAC** | Provide data *to* them via CDS views | Occasionally |
+| **EWM, TM, IBP** | Possible specialisation later | Optional |
+
+**The honest summary:** about **six** of the products in this part will be under your hands. The other forty you need to *recognise*, because job descriptions, meetings and interviewers assume you do. Recognition costs one reading of this part. Mastery of six is what December is for.
+
+**The interview version, if someone asks you to describe the SAP landscape:** *"S/4HANA is the ERP core. Around it sit the line-of-business clouds — SuccessFactors for HR, Ariba for procurement, Concur for travel — each integrating back through Integration Suite. Underneath is BTP, where extensions, integrations and AI are built, and Business Data Cloud unifies the data so Joule and its agents can act on it. SAP calls that whole architecture the Business Suite."*
+
+Four sentences. That is the map.
+
+**You now hold the whole map — the products, the platform, the words, and where you fit.** Go build.
