@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Vanilla Auth</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<!-- data-page tells auth.js which page it's running on,
+     so one shared script can serve all three pages. -->
+<body data-page="register">
+
+  <main class="card">
+    <h1>🔐 Create account</h1>
+    <p class="sub">Traditional signup → login → session flow, in pure JS.</p>
+
+    <!-- One message box for errors/success — auth.js writes into it -->
+    <p id="message" class="message" hidden></p>
+
+    <form id="register-form" novalidate>
+      <label>Name
+        <input id="name" autocomplete="name" placeholder="Nikhil Vanama" />
+      </label>
+
+      <label>Email
+        <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+      </label>
+
+      <label>Password
+        <input id="password" type="password" autocomplete="new-password" placeholder="At least 6 characters" />
+      </label>
+
+      <label>Confirm password
+        <input id="confirm" type="password" autocomplete="new-password" placeholder="Same password again" />
+      </label>
+
+      <button type="submit">Sign up</button>
+    </form>
+
+    <p class="alt">Already have an account? <a href="login.html">Log in</a></p>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Vanilla Auth</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<!-- THE PROTECTED PAGE.
+     The first thing auth.js does here is the GUARD:
+     no session? → immediately redirected to login.html.
+     (Try it: open this page in a private window.) -->
+<body data-page="dashboard">
+
+  <main class="card wide">
+    <div class="dash-head">
+      <h1 id="greeting">…</h1>
+      <button id="logout">Log out</button>
+    </div>
+
+    <p class="sub">You are on a <strong>protected page</strong> — it bounced you to
+       the login if you had no session.</p>
+
+    <!-- auth.js fills these three tiles from the user + session -->
+    <div class="tiles">
+      <div class="tile"><small>Member since</small><span id="member-since">…</span></div>
+      <div class="tile"><small>Session started</small><span id="session-start">…</span></div>
+      <div class="tile"><small>Session lives in</small><span id="session-where">…</span></div>
+    </div>
+
+    <div class="hint">
+      <strong>See it working:</strong> DevTools → Application → Local Storage
+      (the "users table") and Session Storage (your session). Delete the session
+      row and refresh — the guard throws you out. That's the whole mechanism.
+    </div>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>
