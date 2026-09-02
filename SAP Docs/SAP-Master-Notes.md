@@ -50,6 +50,8 @@
   - [T1. The System You Log Into](#t1-the-system-you-log-into) · [T2. Getting Around](#t2-getting-around) · [T3. Where Code Lives — Repository, Package, Transport](#t3-where-code-lives-repository-package-transport) · [T4. The Data Dictionary (DDIC)](#t4-the-data-dictionary-ddic) · [T5. The Three Kinds of Data](#t5-the-three-kinds-of-data) · [T6. Programs and Code](#t6-programs-and-code) · [T7. How Work Actually Runs](#t7-how-work-actually-runs) · [T8. Talking to Other Systems](#t8-talking-to-other-systems) · [T9. Users, Roles and Authorizations](#t9-users-roles-and-authorizations) · [T10. Project Vocabulary](#t10-project-vocabulary) · [T11. The Twenty Terms to Know Cold](#t11-the-twenty-terms-to-know-cold) · [T12. Putting the Vocabulary Together](#t12-putting-the-vocabulary-together)
 - [Part U — The SAP Product Universe](#part-u-the-sap-product-universe)
   - [U1. The Frame — "SAP Business Suite" (2025 Onward)](#u1-the-frame-sap-business-suite-2025-onward) · [U2. The Core ERP Family](#u2-the-core-erp-family) · [U3. The Bundles — RISE and GROW](#u3-the-bundles-rise-and-grow) · [U4. The Line-of-Business Cloud Suite](#u4-the-line-of-business-cloud-suite) · [U5. Supply Chain, Manufacturing and the Business Network](#u5-supply-chain-manufacturing-and-the-business-network) · [U6. SAP BTP — the Platform, Service by Service](#u6-sap-btp-the-platform-service-by-service) · [U7. Data and Analytics — What Changed in 2026](#u7-data-and-analytics-what-changed-in-2026) · [U8. Business AI — Joule and the Agents](#u8-business-ai-joule-and-the-agents) · [U9. The Transformation Tools](#u9-the-transformation-tools) · [U10. How They All Integrate](#u10-how-they-all-integrate) · [U11. Two Real End-to-End Flows](#u11-two-real-end-to-end-flows) · [U12. Where a Developer Actually Touches Each Product](#u12-where-a-developer-actually-touches-each-product)
+- [Part V — The Business Documents You Will Meet](#part-v-the-business-documents-you-will-meet)
+  - [V1. The Two Flows That Explain Everything](#v1-the-two-flows-that-explain-everything) · [V2. Where You Are — Client, Company Code, Plant](#v2-where-you-are-client-company-code-plant) · [V3. How You Get There — the T-Code](#v3-how-you-get-there-the-t-code) · [V4. Buying — the P2P Documents](#v4-buying-the-p2p-documents) · [V5. Selling — the O2C Documents](#v5-selling-the-o2c-documents) · [V6. Order Types — Cash Sale, Rush, Standard, Returns](#v6-order-types-cash-sale-rush-standard-returns) · [V7. The Words That Sit Around Them](#v7-the-words-that-sit-around-them)
 
 ---
 
@@ -2061,4 +2063,199 @@ SmartRecruiters      SuccessFactors        S/4HANA            Concur
 
 Four sentences. That is the map.
 
-**You now hold the whole map — the products, the platform, the words, and where you fit.** Go build.
+**You now hold the whole map — the products, the platform, the words, and where you fit.** One part remains: the business documents that actually flow through all of it.
+
+
+# Part V — The Business Documents You Will Meet
+
+*Parts S and T gave you the technical words. **This part gives you the business words** — the documents that actually move through an SAP system every day: purchase order, sales order, delivery, invoice, cash sale. Kept deliberately short: a one-line definition, the T-code, the table, and the Telugu. For the full story with worked examples, see **The Business Behind SAP**.*
+
+<p class="te"><strong>Telugu:</strong> Part S lo acronyms, Part T lo technical padalu unnayi. <strong>Ee part lo business padalu</strong> — SAP system lo roju kadile documents: purchase order, sales order, delivery, invoice, cash sale. <strong>Kavalane chinnaga</strong> unchanu: okka line definition, T-code, table, mariyu Telugu. Poorti katha, udaharanalu kavalante <strong>"The Business Behind SAP"</strong> doc chudu.</p>
+
+## V1. The Two Flows That Explain Everything
+
+**Simple definition:** Every business document in SAP belongs to one of **two flows**. **P2P (Procure to Pay)** is buying — money goes out. **O2C (Order to Cash)** is selling — money comes in. If you can place a document in one of these two, you understand it.
+
+<p class="te"><strong>Telugu:</strong> SAP lo prathi business document <strong>rendu flows lo</strong> okka daaniki chendinadi. <strong>P2P (Procure to Pay)</strong> = <strong>konadam</strong>, dabbu <strong>bayataki</strong>. <strong>O2C (Order to Cash)</strong> = <strong>ammadam</strong>, dabbu <strong>lopaliki</strong>. Oka document ee rendintlo ekkada padutundo cheppagalige, adi neeku ardham ayinatte.</p>
+
+<figure class="fig">
+
+```mermaid
+flowchart LR
+  subgraph P["P2P - BUYING - money out"]
+    PR["Purchase<br/>Requisition"] --> PO["Purchase<br/>Order"] --> GR["Goods<br/>Receipt"] --> IV["Invoice<br/>Verification"] --> PAY["Payment"]
+  end
+  subgraph O["O2C - SELLING - money in"]
+    SO["Sales<br/>Order"] --> DL["Delivery"] --> PGI["Goods Issue<br/>PGI"] --> BIL["Billing"] --> RCV["Incoming<br/>Payment"]
+  end
+  P ==>|"stock arrives, is used or sold"| O
+```
+
+<figcaption>The two flows. Buying fills the warehouse, selling empties it, and both post to finance automatically at every step.</figcaption>
+</figure>
+
+**The other names you will hear for the same idea:**
+
+| Short form | Full name | What it adds |
+|---|---|---|
+| **P2P** | Procure to Pay | Buying — the core one |
+| **S2P** | Source to Pay | P2P **plus** finding and negotiating with the supplier first |
+| **O2C** | Order to Cash | Selling — the core one |
+| **Q2C** | Quote to Cash | O2C **plus** the enquiry and quotation stage |
+| **Plan to Produce** | *(also abbreviated P2P)* | Making the product — sits between the two |
+| **R2R** | Record to Report | Every posting → month-end close → financial statements |
+| **H2R** | Hire to Retire | HR: hire → pay → promote → exit |
+
+<p class="pic"><strong>Careful:</strong> <strong>P2P means two different things.</strong> In a purchasing conversation it is <em>Procure to Pay</em>; in a manufacturing conversation it is <em>Plan to Produce</em>. Say the full words the first time you use it.</p>
+
+---
+
+## V2. Where You Are — Client, Company Code, Plant
+
+**Simple definition:** Before any document can exist, SAP must know **which company and which location** it belongs to. These are the organisational units, and every document carries them.
+
+<p class="te"><strong>Telugu:</strong> E document create cheyyalante mundu, adi <strong>ye company di, ye chota di</strong> ani SAP ki telisi undali. Vaatinne <strong>organisational units</strong> antaru, mariyu <strong>prathi document</strong> vaatini motukuni untundi.</p>
+
+| Term | One-line meaning | Field | Example |
+|---|---|---|---|
+| **Client** | A **separate company inside the same SAP system** — own data, own users, own config. **It is not a user role** | `MANDT` | `100` |
+| **Company Code** | The **legal entity that files a balance sheet**. The most important org unit in SAP | `BUKRS` | `1000` |
+| **Plant** | A place where you **make or store** goods | `WERKS` | `1000` factory · `1100` depot |
+| **Storage Location** | A specific store **inside** a plant | `LGORT` | `RM01` raw · `FG01` finished |
+| **Purchasing Org** | The team that negotiates with vendors | `EKORG` | `1000` |
+| **Sales Area** | Sales org + distribution channel + division. Every sales order needs one | `VKORG/VTWEG/SPART` | `1000/10/00` |
+
+<p class="te"><strong>Telugu:</strong> Ee moodintini eppudu kalapaku:<br/>— <strong>Client (`MANDT`)</strong> = "idi evari system?" Oke system lo unna <strong>vere company</strong>. Idi <strong>role kaadu</strong>. Logon screen lo type chestavu.<br/>— <strong>Company Code (`BUKRS`)</strong> = "ee dabbu ye legal company di?" <strong>Balance sheet ee level lo</strong> vastundi.<br/>— <strong>Plant (`WERKS`)</strong> = "samanu ekkada undi?" Stock, production anni ikkade.<br/><strong>Jaagratha:</strong> SAP lo <strong>client ante tenant</strong>. Nuvvu amme company ni <strong>customer</strong> (`KUNNR`) antaru. Project lo dabbu ichhe company ni kuda "client" antaru — <strong>moodu artalu</strong>, context batti ardham chesuko.</p>
+
+---
+
+## V3. How You Get There — the T-Code
+
+**Simple definition:** A **transaction code (T-code)** is a short name that points at a program — a **route**. You type it into the command field and SAP runs whatever it points to. SAP ships roughly a hundred thousand of them.
+
+<p class="te"><strong>Telugu:</strong> <strong>T-code</strong> ante oka <strong>route</strong> — chinna peru, adi oka program ni chupistundi. Nuvvu command field lo type cheste, SAP aa program ni run chestundi. Nee Express app lo <code>/orders/new</code> ante oka controller run ayinatte. SAP lo already <strong>laksha routes</strong> unnai.</p>
+
+| Type this | It does |
+|---|---|
+| `/n` + code | "Close what I am doing and go there" — `/nVA01`. **Use this always** |
+| `/o` + code | Opens a **new session** — `/oSE16N`. Like a browser tab. Up to six |
+| `/nex` | Log off immediately |
+
+**The five you need before anything else:**
+
+| T-code | Gives you | Say it as |
+|---|---|---|
+| `SE11` | Table **definition** — the schema | "Show me the structure" |
+| `SE16N` | Table **contents** — the rows | "Show me the data" |
+| `SE38` | Write and run an ABAP program | "Let me code" |
+| `SE80` | The whole workbench in one tree | "Show me the package" |
+| `ST22` | Runtime error dumps | "Why did it crash?" |
+
+<p class="pic"><strong>The trick that saves the most time.</strong> Click any field on any screen and press <strong>F1</strong>, then <strong>Technical Information</strong>. SAP tells you the exact <strong>table and field name</strong> behind that value. It is the SAP equivalent of Inspect Element, and it works everywhere.</p>
+
+---
+
+## V4. Buying — the P2P Documents
+
+**Simple definition:** Seven documents, each referencing the one before it. Steps 2 and 3 are skipped for routine repeat purchases.
+
+<p class="te"><strong>Telugu:</strong> <strong>Edu documents</strong>, prathi okati daani mundu dani <strong>reference chestundi</strong>. Rojuvari repeat purchases ki step 2, 3 ni <strong>vadilesthaaru</strong>.</p>
+
+| # | Document | What it actually is | T-code | Table |
+|---|---|---|---|---|
+| 1 | **Purchase Requisition (PR)** | **Internal** request: "we need 500 motors". The supplier never sees it. Often created automatically by MRP | `ME51N` | `EBAN` |
+| 2 | **RFQ** (Request for Quotation) | **Our question** to suppliers: "what is your price?" | `ME41` | `EKKO`/`EKPO` |
+| 3 | **Quotation** | **Their answer** — price, date, terms. Compare with `ME49` | `ME47` | `EKKO`/`EKPO` |
+| 4 | **Purchase Order (PO)** | The **legally binding order** to the chosen vendor. The central P2P document | `ME21N` | `EKKO` header · `EKPO` items |
+| 5 | **Goods Receipt (GR)** | The truck arrived. **Stock goes up.** Movement type `101` | `MIGO` | `MATDOC` |
+| 6 | **Invoice Verification** | Check the vendor's bill against the PO and the GR | `MIRO` | `RBKP`/`RSEG` |
+| 7 | **Payment** | Money leaves the bank | `F110` | `ACDOCA` |
+
+**The control in the middle — the three-way match.** SAP compares the **PO** (what we agreed), the **goods receipt** (what actually arrived) and the **invoice** (what they are charging). If they disagree, the invoice is **blocked automatically**. Interviewers ask about this by name.
+
+<p class="te"><strong>Telugu:</strong> Chala mukhyamaina vishayam okati:<br/>— <strong>Purchase Requisition</strong> = "maaku kavali" ane <strong>lopali</strong> request. Supplier ki velladu.<br/>— <strong>RFQ</strong> = manam supplier ni adige <strong>prashna</strong>.<br/>— <strong>Quotation</strong> = supplier ichhe <strong>jawab</strong>.<br/>Ivi <strong>moodu veru veru documents</strong> — okate ani anukovaddu.<br/><strong>Three-way match:</strong> SAP <strong>PO</strong> (oppukunnadi), <strong>GR</strong> (nijam ga vachindi), <strong>Invoice</strong> (bill vesindi) — ee moodintini compare chestundi. Tedaa unte invoice ni <strong>automatic ga block</strong> chestundi. Company konani samanuki dabbu ivvakunda aape control idi. <strong>Interview lo peru tho ne adugutaru.</strong></p>
+
+---
+
+## V5. Selling — the O2C Documents
+
+**Simple definition:** Eight steps, the mirror of P2P. Steps 1 and 2 are skipped when a regular customer simply phones in an order.
+
+<p class="te"><strong>Telugu:</strong> <strong>Enimidi steps</strong>, P2P ki <strong>addam</strong>. Regular customer phone chesi order ichhinappudu step 1, 2 ni vadilesthaaru.</p>
+
+| # | Document | What it actually is | T-code | Table |
+|---|---|---|---|---|
+| 1 | **Inquiry** | Customer asks "do you make this, roughly what price?" No commitment | `VA11` | `VBAK`/`VBAP` |
+| 2 | **Quotation** | **Our** formal price offer, valid until a date | `VA21` | `VBAK`/`VBAP` |
+| 3 | **Sales Order** | Customer accepts. **The central O2C document** — everything downstream references it | `VA01` | `VBAK` header · `VBAP` items |
+| 4 | **Delivery** | "These 200 fans, from this plant, leaving this gate." Stock **reserved**, not yet reduced | `VL01N` | `LIKP`/`LIPS` |
+| 5 | **Picking** | Physically taking the goods off the shelf | in `VL02N` | — |
+| 6 | **Post Goods Issue (PGI)** | **The moment ownership changes.** Stock goes down and the cost hits the P&L | button in `VL02N` | `MATDOC` |
+| 7 | **Billing / Invoice** | The legal invoice. The customer now owes us | `VF01` | `VBRK`/`VBRP` |
+| 8 | **Incoming Payment** | The customer pays; the receivable clears | `F-28` | `ACDOCA` |
+
+**Two terms people mix up.** The **delivery** is the *document* (`VL01N`). The **delivery note** is the *printout* of it — the paper that travels with the truck.
+
+**And the word "quotation" flips direction between the two flows.** In P2P a quotation is the **supplier's** offer to us. In O2C a quotation is **our** offer to a customer. Same word, opposite sides.
+
+**Three things happen automatically when you save a sales order** — beginners think these are separate steps:
+
+| Automatic check | What it does |
+|---|---|
+| **Availability check (ATP)** | Can we deliver 200 by the 12th? Confirms a date |
+| **Pricing** | Works out the price from the price list, discounts and taxes |
+| **Credit check** | If the customer already owes too much, the order is **blocked** |
+
+<p class="te"><strong>Telugu:</strong> <strong>Sales Order (`VA01`)</strong> = O2C lo <strong>gundekaya</strong>. Migilinavi anni deenne reference chestai.<br/><strong>PGI (Post Goods Issue)</strong> = samanu <strong>legal ga company nunchi bayataki vellina kshanam</strong>. Ikkade stock taggutundi, mariyu cost accounting loki veltundi. Project lo "PGI ayinda?" ane prashna <strong>roju vintavu</strong>.<br/><strong>Delivery vs Delivery Note:</strong> <strong>Delivery</strong> anedi <strong>document</strong> (`VL01N`). <strong>Delivery Note</strong> anedi daani <strong>print</strong> — truck tho paatu velle kaagitam.<br/><strong>Quotation jaagratha:</strong> konadam lo quotation ante <strong>supplier istadu</strong>; ammadam lo quotation ante <strong>manam istam</strong>. Okate maata, <strong>rendu vaipulu</strong>.<br/><strong>Sales order save cheyyagane moodu panulu automatic ga</strong>: stock unda ani check (ATP), price lekkinchadam, mariyu credit check.</p>
+
+---
+
+## V6. Order Types — Cash Sale, Rush, Standard, Returns
+
+**Simple definition:** The **sales document type** is one field on the sales order — and it changes how the entire rest of the flow behaves. Same `VA01` screen, same `VBAK` table, one different code.
+
+<p class="te"><strong>Telugu:</strong> <strong>Sales document type</strong> anedi sales order meeda unna <strong>okka field</strong> — kani adi <strong>migilina flow antha ela nadavalo</strong> nirnayistundi. <strong>Ade `VA01` screen, ade `VBAK` table</strong>, okka code maare, process poorti ga veru.</p>
+
+| Type | Code | What is different |
+|---|---|---|
+| **Standard order** | `OR` | The normal flow. Deliver later, invoice later, payment in 30 days |
+| **Rush order** | `RO` | **Delivery is created automatically** on save. Goods go out today, billing later |
+| **Cash sale** | `CS` | **Delivery *and* billing happen immediately.** The customer pays at the counter and walks out with the goods. Revenue posts to a **cash account**, not to a customer receivable |
+| **Returns** | `RE` | Runs **backwards** — goods come in, a credit memo goes out |
+
+**Why this is worth understanding properly.** In an application you built yourself, "cash sale" would be a branch in your code — `if (payment === 'cash') { skipInvoicing(); postToCash(); }`. In SAP it is a **row in a configuration table** (`TVAK`), created by a functional consultant in `SPRO`. **No developer is involved.** That is the difference between configuring an ERP and building an app, in one example.
+
+<p class="te"><strong>Telugu:</strong> Nuvvu "cash order" ani vinnavu — SAP lo sariyaina peru <strong>Cash Sale</strong>. Andulo <strong>delivery mariyu billing rendu ventane</strong> jarugutai: customer counter lo dabbu ichi samanu teesukelipotadu. Dabbu <strong>cash account</strong> loki veltundi, "customer maaku baaki" ane lekka lo padadu.<br/><strong>Mukhyamaina vishayam:</strong> nee sonta app lo idi <code>if (cash) {...}</code> ani <strong>code</strong> rasevaadivi. SAP lo idi <strong>SPRO lo oka config row</strong> matrame (<code>TVAK</code> table) — <strong>developer ye avasaram ledu</strong>. ERP ni configure cheyyadaniki, app build cheyyadaniki madhya tedaa idi.</p>
+
+---
+
+## V7. The Words That Sit Around Them
+
+**Simple definition:** These are the terms that appear beside the documents in every meeting and every functional specification. One line each is enough.
+
+<p class="te"><strong>Telugu:</strong> Ee padalu documents pakkana <strong>prathi meeting lo, prathi specification lo</strong> kanipistai. Prathi daaniki <strong>okka line</strong> chaalu.</p>
+
+| Term | One-line meaning |
+|---|---|
+| **Document Flow** | The linked chain — order → delivery → invoice → accounting document. Button in `VA03`, table **`VBFA`**. **The best five-minute exercise in SAP** |
+| **Header / Item** | Every document is one **header** row (customer, date, currency) plus many **item** rows (each line). `EKKO`/`EKPO`, `VBAK`/`VBAP`, `LIKP`/`LIPS` |
+| **Master data** | The stable nouns — material, customer, vendor. `MARA`, `KNA1`, `LFA1` |
+| **Transaction data** | The events — orders, deliveries, invoices |
+| **Configuration** | The rules, set once in **`SPRO`**. Moves between systems in a transport, exactly like code |
+| **Movement type** | A three-digit code for a stock movement: `101` goods receipt · `261` issue to production · `601` goods issue to a customer |
+| **Material Type** (`MTART`) | What kind of thing a material is: `ROH` raw · `HALB` semi-finished · `FERT` finished · `HAWA` trading goods · `VERP` packing · `DIEN` service |
+| **GR/IR account** | The holding account that sits between the goods receipt and the invoice receipt |
+| **BOM** (Bill of Material) | The recipe — one fan = one motor + three blades + eight metres of wire. `CS01` |
+| **Routing** | The method — which work step takes how long. `CA01` |
+| **MRP** | The run that works out what is short and creates purchase requisitions automatically. `MD01` |
+| **Production Order** | The firm order to make something. `CO01`, tables `AUFK`/`AFKO`/`AFPO` |
+| **BAPI** | SAP's official API function for creating documents from your code |
+| **Vendor / Customer** | Who you buy from / sell to. Both are **Business Partners** (`BP`) in S/4HANA |
+
+<p class="pic"><strong>The one thing to do this week.</strong> Open <code>VA03</code>, enter any sales order, and click <strong>Document Flow</strong>. You will see five documents created by five departments across three days, all linked, with nobody having re-typed anything. That single screen is what a company is actually buying when it buys an ERP.</p>
+
+<p class="te"><strong>Telugu:</strong> <strong>Ee vaaram idi okati chey:</strong> <code>VA03</code> teruchi, e sales order number ayina pettu, taruvata <strong>Document Flow</strong> button nokku. Akkada — sales order, delivery, goods issue, invoice, accounting document — <strong>aidu documents</strong>, <strong>aidu departments</strong>, <strong>moodu rojulu</strong>, anni <strong>kalisi link ayi</strong> kanipistai. Evaru dennini malli type cheyyaledu. <strong>Company ERP koneppudu nijam ga konedi ee okka screen ne.</strong></p>
+
+---
+
+**Now you hold the technical map *and* the business one. Go build.**
